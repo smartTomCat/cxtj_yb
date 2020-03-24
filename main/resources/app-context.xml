@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+
+	<!-- 默认扫描路径 use-default-filters=true 默认的时候会加载Component等注解 -->
+	<context:component-scan base-package="com.yinhai" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+	</context:component-scan>
+
+	<!-- 国际化资源文件加载 -->
+	<!--<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+		<!--<property name="basenames">-->
+			<!--<array>-->
+				<!--<value>classpath:i18n/message</value>-->
+				<!--<value>classpath:spring/messages_zh_CN</value>-->
+			<!--</array>-->
+		<!--</property>-->
+		<!--<property name="fileEncodings" value="utf-8"/>-->
+	<!--</bean>-->
+
+	<!-- properties配置文件加载 -->
+	<!--<bean id="propertyConfigurer" class="com.yinhai.core.app.api.util.PropertyLocator">-->
+		<!--<property name="locations">-->
+			<!--<list>-->
+				<!--<value>classpath:modules.properties</value>-->
+				<!--<value>classpath:cas.properties</value>-->
+			<!--</list>-->
+		<!--</property>-->
+		<!--<property name="fileEncoding" value="utf-8"/>-->
+	<!--</bean>-->
+	<!--<bean id="serviceLocator" class="com.yinhai.core.app.api.util.ServiceLocator"/>-->
+	<!--<import resource="classpath:spring/spring-ta3-core-domain.xml"/>-->
+
+	<!-- ============================缓存支持 -->
+	<!-- ehcache缓存/redis缓存/coherence缓存 -->
+    <!--<import resource="classpath*:spring/spring-cache.xml"/>-->
+	<!--<import resource="spring/spring-codetable.xml"/>-->
+	<!--<import resource="spring/spring-org.xml"/>-->
+	<!--<import resource="spring/spring-authority.xml"/>-->
+	<!--<import resource="spring/spring-sysapp.xml"/>-->
+
+	<!-- spring session -->
+	<!--<import resource="spring/spring-session-redis.xml"/>-->
+	<!--<import resource="spring/spring-session-local.xml" />-->
+	<!-- 系统启动优先加载 -->
+	<!--<bean id="loadTa3Config" class="com.yinhai.project.config.LoadTa3ProjectConfig"/>-->
+	<!--必须放到最后一个加载 项目上自定义引入文件请放此文件之前-->
+	<!--<import resource="spring/spring-event.xml"/>-->
+	<!--<import resource="spring/spring-cas.xml"/>-->
+	<import resource="cxtj/spring-cfg-include.xml"/>
+</beans>
+

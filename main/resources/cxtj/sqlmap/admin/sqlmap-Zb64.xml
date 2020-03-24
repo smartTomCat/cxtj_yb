@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表zb64 (查询统计主题项目支持的计算方式) 的所有SQL语句映射配置表  生成时间：2016-06-07 14:32:31 -->
+<sqlMap namespace="zb64">
+	<typeAlias alias="zb64Domain" type="com.yinhai.cxtj.admin.domain.Zb64Domain"/>
+
+<!--TA+BEGIN--> 
+	<!-- 查询一批数据的查询 -->
+	<select id="getList" parameterClass="map" resultClass="zb64Domain">
+		SELECT 
+		       a.yzb640 as yzb640,   <!-- 计算方式流水号 -->
+		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb641 as yzb641    <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		  FROM zb64 a
+		 WHERE 1=1 
+		<isNotEmpty prepend="AND" property="yzb640">   <!-- 计算方式流水号 -->
+		       a.yzb640 = #yzb640:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb620 = #yzb620:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb641">   <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.yzb641 = #yzb641:VARCHAR#              
+		</isNotEmpty>
+
+	</select>
+
+	<!-- 通过主键进行查询 -->
+	<select id="get" parameterClass="map" resultClass="zb64Domain">
+		SELECT 
+		       a.yzb640 as yzb640,   <!-- 计算方式流水号 -->
+		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb641 as yzb641    <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		  FROM zb64 a
+		 WHERE 1 = 1 
+<![CDATA[	   AND a.yzb640 = #yzb640#    ]]>    <!-- 计算方式流水号 -->
+	</select>
+
+	<!-- 插入单条数据 -->
+	<insert id="insert" parameterClass="zb64Domain">
+		INSERT INTO zb64 (
+		       yzb640,  <!-- 计算方式流水号 -->
+		       yzb620,  <!-- 查询统计主题的项目流水号 -->
+		       yzb641)  <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		VALUES (
+		       #yzb640:DOUBLE#,  <!-- 计算方式流水号 -->
+		       #yzb620:DOUBLE#,  <!-- 查询统计主题的项目流水号 -->
+		       #yzb641:VARCHAR#)  <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+	</insert>
+
+	<!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+	<update id="update" parameterClass="map">
+		UPDATE zb64 SET 
+		       yzb620 = #yzb620:DOUBLE#,  <!-- 查询统计主题的项目流水号 -->
+		       yzb641 = #yzb641:VARCHAR#  <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb640 = #yzb640#    ]]>    <!-- 计算方式流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+	<update id="updateNotEmpty" parameterClass="map">
+		UPDATE zb64
+		 <dynamic prepend="SET"> 
+			<isNotEmpty prepend="," property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       yzb620 = #yzb620:DOUBLE#               
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb641">   <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       yzb641 = #yzb641:VARCHAR#              
+			</isNotEmpty>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb640 = #yzb640#    ]]>    <!-- 计算方式流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+	<update id="updateAvailable" parameterClass="map">
+		UPDATE zb64
+		 <dynamic prepend="SET"> 
+			<isPropertyAvailable prepend="," property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       yzb620 = #yzb620:DOUBLE#               
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb641">   <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       yzb641 = #yzb641:VARCHAR#              
+			</isPropertyAvailable>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb640 = #yzb640#    ]]>    <!-- 计算方式流水号 -->
+	</update>
+
+	<!--通过主键删除单条数据-->
+	<delete id="delete" parameterClass="map">
+		DELETE  FROM  zb64 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb640 = #yzb640#    ]]>    <!-- 计算方式流水号 -->
+	</delete>
+
+<!--TA+END--> 
+
+	<!-- 删除支持的计算方式  -->
+	<delete id="removeSearch" parameterClass="map">
+		DELETE FROM zb64 
+		 WHERE yzb620 = #yzb620:DOUBLE#
+	</delete>
+	
+	<!-- 获取统计项目支持的运算符 -->
+	<select id="getYsfByOracle" parameterClass="map" resultClass="hashmap">
+	   SELECT a.yzb620 as yzb620,
+	          wmsys.wm_concat(a.yzb641) as yzb641s, 
+	          wmsys.wm_concat(b.aaa103) as  aaa103s 
+	     FROM zb64 a,aa10a1 b
+	       WHERE a.yzb641 = b.aaa102
+	         AND b.aaa100 = 'YZB641'
+	       <isNotEmpty prepend="AND" property="yzb620s">
+	             a.yzb620 in 
+		       <iterate property="yzb620s" conjunction=" , " open="(" close=")">
+		           #yzb620s[]#
+		       </iterate>
+	       </isNotEmpty>
+	       group by yzb620
+	</select>
+
+	<!-- 获取统计项目支持的运算符 -->
+	<select id="getYsfByMysql" parameterClass="map" resultClass="hashmap">
+		SELECT a.yzb620 as yzb620,
+		group_concat(a.yzb641) as yzb641s,
+		group_concat(b.aaa103) as  aaa103s
+		FROM zb64 a,aa10a1 b
+		WHERE a.yzb641 = b.aaa102
+		AND b.aaa100 = 'YZB641'
+		<isNotEmpty prepend="AND" property="yzb620s">
+			a.yzb620 in
+			<iterate property="yzb620s" conjunction=" , " open="(" close=")">
+				#yzb620s[]#
+			</iterate>
+		</isNotEmpty>
+		group by yzb620
+	</select>
+
+	<!-- 获取统计项目支持的运算符 TODO  -->
+	<select id="getYsfByPG" parameterClass="map" resultClass="hashmap">
+		SELECT a.yzb620 as yzb620,
+		string_agg(a.yzb641,',') as yzb641s,
+		string_agg(b.aaa103,',') as  aaa103s
+		FROM zb64 a,aa10a1 b
+		WHERE a.yzb641 = b.aaa102
+		AND b.aaa100 = 'YZB641'
+		<isNotEmpty prepend="AND" property="yzb620s">
+			a.yzb620 in
+			<iterate property="yzb620s" conjunction=" , " open="(" close=")">
+				$yzb620s[]$
+			</iterate>
+		</isNotEmpty>
+		group by yzb620
+	</select>
+
+	<!-- 获取统计项目支持的运算符  TODO -->
+	<select id="getYsfBy8A" parameterClass="map" resultClass="hashmap">
+		SELECT a.yzb620 as yzb620,
+		group_concat(a.yzb641) as yzb641s,
+		group_concat(b.aaa103) as  aaa103s
+		FROM zb64 a,aa10a1 b
+		WHERE a.yzb641 = b.aaa102
+		AND b.aaa100 = 'YZB641'
+		<isNotEmpty prepend="AND" property="yzb620s">
+			a.yzb620 in
+			<iterate property="yzb620s" conjunction=" , " open="(" close=")">
+				#yzb620s[]#
+			</iterate>
+		</isNotEmpty>
+		group by yzb620
+	</select>
+
+</sqlMap>

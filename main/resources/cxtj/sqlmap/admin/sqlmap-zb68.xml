@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表zb68 -->
+<sqlMap namespace="zb68">
+    <typeAlias alias="zb68Domain" type="com.yinhai.cxtj.admin.domain.Zb68Domain"/>
+
+    <!-- 插入单条数据 -->
+    <insert id="insert" parameterClass="zb68Domain">
+        INSERT INTO zb68 (
+        yzb680,  <!-- 视图配置管理流水号-->
+        yzb681,  <!-- 视图名称 -->
+        yzb682,  <!-- 视图sql -->
+        yzb670,  <!-- 数据源配置流水号 -->
+        aae011,  <!-- 经办人       -->
+        yae116,  <!-- 经办人编号   -->
+        aae017,  <!-- 经办机构     -->
+        aae036)  <!-- 经办日期     -->
+        VALUES (
+        #yzb680#,  <!-- 视图配置管理流水号-->
+        #yzb681#,  <!-- 视图名称-->
+        #yzb682#,  <!-- 视图sql-->
+        #yzb670#,  <!-- 数据源配置流水号-->
+        #aae011#,  <!-- 经办人       -->
+        #yae116#,  <!-- 经办人编号   -->
+        #aae017#,  <!-- 经办机构     -->
+        #aae036#)  <!-- 经办日期     -->
+    </insert>
+
+    <!-- 修改视图sql -->
+    <update id="update" parameterClass="zb68Domain">
+        UPDATE zb68 SET
+        yzb682 = #yzb682#,
+        aae011 = #aae011#,
+        yae116 = #yae116#,
+        aae017 = #aae017#,
+        aae036 = #aae036#
+        WHERE yzb680 = #yzb680#
+    </update>
+
+
+    <!--通过主键删除单条数据-->
+    <delete id="delete" parameterClass="map">
+        DELETE FROM zb68 WHERE yzb680 = #yzb680#
+    </delete>
+
+    <!--通过主键删除单条数据-->
+    <select id="queryViews" parameterClass="map" resultClass="java.util.HashMap">
+        SELECT
+        a.yzb680 as yzb680,  <!-- 视图配置管理流水号-->
+        a.yzb681 as yzb681,  <!-- 视图名称 -->
+        a.yzb682 as yzb682,  <!-- 视图sql -->
+        a.yzb670 as yzb670,  <!-- 数据源配置流水号 -->
+        a.aae011 as aae011,  <!-- 经办人       -->
+        a.yae116 as yae116,  <!-- 经办人编号   -->
+        a.aae017 as aae017,  <!-- 经办机构     -->
+        a.aae036 as aae036,  <!-- 经办日期     -->
+        b.yzb672 as yzb672    <!-- 数据源名称 -->
+        FROM
+        zb68 a
+        left join              <!-- 默认数据源不存在与zb67中，前台页面展示处理 -->
+        zb67 b
+        on
+        a.yzb670 = b.yzb670
+        WHERE
+        1=1
+        <isNotEmpty prepend="AND" property="yzb670">   <!-- 数据源-->
+            a.yzb670 = #yzb670:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb681">   <!-- 视图名称-->
+            a.yzb681 like #yzb681# ||'%'
+        </isNotEmpty>
+    </select>
+
+
+    <!-- 验证视图是否存在对应数据源的库中  -->
+    <select id="checkViewNameByOracle" parameterClass="map" resultClass="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM user_tab_comments
+        WHERE TABLE_TYPE = 'VIEW'
+        AND TABLE_NAME = #yzb681#
+    </select>
+
+    <select id="checkViewNameByMysql" parameterClass="map" resultClass="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM information_schema.tables
+        WHERE TABLE_TYPE = 'VIEW'
+        AND TABLE_NAME = #yzb681#
+    </select>
+
+    <!--TODO-->
+    <select id="checkViewNameByPg" parameterClass="map" resultClass="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM information_schema.tables
+        WHERE TABLE_TYPE = 'VIEW'
+        AND TABLE_NAME = #yzb681#
+    </select>
+
+    <!--TODO-->
+    <select id="checkViewNameByGbase" parameterClass="map" resultClass="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM information_schema.tables
+        WHERE TABLE_TYPE = 'VIEW'
+        AND TABLE_NAME = #yzb681#
+    </select>
+
+
+    <!-- 验证视图是否存在zb68  -->
+    <select id="checkZb68" parameterClass="map" resultClass="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM zb68
+        WHERE yzb670 = #yzb670#
+        AND yzb681 = #yzb681#
+    </select>
+
+    <!-- 创建视图 -->
+    <statement id="dllView" parameterClass="java.lang.String">
+        $sql$
+    </statement>
+
+</sqlMap>

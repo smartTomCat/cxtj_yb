@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <settings
+            useStatementNamespaces="true"
+            cacheModelsEnabled="true"
+            enhancementEnabled="true"
+            errorTracingEnabled="true"
+    />
+    <!-- 查询统计方案 -->
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-Zb71.xml"/>
+    <!-- 查询统计方案的WHERE条件分组（各分组用OR关联，分组内用AND关联） -->
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-Zb72.xml"/>
+    <!-- 查询统计方案WHERE条件 -->
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-Zb73.xml"/>
+    <!-- 查询统计方案WHERE条件的代码值 -->
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-Zb74.xml"/>
+    <!-- 查询统计方案查询统计的项目 -->
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-Zb76.xml"/>
+    <!-- 查询统计方案查询统计时排序项目 -->
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-Zb77.xml"/>
+    <!-- 查询统计方案分组统计项目 -->
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-Zb78.xml"/>
+    <!-- 查询统计方案分组统计值 -->
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-Zb79.xml"/>
+    <sqlMap resource="cxtj/sqlmap/front/sqlmap-query.xml"/>
+
+</sqlMapConfig>

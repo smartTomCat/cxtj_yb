@@ -1,0 +1,91 @@
+//二级菜单样式
+.menu-two-con{
+  background-color: $menu-two-bgcolor;
+  @include bgimgCover("../img/#{$img-path}/#{$menu-two-bgimg}",contain,bottom left);
+  display: none;
+
+}
+.menu-two-item-con{
+  width: 100%;
+  &:hover{
+    >.menu-two-item{
+      background-color: $menu-two-bgcolor-hover;
+      color:$menu-two-ftcolor-hover;
+      .menu-two-dot:before{
+        background-color: $menu-two-ftcolor-hover;
+      }
+    }
+    >span{
+      display: inline-block;
+      color: $menu-two-ftcolor-active;
+      &:hover{
+        @include opacity(1);
+      }
+    }
+  }
+  &.active{
+    @include box-shadow($c:red,$inset:inset);
+    >.menu-two-item{
+      background-color: $menu-two-bgcolor-active;
+      color:$menu-two-ftcolor-active;
+      .menu-two-dot:before{
+        background-color: $menu-two-ftcolor-active;
+      }
+    }
+    >span{
+      color: $menu-two-ftcolor-active;
+      display: inline-block;
+    }
+  }
+  >span{
+    position: absolute;
+    right: 0px;
+    text-align: center;
+    margin-top: -40px;
+    width: 30px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    display: none;
+    color:$menu-two-ftcolor;
+    @include opacity(0.6);
+    &.menu-next-control{
+      &:before{
+        font-size: 12px;
+      }
+    }
+  }
+
+}
+.menu-two-item{
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 30px;
+  @include text-overflow();
+  //background-color: $menu-two-bgcolor;
+  height:40px;
+  line-height: 40px;
+  font-size: 14px;
+  cursor: pointer;
+  box-sizing: border-box;
+  color:$menu-two-ftcolor;
+  >.menu-two-icon {
+    display: inline-block;
+    width: 34px;
+    text-align: center;
+    height: 40px;
+    vertical-align: middle;
+    &.menu-two-dot{
+      &:before{
+        content: "";
+        display: inline-block;
+        background-color: $menu-two-ftcolor;
+        height: 5px;
+        width: 5px;
+        margin-top: 16px;
+        border-radius: 100%;
+      }
+    }
+  }
+}
+

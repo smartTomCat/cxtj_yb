@@ -1,0 +1,166 @@
+@mixin index-tab-one {
+  height: 39px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 40px;
+  float: left;
+  color: $index-tab-ftcolor;
+  @include gradient-vertical($start-color:nth($index-tab-bgcolor,1),$end-color:nth($index-tab-bgcolor,2));
+  border-right: solid 1px $index-tab-bdcolor;
+  cursor: pointer;
+}
+@mixin clear-after{
+  &:after { content: "."; display: block; height: 0; width: 0; clear: both; visibility: hidden; }
+}
+.display { display: none; }
+ul { margin: 0px; padding: 0px; list-style-type: none; }
+.right-part {
+  min-width: 400px;
+}
+/*工作台tab*/
+.index-tabs {
+  width: 100%;
+  height: 39px;
+  @include gradient-vertical($start-color:nth($index-tab-bgcolor,1),$end-color:nth($index-tab-bgcolor,2));
+  border-bottom: solid 1px $index-tab-bdcolor;
+  @include clear-after;
+  >.index-tab-gzt {
+    width: 140px;
+    @include index-tab-one;
+    &.active {
+      color: $index-tab-ftcolor-active;
+      background-color: $index-tab-bgcolor-active;
+      border-bottom: solid 1px $index-tab-bgcolor-active;
+      background-image: none;
+    }
+  }
+  #index_tab_ul {
+    float: left;
+    @include clear-after;
+    >.index-tab-li {
+      padding: 0 5px 0 20px;
+      @include index-tab-one;
+      @include clear-after;
+      >p {
+        max-width: 160px;
+        margin: 0;
+        padding: 0;
+        float: left;
+        @include text-overflow;
+      }
+      >span {
+        margin-left: 14px;
+        font-size: 12px;
+        color: $index-tab-close;
+      }
+      &.active {
+        color: $index-tab-ftcolor-active;
+        background-color: $index-tab-bgcolor-active;
+        border-bottom: solid 1px $index-tab-bgcolor-active;
+        background-image: none;
+        >span {
+          color: $index-tab-close-active;
+          &:before{
+            content: "\e7a0";
+          }
+        }
+      }
+      &:hover {
+        >span {
+          color: $index-tab-close-active;
+          &:before{
+            content: "\e7a0";
+          }
+        }
+      }
+    }
+  }
+}
+/*右侧隐藏按钮*/
+.index-tab-more {
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  margin-top: 24px;
+  float: left;
+  position: relative;
+  color: $index-tab-color-white;
+  background-color: $index-tab-more;
+  @include clear-after;
+  >span {
+    font-size: 12px;
+  }
+  &.active {
+    background-color: $index-tab-more-active;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+/*右侧弹框*/
+.index-tab-more-pos {
+  width: 218px;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: $index-tab-color-white;
+  border: solid 1px $index-tab-bdcolor;
+  position: absolute;
+  text-align: left;
+  font-size: 14px;
+  left: 0;
+  top: 20px;
+  @include beautifyScrollbar();
+  @include box-shadow();
+  .index-tab-gzt {
+    height: 39px;
+    line-height: 40px;
+    white-space: nowrap;
+    color: $index-tab-ftcolor-active;
+    margin: 0 10px;
+    padding: 0 10px;
+    border-bottom: solid 1px $index-tab-more-bdcolor;
+  }
+  .index-tab-li {
+    height: 32px;
+    line-height: 32px;
+    white-space: nowrap;
+    color: $index-tab-main-ftcolor;
+    margin: 0 10px;
+    padding: 0 10px;
+    border-bottom: dashed 1px $index-tab-more-bdcolor;
+    @include clear-after;
+    @include text-overflow;
+    &:last-child { border-bottom: none; }
+    >p {
+      max-width: 140px;
+      margin: 0;
+      padding: 0;
+      float: left;
+      @include text-overflow;
+    }
+    >span {
+      float: right;
+      font-size: 12px;
+      color: $index-tab-close;
+    }
+    &:hover {
+      background-color: $index-tab-more-hover;
+      >span {
+        &:before{
+          color: $index-tab-close-active;
+          content: "\e7a0";
+        }
+      }
+    }
+  }
+  .index-tab-more-close {
+    background-color: $index-tab-more-active;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 5px 5px;
+    color: $index-tab-color-white;
+  }
+}
+

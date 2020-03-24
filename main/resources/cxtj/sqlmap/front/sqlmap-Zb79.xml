@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表zb79 (查询统计方案分组统计值) 的所有SQL语句映射配置表  生成时间：2016-06-15 17:20:44 -->
+<sqlMap namespace="zb79">
+	<typeAlias alias="zb79Domain" type="com.yinhai.cxtj.front.domain.Zb79Domain"/>
+
+<!--TA+BEGIN--> 
+	<!-- 查询一批数据的查询 -->
+	<select id="getList" parameterClass="map" resultClass="zb79Domain">
+		SELECT 
+		       a.yzb790 as yzb790,   <!-- 查询统计方案统计值流水号 -->
+		       a.yzb710 as yzb710,   <!-- 查询统计方案流水号 -->
+		       a.yzb791 as yzb791,   <!-- 排序号       -->
+		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb641 as yzb641,   <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.aae036 as aae036    <!-- 经办日期     -->
+		  FROM zb79 a
+		 WHERE 1=1 
+		<isNotEmpty prepend="AND" property="yzb790">   <!-- 查询统计方案统计值流水号 -->
+		       a.yzb790 = #yzb790:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb710">   <!-- 查询统计方案流水号 -->
+		       a.yzb710 = #yzb710:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb791">   <!-- 排序号       -->
+		       a.yzb791 = #yzb791:INTEGER#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb620 = #yzb620:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb641">   <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.yzb641 = #yzb641:VARCHAR#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
+		       a.aae036 = #aae036:TIMESTAMP#            
+		</isNotEmpty>
+
+	</select>
+
+	<!-- 通过主键进行查询 -->
+	<select id="get" parameterClass="map" resultClass="zb79Domain">
+		SELECT 
+		       a.yzb790 as yzb790,   <!-- 查询统计方案统计值流水号 -->
+		       a.yzb710 as yzb710,   <!-- 查询统计方案流水号 -->
+		       a.yzb791 as yzb791,   <!-- 排序号       -->
+		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb641 as yzb641,   <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.aae036 as aae036    <!-- 经办日期     -->
+		  FROM zb79 a
+		 WHERE 1 = 1 
+<![CDATA[	   AND a.yzb790 = #yzb790#    ]]>    <!-- 查询统计方案统计值流水号 -->
+	</select>
+
+	<!-- 插入单条数据 -->
+	<insert id="insert" parameterClass="zb79Domain">
+		INSERT INTO zb79 (
+		       yzb790,  <!-- 查询统计方案统计值流水号 -->
+		       yzb710,  <!-- 查询统计方案流水号 -->
+		       yzb791,  <!-- 排序号       -->
+		       yzb620,  <!-- 查询统计主题的项目流水号 -->
+		       yzb641,  <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       aae036)  <!-- 经办日期     -->
+		VALUES (
+		       #yzb790:DOUBLE#,  <!-- 查询统计方案统计值流水号 -->
+		       #yzb710:DOUBLE#,  <!-- 查询统计方案流水号 -->
+		       #yzb791:INTEGER#,  <!-- 排序号       -->
+		       #yzb620:DOUBLE#,  <!-- 查询统计主题的项目流水号 -->
+		       #yzb641:VARCHAR#,  <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       #aae036:TIMESTAMP#)  <!-- 经办日期     -->
+	</insert>
+
+	<!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+	<update id="update" parameterClass="map">
+		UPDATE zb79 SET 
+		       yzb710 = #yzb710:DOUBLE#,  <!-- 查询统计方案流水号 -->
+		       yzb791 = #yzb791:INTEGER#,  <!-- 排序号       -->
+		       yzb620 = #yzb620:DOUBLE#,  <!-- 查询统计主题的项目流水号 -->
+		       yzb641 = #yzb641:VARCHAR#,  <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb790 = #yzb790#    ]]>    <!-- 查询统计方案统计值流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+	<update id="updateNotEmpty" parameterClass="map">
+		UPDATE zb79
+		 <dynamic prepend="SET"> 
+			<isNotEmpty prepend="," property="yzb710">   <!-- 查询统计方案流水号 -->
+		       yzb710 = #yzb710:DOUBLE#               
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb791">   <!-- 排序号       -->
+		       yzb791 = #yzb791:INTEGER#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       yzb620 = #yzb620:DOUBLE#               
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb641">   <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       yzb641 = #yzb641:VARCHAR#              
+			</isNotEmpty>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb790 = #yzb790#    ]]>    <!-- 查询统计方案统计值流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+	<update id="updateAvailable" parameterClass="map">
+		UPDATE zb79
+		 <dynamic prepend="SET"> 
+			<isPropertyAvailable prepend="," property="yzb710">   <!-- 查询统计方案流水号 -->
+		       yzb710 = #yzb710:DOUBLE#               
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb791">   <!-- 排序号       -->
+		       yzb791 = #yzb791:INTEGER#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       yzb620 = #yzb620:DOUBLE#               
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb641">   <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       yzb641 = #yzb641:VARCHAR#              
+			</isPropertyAvailable>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb790 = #yzb790#    ]]>    <!-- 查询统计方案统计值流水号 -->
+	</update>
+
+	<!--通过主键删除单条数据-->
+	<delete id="delete" parameterClass="map">
+		DELETE  FROM  zb79 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb790 = #yzb790#    ]]>    <!-- 查询统计方案统计值流水号 -->
+	</delete>
+	
+	<delete id="deleteZb79ByYzb710" parameterClass="map">
+		DELETE  FROM  zb79 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb710 = #yzb710#    ]]>
+	</delete>
+	
+<select id="getMapList" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT 
+		       a.yzb790 as yzb790,   <!-- 查询统计方案统计值流水号 -->
+		       a.yzb710 as yzb710,   <!-- 查询统计方案流水号 -->
+		       a.yzb791 as yzb791,   <!-- 排序号       -->
+		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb641 as yzb641,   <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.aae036 as aae036,    <!-- 经办日期     -->
+		        b.yzb623 as yzb623,   <!-- 数据库项目或表达式 -->
+		       b.yzb624 as yzb624,   <!-- 数据库项目AS别名 -->
+		       b.yzb625 as yzb625,   <!-- 数据库项目中文 -->
+		       b.yzb626 as yzb626,   <!-- 数据类型（1字符型2数字型3日期型） -->
+		       b.yzb628 as yzb628,   <!-- 代码类别     -->
+		        b.yzb62d as yzb62d,   <!-- 是否作为查询条件（1是0否） -->
+		       b.yzb62a as yzb62a,   <!-- 查询统计项目值的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       b.yzb62b as yzb62b,   <!-- 是否用于分组统计（1是0否） -->
+		       b.yzb62c as yzb62c   <!-- 是否用于统计计算（1是0否） -->
+		  FROM zb79 a,zb62 b 
+		 WHERE 1=1 and a.yzb620 = b.yzb620
+		<isNotEmpty prepend="AND" property="yzb790">   <!-- 查询统计方案统计值流水号 -->
+		       a.yzb790 = #yzb790:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb710">   <!-- 查询统计方案流水号 -->
+		       a.yzb710 = #yzb710:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb791">   <!-- 排序号       -->
+		       a.yzb791 = #yzb791:INTEGER#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb620 = #yzb620:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb641">   <!-- 统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.yzb641 = #yzb641:VARCHAR#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
+		       a.aae036 = #aae036:TIMESTAMP#            
+		</isNotEmpty>
+</select>
+
+
+<!-- 根据查询统计主题的项目流水号获取查询统计主题项目支持的计算方式 -->
+<select id="getSearchModeByYZB620" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT a.yzb640 as yzb640,   <!-- 计算方式流水号 -->
+		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb641 as yzb641,   <!-- 查询统计结果的计算方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       fun_getcodedesc('YZB641', a.yzb641) AS yzb641_desc
+		  FROM zb64 a
+		 WHERE a.yzb620 = #yzb620:DOUBLE#
+</select>
+
+<!-- 根据查询统计主题代码获取查询统计主题的项目-->
+	<select id="getSearchItemByYZB611" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       a.yzb621 as yzb621,   <!-- 排序号       -->
+		       a.yzb623 as yzb623,   <!-- 数据库项目或表达式 -->
+		       a.yzb624 as yzb624,   <!-- 数据库项目AS别名 -->
+		       a.yzb625 as yzb625,   <!-- 数据库项目中文 -->
+		       a.yzb626 as yzb626,   <!-- 数据类型（1字符型2数字型3日期型） -->
+		       fun_getcodedesc('YZB626', a.yzb626) AS yzb626_desc,
+		       a.yzb628 as yzb628,   <!-- 代码类别     -->
+		        a.yzb62d as yzb62d,   <!--是否作为查询条件（1是0否） -->
+		        fun_getcodedesc('YZB62D', a.yzb62d) AS yzb62d_desc,
+		       a.yzb62a as yzb62a,   <!-- 查询统计项目值的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       fun_getcodedesc('YZB62A', a.yzb62a) AS yzb62a_desc,
+		       a.yzb62b as yzb62b,   <!-- 是否用于分组统计（1是0否） -->
+		       fun_getcodedesc('YZB62B', a.yzb62b) AS yzb62b_desc,
+		       a.yzb62c as yzb62c,   <!-- 是否用于统计计算（1是0否） -->
+		       fun_getcodedesc('YZB62C', a.yzb62c) AS yzb62c_desc,
+		       a.aae100 as aae100,   <!-- 有效标志（1有效0无效） -->
+		       fun_getcodedesc('AAE100', a.aae100) AS aae100_desc
+		  FROM zb62 a
+		 WHERE a.yzb610 = #yzb610:DOUBLE#
+		   AND a.aae100 = '1'
+		<isNotEmpty prepend="AND" property="yzb62b">   <!-- 是否用于分组统计（1是0否） -->
+		       a.yzb62b = #yzb62b:VARCHAR#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb62c">   <!-- 是否用于统计计算（1是0否） -->
+		       a.yzb62c = #yzb62c:VARCHAR#              
+		</isNotEmpty>
+		 ORDER BY yzb621
+	</select>
+	
+	<!-- 获取可统计计算的项目列表-->
+	<select id="getEnableTjjsxms" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       a.yzb621 as yzb621,   <!-- 排序号       -->
+		       a.yzb623 as yzb623,   <!-- 数据库项目或表达式 -->
+		       a.yzb624 as yzb624,   <!-- 数据库项目AS别名 -->
+		       a.yzb625 as yzb625,   <!-- 数据库项目中文 -->
+		       a.yzb626 as yzb626,   <!-- 数据类型（1字符型2数字型3日期型） -->
+		       fun_getcodedesc('YZB626', a.yzb626) AS yzb626_desc,
+		       a.yzb628 as yzb628,   <!-- 代码类别     -->
+		        a.yzb62d as yzb62d,   <!--是否作为查询条件（1是0否） -->
+		        fun_getcodedesc('YZB62D', a.yzb62d) AS yzb62d_desc,
+		       a.yzb62a as yzb62a,   <!-- 查询统计项目值的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       fun_getcodedesc('YZB62A', a.yzb62a) AS yzb62a_desc,
+		       a.yzb62b as yzb62b,   <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       fun_getcodedesc('YZB62B', a.yzb62b) AS yzb62b_desc,
+		       a.yzb62c as yzb62c,   <!-- 分组计算控制（0不能用于计算1默认用于计算2默认不用于计算） -->
+		       fun_getcodedesc('YZB62C', a.yzb62c) AS yzb62c_desc,
+		       a.aae100 as aae100,   <!-- 有效标志（1有效0无效） -->
+		       fun_getcodedesc('AAE100', a.aae100) AS aae100_desc
+		  FROM zb62 a
+		 WHERE a.yzb610 = #yzb610:DOUBLE#
+		   AND a.aae100 = '1'
+		   and a.yzb62c in('1','2')
+		 ORDER BY yzb621
+	</select>
+<!--TA+END--> 
+</sqlMap>

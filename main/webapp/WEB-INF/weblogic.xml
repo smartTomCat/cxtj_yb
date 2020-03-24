@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_3.0.xsd
+http://xmlns.oracle.com/weblogic/weblogic-web-app
+http://xmlns.oracle.com/weblogic/weblogic-web-app/1.8/weblogic-web-app.xsd">
+	<charset-params>
+		<input-charset>
+			<resource-path>/*</resource-path>
+			<java-charset-name>UTF-8</java-charset-name>
+		</input-charset>
+	</charset-params>
+	<context-root>/cxtj</context-root>
+	<container-descriptor>
+		<show-archived-real-path-enabled>true</show-archived-real-path-enabled>
+		<prefer-application-packages>
+			<package-name>antlr.*</package-name>
+			<package-name>com.ctc.wstx.*</package-name>
+			<package-name>org.apache.*</package-name>
+			<package-name>javax.persistence.*</package-name>
+			<package-name>com.google.common.base.*</package-name>
+			<package-name>org.slf4j.*</package-name>
+			<package-name>org.codehaus.stax2.ri.*</package-name>
+			<package-name>org.bouncycastle.*</package-name>
+		</prefer-application-packages>
+		<gzip-compression>
+			<enabled>true</enabled>
+			<min-content-length>4096</min-content-length>
+			<content-type>text/html</content-type>
+			<content-type>text/xml</content-type>
+		</gzip-compression>
+	</container-descriptor>
+	<session-descriptor>
+		<cookie-path>/cxtj</cookie-path>
+	</session-descriptor>
+</weblogic-web-app>

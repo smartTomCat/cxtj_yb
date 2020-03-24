@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="queryReportMgService" parent="transactionProxy" >
+		<property name="target">
+			<bean class="com.yinhai.modules.runqian.app.domain.bpo.impl.QueryReportMgServiceImpl">
+				<property name="menuMgBlo" ref="menuMgBlo" />
+				<property name="reportMenuReferenceDao" ref="reportMenuReferenceDao"></property>
+				<property name="reportResourceDao" ref="reportResourceDao"></property>
+				<property name="taCacheManager" ref="taCacheManager"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="queryReportService" parent="transactionProxy" >
+		<property name="target">
+			<bean class="com.yinhai.modules.runqian.app.domain.bpo.impl.QueryReportServiceImpl">
+				<property name="reportDefineService" ref="reportDefineService"></property>
+				<property name="reportMenuReferenceDao" ref="reportMenuReferenceDao"></property>
+			</bean>
+		</property>
+
+	</bean>
+	<bean id="reportDefineService" parent="transactionProxy" >
+		<property name="target">
+			<bean class="com.yinhai.modules.runqian.app.domain.bpo.impl.ReportDefineServiceImpl">
+				<property name="reportMenuReferenceDao" ref="reportMenuReferenceDao"></property>
+				<property name="reportResourceDao" ref="reportResourceDao"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="runQianReportFileMgService" parent="transactionProxy" >
+		<property name="target">
+			<bean class="com.yinhai.modules.runqian.app.domain.bpo.impl.RunQianReportFileMgServiceImpl">
+				<property name="reportMenuReferenceDao" ref="reportMenuReferenceDao"></property>
+				<property name="reportResourceDao" ref="reportResourceDao"></property>
+				<property name="taCacheManager" ref="taCacheManager"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="savePrintSetupService" parent="transactionProxy" >
+		<property name="target">
+			<bean class="com.yinhai.modules.runqian.app.domain.bpo.impl.SavePrintSetupServiceImpl">
+				<property name="reportPrintSetUpDao" ref="reportPrintSetUpDao"></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean  id="reportMenuReferenceDao" class="com.yinhai.modules.runqian.app.domain.dao.impl.ReportMenuReferenceDaoImpl"></bean>
+
+	<bean id="reportResourceDao" class="com.yinhai.modules.runqian.app.domain.dao.impl.ReportResourceDaoImpl"></bean>
+
+	<bean id="reportPrintSetUpDao" class="com.yinhai.modules.runqian.app.domain.dao.impl.ReportPrintSetUpDaoImpl"></bean>
+</beans>  

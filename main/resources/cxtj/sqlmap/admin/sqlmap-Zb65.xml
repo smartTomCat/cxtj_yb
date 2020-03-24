@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表zb65 (查询统计主题缺省排序项目) 的所有SQL语句映射配置表  生成时间：2016-06-07 14:32:38 -->
+<sqlMap namespace="zb65">
+	<typeAlias alias="zb65Domain" type="com.yinhai.cxtj.admin.domain.Zb65Domain"/>
+
+<!--TA+BEGIN--> 
+	<!-- 查询一批数据的查询 -->
+	<select id="getList" parameterClass="map" resultClass="zb65Domain">
+		SELECT 
+		       a.yzb650 as yzb650,   <!-- 查询统计主题排序项目流水号 -->
+		       a.yzb651 as yzb651,   <!-- 排序号       -->
+		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb652 as yzb652,   <!-- 排序方式（1升序2降序） -->
+		       b.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       b.yzb623 as yzb623,   <!-- 数据库项目或表达式 -->
+		       b.yzb624 as yzb624,   <!-- 数据库项目AS别名 -->
+		       b.yzb625 as yzb625,   <!-- 数据库项目中文 -->
+		       b.yzb626 as yzb626    <!-- 数据类型（1字符型2数字型3日期型） -->
+		  FROM zb65 a, zb62 b
+		 WHERE a.yzb620 = b.yzb620
+		<isNotEmpty prepend="AND" property="yzb650">   <!-- 查询统计主题排序项目流水号 -->
+		       a.yzb650 = #yzb650:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb651">   <!-- 排序号       -->
+		       a.yzb651 = #yzb651:INTEGER#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb620 = #yzb620:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb652">   <!-- 排序方式（1升序2降序） -->
+		       a.yzb652 = #yzb652:VARCHAR#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb610">   <!-- 查询统计主题流水号 -->
+		       b.yzb610 = #yzb610:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty property="order">
+			ORDER BY yzb651
+		</isNotEmpty>
+	</select>
+
+	<!-- 通过主键进行查询 -->
+	<select id="get" parameterClass="map" resultClass="zb65Domain">
+		SELECT 
+		       a.yzb650 as yzb650,   <!-- 查询统计主题排序项目流水号 -->
+		       a.yzb651 as yzb651,   <!-- 排序号       -->
+		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb652 as yzb652,   <!-- 排序方式（1升序2降序） -->
+		       b.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       b.yzb623 as yzb623,   <!-- 数据库项目或表达式 -->
+		       b.yzb624 as yzb624,   <!-- 数据库项目AS别名 -->
+		       b.yzb625 as yzb625,   <!-- 数据库项目中文 -->
+		       b.yzb626 as yzb626    <!-- 数据类型（1字符型2数字型3日期型） -->
+		  FROM zb65 a, zb62 b
+		 WHERE a.yzb620 = b.yzb620
+<![CDATA[	   AND a.yzb650 = #yzb650#    ]]>    <!-- 查询统计主题排序项目流水号 -->
+	</select>
+
+	<!-- 插入单条数据 -->
+	<insert id="insert" parameterClass="zb65Domain">
+		INSERT INTO zb65 (
+		       yzb650,  <!-- 查询统计主题排序项目流水号 -->
+		       yzb651,  <!-- 排序号       -->
+		       yzb620,  <!-- 查询统计主题的项目流水号 -->
+		       yzb652)  <!-- 排序方式（1升序2降序） -->
+		VALUES (
+		       #yzb650:DOUBLE#,  <!-- 查询统计主题排序项目流水号 -->
+		       #yzb651:INTEGER#,  <!-- 排序号       -->
+		       #yzb620:DOUBLE#,  <!-- 查询统计主题的项目流水号 -->
+		       #yzb652:VARCHAR#)  <!-- 排序方式（1升序2降序） -->
+	</insert>
+
+	<!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+	<update id="update" parameterClass="map">
+		UPDATE zb65 SET 
+		       yzb651 = #yzb651:INTEGER#,  <!-- 排序号       -->
+		       yzb620 = #yzb620:DOUBLE#,  <!-- 查询统计主题的项目流水号 -->
+		       yzb652 = #yzb652:VARCHAR#  <!-- 排序方式（1升序2降序） -->
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb650 = #yzb650#    ]]>    <!-- 查询统计主题排序项目流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+	<update id="updateNotEmpty" parameterClass="map">
+		UPDATE zb65
+		 <dynamic prepend="SET"> 
+			<isNotEmpty prepend="," property="yzb651">   <!-- 排序号       -->
+		       yzb651 = #yzb651:INTEGER#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       yzb620 = #yzb620:DOUBLE#               
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb652">   <!-- 排序方式（1升序2降序） -->
+		       yzb652 = #yzb652:VARCHAR#              
+			</isNotEmpty>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb650 = #yzb650#    ]]>    <!-- 查询统计主题排序项目流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+	<update id="updateAvailable" parameterClass="map">
+		UPDATE zb65
+		 <dynamic prepend="SET"> 
+			<isPropertyAvailable prepend="," property="yzb651">   <!-- 排序号       -->
+		       yzb651 = #yzb651:INTEGER#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb620">   <!-- 查询统计主题的项目流水号 -->
+		       yzb620 = #yzb620:DOUBLE#               
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb652">   <!-- 排序方式（1升序2降序） -->
+		       yzb652 = #yzb652:VARCHAR#              
+			</isPropertyAvailable>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb650 = #yzb650#    ]]>    <!-- 查询统计主题排序项目流水号 -->
+	</update>
+
+	<!--通过主键删除单条数据-->
+	<delete id="delete" parameterClass="map">
+		DELETE  FROM  zb65 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb650 = #yzb650#    ]]>    <!-- 查询统计主题排序项目流水号 -->
+	</delete>
+
+<!--TA+END--> 
+
+	<!-- 查询待选项目  -->
+	<select id="query1" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
+		       a.yzb621 as yzb621,   <!-- 排序号       -->
+		       a.yzb623 as yzb623,   <!-- 数据库项目或表达式 -->
+		       a.yzb624 as yzb624,   <!-- 数据库项目AS别名 -->
+		       a.yzb625 as yzb625,   <!-- 数据库项目中文 -->
+		       a.yzb626 as yzb626    <!-- 数据类型（1字符型2数字型3日期型） -->
+		  FROM zb62 a
+		 WHERE a.yzb610 = #yzb610#
+		<isNotEmpty prepend="AND" property="name_1">
+		       (a.yzb623 LIKE '%'||#name_1:VARCHAR#||'%' OR a.yzb624 LIKE '%'||#name_1:VARCHAR#||'%' OR a.yzb625 LIKE '%'||#name_1:VARCHAR#||'%')
+		</isNotEmpty>
+		   AND NOT EXISTS (SELECT b.yzb620
+		                     FROM zb65 b, zb62 c
+		                    WHERE b.yzb620 = c.yzb620
+		                      AND c.yzb610 = #yzb610#
+		                      AND b.yzb620 = a.yzb620)
+		 ORDER BY yzb621
+	</select>
+
+	<!-- 查询已选项目  -->
+	<select id="query2" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT a.yzb650 as yzb650,   <!-- 查询统计主题排序项目流水号 -->
+		       a.yzb651 as yzb651,   <!-- 排序号       -->
+		       a.yzb652 as yzb652,   <!-- 排序方式（1升序2降序） -->
+		       b.yzb623 as yzb623,   <!-- 数据库项目或表达式 -->
+		       b.yzb624 as yzb624,   <!-- 数据库项目AS别名 -->
+		       b.yzb625 as yzb625,   <!-- 数据库项目中文 -->
+		       b.yzb626 as yzb626    <!-- 数据类型（1字符型2数字型3日期型） -->
+		  FROM zb65 a, zb62 b
+		 WHERE a.yzb620 = b.yzb620
+		   AND b.yzb610 = #yzb610#
+		<isNotEmpty prepend="AND" property="name_2">
+		       (b.yzb623 LIKE '%'||#name_2:VARCHAR#||'%' OR b.yzb624 LIKE '%'||#name_2:VARCHAR#||'%' OR b.yzb625 LIKE '%'||#name_2:VARCHAR#||'%')
+		</isNotEmpty>
+		 ORDER BY yzb651
+	</select>
+	
+	<!-- 查询下个序号  -->
+	<select id="getNextYzb651ByOracle" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT NVL(MAX(a.yzb651), 0) + 1 AS yzb651
+		  FROM zb65 a, zb62 b
+		 WHERE a.yzb620 = b.yzb620
+		   AND b.yzb610 = #yzb610:DOUBLE#
+	</select>
+
+	<!-- 查询下个序号  -->
+	<select id="getNextYzb651ByMysql" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT IFNULL(MAX(a.yzb651), 0) + 1 AS yzb651
+		FROM zb65 a, zb62 b
+		WHERE a.yzb620 = b.yzb620
+		AND b.yzb610 = #yzb610:DOUBLE#
+	</select>
+
+	<!-- 查询下个序号 TODO -->
+	<select id="getNextYzb651ByPG" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT COALESCE(MAX(a.yzb651), 0) + 1 AS yzb651
+		FROM zb65 a, zb62 b
+		WHERE a.yzb620 = b.yzb620
+		AND b.yzb610 = #yzb610#
+	</select>
+
+	<!-- 查询下个序号 TODO -->
+	<select id="getNextYzb651By8A" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT NVL(MAX(a.yzb651), 0) + 1 AS yzb651
+		FROM zb65 a, zb62 b
+		WHERE a.yzb620 = b.yzb620
+		AND b.yzb610 = #yzb610:DOUBLE#
+	</select>
+
+
+	<!-- 查询上移交换项  -->
+	<select id="getYzb651up" parameterClass="map" resultClass="zb65Domain">
+		SELECT a.yzb650 as yzb650,   <!-- 查询统计主题排序项目流水号 -->
+		       a.yzb651 as yzb651    <!-- 排序号       -->
+		  FROM zb65 a, zb62 b
+		 WHERE a.yzb620 = b.yzb620
+		   AND b.yzb610 = #yzb610:DOUBLE#
+		   AND a.yzb651 = (SELECT MAX(c.yzb651)
+		                     FROM zb65 c, zb62 d
+		                    WHERE c.yzb620 = d.yzb620
+		                      AND d.yzb610 = #yzb610:DOUBLE#
+		            <![CDATA[ AND c.yzb651 < (SELECT yzb651 FROM zb65 WHERE yzb650 = #yzb650:DOUBLE#)) ]]>
+	</select>
+	
+	<!-- 查询下移交换项  -->
+	<select id="getYzb651down" parameterClass="map" resultClass="zb65Domain">
+		SELECT a.yzb650 as yzb650,   <!-- 查询统计主题排序项目流水号 -->
+		       a.yzb651 as yzb651    <!-- 排序号       -->
+		  FROM zb65 a, zb62 b
+		 WHERE a.yzb620 = b.yzb620
+		   AND b.yzb610 = #yzb610:DOUBLE#
+		   AND a.yzb651 = (SELECT MIN(c.yzb651)
+		                     FROM zb65 c, zb62 d
+		                    WHERE c.yzb620 = d.yzb620
+		                      AND d.yzb610 = #yzb610:DOUBLE#
+		            <![CDATA[ AND c.yzb651 > (SELECT yzb651 FROM zb65 WHERE yzb650 = #yzb650:DOUBLE#)) ]]>
+	</select>
+	
+	<!-- 删除配制项目排序  -->
+	<delete id="removeSearch" parameterClass="map">
+		DELETE FROM zb65 
+		 WHERE yzb620 = #yzb620:DOUBLE#
+	</delete>
+	
+</sqlMap>

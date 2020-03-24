@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:se="http://www.springframework.org/schema/security"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <se:http security="none" pattern="/static/**"/>
+    <se:http security="none" pattern="/**/*.js"/>
+    <se:http security="none" pattern="/**/*.css"/>
+    <se:http security="none" pattern="/**/*.gif"/>
+    <se:http security="none" pattern="/**/*.jpg"/>
+    <se:http security="none" pattern="/**/*.tag"/>
+    <se:http security="none" pattern="/**/*.jpeg"/>
+    <se:http security="none" pattern="/**/*.png"/>
+    <se:http security="none" pattern="/**/*.eot"/>
+    <se:http security="none" pattern="/**/*.svg"/>
+    <se:http security="none" pattern="/**/*.ttf"/>
+    <se:http security="none" pattern="/**/*.woff"/>
+    <se:http security="none" pattern="/**/*.bmp"/>
+    <se:http security="none" pattern="/**/*.ico"/>
+    <se:http security="none" pattern="/**/*.gzip"/>
+    <se:http security="none" pattern="/**/*.swf"/>
+    <se:http security="none" pattern="/test/**"/>
+    <se:http security="none" pattern="/ta/inc.jsp"/>
+    <se:http security="none" pattern="/login.jsp*"/>
+    <se:http security="none" pattern="/sessionTimeOutHandle.do"/>
+    <se:http security="none" pattern="/CaptchaImg"/>
+    <se:http security="none" pattern="/CaptchaImgPass"/>
+    <se:http security="none" pattern="/ta/incfooter.jsp"/>
+    <se:http security="none" pattern="/ta/accessdenied.jsp"/>
+    <se:http security="none" pattern="/ta/401.jsp"/>
+    <se:http security="none" pattern="/ta/417.jsp"/>
+    <se:http security="none" pattern="/ta/418.jsp"/>
+    <se:http security="none" pattern="/ta/419.jsp"/>
+    <se:http security="none" pattern="/ta/500.jsp"/>
+    <se:http security="none" pattern="/ta/appexception.jsp"/>
+    <se:http security="none" pattern="/ta/exception.jsp"/>
+    <se:http security="none" pattern="/ta/getIPPort.jsp"/>
+    <se:http security="none" pattern="/workspace/portal/**/*.*"/>
+    <se:http security="none" pattern="/log/RequestSessionLogAction!request.do"/>
+    <se:http security="none" pattern="/commonAction.do"/>
+    <se:http security="none" pattern="/services/**"/>
+    <se:http security="none" pattern="/indexAction!changePassword.do"/>
+    <se:http security="none" pattern="/i18n/changeLocale.do"/>
+    <se:http security="none" pattern="/dwr/**/*"/>
+    <se:http security="none" pattern="/i18n/**"/><!-- 前端i18n资源 -->
+    <se:http security="none" pattern="/SlideBackGroundImgServlet"/>
+    <se:http security="none" pattern="/SlideParamImgServlet"/>
+    <se:http security="none" pattern="/SlideVerifyServlet"/>
+    <se:http security="none" pattern="/SlideDragImgServlet"/>
+    <!--SSO -->
+    <se:http auto-config="false" entry-point-ref="casEntryPoint" servlet-api-provision="true" use-expressions="true">
+        <!-- 4.0后关闭页面Frame嵌套验证，框架都是Frame嵌套页面 maxp add-->
+        <se:headers>
+            <!--关闭frame验证 -->
+            <se:frame-options disabled="true"/>
+        </se:headers>
+        <!-- 4.0后默认开启需要关闭csrf验证 maxp add -->
+        <se:csrf disabled="true"/>
+        <se:intercept-url pattern="/**" access="isAuthenticated()"/>
+        <se:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
+        <se:custom-filter position="FORM_LOGIN_FILTER" ref="casFilter"/>
+        <se:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
+        <se:custom-filter ref="taSecurityFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+        <se:custom-filter ref="concurrencyFilter" position="CONCURRENT_SESSION_FILTER"/>
+        <se:session-management invalid-session-url="/sessionTimeOutHandle.do"
+                               session-authentication-strategy-ref="sas"/>
+        <se:access-denied-handler ref="taAccessDeniedHandler"/>
+    </se:http>
+    <bean id="taAccessDeniedHandler" class="com.yinhai.modules.security.spring.app.handle.TaAccessDeniedHandler">
+        <property name="errorPage" value="/ta/401.jsp"/>
+    </bean>
+
+    <bean id="concurrencyFilter" class="org.springframework.security.web.session.ConcurrentSessionFilter">
+        <constructor-arg name="sessionRegistry" ref="sessionRegistry"/>
+        <constructor-arg name="expiredUrl" value="/login.jsp"/>
+    </bean>
+
+    <bean id="sas"
+          class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+        <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy">
+                    <constructor-arg ref="sessionRegistry"/>
+                    <property name="maximumSessions" value="-1"/>
+                    <property name="exceptionIfMaximumExceeded" value="false"/>
+                </bean>
+                <bean class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy"/>
+                <bean class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy">
+                    <constructor-arg ref="sessionRegistry"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl"></bean>
+
+    <bean id="casEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+        <property name="loginUrl" value="${casServerLoginUrl}"/>
+        <property name="serviceProperties" ref="serviceProperties"/>
+    </bean>
+
+    <bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
+        <property name="service" value="${serverName}"/>
+        <property name="sendRenew" value="false"/>
+    </bean>
+
+    <bean id="casFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="authenticationSuccessHandler" ref="taCasOnAuthenticationSuccessHandler"/>
+    </bean>
+
+    <se:authentication-manager alias="authenticationManager">
+        <se:authentication-provider ref="casAuthenticationProvider"/>
+    </se:authentication-manager>
+
+    <bean id="taCasOnAuthenticationSuccessHandler"
+          class="com.yinhai.modules.security.spring.app.handle.TaCasOnAuthenticationSuccessHandler">
+        <property name="userLogin" ref="userLogin"/>
+        <property name="defaultTargetUrl" value="/indexAction.do"/>
+    </bean>
+
+    <bean id="casAuthenticationUserDetailsService"
+          class="com.yinhai.modules.security.spring.app.userdetails.UserDetailsByNameServiceWrapper">
+        <property name="userDetailsService" ref="taUserDetailsService"/>
+        <property name="isTransSSOLoginIdToLocalLoginId" value="${isTransSSOLoginIdToLocalLoginId}"/>
+        <property name="localSystemId" value="${localSystemId}"/>
+    </bean>
+
+    <bean id="taUserDetailsService" class="com.yinhai.modules.security.spring.domain.service.impl.TaUserDetailService">
+        <property name="accountPerviewService" ref="accountPerviewService"/>
+    </bean>
+
+    <bean id="accountPerviewService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.modules.security.spring.domain.service.impl.AccountPerviewServiceImpl">
+                <property name="menuBpo" ref="menuBpo"/>
+                <property name="positionBpo" ref="positionBpo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="casAuthenticationProvider"
+          class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
+        <property name="authenticationUserDetailsService" ref="casAuthenticationUserDetailsService"/>
+        <property name="serviceProperties" ref="serviceProperties"/>
+        <property name="ticketValidator">
+            <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
+                <constructor-arg index="0" value="${casServerUrlPrefix}"/>
+            </bean>
+        </property>
+        <property name="key" value="an_id_for_this_auth_provider_only"/>
+    </bean>
+
+    <!--在http标签下配置一个我们自定义的继承了org.springframework.security.access.intercept.AbstractSecurityInterceptor的Filter，并注入其
+       必须的3个组件authenticationManager、accessDecisionManager和securityMetadataSource。其作用上面已经注释了。
+       这里的FILTER_SECURITY_INTERCEPTOR是Spring Security默认的Filter， 我们自定义的Filter必须在它之前，过滤请求 -->
+    <bean id="taSecurityFilter" class="com.yinhai.modules.security.spring.app.filter.TaSecurityFilter">
+        <property name="myAuthenticationManager" ref="authenticationManager"/>
+        <property name="taAccessDecisionManager" ref="taAccessDecisionManager"/>
+        <property name="taSecurityMetadataSource" ref="taSecurityMetadataSource"/>
+    </bean>
+
+    <bean id="taAccessDecisionManager" class="com.yinhai.modules.security.spring.app.filter.TaAccessDecisionManager">
+        <property name="accountPerviewService" ref="accountPerviewService"/>
+        <property name="allowIfAllAbstainDecisions" value="false"/>
+        <constructor-arg name="decisionVoters">
+            <list>
+                <bean class="org.springframework.security.access.vote.RoleVoter"/>
+                <bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+            </list>
+        </constructor-arg>
+        <!-- 成功登录后，任何角色都可访问的权限资源 -->
+        <property name="accessLoginCanUrls">
+            <list>
+                <value>/indexAction*.do</value>
+                <value>/sysapp/portalAction*.do</value>
+                <value>/commonMenuAction*.do</value>
+                <value>/sysapp/appCodeCacheAction*.do</value>
+                <value>/docio/exportGridExcel.do</value>
+                <value>/docio/exportGridAllExcel.do</value>
+                <value>/com.runqian.*</value>
+                <value>/reportServlet*</value>
+                <value>/runqian/runqianReport4Applet.jar</value>
+                <value>/runqian/dmGraphApplet.jar</value>
+                <value>/com/runqian/*</value>
+                <value>/dwr/call/*/*</value>
+                <value>/message/messageSend*.do</value>
+                <value>/ta/resource/face1.1.0/lib/ueditor/jsp/controller.jsp</value>
+                <value>/</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="taSecurityMetadataSource" class="com.yinhai.modules.security.spring.app.filter.TaSecurityMetadataSource">
+        <property name="accountPerviewService" ref="accountPerviewService"/>
+    </bean>
+
+    <!-- 注销客户端 -->
+    <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
+
+    <!-- 注销服务器端 -->
+    <bean id="requestSingleLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+        <constructor-arg value="${ssoLogoutUrl}"/>
+        <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+                <bean class="com.yinhai.modules.security.spring.app.handle.Ta3LogoutHandler"/>
+            </list>
+        </constructor-arg>
+        <property name="filterProcessesUrl" value="/logout"/>
+    </bean>
+
+    <bean id="md5Encoder" class="com.yinhai.modules.security.spring.domain.encoder.Md5SecurityPasswordEncoder"/>
+
+    <bean id="taSessionManager" class="com.yinhai.modules.security.spring.domain.session.TaSessionManager"/>
+
+    <bean id="loadUserAccountInfo" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.modules.security.spring.domain.service.impl.LoadUserAccountService">
+                <property name="userBpo" ref="userBpo"/>
+                <property name="userPositionBpo" ref="userPositionBpo"/>
+                <property name="orgBpo" ref="orgBpo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="userLogin" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.modules.security.spring.domain.service.impl.UserLoginHelper">
+                <property name="userPositionBpo" ref="userPositionBpo"/>
+                <property name="authorityBpo" ref="authorityBpo"/>
+                <property name="loadUserAccountInfo" ref="loadUserAccountInfo"/>
+                <property name="md5PasswordEncoder" ref="md5Encoder"/>
+                <property name="taSessionManager" ref="taSessionManager"/>
+                <property name="fieldBpo" ref="fieldBpo"/>
+                <property name="menuBpo" ref="menuBpo"/>
+                <property name="taEventPublisher" ref="taEventPublisher"/>
+                <property name="securityCacheBpo" ref="securityCacheBpo"/>
+                <property name="orgBpo" ref="orgBpo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 登录日志相关 -->
+    <bean id="taloginlogDao" class="com.yinhai.modules.security.spring.domain.dao.impl.TaloginlogDaoImpl"></bean>
+
+    <bean id="taonlinelogDao" class="com.yinhai.modules.security.spring.domain.dao.impl.TaonlinelogDaoImpl"></bean>
+
+    <bean id="taloginhistorylogDao"
+          class="com.yinhai.modules.security.spring.domain.dao.impl.TaloginhistorylogDaoImpl"></bean>
+
+    <bean id="taonlinestatlogDao"
+          class="com.yinhai.modules.security.spring.domain.dao.impl.TaonlinestatlogDaoImpl"></bean>
+
+    <!-- 在线离线用户日志 -->
+    <bean id="userLineSessionLogService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.modules.security.spring.domain.event.service.impl.UserLineSessionLogServiceImpl">
+                <property name="taonlinelogDao" ref="taonlinelogDao"/>
+                <property name="taloginhistorylogDao" ref="taloginhistorylogDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!-- 退出监听器 -->
+    <bean id="offLineLogListener" class="com.yinhai.modules.security.spring.domain.event.listener.OffLineLogListener">
+        <property name="userLineSessionLogService" ref="userLineSessionLogService"/>
+    </bean>
+    <!-- 登陆监听器 -->
+    <bean id="onLineLogListener" class="com.yinhai.modules.security.spring.domain.event.listener.OnLineLogListener">
+        <property name="userLineSessionLogService" ref="userLineSessionLogService"/>
+    </bean>
+
+    <bean id="loginLogAnalysisService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.modules.security.spring.domain.service.impl.LoginLogAnalysisServiceImpl">
+                <property name="taonlinelogDao" ref="taonlinelogDao"/>
+                <property name="taonlinestatlogDao" ref="taonlinestatlogDao"/>
+                <property name="taloginlogDao" ref="taloginlogDao"/>
+            </bean>
+        </property>
+    </bean>
+    <bean id="securityCacheBpo" class="com.yinhai.modules.security.spring.domain.bpo.SecurityCacheBpoImpl">
+        <property name="userPositionBpo" ref="userPositionBpo"/>
+        <property name="menuBpo" ref="menuBpo"/>
+        <property name="authorityBpo" ref="authorityBpo"/>
+        <!--<property name="cacheDepot" ref="cacheDepot"/>-->
+    </bean>
+
+</beans>

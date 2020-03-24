@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表zb62 (查询统计项目) 的所有SQL语句映射配置表  生成时间：2016-07-28 16:44:32 -->
+<sqlMap namespace="zb62">
+	<typeAlias alias="zb62Domain" type="com.yinhai.cxtj.admin.domain.Zb62Domain"/>
+
+<!--TA+BEGIN--> 
+	<!-- 查询一批数据的查询 -->
+	<select id="getList" parameterClass="map" resultClass="zb62Domain">
+		SELECT 
+		       a.yzb620 as yzb620,   <!-- 查询统计项目流水号 -->
+		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       a.yzb621 as yzb621,   <!-- 排序号       -->
+		       a.yzb623 as yzb623,   <!-- 数据库字段或表达式 -->
+		       a.yzb624 as yzb624,   <!-- 数据库字段AS别名 -->
+		       a.yzb625 as yzb625,   <!-- 数据库字段中文 -->
+		       a.yzb626 as yzb626,   <!-- 数据类型（1字符型2数字型3日期型） -->
+		       a.yzb628 as yzb628,   <!-- 代码类别     -->
+		       a.yzb62d as yzb62d,   <!-- 是否作为查询条件（1是0否） -->
+		       a.yzb62a as yzb62a,   <!-- 查询条件的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       a.yzb62b as yzb62b,   <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       a.yzb62c as yzb62c,   <!-- 分组计算控制（0不用于计算1默认计算2默认不计算） -->
+		       a.yzb641 as yzb641,   <!-- 默认统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.yzb62f as yzb62f,   <!-- 查询列控制（0不能查询1默认查询2默认不查询） -->
+		       a.aae100 as aae100    <!-- 有效标志（1有效0无效） -->
+		  FROM zb62 a
+		 WHERE 1=1 
+		<isNotEmpty prepend="AND" property="yzb620">   <!-- 查询统计项目流水号 -->
+		       a.yzb620 = #yzb620#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb610">   <!-- 查询统计主题流水号 -->
+		       a.yzb610 = #yzb610#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb621">   <!-- 排序号       -->
+		       a.yzb621 = #yzb621#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb623">   <!-- 数据库字段或表达式 -->
+		       a.yzb623 = #yzb623#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb624">   <!-- 数据库字段AS别名 -->
+		       a.yzb624 = #yzb624#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb625">   <!-- 数据库字段中文 -->
+		       a.yzb625 = #yzb625#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb626">   <!-- 数据类型（1字符型2数字型3日期型） -->
+		       a.yzb626 = #yzb626#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb628">   <!-- 代码类别     -->
+		       a.yzb628 = #yzb628#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb62d">   <!-- 是否作为查询条件（1是0否） -->
+		       a.yzb62d = #yzb62d#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb62a">   <!-- 查询条件的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       a.yzb62a = #yzb62a#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb62b">   <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       a.yzb62b = #yzb62b#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb62c">   <!-- 分组计算控制（0不用于计算1默认计算2默认不计算） -->
+		       a.yzb62c = #yzb62c#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb641">   <!-- 默认统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.yzb641 = #yzb641#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb62f">   <!-- 查询列控制（0不能查询1默认查询2默认不查询） -->
+		       a.yzb62f = #yzb62f#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="aae100">   <!-- 有效标志（1有效0无效） -->
+		       a.aae100 = #aae100#
+		</isNotEmpty>
+		<isNotEmpty property="order">
+			ORDER BY yzb621
+		</isNotEmpty>
+	</select>
+
+	<!-- 通过主键进行查询 -->
+	<select id="get" parameterClass="map" resultClass="zb62Domain">
+		SELECT 
+		       a.yzb620 as yzb620,   <!-- 查询统计项目流水号 -->
+		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       a.yzb621 as yzb621,   <!-- 排序号       -->
+		       a.yzb623 as yzb623,   <!-- 数据库字段或表达式 -->
+		       a.yzb624 as yzb624,   <!-- 数据库字段AS别名 -->
+		       a.yzb625 as yzb625,   <!-- 数据库字段中文 -->
+		       a.yzb626 as yzb626,   <!-- 数据类型（1字符型2数字型3日期型） -->
+		       a.yzb628 as yzb628,   <!-- 代码类别     -->
+		       a.yzb62d as yzb62d,   <!-- 是否作为查询条件（1是0否） -->
+		       a.yzb62a as yzb62a,   <!-- 查询条件的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       a.yzb62b as yzb62b,   <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       a.yzb62c as yzb62c,   <!-- 分组计算控制（0不用于计算1默认计算2默认不计算） -->
+		       a.yzb641 as yzb641,   <!-- 默认统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       a.yzb62f as yzb62f,   <!-- 查询列控制（0不能查询1默认查询2默认不查询） -->
+		       a.aae100 as aae100    <!-- 有效标志（1有效0无效） -->
+		  FROM zb62 a
+		 WHERE 1 = 1 
+<![CDATA[	   AND a.yzb620 = #yzb620#    ]]>    <!-- 查询统计项目流水号 -->
+	</select>
+
+	<!-- 插入单条数据 -->
+	<insert id="insert" parameterClass="zb62Domain">
+		INSERT INTO zb62 (
+		       yzb620,  <!-- 查询统计项目流水号 -->
+		       yzb610,  <!-- 查询统计主题流水号 -->
+		       yzb621,  <!-- 排序号       -->
+		       yzb623,  <!-- 数据库字段或表达式 -->
+		       yzb624,  <!-- 数据库字段AS别名 -->
+		       yzb625,  <!-- 数据库字段中文 -->
+		       yzb626,  <!-- 数据类型（1字符型2数字型3日期型） -->
+		       yzb628,  <!-- 代码类别     -->
+		       yzb62d,  <!-- 是否作为查询条件（1是0否） -->
+		       yzb62a,  <!-- 查询条件的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       yzb62b,  <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       yzb62c,  <!-- 分组计算控制（0不用于计算1默认计算2默认不计算） -->
+		       yzb641,  <!-- 默认统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       yzb62f,  <!-- 查询列控制（0不能查询1默认查询2默认不查询） -->
+		       aae100)  <!-- 有效标志（1有效0无效） -->
+		VALUES (
+		       #yzb620:DOUBLE#,  <!-- 查询统计项目流水号 -->
+		       #yzb610:DOUBLE#,  <!-- 查询统计主题流水号 -->
+		       #yzb621:INTEGER#,  <!-- 排序号       -->
+		       #yzb623:VARCHAR#,  <!-- 数据库字段或表达式 -->
+		       #yzb624:VARCHAR#,  <!-- 数据库字段AS别名 -->
+		       #yzb625:VARCHAR#,  <!-- 数据库字段中文 -->
+		       #yzb626:VARCHAR#,  <!-- 数据类型（1字符型2数字型3日期型） -->
+		       #yzb628:VARCHAR#,  <!-- 代码类别     -->
+		       #yzb62d:VARCHAR#,  <!-- 是否作为查询条件（1是0否） -->
+		       #yzb62a:VARCHAR#,  <!-- 查询条件的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       #yzb62b:VARCHAR#,  <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       #yzb62c:VARCHAR#,  <!-- 分组计算控制（0不用于计算1默认计算2默认不计算） -->
+		       #yzb641:VARCHAR#,  <!-- 默认统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       #yzb62f:VARCHAR#,  <!-- 查询列控制（0不能查询1默认查询2默认不查询） -->
+		       #aae100:VARCHAR#)  <!-- 有效标志（1有效0无效） -->
+	</insert>
+
+	<!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+	<update id="update" parameterClass="map">
+		UPDATE zb62 SET 
+		       yzb610 = #yzb610:DOUBLE#,  <!-- 查询统计主题流水号 -->
+		       yzb621 = #yzb621:INTEGER#,  <!-- 排序号       -->
+		       yzb623 = #yzb623:VARCHAR#,  <!-- 数据库字段或表达式 -->
+		       yzb624 = #yzb624:VARCHAR#,  <!-- 数据库字段AS别名 -->
+		       yzb625 = #yzb625:VARCHAR#,  <!-- 数据库字段中文 -->
+		       yzb626 = #yzb626:VARCHAR#,  <!-- 数据类型（1字符型2数字型3日期型） -->
+		       yzb628 = #yzb628:VARCHAR#,  <!-- 代码类别     -->
+		       yzb62d = #yzb62d:VARCHAR#,  <!-- 是否作为查询条件（1是0否） -->
+		       yzb62a = #yzb62a:VARCHAR#,  <!-- 查询条件的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       yzb62b = #yzb62b:VARCHAR#,  <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       yzb62c = #yzb62c:VARCHAR#,  <!-- 分组计算控制（0不用于计算1默认计算2默认不计算） -->
+		       yzb641 = #yzb641:VARCHAR#,  <!-- 默认统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       yzb62f = #yzb62f:VARCHAR#,  <!-- 查询列控制（0不能查询1默认查询2默认不查询） -->
+		       aae100 = #aae100:VARCHAR#  <!-- 有效标志（1有效0无效） -->
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb620 = #yzb620#    ]]>    <!-- 查询统计项目流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+	<update id="updateNotEmpty" parameterClass="map">
+		UPDATE zb62
+		 <dynamic prepend="SET"> 
+			<isNotEmpty prepend="," property="yzb610">   <!-- 查询统计主题流水号 -->
+		       yzb610 = #yzb610:DOUBLE#               
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb621">   <!-- 排序号       -->
+		       yzb621 = #yzb621:INTEGER#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb623">   <!-- 数据库字段或表达式 -->
+		       yzb623 = #yzb623:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb624">   <!-- 数据库字段AS别名 -->
+		       yzb624 = #yzb624:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb625">   <!-- 数据库字段中文 -->
+		       yzb625 = #yzb625:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb626">   <!-- 数据类型（1字符型2数字型3日期型） -->
+		       yzb626 = #yzb626:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb628">   <!-- 代码类别     -->
+		       yzb628 = #yzb628:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb62d">   <!-- 是否作为查询条件（1是0否） -->
+		       yzb62d = #yzb62d:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb62a">   <!-- 查询条件的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       yzb62a = #yzb62a:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb62b">   <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       yzb62b = #yzb62b:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb62c">   <!-- 分组计算控制（0不用于计算1默认计算2默认不计算） -->
+		       yzb62c = #yzb62c:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb641">   <!-- 默认统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       yzb641 = #yzb641:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb62f">   <!-- 查询列控制（0不能查询1默认查询2默认不查询） -->
+		       yzb62f = #yzb62f:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="aae100">   <!-- 有效标志（1有效0无效） -->
+		       aae100 = #aae100:VARCHAR#              
+			</isNotEmpty>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb620 = #yzb620#    ]]>    <!-- 查询统计项目流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+	<update id="updateAvailable" parameterClass="map">
+		UPDATE zb62
+		 <dynamic prepend="SET"> 
+			<isPropertyAvailable prepend="," property="yzb610">   <!-- 查询统计主题流水号 -->
+		       yzb610 = #yzb610:DOUBLE#               
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb621">   <!-- 排序号       -->
+		       yzb621 = #yzb621:INTEGER#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb623">   <!-- 数据库字段或表达式 -->
+		       yzb623 = #yzb623:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb624">   <!-- 数据库字段AS别名 -->
+		       yzb624 = #yzb624:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb625">   <!-- 数据库字段中文 -->
+		       yzb625 = #yzb625:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb626">   <!-- 数据类型（1字符型2数字型3日期型） -->
+		       yzb626 = #yzb626:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb628">   <!-- 代码类别     -->
+		       yzb628 = #yzb628:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb62d">   <!-- 是否作为查询条件（1是0否） -->
+		       yzb62d = #yzb62d:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb62a">   <!-- 查询条件的展现形式（11文本12年月13日期14数字21代码值平铺22树23DATAGRID中选择） -->
+		       yzb62a = #yzb62a:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb62b">   <!-- 分组控制（0不用于分组1默认选中2默认未选中） -->
+		       yzb62b = #yzb62b:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb62c">   <!-- 分组计算控制（0不用于计算1默认计算2默认不计算） -->
+		       yzb62c = #yzb62c:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb641">   <!-- 默认统计方式（1计数2去重后计数3求和4求平均5最大值6最小值） -->
+		       yzb641 = #yzb641:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb62f">   <!-- 查询列控制（0不能查询1默认查询2默认不查询） -->
+		       yzb62f = #yzb62f:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="aae100">   <!-- 有效标志（1有效0无效） -->
+		       aae100 = #aae100:VARCHAR#              
+			</isPropertyAvailable>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb620 = #yzb620#    ]]>    <!-- 查询统计项目流水号 -->
+	</update>
+
+	<!--通过主键删除单条数据-->
+	<delete id="delete" parameterClass="map">
+		DELETE  FROM  zb62 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb620 = #yzb620#    ]]>    <!-- 查询统计项目流水号 -->
+	</delete>
+
+<!--TA+END--> 
+
+	<!-- 查询下个序号  -->
+	<select id="getNextYzb621ByOracle" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT NVL(MAX(yzb621), 0) + 1 AS yzb621
+		  FROM zb62
+		 WHERE yzb610 = #yzb610:DOUBLE#
+	</select>
+	<!-- 查询下个序号  -->
+	<select id="getNextYzb621ByMysql" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT IFNULL(MAX(yzb621), 0) + 1 AS yzb621
+		FROM zb62
+		WHERE yzb610 = #yzb610:DOUBLE#
+	</select>
+	<!-- 查询下个序号 TODO -->
+	<select id="getNextYzb621ByPG" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT COALESCE(MAX(yzb621), 0) + 1 AS yzb621
+		FROM zb62
+		WHERE yzb610 = #yzb610#
+	</select>
+	<!-- 查询下个序号 TODO -->
+	<select id="getNextYzb621By8A" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT NVL(MAX(yzb621), 0) + 1 AS yzb621
+		FROM zb62
+		WHERE yzb610 = #yzb610:DOUBLE#
+	</select>
+	
+	<!-- 查询获取项目或表达式选择  -->
+	<select id="getOracleSearchItemSelect" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT a.column_name AS yzb623,
+		       DECODE(a.data_type, 'NUMBER', '2', 'DATE', '3', '1') AS yzb626,
+		       CASE WHEN b.comments is null THEN  
+               (select z.comments from user_col_comments z where  z.column_name = a.column_name and  z.comments is not null and rownum = 1)       
+		            ELSE b.comments
+		       END as yzb625, 
+		       DECODE((SELECT COUNT(1) FROM aa10a1 WHERE aaa100 = a.column_name), 0, '', a.column_name) AS yzb628
+		  FROM user_tab_columns a, user_col_comments b
+		 WHERE a.table_name = b.table_name
+		   AND a.column_name = b.column_name
+		   AND a.table_name = #yzb613#
+		   AND (a.data_type = 'NUMBER' OR a.data_type = 'VARCHAR2' OR a.data_type = 'VARCHAR' OR a.data_type = 'DATE')
+		 ORDER BY a.column_id
+	</select>
+
+	<!-- 查询获取项目或表达式选择  -->
+	<select id="getMysqlSearchItemSelect" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT
+			a.COLUMN_NAME AS yzb623,
+			CASE WHEN a.DATA_TYPE IN ('VARCHAR','CHAR','BLOB') THEN '1'
+			WHEN  a.DATA_TYPE IN ('INT','INTEGER','FLOAT','DOUBLE','DECIMAL') THEN '2'
+			WHEN  a.DATA_TYPE IN ('DATE','TIME','DATETIME','TIMESTAMP') THEN '3'
+			ELSE '1'
+			END AS yzb626,
+			a.COLUMN_COMMENT AS yzb625,
+			if((SELECT COUNT(1) FROM aa10a1 WHERE aaa100 = a.column_name)=0, '', a.column_name) as yzb628
+		FROM
+			information_schema.COLUMNS a
+		WHERE
+			table_name = #yzb613#
+	</select>
+	<!-- 查询获取项目或表达式选择  -->
+	<select id="getPGSearchItemSelect" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT
+			col_description(a.attrelid,a.attnum) as yzb625,
+			CASE WHEN pg_type.typname IN ('varchar','character','varing','char','text') THEN '1'
+			WHEN  pg_type.typname IN ('smallint','integer','bigint','decimal','numeric','real','double precision','smallserial','serial','bigserial') THEN '2'
+			WHEN  pg_type.typname IN ('DATE','TIME','DATETIME','TIMESTAMP') THEN '3'
+			ELSE '1'
+			END AS yzb626,
+			a.attname as yzb623,
+			case when (SELECT COUNT(1) FROM aa10a1 WHERE aaa100 = a.attname)=0 then '' else a.attname end as yzb628
+		FROM
+			pg_class as c,
+			pg_attribute as a inner join pg_type on pg_type.oid = a.atttypid
+		where
+			c.relname = lower(#yzb613#)
+		and
+			a.attrelid = c.oid and a.attnum &gt; 0
+	</select>
+	<!-- 查询获取项目或表达式选择  -->
+	<select id="get8ASearchItemSelect" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT a.column_name AS yzb623,
+		DECODE(a.data_type, 'NUMBER', '2', 'DATE', '3', '1') AS yzb626,
+		CASE WHEN b.comments is null THEN
+		(select z.comments from user_col_comments z where  z.column_name = a.column_name and  z.comments is not null and rownum = 1)
+		ELSE b.comments
+		END as yzb625,
+		DECODE((SELECT COUNT(1) FROM aa10a1 WHERE aaa100 = a.column_name), 0, '', a.column_name) AS yzb628
+		FROM user_tab_columns a, user_col_comments b
+		WHERE a.table_name = b.table_name
+		AND a.column_name = b.column_name
+		AND a.table_name = #yzb613#
+		AND (a.data_type = 'NUMBER' OR a.data_type = 'VARCHAR2' OR a.data_type = 'VARCHAR' OR a.data_type = 'DATE')
+		ORDER BY a.column_id
+	</select>
+	<!-- 验证序号  -->
+	<select id="valYzb621" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT COUNT(1)
+		  FROM zb62
+		 WHERE yzb621 = #yzb621#
+		   AND yzb610 = #yzb610#
+		<isNotEmpty prepend="AND" property="yzb620">
+			<![CDATA[ yzb620 <> #yzb620# ]]>
+		</isNotEmpty>
+	</select>
+	
+</sqlMap>

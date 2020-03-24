@@ -1,0 +1,521 @@
+.userMenu{
+  position: absolute;
+  top: 70px;
+  right: 0px;
+  bottom: 0px;
+  width: 220px;
+  z-index: 9998;
+  display: none;
+  background-color: #fff;
+  /*@include box-shadow($alpha:1);*/
+  &.userShadow{
+    @include box-shadow($x:-5px,$y:0px,$r:6px,$w:0px,$c:$user-box-shadow);
+  }
+  >div{
+    overflow: auto;
+    @include beautifyScrollbar(#e4eff8);
+    height:100%;
+  }
+  /*用户信息*/
+  .userInfo{
+
+    height:60px;
+    margin-top: 30px;
+    margin-bottom:36px;
+
+
+    .personHead{
+      font-size: 60px;
+      float: left;
+      margin-left: 22px;
+      @include bgimgCover($src:"../img/#{$img-path}/worktable-person-head.png");
+      width: 60px;
+      height: 60px;
+    }
+
+    .userName{
+      font-size: 18px;
+      color:$main-ftcolor;
+      padding-top: 10px;
+      margin-left: 92px;
+    }
+    .userPosition{
+      font-size: 14px;
+      color: $user-position-name;
+      margin-left: 92px;
+      >span{
+        margin-left: 10px;
+        font-size: 12px;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  /*菜单功能*/
+  .menuContainer{
+    height:40px;
+    font-size: 14px;
+    color: $main-ftcolor;
+    padding-left: 22px;
+    position: relative;
+    line-height: 40px;
+    border-right: 3px solid transparent;
+
+    &.hidden{
+      display: none;
+    }
+
+    /*语言选择框*/
+    .language{
+      width: 50px;
+      height: 24px;
+      border-radius: 2px;
+      border:1px solid #ddd;
+      color: $main-ftcolor;
+      line-height: 24px;
+      float: left;
+      text-align: center;
+      margin-top:8px;
+      margin-right: 10px;
+      box-sizing: border-box;
+
+      &.active{
+        color: nth($sub-color,1);
+        border-color: nth($sub-color,1);
+      }
+    }
+
+    .mgTip{
+      width: 27px;
+      height: 16px;
+      background: $user-notice-tip;
+      -moz-border-radius: 50px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px;
+      line-height: 16px;
+      font-size: 12px;
+      color: nth($main-color,2);
+      text-align: center;
+      display: inline-block;
+      position: relative;
+      bottom: 5px;
+      right: 2px;
+    }
+
+
+    &:hover {
+      cursor: pointer;
+      background-color: $user-menu-active;
+    }
+    &.menuActive{
+      background-color: $user-menu-active;
+      border-right: 4px solid nth($main-color,1);
+    }
+
+    &.skinType{
+      height: 70px;
+    }
+
+    .rule{
+      height:1px;
+      width:180px;
+      background:$user-border-color;
+      position: absolute;
+      bottom:0px;
+    }
+    .skin{
+      float:left;
+      width:16px;
+      height: 16px;
+      margin-right: 10px;
+      border-radius: 4px;
+      box-sizing: border-box;
+      @include box-shadow($x:1px,$y:1px,$r:1px,$c:$user-box-shadow);
+      &:active{
+        border:1px #add9ff solid;
+
+      }
+      &:hover{
+        cursor: pointer;
+      }
+      &.skin1{
+        background-color: #419ff4;
+      }
+      &.skin2{
+        background-color: #00949f;
+      }
+      &.skin3{
+        background-color: #0077e0;
+      }
+    }
+  }
+
+  /*退出*/
+  .logout{
+    width: 180px;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    margin-left: 22px;
+    margin-top:28px;
+    font-size: 14px;
+    color: $user-logout-color;
+    border: 1px $user-logout-color solid;
+    border-radius: 4px;
+    &:hover{
+      cursor: pointer;
+      background-color:$user-logout-color;
+      color: nth($main-color,2);
+    }
+  }
+}
+
+/*通知框*/
+.noticeBox{
+  position: absolute;
+  top: 0px;
+  left:-430px;
+  bottom: 0px;
+  width: 430px;
+  z-index: 9998;
+  display: none;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-right: 1px $user-border-color solid;
+  @include box-shadow($x:-5px,$y:0px,$r:6px,$w:0px,$c:$user-box-shadow);
+
+  >div{
+    padding-left: 25px;
+    padding-right: 15px;
+    box-sizing: border-box;
+  }
+
+  /*通知头*/
+  .noticeHead{
+    height:48px;
+    line-height: 48px;
+    font-size: 16px;
+    border-bottom: 1px $user-border-color solid;
+    color: $main-ftcolor;
+
+    >span{
+      color:$user-notice-count;
+    }
+    >a{
+      color:nth($sub-color,1);
+      float: right;
+      font-size: 14px;
+      margin-right: 20px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+  /*通知列表*/
+  .noticeList{
+    overflow-y: auto;
+    position: absolute;
+    top: 48px;
+    bottom: 20px;
+    right:5px;
+    width: 100%;
+    @include beautifyScrollbar(#e4eff8);
+    /*每个消息的div*/
+    >div{
+      margin-top:14px;
+      position: relative;
+      width: 100%;
+      border-bottom: 1px $user-border-color solid;
+      /*消息li*/
+      >li{
+        padding-right: 85px;
+        @include text-overflow;
+        list-style-type: none;
+        box-sizing: border-box;
+        color:$main-ftcolor;
+        font-size:14px;
+
+        /*展开/收起字体样式*/
+        >span{
+          position: absolute;
+          right:0;
+          color:nth($sub-color,1);
+          &:hover{
+            cursor: pointer;
+          }
+          /*展开/收起箭头*/
+          >a{
+            margin-left:5px;
+            font-size: 10px;
+          }
+        }
+        /*未读消息前的点*/
+        &.unread:before{
+          content: "";
+          background-color: $user-notice-count;
+          margin-right:10px;
+          display: inline-block;
+          height:6px;
+          width:6px;
+          border-radius: 50px;
+        }
+        /*已读消息样式*/
+        &.read{
+          padding-left: 16px;
+        }
+
+      }
+      /*发送日期及发送者*/
+      .mgDate{
+        margin-top:8px;
+        color: $user-notice-date;
+        margin-left:16px;
+        padding-bottom: 14px;
+        font-size: 12px;
+        >span{
+          float: right;
+        }
+      }
+
+      /*消息内容*/
+      .mgContent{
+        padding-left: 16px;
+        padding-top:20px;
+        padding-bottom: 20px;
+        background-color: $user-notice-contentbg;
+        font-size: 12px;
+        color: $user-notice-content;
+        word-break: break-all;
+        word-wrap: break-word;
+
+        p{
+          margin: 0;
+        }
+      }
+    }
+
+
+  }
+
+
+}
+
+
+/*密码修改框*/
+.pwdBox{
+  position: absolute;
+  top: 0px;
+  left:-430px;
+  bottom: 0px;
+  width: 430px;
+  z-index: 9998;
+  display: none;
+  box-sizing: border-box;
+  border-right: 1px $user-border-color solid;
+  background-color: #fff;
+  @include box-shadow($x:-5px,$y:0px,$r:6px,$w:0px,$c:$user-box-shadow);
+
+
+  /*密码长度验证提示*/
+  .validTip{
+    float: right;
+    width: 330px;
+    height:30px;
+    margin-right: 60px;
+    background-color: $user-pwd-validbg;
+    line-height: 30px;
+    font-size: 14px;
+    visibility: hidden;
+    >span{
+      color: $user-pwd-valid;
+      margin-right: 15px;
+    }
+  }
+
+  .pwdHead{
+    margin-top:35px;
+    margin-left: 66px;
+    margin-bottom: 38px;
+    width: 333px;
+    height: 171px;
+    @include bgimgCover($src:"../img/#{$img-path}/user-pw-bg.png");
+  }
+  .passInfo{
+    float:right;
+    margin-right: 60px;
+
+    >div{
+      float: right;
+    }
+  }
+}
+/*密码输入框*/
+.passInput{
+  font-size: 14px;
+  color: $main-ftcolor;
+  margin-bottom: 18px;
+  /* *号颜色 */
+  span{
+    color: $user-notice-count;
+  }
+
+  >input{
+    width: 240px;
+    height: 32px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px $border-color solid;
+    &::-webkit-input-placeholder { /* WebKit browsers */
+      font-size:12px;
+      color: #bbb;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      font-size:12px;
+      color: #bbb;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      font-size:12px;
+      color: #bbb;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10+ */
+      font-size:12px;
+      color: #bbb;
+    }
+  }
+}
+
+/*密码按钮*/
+.buttonBox{
+  margin-top: 32px;
+
+  &.postButton{
+    margin-right: 25px;
+  }
+
+  >div{
+    width: 115px;
+    height: 32px;
+    float: right;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  .saveBtn{
+    border: 1px solid $user-bgcolor-active;
+    color: nth($main-color,2);
+    background-color: $user-bgcolor-active;
+  }
+  .cancelBtn{
+    border: 1px solid $border-color;
+    margin-right: 10px;
+  }
+}
+
+/*岗位选择容器*/
+.positionBox{
+  position: absolute;
+  top: 0px;
+  left:-430px;
+  bottom: 0px;
+  width: 430px;
+  z-index: 9998;
+  display: none;
+  box-sizing: border-box;
+  border-right: 1px $user-border-color solid;
+  background-color: #fff;
+  @include box-shadow($x:-5px,$y:0px,$r:6px,$w:0px,$c:$user-box-shadow);
+}
+.positionHead{
+  height:48px;
+  line-height: 48px;
+  font-size: 16px;
+  border-bottom: 1px $user-border-color solid;
+  padding-left: 20px;
+  color: $main-ftcolor;
+
+  .positionCount{
+    color:nth($sub-color,1);
+    float: right;
+    font-size: 14px;
+    margin-right: 20px;
+  }
+}
+.positionList{
+  padding-left: 25px;
+  margin-top: 40px;
+  .postDiv{
+    float: left;
+    font-size: 14px;
+    width: 187px;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    border: 1px $border-color solid;
+    border-radius: 2px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    &:hover{
+      cursor: pointer;
+    }
+
+    &.active{
+      border: 1px $user-bgcolor-active solid;
+    }
+
+    .postNow{
+      background-color: $user-post-now;
+      border-radius: 5px;
+      color: nth($main-color,2);
+      font-size: 12px;
+      margin-left: 5px;
+      margin-right: 5px;
+      display: inline-block;
+      line-height: 15px;
+      height: 15px;
+      width: 30px;
+      text-align: center;
+    }
+
+    .postRadio{
+      float: left;
+      height: 14px;
+      width: 14px;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 50px;
+      margin-top: 12px;
+      border: 1px solid #d5d7d8;
+    }
+    .postClick{
+      float:left;
+      margin-left: 10px;
+      margin-right: 10px;
+      color:$user-bgcolor-active;
+    }
+  }
+
+}
+
+
+
+
+/*未签到*/
+.unsign{
+  float:right;
+  margin-right: 20px;
+  color:#ccc;
+}
+/*签到*/
+.sign{
+  float:right;
+  margin-right: 20px;
+  color:$user-sign-success;
+}

@@ -1,0 +1,28 @@
+/*这里是项目组件样式覆盖css,项目样式覆盖必须在这里写*/
+body {
+    padding: 16px 16px 0 16px;
+    background-color: #F1F2F6;
+}
+.btnlayout {
+    position: absolute;
+    right: 10px;
+    top: 2px;
+}
+.tafieldset-header {
+    border-radius: 0;
+}
+.slick-header-column.ui-state-default {
+    background-color: #F4F4F4;
+    border-right-color: #CECECE;
+    border-top-color: #CECECE;
+    border-bottom-color: #CECECE;
+}
+.slick-pane-header {
+    background-color: #ffffff;
+}
+.slick-row .slick-cell {
+    background-color: #ffffff!important;
+}
+.slick-cell.selected {
+    color: black!important;
+}

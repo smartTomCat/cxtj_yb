@@ -1,0 +1,88 @@
+.left-top-part{
+  width: 100%;
+  height: 40px;
+  position: relative;
+  border-bottom: 1px solid $left-part-splitbar-color;
+  background-color: $menu-one-d-control-bgcolor;
+
+  >div{
+    height: 100%;
+    display: inline-block;
+    cursor: pointer;
+
+  }
+  .left-part-control{
+
+    width:45px;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    line-height: 40px;
+    background-color: $left-part-control-bgcolor;
+    color: $left-part-control-ftcolor;
+    &:before{
+      @include opacity(0.6)
+    }
+    z-index: 1;
+  }
+  .menu-one-dropdown-control{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 45px 0px 45px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    background-color: $menu-one-d-control-bgcolor;
+    color: $menu-one-d-control-ftcolor;
+    &:before{
+      @include opacity(0.6)
+    }
+
+  }
+  .menu-common-control{
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    line-height: 40px;
+    background-color: $menu-common-control-bgcolor;
+    color: $menu-common-control-ftcolor;
+    border-left: 1px solid $left-part-splitbar-color;
+    @include transition();
+    &:before{
+      @include opacity(0.6);
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    >span{
+      font-family: "Microsoft YaHei";
+      display: none;
+    }
+    &.active{
+      left: 45px;
+      >span{
+        display: inline-block;
+      }
+
+    }
+
+  }
+
+}
+.left-con-part{
+  position: absolute;
+  top:41px;
+  width: 100%;
+  box-sizing: border-box;
+  bottom: 0px;
+  >div{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 10px 0px 10px 0px;
+    overflow: auto;
+    @include beautifyScrollbar();
+  }
+
+}
+

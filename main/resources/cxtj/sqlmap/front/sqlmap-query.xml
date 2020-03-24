@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 功能开发设置查询 -->
+<sqlMap namespace="query">
+	<typeAlias alias="zb61Domain" type="com.yinhai.cxtj.admin.domain.Zb61Domain"/>
+	<typeAlias alias="zb62Domain" type="com.yinhai.cxtj.admin.domain.Zb62Domain"/>
+	<typeAlias alias="zb63Domain" type="com.yinhai.cxtj.admin.domain.Zb63Domain"/>
+	<typeAlias alias="zb64Domain" type="com.yinhai.cxtj.admin.domain.Zb64Domain"/>
+	<typeAlias alias="zb65Domain" type="com.yinhai.cxtj.admin.domain.Zb65Domain"/>
+	<select id="excuteSql" resultClass="java.util.HashMap" remapResults="true" parameterClass="map"> 
+		  <isNotEmpty property="sql">$sql$</isNotEmpty>
+	</select> 
+	<!-- 根据查询统计主题代码获取查询统计主题缺省排序项目 何涛 -->
+	<select id="getSearchOrderByYZB611" parameterClass="map" resultClass="zb65Domain">
+		SELECT a.yzb650 as yzb650,   <!-- 查询统计主题排序项目流水号 -->
+		       a.yzb651 as yzb651,   <!-- 排序号       -->
+		       a.yzb652 as yzb652,   <!-- 排序方式（1升序2降序） -->
+		       b.yzb623 as yzb623,   <!-- 数据库项目或表达式 -->
+		       b.yzb624 as yzb624,   <!-- 数据库项目AS别名 -->
+		       b.yzb625 as yzb625,   <!-- 数据库项目中文 -->
+		       b.yzb626 as yzb626    <!-- 数据类型（1字符型2数字型3日期型） -->
+		  FROM zb65 a, zb62 b
+		 WHERE a.yzb620 = b.yzb620
+		   AND b.yzb610 = #yzb610:DOUBLE#
+		 ORDER BY yzb651
+	</select>
+
+</sqlMap>

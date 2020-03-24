@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd   
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="taEventPublisher" class="com.yinhai.core.common.ta3.event.TaEventPublisher">
+		<property name="taEventBus" ref="taEventBus"/>
+	</bean>
+
+    <!-- 事件总线 -->
+    <bean id="taEventBus" class="com.yinhai.core.common.ta3.event.TaEventBus">
+    	<property name="eventListeners">
+    		<map>
+    			<entry key="log_sync">
+    				<list>
+    					<ref bean="syncLogListener"/>
+    				</list>
+    			</entry>
+    			<entry key="log_online">
+    				<list>
+    					<ref bean="onLineLogListener"/>
+    				</list>
+    			</entry>
+    			<entry key="log_offline">
+    				<list>
+    					<ref bean="offLineLogListener"/>
+    				</list>
+    			</entry>
+    			<entry key="access_log">
+    				<list>
+    					<ref bean="accessLogListener"/>
+    				</list>
+    			</entry>
+
+    			<entry key="position_delete_authorization">
+    				<list>
+    					<ref bean="positionDeleteAuthorityListener"/>
+    				</list>
+    			</entry>
+    			<entry key="org_delete_authorization">
+    				<list>
+    					<ref bean="orgDeleteAuthorityListener"/>
+    				</list>
+    			</entry>
+    			<entry key="user_delete_authorization">
+    				<list>
+    					<ref bean="userDeleteAuthorityListener"/>
+    				</list>
+    			</entry>
+				
+    		</map>
+    	</property>
+    </bean>
+    
+    <aop:aspectj-autoproxy proxy-target-class="true">
+	    <aop:include name="messageAdvice"/>
+	</aop:aspectj-autoproxy> 
+</beans>

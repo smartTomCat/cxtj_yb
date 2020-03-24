@@ -1,0 +1,112 @@
+html,body{
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Microsoft YaHei" ;
+  font-size: 16px;
+  overflow: hidden;
+}
+div{
+  padding: 0px;
+  margin: 0px;
+}
+
+// top-part//-------start-----------
+.top-part{
+  //position: relative;
+  width: 100%;
+  height: 70px;
+  display: table;
+  z-index: 999;
+  background-color: $top-part-bg;
+  @include bgimgCover($src:"../img/#{$img-path}/#{$top-part-bgimg}",$position:right);
+  >div{
+    height: 100%;
+    display: table-cell;
+  }
+  box-sizing: border-box;
+  padding:0px 0px 0px 20px;
+}
+.logo{
+  width: 160px;
+  min-width: 160px;
+  color: $top-part-logo-ftcolor;
+  font-size: 18px;
+  vertical-align: middle;
+}
+.horizontal-menu-con{
+  min-width: 120px;
+}
+.helptip{
+  width:100px;
+  min-width: 100px;
+  color: $top-part-help-ftcolor;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  &:before{
+    font-family: faceIcon;
+    margin-right: 10px;
+  }
+
+}
+.user-info-control{
+  width:140px;
+  min-width: 100px;
+  text-align: center;
+  //padding-right: 40px;
+  vertical-align: middle;
+  cursor: pointer;
+  color: $top-part-usercontrol-ftcolor;
+
+  &.active{
+    background-color: $top-part-usercontrol-bgcolor-hover;
+  }
+
+  &:before{
+    font-family: faceIcon;
+    margin-right: 10px;
+  }
+  &:hover{
+    background-color: $top-part-usercontrol-bgcolor-hover;
+  }
+
+}
+// top-part//-------end-----------
+
+
+//center-part//-------start---
+.center-part{
+  width: 100%;
+  position: absolute;
+  top:68px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  //z-index: -1;
+}
+
+.left-part{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.drag-bar{
+  height: 100%;
+  width: 8px;
+  cursor: w-resize;
+  position: absolute;
+  opacity: 0;
+  filter: alpha(style=0, opacity=0);
+}
+.right-part{
+  z-index: -1;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+
+}
+//center-part//-------end---

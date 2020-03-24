@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+
+    <!-- 支持将cxtj打包成普通web工程，用于以前项目开发搭建；
+    生成工程在cxtj的target目录下cxtj-4.0.0-SNAPSHOT-web-zip -->
+    <id>web</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>${project.basedir}\src\main\resources</directory>
+            <excludes>
+                <exclude>make-zip.xml</exclude>
+            </excludes>
+            <outputDirectory>\javacode\resources</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}\src\main\java</directory>
+            <outputDirectory>\javacode\java</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}\src\main\webapp</directory>
+            <outputDirectory>\webapp</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}\src\main\sql</directory>
+            <outputDirectory>\database</outputDirectory>
+        </fileSet>
+    </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact><!-- 不包含自身工程 -->
+            <outputDirectory>\lib</outputDirectory><!-- 将scope为runtime的依赖包打包到lib目录下。 -->
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+</assembly>

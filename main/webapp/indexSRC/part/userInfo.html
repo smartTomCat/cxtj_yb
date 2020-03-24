@@ -1,0 +1,122 @@
+<%@page pageEncoding="UTF-8"%>
+<div id="userMenu" class="userMenu">
+    <div>
+        <div class="userInfo">
+            <div class="personHead"></div>
+            <div class="userName"></div>
+            <div class="userPosition"></div>
+        </div>
+        <div id="noticeMenu" class="menuContainer" onclick="fnShowNotice(this)">
+            <span id="mgTitle">通知</span>
+            <div class="rule"></div>
+        </div>
+        <div class="menuContainer" onclick="fnUserSign()">
+            <span id="sign">签到</span>
+            <span class="faceIcon icon-correct2" id="signType"></span>
+            <div class="rule"></div>
+        </div>
+        <div class="menuContainer" id="languageBox">
+            <div class="language active" onclick="changeLocale(this)" id="zh_CN">中文</div>
+            <div class="language" onclick="changeLocale(this)" id="en_US">英文</div>
+            <div class="rule"></div>
+        </div>
+        <div class="menuContainer" onclick="fnToMangeCommMenu(this)">
+            常用菜单管理
+            <div class="rule"></div>
+        </div>
+        <div class="menuContainer" onclick="fnShowPwd(this)">
+            修改密码
+            <div class="rule"></div>
+        </div>
+        <div class="menuContainer" onclick="fnShowChangePosition(this)">
+            岗位切换
+            <div class="rule"></div>
+        </div>
+        <div class="menuContainer" onclick="fnShowUserGuide(this)">
+            帮助提示
+            <div class="rule"></div>
+        </div>
+        <div class="menuContainer" onclick="logout()">
+            注销
+            <div class="rule"></div>
+        </div>
+        <div class="menuContainer skinType">
+            换肤
+            <div>
+                <div class="skin skin1" data-skin-name="freshBlue" title="清新风"></div>
+                <div class="skin skin2" data-skin-name="deepBlue" title="简洁风"></div>
+                <div class="skin skin3" data-skin-name="shebaoBlue" title="社保VI风"></div>
+            </div>
+            <div class="rule"></div>
+        </div>
+        <div class="logout" onclick="logout()">
+            退出
+        </div>
+    </div>
+    <!--通知-->
+    <div class="noticeBox" id="notice">
+        <div class="noticeHead" id="noticeHead">
+        </div>
+        <div id="noticeList" class="noticeList">
+        </div>
+    </div>
+    <!--修改密码-->
+    <div class="pwdBox" id="pwdBox">
+        <div class="pwdHead"></div>
+        <div class="validTip" id="validTip"><span class="faceIcon icon-warn"></span>密码最大长度为50</div>
+        <div class="passInfo">
+            <div class="passInput">
+                <label for="oldPass">
+                    <span>✲</span> 原始密码：
+                </label>
+                <input type="password" id="oldPass" name="dto['oldPass']" autocomplete="off" disableautocomplete
+                           required="true"
+                            onkeypress="return fnCheckOldPass(this);" placeholder=" 请输入原始密码">
+            </div>
+            <div class="passInput">
+                <label for="newPass">
+                    <span>✲</span> 新密码：
+                </label>
+                <input type="password" id="newPass" name="dto['newPass']" autocomplete="off" disableautocomplete
+                           required="true"  onkeypress="return fnCheckNewPass(this);" placeholder=" 请输入新密码">
+            </div>
+            <div class="passInput">
+                <label for="rpassword">
+                    <span>✲</span> 确认新密码：
+                </label>
+                <input type="password" id="rpassword" name="dto['rpassword']" autocomplete="off" disableautocomplete
+                           required="true" onkeypress="return fnCheckNewPass(this);" placeholder=" 请输入确认新密码">
+            </div>
+            <div class="buttonBox">
+                <div id="saveUserBtn" onclick="fnSavePass();" class="saveBtn">
+                    保存
+                </div>
+                <div id="closeWinBtn" onclick="fnClosePass()" class="cancelBtn">
+                    取消
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--岗位切换-->
+    <div class="positionBox" id="positionBox">
+        <div class="positionHead">岗位切换<span class="positionCount"></span></div>
+        <div id="positionList" class="positionList">
+
+            <!--<div>信息管理岗</div>
+            <div>信息管理岗</div>
+            <div>信息管理岗</div>
+            <div>信息管理岗</div>
+            <div>信息管理岗</div>-->
+        </div>
+        <div class="buttonBox postButton">
+            <div id="savePost" onclick="fnSavePost();" class="saveBtn">
+                保存
+            </div>
+            <div id="closePost" onclick="fnClosePost()" class="cancelBtn">
+                取消
+            </div>
+        </div>
+    </div>
+</div>
+
+

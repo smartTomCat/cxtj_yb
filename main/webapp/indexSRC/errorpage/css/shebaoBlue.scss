@@ -1,0 +1,7 @@
+$main-color:#0077e0;
+$scrollbar-color:$main-color;
+@import "../../sass/mixins";
+@import "base";
+body{
+  background-color: #ffffff;
+}

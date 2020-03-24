@@ -1,0 +1,61 @@
+.menu-next-slide-con {
+  width: 240px;
+  position: absolute;
+  top: 0px;
+  right: -237px;
+  bottom: 0px;
+  background-color:$menu-next-bgcolor;
+  box-sizing: border-box;
+  border-left: 1px solid $border-color;
+  @include box-shadow($x:5px,$y:0px,$r:6px,$w:0px,$c:$menu-next-boxshadow-color,$alpha:0.3);
+
+  //padding: 10px 5px 10px 5px;
+  > div {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    @include beautifyScrollbar();
+    > .menu-next-item {
+      box-sizing: border-box;
+      padding:0px 30px 0px 20px;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      background-color:$menu-next-bgcolor;
+      color: $menu-next-ftcolor;
+      cursor: pointer;
+      font-size: 14px;
+      @include text-overflow();
+     @include transition($time:.1s);
+      &:hover{
+        background-color:$menu-next-bgcolor-hover;
+        color: $menu-next-ftcolor-hover;
+        >span{
+          display: inline-block;
+        }
+      }
+      &.active{
+        background-color:$menu-next-bgcolor-active;
+        color: $menu-next-ftcolor-active;
+      }
+      > span {
+        display: none;
+        position: absolute;
+        right: 0px;
+        width: 30px;
+        height: 40px;
+        line-height: 40px;
+        @include opacity(0.6);
+        &:hover{
+          @include opacity(1);
+        }
+        &.menu-next-control{
+          &:before{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+};

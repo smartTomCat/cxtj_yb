@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="treeCodeService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.TreeCodeServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+    <!-- 功能开发设置查询 -->
+    <bean id="searchParamService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.SearchParamServiceImpl" >
+                <property name="setSearchService" ref="setSearchService"/>
+                <property name="setSearchItemService" ref="setSearchItemService"/>
+                <property name="setSearchSignService" ref="setSearchSignService"/>
+                <property name="setSearchModeService" ref="setSearchModeService"/>
+                <property name="setSearchOrderService" ref="setSearchOrderService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题 -->
+    <bean id="setSearchService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.SetSearchServiceImpl" >
+                <property name="setSearchItemService" ref="setSearchItemService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题的项目 -->
+    <bean id="setSearchItemService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.SetSearchItemServiceImpl" >
+                <property name="setSearchSignService" ref="setSearchSignService"/>
+                <property name="setSearchModeService" ref="setSearchModeService"/>
+                <property name="setSearchOrderService" ref="setSearchOrderService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题项目支持的关系符 -->
+    <bean id="setSearchSignService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.SetSearchSignServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题项目支持的计算方式 -->
+    <bean id="setSearchModeService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.SetSearchModeServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题缺省排序项目 -->
+    <bean id="setSearchOrderService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.SetSearchOrderServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+    <!-- 自定义查询service-->
+    <bean id="customizeQueryService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.front.service.impl.CustomizeQueryServiceImpl" >
+                <property name="searchParamService" ref="searchParamService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 数据源配置管理service-->
+    <bean id="dataSourceManageService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.DataSourceManageServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- service基类-->
+    <bean id="cxtjBaseService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.base.service.impl.CxtjBaseServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Sal日志查询管理service-->
+    <bean id="sqlLogManageService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.SqlLogManageServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 自定义查询统计业务公共service-->
+    <bean id="commonCustomizeQueryServiceImpl" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.front.service.impl.CommonCustomizeQueryServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- oracle查询统计业务service-->
+    <bean id="oracleCustomizeQueryServiceImpl" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.front.service.impl.OracleCustomizeQueryServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- mysql查询统计业务service-->
+    <bean id="mysqlCustomizeQueryServiceImpl" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.front.service.impl.MysqlCustomizeQueryServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- pg查询统计业务service-->
+    <bean id="PgCustomizeQueryServiceImpl" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.front.service.impl.PgCustomizeQueryServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Gbase8a查询统计业务service-->
+    <bean id="Gbase8aCustomizeQueryServiceImpl" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.front.service.impl.Gbase8aCustomizeQueryServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 视图配置管理service-->
+    <bean id="ViewManageService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.ViewManageServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+</beans>

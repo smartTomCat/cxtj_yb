@@ -1,0 +1,13 @@
+.top-title {
+    z-index: 2;
+    color: #fff;
+    font-size: 26px;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 40px;
+    height: 60px;
+    top: 0;
+    left: 0;
+    background-color: rgba(28, 31, 40, 0.5);
+}

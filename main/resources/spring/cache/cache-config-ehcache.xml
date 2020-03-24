@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+		xmlns='http://www.ehcache.org/v3'
+		xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core.xsd">
+
+	<!-- 默认缓存配置 -->
+	<cache-template name="taCacheTemplate">
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.Object</value-type>
+		<resources>
+			<heap>200000</heap>
+			<offheap unit="MB">100</offheap>
+		</resources>
+	</cache-template>
+	<!--<cache alias="xxxx" uses-template="taCacheTemplate"/>-->
+
+	<!-- 码值缓存 -->
+	<cache alias="appCodeCache" >
+		<key-type>java.lang.String</key-type>
+		<value-type>com.yinhai.modules.codetable.api.domain.vo.AppCodeListVo</value-type>
+		<resources>
+			<heap>200000</heap>
+			<offheap unit="MB">100</offheap>
+		</resources>
+	</cache>
+
+	<!-- 报表缓存 -->
+	<cache alias="reportCache" >
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.Map</value-type>
+		<resources>
+			<heap>200000</heap>
+			<offheap unit="MB">100</offheap>
+		</resources>
+	</cache>
+	<!-- 子报表缓存 -->
+	<cache alias="childReportCache" >
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.Collection</value-type>
+		<resources>
+			<heap>200000</heap>
+			<offheap unit="MB">100</offheap>
+		</resources>
+	</cache>
+	<!-- 菜单报表缓存 -->
+	<cache alias="menuReportCache" >
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.Map</value-type>
+		<resources>
+			<heap>200000</heap>
+			<offheap unit="MB">100</offheap>
+		</resources>
+	</cache>
+	<!-- 登陆缓存 -->
+	<cache alias="loginCache" >
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.Collection</value-type>
+		<resources>
+			<heap>200000</heap>
+			<offheap unit="MB">100</offheap>
+		</resources>
+	</cache>
+	<!-- 限流缓存 -->
+	<cache alias="limitCache" >
+		<key-type>java.lang.String</key-type>
+		<value-type>java.util.Map</value-type>
+		<resources>
+			<heap>200000</heap>
+			<offheap unit="MB">100</offheap>
+		</resources>
+	</cache>
+</config>

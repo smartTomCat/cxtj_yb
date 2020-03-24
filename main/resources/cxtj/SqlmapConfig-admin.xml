@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <settings
+            useStatementNamespaces="true"
+            cacheModelsEnabled="true"
+            enhancementEnabled="true"
+            errorTracingEnabled="true"
+    />
+    <sqlMap resource="cxtj/sqlmap/admin/Apptreecode.xml"/>
+    <!-- 功能开发设置查询 -->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-searchparam.xml"/>
+    <!-- 查询统计主题 -->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-Zb61.xml"/>
+    <!-- 查询统计主题的项目 -->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-Zb62.xml"/>
+    <!-- 查询统计主题项目支持的关系符 -->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-Zb63.xml"/>
+    <!-- 查询统计主题项目支持的计算方式 -->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-Zb64.xml"/>
+    <!-- 查询统计主题缺省排序项目 -->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-Zb65.xml"/>
+    <!--数据源配置管理-->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-zb67.xml"/>
+    <!--sql执行日志管理了-->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-zb99.xml"/>
+    <!--视图管理-->
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-zb68.xml"/>
+
+</sqlMapConfig>

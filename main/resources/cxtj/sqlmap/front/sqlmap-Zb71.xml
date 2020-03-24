@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表zb71 (查询统计方案) 的所有SQL语句映射配置表  生成时间：2016-06-15 17:15:57 -->
+<sqlMap namespace="zb71">
+	<typeAlias alias="zb71Domain" type="com.yinhai.cxtj.front.domain.Zb71Domain"/>
+
+<!--TA+BEGIN--> 
+	<!-- 查询一批数据的查询 -->
+	<select id="getList" parameterClass="map" resultClass="zb71Domain">
+		SELECT 
+		       a.yzb710 as yzb710,   <!-- 查询统计方案流水号 -->
+		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       a.yzb711 as yzb711,   <!-- 查询统计方案名称 -->
+		        a.yzb617 as yzb617,   <!-- 查询统计方式（1查询统计2分组统计） -->
+		       a.yzb713 as yzb713,   <!-- 方案保存期限（1永久2临时） -->
+		       a.aae011 as aae011,   <!-- 经办人       -->
+		       a.yae116 as yae116,   <!-- 经办人编号   -->
+		       a.aae017 as aae017,   <!-- 经办机构     -->
+		       a.aae036 as aae036    <!-- 经办日期     -->
+		  FROM zb71 a
+		 WHERE 1=1 
+		<isNotEmpty prepend="AND" property="yzb710">   <!-- 查询统计方案流水号 -->
+		       a.yzb710 = #yzb710#
+		</isNotEmpty>
+		<![CDATA[	   AND a.yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
+
+		<isNotEmpty prepend="AND" property="yzb711">   <!-- 查询统计方案名称 -->
+		       a.yzb711 = #yzb711:VARCHAR#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb617">   <!-- 查询统计方式（1查询统计2分组统计） -->
+		       a.yzb617 = #yzb617:VARCHAR#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yzb713">   <!-- 方案保存期限（1永久2临时） -->
+		       a.yzb713 = #yzb713:VARCHAR#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="aae011">   <!-- 经办人       -->
+		       a.aae011 = #aae011:VARCHAR#              
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="yae116">   <!-- 经办人编号   -->
+		       a.yae116 = #yae116:DOUBLE#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="aae017">   <!-- 经办机构     -->
+		       a.aae017 = #aae017:VARCHAR#               
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
+		       a.aae036 = #aae036:TIMESTAMP#            
+		</isNotEmpty>
+
+	</select>
+
+	<!-- 通过主键进行查询 -->
+	<select id="get" parameterClass="map" resultClass="zb71Domain">
+		SELECT 
+		       a.yzb710 as yzb710,   <!-- 查询统计方案流水号 -->
+		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       a.yzb711 as yzb711,   <!-- 查询统计方案名称 -->
+		       a.yzb617 as yzb617,   <!-- 查询统计方式（1查询统计2分组统计） -->
+		       a.yzb713 as yzb713,   <!-- 方案保存期限（1永久2临时） -->
+		       a.aae011 as aae011,   <!-- 经办人       -->
+		       a.yae116 as yae116,   <!-- 经办人编号   -->
+		       a.aae017 as aae017,   <!-- 经办机构     -->
+		       a.aae036 as aae036    <!-- 经办日期     -->
+		  FROM zb71 a
+		 WHERE 1 = 1 
+<![CDATA[	   AND a.yzb710 = #yzb710#    ]]>    <!-- 查询统计方案流水号 -->
+	</select>
+
+	<!-- 插入单条数据 -->
+	<insert id="insert" parameterClass="zb71Domain">
+		INSERT INTO zb71 (
+		       yzb710,  <!-- 查询统计方案流水号 -->
+		       yzb610,  <!-- 查询统计主题流水号 -->
+		       yzb711,  <!-- 查询统计方案名称 -->
+		       yzb617,  <!-- 查询统计方式（1查询统计2分组统计） -->
+		       yzb713,  <!-- 方案保存期限（1永久2临时） -->
+		       aae011,  <!-- 经办人       -->
+		       yae116,  <!-- 经办人编号   -->
+		       aae017,  <!-- 经办机构     -->
+		       aae036)  <!-- 经办日期     -->
+		VALUES (
+		       #yzb710:DOUBLE#,  <!-- 查询统计方案流水号 -->
+		       #yzb610:DOUBLE#,  <!-- 查询统计主题流水号 -->
+		       #yzb711:VARCHAR#,  <!-- 查询统计方案名称 -->
+		       #yzb617:VARCHAR#,  <!-- 查询统计方式（1查询统计2分组统计） -->
+		       #yzb713:VARCHAR#,  <!-- 方案保存期限（1永久2临时） -->
+		       #aae011:VARCHAR#,  <!-- 经办人       -->
+		       #yae116:DOUBLE#,  <!-- 经办人编号   -->
+		       #aae017:VARCHAR#,  <!-- 经办机构     -->
+		       #aae036:TIMESTAMP#)  <!-- 经办日期     -->
+	</insert>
+
+	<!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+	<update id="update" parameterClass="map">
+		UPDATE zb71 SET 
+		       yzb610 = #yzb610:DOUBLE#,  <!-- 查询统计主题流水号 -->
+		       yzb711 = #yzb711:VARCHAR#,  <!-- 查询统计方案名称 -->
+		       yzb617 = #yzb617:VARCHAR#,  <!-- 查询统计方式（1查询统计2分组统计） -->
+		       yzb713 = #yzb713:VARCHAR#,  <!-- 方案保存期限（1永久2临时） -->
+		       aae036 = SYSDATE
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb710 = #yzb710#    ]]>    <!-- 查询统计方案流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+	<update id="updateNotEmpty" parameterClass="map">
+		UPDATE zb71
+		 <dynamic prepend="SET"> 
+			<isNotEmpty prepend="," property="yzb610">   <!-- 查询统计主题流水号 -->
+		       yzb610 = #yzb610:DOUBLE#               
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb711">   <!-- 查询统计方案名称 -->
+		       yzb711 = #yzb711:VARCHAR#,
+		       aae036 = sysdate              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb617">   <!-- 查询统计方式（1查询统计2分组统计） -->
+		       yzb617 = #yzb617:VARCHAR#              
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="yzb713">   <!-- 方案保存期限（1永久2临时） -->
+		       yzb713 = #yzb713:VARCHAR#              
+			</isNotEmpty>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb710 = #yzb710#    ]]>    <!-- 查询统计方案流水号 -->
+	</update>
+
+	<!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+	<update id="updateAvailable" parameterClass="map">
+		UPDATE zb71
+		 <dynamic prepend="SET"> 
+			<isPropertyAvailable prepend="," property="yzb610">   <!-- 查询统计主题流水号 -->
+		       yzb610 = #yzb610:DOUBLE#               
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb711">   <!-- 查询统计方案名称 -->
+		       yzb711 = #yzb711:VARCHAR#,
+		       aae036 = sysdate              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb617">   <!-- 查询统计方式（1查询统计2分组统计） -->
+		       yzb617 = #yzb617:VARCHAR#              
+			</isPropertyAvailable>
+			<isPropertyAvailable prepend="," property="yzb713">   <!-- 方案保存期限（1永久2临时） -->
+		       yzb713 = #yzb713:VARCHAR#              
+			</isPropertyAvailable>
+		 </dynamic> 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb710 = #yzb710#    ]]>    <!-- 查询统计方案流水号 -->
+	</update>
+
+	<!--通过主键删除单条数据-->
+	<delete id="delete" parameterClass="map">
+		DELETE  FROM  zb71 
+		 WHERE 1 = 1 
+<![CDATA[	   AND yzb710 = #yzb710#    ]]>    <!-- 查询统计方案流水号 -->
+	</delete>
+<!-- 通过主键进行查询 -->
+<select id="getMap" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT 
+		       a.yzb710 as yzb710,   <!-- 查询统计方案流水号 -->
+		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+		       a.yzb711 as yzb711,   <!-- 查询统计方案名称 -->
+		       a.yzb617 as yzb617,   <!-- 查询统计方式（1查询统计2分组统计） -->
+		       a.yzb713 as yzb713,   <!-- 方案保存期限（1永久2临时） -->
+		       a.aae011 as aae011,   <!-- 经办人       -->
+		       a.yae116 as yae116,   <!-- 经办人编号   -->
+		       a.aae017 as aae017,   <!-- 经办机构     -->
+		        b.yzb611 as yzb611,  
+		       a.aae036 as aae036    <!-- 经办日期     -->
+		  FROM zb71 a,zb61 b 
+		 WHERE 1 = 1  and  a.yzb610 = b.yzb610
+<![CDATA[	   AND a.yzb710 = #yzb710#    ]]>    <!-- 查询统计方案流水号 -->
+</select>
+<!--TA+END-->
+
+	<!--根据主题查询方案 配置下拉选-->
+	<select id="queryFaByZt" parameterClass="map" resultClass="java.util.HashMap">
+		SELECT
+			a.yzb710 as id,   <!-- 查询统计方案流水号 -->
+			a.yzb711 as name   <!-- 查询统计方案名称 -->
+		FROM
+			zb71 a
+		WHERE
+			1 = 1
+		<![CDATA[	   AND a.yzb610 = #yzb610#    ]]>    <!-- 查询统计方案流水号 -->
+	</select>
+
+</sqlMap>

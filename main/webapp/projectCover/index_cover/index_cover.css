@@ -1,0 +1,22 @@
+/*这里是首页样式覆盖css,首页覆盖必须在这里写*/
+.top-part {
+    background-image: none;
+    background-color: #3165a5;
+    padding-left: 10px;
+}
+.menu-two-con {
+    background-image: none;
+    background-color: #3165a5;
+}
+.logo {
+    width: 200px;
+    margin-left: 5px;
+}
+.logoImg {
+    width: 30px;
+    height: 30px;
+    background-image: url(../../indexSRC/img/shebaoBlue/logo3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

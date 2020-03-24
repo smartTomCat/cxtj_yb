@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+
+	<!-- 默认扫描路径 use-default-filters=true 默认的时候会加载Component等注解 -->
+	<context:component-scan base-package="com.yinhai" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
+	
+	<mvc:annotation-driven enable-matrix-variables="true">
+		<mvc:message-converters register-defaults="true">
+			<!--@RequestBoby,@ResponseBody采用FastJson支持 替換消息轉換類-兼容SpringMVC4.2以上版本 maxp add -->
+			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+		<!-- 前端页面DTO参数转VO的转换器 -->
+		<mvc:argument-resolvers>
+			<bean class="com.yinhai.core.app.ta3.web.resolver.TaHandlerMethodArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+
+	<!-- 配置注解适配如@RequestMapping -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+
+	<!-- 配置注解@Controller识别-->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+
+	<!-- 配置逻辑视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp" />            <!-- 配置视图解析器的后缀 -->
+		<property name="prefix" value="/WEB-INF/page/" />  <!-- 配置视图解析器的前缀 -->
+	</bean>
+
+	<!-- 文件上传的配置 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="resolveLazily" value="true"/>    <!-- 延迟解析 -->
+		<property name="maxUploadSize" value="134217728"/> <!--最大文件上传的尺寸 为128M 1024*1024*128 -->
+	</bean>
+	
+	<!-- 本地化解析器  -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="zh_CN"></property><!-- 设置默认的Locale -->
+	</bean>
+
+	<mvc:interceptors>
+		<!-- 修改当前用户跟菜单拦截器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.yinhai.modules.security.spring.app.interceptor.AccessMenuInterceptor">
+			</bean>
+		</mvc:interceptor>
+		<!-- 切换当前使用岗位 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.yinhai.modules.security.spring.app.interceptor.ChangeNowPositionInterceptor">
+			</bean>
+		</mvc:interceptor>
+		<!-- 前端页面参数转DTO转换器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.yinhai.core.app.ta3.web.interceptor.ParamInterceptor">
+			</bean>
+		</mvc:interceptor>
+		<!-- 前端页面参数转DTO转换器-->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.yinhai.core.app.ta3.web.interceptor.MaxParamInterceptor">
+			</bean>
+		</mvc:interceptor> 
+		<!-- resultBean 拦截器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.yinhai.core.app.ta3.web.interceptor.ResultBeanInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*.do"/>
+			<!-- 限流拦截器 -->
+            <bean class="com.yinhai.modules.limiter.app.interceptor.LimitRateInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*.do"/>
+			<!-- 重复提交拦截器 -->
+	        <bean class="com.yinhai.modules.limiter.app.interceptor.LimitSubmitInterceptor">
+				<property name="submitExtraUrls">
+					<list>
+						<!--<value>/appCodeTable/**</value>-->
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<!-- 国际化改变的拦截器  -->
+			<mvc:mapping path="/i18n/changeLocale.do"/>
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<!-- 字段授权拦截器  -->
+			<mvc:mapping path="/**/*.do"/>
+			<bean class="com.yinhai.modules.security.spring.app.interceptor.PageFieldsAuthorizationInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*.do"/>
+			<bean class="com.yinhai.security.interceptor.SyncRequestXssInteceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>

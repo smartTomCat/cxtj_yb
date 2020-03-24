@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表zb67 -->
+<sqlMap namespace="zb67">
+    <typeAlias alias="zb67Domain" type="com.yinhai.cxtj.admin.domain.Zb67Domain"/>
+
+    <!--TA+BEGIN-->
+    <!-- 查询一批数据的查询 -->
+    <select id="getList" parameterClass="map" resultClass="zb67Domain">
+        SELECT
+        a.yzb670 AS yzb670,    <!--	数据源配置管理流水号:number(20)	-->
+        a.yzb671 AS yzb671,    <!--	数据源类型:varchar2(2)	-->
+        a.yzb672 AS yzb672,    <!--	数据源名称:varchar2(20)	-->
+        a.yzb673 AS yzb673,    <!--	数据源描述:varchar2(50)	-->
+        a.yzb674 AS yzb674,    <!--	数据库类型:varchar2(2)	-->
+        a.yzb675 AS yzb675,    <!--	:varchar2(15)	-->
+        a.yzb676 AS yzb676,    <!--	数据库驱动:varchar2(50)	-->
+        a.yzb677 AS yzb677,    <!--	连接url:varchar2(50)	-->
+        a.yzb678 AS yzb678,    <!--	用户名:varchar2(20)	-->
+        a.yzb679 AS yzb679,    <!--	密码:varchar2(20)	-->
+        a.yzb681 AS yzb681,    <!--	初始连接数:number(2)	-->
+        a.yzb682 AS yzb682,    <!--	最大连接数:number(3)	-->
+        a.yzb683 AS yzb683,    <!--	最大闲置秒数:number(5)	-->
+        a.yzb684 AS yzb684,    <!--	最大获取连接秒数:number(5)	-->
+        a.yzb685 AS yzb685,    <!--	连接失败重新获取秒数:number(5)	-->
+        a.yzb686 AS yzb686,    <!--	连接最大存活秒数:number(5)	-->
+        a.yzb687 AS yzb687,    <!--	连接回收执行间隔秒数:number(5)	-->
+        a.yzb688 AS yzb688,    <!--	最大获取数据秒数:number(5)	-->
+        a.aae011 AS aae011,    <!--	经办人:varchar2(100)	-->
+        a.yae116 AS yae116,    <!--	经办人编号:number(15)	-->
+        a.aae017 AS aae017,    <!--	经办机构:number(15)	-->
+        a.aae036 AS aae036     <!--	经办日期:date	-->
+        FROM zb67 a
+        WHERE 1 = 1
+        <isNotEmpty prepend="AND" property="yzb670">   <!-- 数据源配置管理流水号:number(20) -->
+            a.yzb670 = #yzb670#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb671">   <!-- 数据源类型:varchar2(2) -->
+            a.yzb671 = #yzb671#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb672">   <!-- 数据源名称:varchar2(20) -->
+            a.yzb672 = #yzb672#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb673">   <!-- 数据源描述:varchar2(50) -->
+            a.yzb673 = #yzb673#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb674">   <!-- 数据库类型:varchar2(2) -->
+            a.yzb674 = #yzb674#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb675">   <!-- :varchar2(15) -->
+            a.yzb675 = #yzb675#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb676">   <!-- 数据库驱动:varchar2(50) -->
+            a.yzb676 = #yzb676#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb677">   <!-- 连接url:varchar2(50) -->
+            a.yzb677 = #yzb677#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb678">   <!-- 用户名:varchar2(20) -->
+            a.yzb678 = #yzb678#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb679">   <!-- 密码:varchar2(20) -->
+            a.yzb679 = #yzb679#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb681">   <!-- 初始连接数:number(2) -->
+            a.yzb681 = #yzb681#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb682">   <!-- 最大连接数:number(3) -->
+            a.yzb682 = #yzb682#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb683">   <!-- 最大闲置秒数:number(5) -->
+            a.yzb683 = #yzb683#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb684">   <!-- 最大获取连接秒数:number(5) -->
+            a.yzb684 = #yzb684#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb685">   <!-- 连接失败重新获取秒数:number(5) -->
+            a.yzb685 = #yzb685#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb686">   <!-- 连接最大存活秒数:number(5) -->
+            a.yzb686 = #yzb686#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb687">   <!-- 连接回收执行间隔秒数:number(5) -->
+            a.yzb687 = #yzb687#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb688">   <!-- 最大获取数据秒数:number(5) -->
+            a.yzb688 = #yzb688#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae011">   <!-- 经办人:varchar2(100) -->
+            a.aae011 = #aae011#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yae116">   <!-- 经办人编号:number(15) -->
+            a.yae116 = #yae116#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae017">   <!-- 经办机构:number(15) -->
+            a.aae017 = #aae017#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期:date -->
+            a.aae036 = #aae036#
+        </isNotEmpty>
+    </select>
+
+    <!-- 通过主键进行查询 -->
+    <select id="get" parameterClass="map" resultClass="zb67Domain">
+        SELECT
+        a.yzb670 AS yzb670,	<!--	数据源配置管理流水号:number(20)	-->
+        a.yzb671 AS yzb671,	<!--	数据源类型:varchar2(2)	-->
+        a.yzb672 AS yzb672,	<!--	数据源名称:varchar2(20)	-->
+        a.yzb673 AS yzb673,	<!--	数据源描述:varchar2(50)	-->
+        a.yzb674 AS yzb674,	<!--	数据库类型:varchar2(2)	-->
+        a.yzb675 AS yzb675,	<!--	:varchar2(15)	-->
+        a.yzb676 AS yzb676,	<!--	数据库驱动:varchar2(50)	-->
+        a.yzb677 AS yzb677,	<!--	连接url:varchar2(50)	-->
+        a.yzb678 AS yzb678,	<!--	用户名:varchar2(20)	-->
+        a.yzb679 AS yzb679,	<!--	密码:varchar2(20)	-->
+        a.yzb681 AS yzb681,	<!--	初始连接数:number(2)	-->
+        a.yzb682 AS yzb682,	<!--	最大连接数:number(3)	-->
+        a.yzb683 AS yzb683,	<!--	最大闲置秒数:number(5)	-->
+        a.yzb684 AS yzb684,	<!--	最大获取连接秒数:number(5)	-->
+        a.yzb685 AS yzb685,	<!--	连接失败重新获取秒数:number(5)	-->
+        a.yzb686 AS yzb686,	<!--	连接最大存活秒数:number(5)	-->
+        a.yzb687 AS yzb687,	<!--	连接回收执行间隔秒数:number(5)	-->
+        a.yzb688 AS yzb688,	<!--	最大获取数据秒数:number(5)	-->
+        a.aae011 AS aae011,	<!--	经办人:varchar2(100)	-->
+        a.yae116 AS yae116,	<!--	经办人编号:number(15)	-->
+        a.aae017 AS aae017,	<!--	经办机构:number(15)	-->
+        a.aae036 AS aae036 	<!--	经办日期:date	-->
+        FROM  zb67 a
+        WHERE 1 = 1
+        <![CDATA[	   AND a.yzb670 = #yzb670#    ]]>    <!-- 查询统计主题流水号 -->
+    </select>
+
+
+    <!-- 插入单条数据 -->
+    <insert id="insert" parameterClass="zb67Domain">
+        INSERT INTO zb67  (
+        yzb670,    	<!--	数据源配置管理流水号:number(20)	-->
+        yzb671,    	<!--	数据源类型:varchar2(2)	-->
+        yzb672,    	<!--	数据源名称:varchar2(20)	-->
+        yzb673,    	<!--	数据源描述:varchar2(50)	-->
+        yzb674,    	<!--	数据库类型:varchar2(2)	-->
+        yzb675,    	<!--	:varchar2(15)	-->
+        yzb676,    	<!--	数据库驱动:varchar2(50)	-->
+        yzb677,    	<!--	连接url:varchar2(50)	-->
+        yzb678,    	<!--	用户名:varchar2(20)	-->
+        yzb679,    	<!--	密码:varchar2(20)	-->
+        yzb681,    	<!--	初始连接数:number(2)	-->
+        yzb682,    	<!--	最大连接数:number(3)	-->
+        yzb683,    	<!--	最大闲置秒数:number(5)	-->
+        yzb684,    	<!--	最大获取连接秒数:number(5)	-->
+        yzb685,    	<!--	连接失败重新获取秒数:number(5)	-->
+        yzb686,    	<!--	连接最大存活秒数:number(5)	-->
+        yzb687,    	<!--	连接回收执行间隔秒数:number(5)	-->
+        yzb688,    	<!--	最大获取数据秒数:number(5)	-->
+        aae011,    	<!--	经办人:varchar2(100)	-->
+        yae116,    	<!--	经办人编号:number(15)	-->
+        aae017,    	<!--	经办机构:number(15)	-->
+        aae036    	<!--	经办日期:date	-->
+        ) VALUES (
+        #yzb670#,	<!--	数据源配置管理流水号:number(20)	-->
+        #yzb671#,	<!--	数据源类型:varchar2(2)	-->
+        #yzb672#,	<!--	数据源名称:varchar2(20)	-->
+        #yzb673#,	<!--	数据源描述:varchar2(50)	-->
+        #yzb674#,	<!--	数据库类型:varchar2(2)	-->
+        #yzb675#,	<!--	JNDI数据源名称 :varchar2(15)	-->
+        #yzb676#,	<!--	数据库驱动:varchar2(50)	-->
+        #yzb677#,	<!--	连接url:varchar2(50)	-->
+        #yzb678#,	<!--	用户名:varchar2(20)	-->
+        #yzb679#,	<!--	密码:varchar2(20)	-->
+        #yzb681#,	<!--	初始连接数:number(2)	-->
+        #yzb682#,	<!--	最大连接数:number(3)	-->
+        #yzb683#,	<!--	最大闲置秒数:number(5)	-->
+        #yzb684#,	<!--	最大获取连接秒数:number(5)	-->
+        #yzb685#,	<!--	连接失败重新获取秒数:number(5)	-->
+        #yzb686#,	<!--	连接最大存活秒数:number(5)	-->
+        #yzb687#,	<!--	连接回收执行间隔秒数:number(5)	-->
+        #yzb688#,	<!--	最大获取数据秒数:number(5)	-->
+        #aae011#,	<!--	经办人:varchar2(100)	-->
+        #yae116#,	<!--	经办人编号:number(15)	-->
+        #aae017#,	<!--	经办机构:number(15)	-->
+        #aae036# 	<!--	经办日期:date	-->
+        )
+    </insert>
+
+
+    <!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+    <update id="updateNotEmpty" parameterClass="zb67Domain">
+        update zb67
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="yzb670">   <!--	数据源配置管理流水号:number(20)	-->
+                yzb670 = #yzb670#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb671">   <!--	数据源类型:varchar2(2)	-->
+                yzb671 = #yzb671#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb672">   <!--	数据源名称:varchar2(20)	-->
+                yzb672 = #yzb672#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb673">   <!--	数据源描述:varchar2(50)	-->
+                yzb673 = #yzb673#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb674">   <!--	数据库类型:varchar2(2)	-->
+                yzb674 = #yzb674#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb675">   <!--	:varchar2(15)	-->
+                yzb675 = #yzb675#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb676">   <!--	数据库驱动:varchar2(50)	-->
+                yzb676 = #yzb676#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb677">   <!--	连接url:varchar2(50)	-->
+                yzb677 = #yzb677#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb678">   <!--	用户名:varchar2(20)	-->
+                yzb678 = #yzb678#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb679">   <!--	密码:varchar2(20)	-->
+                yzb679 = #yzb679#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb681">   <!--	初始连接数:number(2)	-->
+                yzb681 = #yzb681#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb682">   <!--	最大连接数:number(3)	-->
+                yzb682 = #yzb682#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb683">   <!--	最大闲置秒数:number(5)	-->
+                yzb683 = #yzb683#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb684">   <!--	最大获取连接秒数:number(5)	-->
+                yzb684 = #yzb684#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb685">   <!--	连接失败重新获取秒数:number(5)	-->
+                yzb685 = #yzb685#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb686">   <!--	连接最大存活秒数:number(5)	-->
+                yzb686 = #yzb686#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb687">   <!--	连接回收执行间隔秒数:number(5)	-->
+                yzb687 = #yzb687#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb688">   <!--	最大获取数据秒数:number(5)	-->
+                yzb688 = #yzb688#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="aae011">   <!--	经办人:varchar2(100)	-->
+                aae011 = #aae011#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yae116">   <!--	经办人编号:number(15)	-->
+                yae116 = #yae116#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="aae017">   <!--	经办机构:number(15)	-->
+                aae017 = #aae017#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="aae036">   <!--	经办日期:date	-->
+                aae036 = #aae036#
+            </isNotEmpty>
+        </dynamic>
+        where 1 = 1
+        <![CDATA[	   AND yzb670 = #yzb670#    ]]>
+    </update>
+
+    <!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+    <update id="updateAvailable" parameterClass="map">
+        update zb67
+        <dynamic prepend="SET">
+            <isPropertyAvailable prepend="," property="yzb670">   <!--	数据源配置管理流水号:number(20)	-->
+                yzb670 = #yzb670#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb671">   <!--	数据源类型:varchar2(2)	-->
+                yzb671 = #yzb671#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb672">   <!--	数据源名称:varchar2(20)	-->
+                yzb672 = #yzb672#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb673">   <!--	数据源描述:varchar2(50)	-->
+                yzb673 = #yzb673#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb674">   <!--	数据库类型:varchar2(2)	-->
+                yzb674 = #yzb674#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb675">   <!--	:varchar2(15)	-->
+                yzb675 = #yzb675#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb676">   <!--	数据库驱动:varchar2(50)	-->
+                yzb676 = #yzb676#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb677">   <!--	连接url:varchar2(50)	-->
+                yzb677 = #yzb677#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb678">   <!--	用户名:varchar2(20)	-->
+                yzb678 = #yzb678#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb679">   <!--	密码:varchar2(20)	-->
+                yzb679 = #yzb679#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb681">   <!--	初始连接数:number(2)	-->
+                yzb681 = #yzb681#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb682">   <!--	最大连接数:number(3)	-->
+                yzb682 = #yzb682#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb683">   <!--	最大闲置秒数:number(5)	-->
+                yzb683 = #yzb683#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb684">   <!--	最大获取连接秒数:number(5)	-->
+                yzb684 = #yzb684#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb685">   <!--	连接失败重新获取秒数:number(5)	-->
+                yzb685 = #yzb685#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb686">   <!--	连接最大存活秒数:number(5)	-->
+                yzb686 = #yzb686#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb687">   <!--	连接回收执行间隔秒数:number(5)	-->
+                yzb687 = #yzb687#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb688">   <!--	最大获取数据秒数:number(5)	-->
+                yzb688 = #yzb688#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="aae011">   <!--	经办人:varchar2(100)	-->
+                aae011 = #aae011#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yae116">   <!--	经办人编号:number(15)	-->
+                yae116 = #yae116#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="aae017">   <!--	经办机构:number(15)	-->
+                aae017 = #aae017#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="aae036">   <!--	经办日期:date	-->
+                aae036 = #aae036#
+            </isPropertyAvailable>
+        </dynamic>
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb670 = #yzb670#    ]]>    <!-- 查询统计主题流水号 -->
+    </update>
+
+    <!--通过主键删除单条数据-->
+    <delete id="delete" parameterClass="map">
+        DELETE FROM zb67
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb670 = #yzb670#    ]]>    <!-- 查询统计主题流水号 -->
+    </delete>
+
+    <!--TA+END-->
+
+
+    <!-- 验证名称  -->
+    <select id="valYzb672" parameterClass="map" resultClass="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM zb67
+        WHERE yzb672 = #yzb672:VARCHAR#
+        <isNotEmpty prepend="AND" property="yzb670">
+            <![CDATA[ yzb610 <> #yzb610:DOUBLE# ]]>
+        </isNotEmpty>
+    </select>
+
+    <!-- 数据源下拉选  -->
+    <select id="queryDataSource" parameterClass="map" resultClass="java.util.HashMap">
+        SELECT
+            a.yzb670 as id,   <!-- 数据源流水号 -->
+            a.yzb672 as name  <!-- 数据源名称 -->
+        FROM
+            zb67 a
+        WHERE
+            1 = 1
+        <isNotEmpty prepend="AND" property="yzb670">   <!-- 数据源配置管理流水号:number(20) -->
+            a.yzb670 = #yzb670#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb671">   <!-- 数据源类型:varchar2(2) -->
+            a.yzb671 = #yzb671#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb672">   <!-- 数据源名称:varchar2(20) -->
+            a.yzb672 = #yzb672#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb673">   <!-- 数据源描述:varchar2(50) -->
+            a.yzb673 = #yzb673#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb674">   <!-- 数据库类型:varchar2(2) -->
+            a.yzb674 = #yzb674#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb675">   <!-- :varchar2(15) -->
+            a.yzb675 = #yzb675#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb676">   <!-- 数据库驱动:varchar2(50) -->
+            a.yzb676 = #yzb676#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb677">   <!-- 连接url:varchar2(50) -->
+            a.yzb677 = #yzb677#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb678">   <!-- 用户名:varchar2(20) -->
+            a.yzb678 = #yzb678#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb679">   <!-- 密码:varchar2(20) -->
+            a.yzb679 = #yzb679#
+        </isNotEmpty>
+        <!--<isNotEmpty prepend="AND" property="yzb681">   &lt;!&ndash; 初始连接数:number(2) &ndash;&gt;-->
+            <!--a.yzb681 = #yzb681#-->
+        <!--</isNotEmpty>-->
+        <!--<isNotEmpty prepend="AND" property="yzb682">   &lt;!&ndash; 最大连接数:number(3) &ndash;&gt;-->
+            <!--a.yzb682 = #yzb682#-->
+        <!--</isNotEmpty>-->
+        <!--<isNotEmpty prepend="AND" property="yzb683">   &lt;!&ndash; 最大闲置秒数:number(5) &ndash;&gt;-->
+            <!--a.yzb683 = #yzb683#-->
+        <!--</isNotEmpty>-->
+        <!--<isNotEmpty prepend="AND" property="yzb684">   &lt;!&ndash; 最大获取连接秒数:number(5) &ndash;&gt;-->
+            <!--a.yzb684 = #yzb684#-->
+        <!--</isNotEmpty>-->
+        <!--<isNotEmpty prepend="AND" property="yzb685">   &lt;!&ndash; 连接失败重新获取秒数:number(5) &ndash;&gt;-->
+            <!--a.yzb685 = #yzb685#-->
+        <!--</isNotEmpty>-->
+        <!--<isNotEmpty prepend="AND" property="yzb686">   &lt;!&ndash; 连接最大存活秒数:number(5) &ndash;&gt;-->
+            <!--a.yzb686 = #yzb686#-->
+        <!--</isNotEmpty>-->
+        <!--<isNotEmpty prepend="AND" property="yzb687">   &lt;!&ndash; 连接回收执行间隔秒数:number(5) &ndash;&gt;-->
+            <!--a.yzb687 = #yzb687#-->
+        <!--</isNotEmpty>-->
+        <!--<isNotEmpty prepend="AND" property="yzb688">   &lt;!&ndash; 最大获取数据秒数:number(5) &ndash;&gt;-->
+            <!--a.yzb688 = #yzb688#-->
+        <!--</isNotEmpty>-->
+        <isNotEmpty prepend="AND" property="aae011">   <!-- 经办人:varchar2(100) -->
+            a.aae011 = #aae011#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yae116">   <!-- 经办人编号:number(15) -->
+            a.yae116 = #yae116#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae017">   <!-- 经办机构:number(15) -->
+            a.aae017 = #aae017#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期:date -->
+            a.aae036 = #aae036#
+        </isNotEmpty>
+    </select>
+
+</sqlMap>

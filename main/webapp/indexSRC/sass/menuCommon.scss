@@ -1,0 +1,53 @@
+.menu-common-con {
+  background-color: $menu-common-bgcolor;
+  display: none;
+}
+
+.menu-common-item {
+  background-color: $menu-common-bgcolor;
+  color: $menu-common-ftcolor;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  @include text-overflow();
+  box-sizing: border-box;
+  padding-right:30px ;
+  font-size: 14px;
+  &:hover {
+    background-color: $menu-common-bgcolor-hover;
+    &:before{
+      @include opacity(1);
+    }
+    & > span{
+      width: 30px;
+    }
+  }
+  &:before{
+    font-family: faceIcon;
+    @include opacity(0.3);
+    margin: 0px 14px 0px 12px;
+  }
+  >span{
+    position: absolute;
+    right: 0px;
+    width: 0px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    overflow: hidden;
+    &:before{
+      @include opacity(0.6);
+    }
+    @include transition();
+    &:hover{
+      background-color: $warn-color;
+      width: 40px;
+      &:before{
+        @include opacity(1);
+      }
+    }
+  }
+
+
+
+}

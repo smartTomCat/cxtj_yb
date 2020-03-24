@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<cache-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns="http://xmlns.oracle.com/coherence/coherence-cache-config"
+   xsi:schemaLocation="http://xmlns.oracle.com/coherence/coherence-cache-config
+   coherence-cache-config.xsd">
+   <defaults>
+      <serializer>java</serializer>
+   </defaults>
+   <caching-scheme-mapping>
+       <!-- 码值缓存 -->
+      <cache-mapping>
+         <cache-name>appCodeCache</cache-name>
+         <scheme-name>distributed</scheme-name>
+         <key-type>String</key-type>
+         <value-type>String</value-type>
+      </cache-mapping>
+       <!-- 登陆缓存 -->
+      <cache-mapping>
+         <cache-name>loginCache</cache-name>
+         <scheme-name>distributed</scheme-name>
+         <key-type>String</key-type>
+         <value-type>String</value-type>
+      </cache-mapping>
+       <!-- 子报表缓存 -->
+       <cache-mapping>
+           <cache-name>childReportCache</cache-name>
+           <scheme-name>distributed</scheme-name>
+           <key-type>String</key-type>
+           <value-type>String</value-type>
+       </cache-mapping>
+       <!-- 菜单报表缓存 -->
+       <cache-mapping>
+           <cache-name>menuReportCache</cache-name>
+           <scheme-name>distributed</scheme-name>
+           <key-type>String</key-type>
+           <value-type>String</value-type>
+       </cache-mapping>
+       <!-- 报表缓存 -->
+       <cache-mapping>
+           <cache-name>reportCache</cache-name>
+           <scheme-name>distributed</scheme-name>
+           <key-type>String</key-type>
+           <value-type>String</value-type>
+       </cache-mapping>
+       <!-- 限流缓存 -->
+       <cache-mapping>
+           <cache-name>limitCache</cache-name>
+           <scheme-name>distributed</scheme-name>
+           <key-type>String</key-type>
+           <value-type>String</value-type>
+       </cache-mapping>
+   </caching-scheme-mapping>
+   
+   <caching-schemes>
+      <distributed-scheme>
+         <scheme-name>distributed</scheme-name>
+         <service-name>DistributedCache</service-name>
+         <backing-map-scheme>
+            <local-scheme/>
+         </backing-map-scheme>
+         <autostart>true</autostart>
+      </distributed-scheme>
+   </caching-schemes>
+</cache-config>

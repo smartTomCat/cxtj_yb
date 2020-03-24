@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byName">
+	
+	<!-- zookeeper的节点管理器 -->
+	<bean id="myZKNodeManager" class="com.yinhai.modules.elasticjob.domain.manager.RegistryCenterManager">
+		<property name="addressConfig">
+			<value>classpath:zookeeper-config.properties</value>
+		</property>
+	</bean>
+	
+	<!-- 作业启动管理器 -->
+	<bean id="jobStartManager" class="com.yinhai.modules.elasticjob.domain.manager.JobStartManager" init-method="afterPropertiesSet">
+		<!-- 作业启动所需的参数，可根据作业个数配置多个 -->
+		<property name="lParam">
+			<list>
+				<!--闲忙任务管理job-->
+				<bean class="com.yinhai.modules.elasticjob.domain.manager.JobStartParam">
+					<property name="jobName"><value>freeBusyHourJob</value></property>
+					<property name="jobClass"><value>com.yinhai.modules.elasticjob.domain.job.FreeBusyJob</value></property>
+					<property name="piecesCount"><value>1</value></property>
+					<property name="cron"><value>0 0 0/1 * * ?</value></property>
+					<property name="streamingProcess"><value>false</value></property>
+					<property name="overwrite"><value>true</value></property>
+				</bean>
+				<!--其它job-->
+				 <!--<bean class="com.yinhai.modules.elasticjob.domain.manager.JobStartParam">
+					<property name="jobName"><value>simpleDemo</value></property>
+					<property name="jobClass"><value>com.yinhai.project.SimpleJobTest</value></property>
+					<property name="piecesCount"><value>3</value></property>
+					<property name="cron"><value>0/10 * * * * ?</value></property>
+					<property name="overwrite"><value>true</value></property>
+					<property name="jobParameter"><value>jobjob</value></property>
+					<property name="description"><value>jobDD</value></property>
+					<property name="job_exception_handler"><value>com.yinhai.test.elasticjob.MyJobExceptionHander</value></property>
+					<property name="executor_service_handler"><value>com.yinhai.test.elasticjob.MyJobExecutorHandler</value></property>
+				</bean>-->
+			<!--	<bean class="com.yinhai.modules.elasticjob.domain.manager.JobStartParam">
+					<property name="jobName"><value>dateflowDemo</value></property>
+					<property name="jobClass"><value>com.yinhai.test.elasticjob.DataflowJobTest</value></property>
+					<property name="piecesCount"><value>3</value></property>
+					<property name="cron"><value>0 0/1 * * * ?</value></property>
+					<property name="streamingProcess"><value>true</value></property>
+					<property name="overwrite"><value>true</value></property>
+				</bean>-->
+			</list>
+		</property>
+	</bean>
+</beans>

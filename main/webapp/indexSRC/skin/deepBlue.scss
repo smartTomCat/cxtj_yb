@@ -1,0 +1,158 @@
+//----简洁蓝色风格-------\(^o^)/~对应颜色文档可以查看前端style整合.xlsx
+
+//图片路径变量
+$img-path:"deepBlue";
+
+//主颜色变量
+$main-color:#00949f,#ffffff;
+$sub-color:#1cb9c4,#f6911d;
+
+$main-ftcolor:#404040;
+$text-l1-color:#666;
+$text-l2-color:#999;
+$text-l3-color:#ccc
+;
+//基本颜色变量
+$default-color:#ffffff;
+$primary-color:#1cb9c4;
+$success-color:#28c684;
+$warn-color:#f6911d;
+$fail-color:#f53a25;
+$disabled-color:#dddddd;
+
+//通用颜色
+$shadow-color:#8c9398;
+$border-color:#d5d7d8;
+
+
+
+//顶部横条部分
+$top-part-bg:nth($main-color,1);
+$top-part-bgimg:"top-part-bgimg.png";
+$top-part-logo-ftcolor:#fff;
+$top-part-help-ftcolor:#fff;
+$top-part-usercontrol-ftcolor:#fff;
+$top-part-usercontrol-bgcolor-hover:#1cb9c4;
+
+//顶部横向一级菜单导航变量
+$menu-one-h-bgcolor:nth($main-color,1);
+$menu-one-h-bgcolor-hover:90deg,nth($sub-color,1),transparent;//渐变一维数组
+$menu-one-h-bgcolor-active:nth($sub-color,1);
+$menu-one-h-ftcolor:nth($main-color,2);
+
+
+//顶部一级菜单更多导航中的选项
+$moremenu-one-h-bgcolor:nth($main-color,2);
+$moremenu-one-h-bgcolor-hover:#d1fcff;
+$moremenu-one-h-bgcolor-active:#d1fcff;
+$moremenu-one-h-iconcolor:nth($main-color,1);
+$moremenu-one-h-ftcolor:$main-ftcolor;
+$moremenu-one-h-barcolor:nth($main-color,1);
+$moremenu-one-h-linecolor:lighten($border-color,10%);
+
+//左侧顶部控制条
+$menu-one-d-control-bgcolor:#002430;
+$menu-one-d-control-ftcolor:#fff;
+$left-part-control-bgcolor:#002430;
+$left-part-control-ftcolor:#fff;
+$menu-common-control-bgcolor:#002430;
+$menu-common-control-ftcolor:#fff;
+$left-part-splitbar-color:#335059;
+
+
+//左侧下拉式一级菜单
+$menu-one-d-bgcolr:#002430;
+$menu-one-d-bgcolr-hover:#f6911d;
+$menu-one-d-bgcolr-active:#f6911d;
+$menu-one-d-ftcolr:#fff;
+
+
+//左侧二级菜单
+$menu-two-bgcolor:nth($main-color,1) ;//#47a4f4
+$menu-two-bgimg:"menu-two-bgimg.png";
+$menu-two-bgcolor-hover:#0484af;
+$menu-two-bgcolor-active:#f6911d;
+$menu-two-ftcolor:#fff;
+$menu-two-ftcolor-hover:#fff;
+$menu-two-ftcolor-active:#fff;
+
+//左侧下拉式三级菜单
+$menu-three-bgcolor:#003e53;
+$menu-three-bgcolor-hover:#0484af;
+$menu-three-bgcolor-active:#0484af;
+$menu-three-ftcolor:#bceeff;
+$menu-three-ftcolor-hover:#fff;
+$menu-three-ftcolor-active:#fff;
+
+//左侧侧滑式三级菜单以及3+菜单
+$menu-next-bgcolor:nth($main-color,2);
+$menu-next-bgcolor-hover:nth($sub-color,1);
+$menu-next-bgcolor-active:nth($sub-color,1);
+$menu-next-ftcolor:$main-ftcolor;
+$menu-next-ftcolor-hover:nth($main-color,2);
+$menu-next-ftcolor-active:nth($main-color,2);
+$menu-next-boxshadow-color:nth($main-color,1);
+
+//常用菜单
+$menu-common-bgcolor:#002430;
+$menu-common-bgcolor-hover:#f6911d;
+$menu-common-bgcolor-active:#f6911d;
+$menu-common-ftcolor:#fff;
+$menu-common-iconcolor:#1cb9c4;
+$menu-common-iconcolor-hover:#fff;
+$menu-common-iconcolor-active:#fff;
+
+//右侧用户信息
+$user-bgcolor-active:#1cb9c4;
+$user-border-color:lighten($border-color,10%);
+$user-position-name:nth($sub-color,2);
+$user-menu-active:#d1fcff;
+$user-person-head:nth($sub-color,2);
+$user-sign-success:$success-color;
+$user-notice-count:$fail-color;
+$user-notice-tip:$fail-color;
+$user-notice-date:#999999;
+$user-notice-content:#666666;
+$user-notice-contentbg:#f2f2f2;
+$user-pwd-valid:$fail-color;
+$user-pwd-validbg:#ffebeb;
+$user-post-now:$fail-color;
+$user-box-shadow:#00949f;
+$user-logout-color:nth($sub-color,2);
+
+//index-tab标签功能
+$index-tab-bgcolor: #ffffff,#eeeeee;
+$index-tab-bgcolor-active: #dee5e7;
+$index-tab-bdcolor: #d0d3d6;
+$index-tab-ftcolor: #08345d;
+$index-tab-ftcolor-active: nth($main-color,1);
+$index-tab-close: #d0d3d6;
+$index-tab-close-active: $fail-color;
+$index-tab-more: #a4aeb6;
+$index-tab-more-active: #1cb9c4;
+$index-tab-more-bdcolor: #f2f2f2;
+$index-tab-more-hover: #fce8d2;
+$index-tab-main-ftcolor:$main-ftcolor;
+$index-tab-color-white: #fff;
+
+//工作台
+$worktable-p-title-ftcolor: nth($main-color,2);
+$worktable-p-title-btn-bgcolor: nth($main-color,1);
+$worktable-p-title-btn-hover: $index-tab-close-active;
+$worktable-tab-bg: "worktable-tab-bg.png";
+$worktable-tab-bdcolor: nth($main-color,1);
+$worktable-tab-ftcolor: nth($sub-color,1);
+$worktable-tab-ftcolor-active: nth($main-color,2);
+$worktable-con-bgcolor: nth($main-color,2);
+$worktable-con-bdcolor: #dae0e6;
+$worktable-con-title-ftcolor: nth($main-color,2);
+$worktable-con-title-iconcolor: nth($main-color,2);
+$worktable-add-bgcolor: 120deg,#037bac,#2fa1d3;
+$worktable-add-iconcolor: nth($main-color,2);
+$worktable-main-title-bg: $top-part-bgimg;
+$worktable-sub-title-bg: $top-part-bgimg;
+$worktable-main-title-b-bg: $worktable-sub-title-bg;
+
+//消息通知提示框
+$notice-head-bgimg:"tishi-bgimg.png";
+$notice-context-titlebordercolor:#d1fcff;

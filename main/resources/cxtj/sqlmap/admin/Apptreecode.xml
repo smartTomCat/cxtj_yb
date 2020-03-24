@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表apptreecode (null) 的所有SQL语句映射配置表  生成时间：2015-11-30 10:16:32 -->
+<sqlMap namespace="apptreecode_query">
+	<typeAlias alias="apptreecodeDomain" type="com.yinhai.cxtj.admin.domain.ApptreecodeDomain"/>
+
+<!--TA+BEGIN--> 
+	<select id="getType" parameterClass="map" resultClass="string">
+		SELECT distinct
+		       a.type   as type
+		  FROM apptreecode a
+	</select>
+	<select id="getTreeList" parameterClass="map" resultClass="apptreecodeDomain">
+		SELECT 
+		       a.id     as id    ,   <!--              -->
+		       a.pid    as pid   ,   <!--              -->
+		       a.name   as name  ,   <!--              -->
+		       a.isparent as isparent,   <!--              -->
+		       a.type   as type  ,   <!--              -->
+		       a.icon   as icon  ,   <!--              -->
+		       a.open   as open      <!--              -->
+		  FROM apptreecode a
+		 WHERE 1=1 
+		
+		<isNotEmpty prepend="AND" property="type">   <!--              -->
+		       a.type = #type:VARCHAR#                
+		</isNotEmpty>
+		order by type, id
+	</select>
+	
+	<!-- 行政机构树 -->
+	<select id="getxzTreeList" parameterClass="map" resultClass="apptreecodeDomain">
+		SELECT 
+		       a.id     as id    ,   <!--              -->
+		       a.pid    as pid   ,   <!--              -->
+		       a.name   as name  ,   <!--              -->
+		       a.isparent as isparent,   <!--              -->
+		       a.type   as type  ,   <!--              -->
+		       a.icon   as icon  ,   <!--              -->
+		       a.open   as open      <!--              -->
+		  FROM apptreecode a
+		 WHERE a.type = 'AAA020' <!-- 行政区划 -->                
+		order by decode (substr(a.id,1,3) ,'610','0','1'),id
+
+	</select>
+	
+	<!-- 行政机构树  zhangwj-->
+	<select id="getAsyncXzTreeList" parameterClass="map" resultClass="apptreecodeDomain">
+		SELECT 
+		       a.id     as id    ,   <!--              -->
+		       a.pid    as pid   ,   <!--              -->
+		       a.name   as name  ,   <!--              -->
+		       a.isparent as isparent,   <!--              -->
+		       a.type   as type  ,   <!--              -->
+		       a.icon   as icon  ,   <!--              -->
+		       a.open   as open      <!--              -->
+		  FROM apptreecode a
+		 WHERE 1 = 1 
+		   and a.type = 'AAA020' <!-- 行政区划 -->   
+		   <isNotEmpty prepend="AND" property="pid">
+		   		a.pid = #pid#
+		   </isNotEmpty> 
+		   <isEmpty prepend="AND" property="pid">
+		   		a.pid is null
+		   </isEmpty>        
+		order by decode (substr(a.id,1,3) ,'610','0','1'),id
+	</select>
+	
+	<!-- 单位地址  陕西 -->
+	<select id="getTreeSxList" parameterClass="map" resultClass="apptreecodeDomain">
+		SELECT 
+		       a.id     as id    ,   <!--              -->
+		       a.pid    as pid   ,   <!--              -->
+		       a.name   as name  ,   <!--              -->
+		       a.isparent as isparent,   <!--              -->
+		       a.type   as type  ,   <!--              -->
+		       a.icon   as icon  ,   <!--              -->
+		       a.open   as open      <!--              -->
+		  FROM apptreecode a
+		 WHERE  a.type = 'AAA020' <!-- 行政区划 -->  
+		       AND substr(a.id,1,2) = '61'
+		order by id
+
+	</select>
+	
+<!--TA+END--> 
+</sqlMap>

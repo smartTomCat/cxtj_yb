@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="treeCodeService" parent="transactionProxy">
+		<property name="target">
+			<bean class="com.yinhai.rsgl.search.setSearch.serviceimpl.TreeCodeServiceImpl" >
+			</bean>
+		</property>
+	</bean>
+    <!-- 功能开发设置查询 -->
+    <bean id="searchParamService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.rsgl.search.setSearch.serviceimpl.SearchParamServiceImpl" >
+                <property name="setSearchService" ref="setSearchService"/>
+                <property name="setSearchItemService" ref="setSearchItemService"/>
+                <property name="setSearchSignService" ref="setSearchSignService"/>
+                <property name="setSearchModeService" ref="setSearchModeService"/>
+                <property name="setSearchOrderService" ref="setSearchOrderService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题 -->
+    <bean id="setSearchService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.rsgl.search.setSearch.serviceimpl.SetSearchServiceImpl" >
+                <property name="setSearchItemService" ref="setSearchItemService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题的项目 -->
+    <bean id="setSearchItemService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.rsgl.search.setSearch.serviceimpl.SetSearchItemServiceImpl" >
+                <property name="setSearchSignService" ref="setSearchSignService"/>
+                <property name="setSearchModeService" ref="setSearchModeService"/>
+                <property name="setSearchOrderService" ref="setSearchOrderService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题项目支持的关系符 -->
+    <bean id="setSearchSignService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.rsgl.search.setSearch.serviceimpl.SetSearchSignServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题项目支持的计算方式 -->
+    <bean id="setSearchModeService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.rsgl.search.setSearch.serviceimpl.SetSearchModeServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 查询统计主题缺省排序项目 -->
+    <bean id="setSearchOrderService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.rsgl.search.setSearch.serviceimpl.SetSearchOrderServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+	<!-- 自定义查询service-->
+    <bean id="customizeQueryService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.rsgl.search.query.serviceimpl.CustomizeQueryServiceImpl" >
+                   <property name="searchParamService" ref="searchParamService"/>
+            </bean>
+        </property>
+    </bean>
+</beans>

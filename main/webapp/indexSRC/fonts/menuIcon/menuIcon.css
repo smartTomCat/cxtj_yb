@@ -1,0 +1,164 @@
+/*对应的图标可以在demo中的demo_fontclass.html点开查看*/
+@font-face {font-family: "menuIcon";
+    src: url('./iconfont.eot?t=1504159274517'); /* IE9*/
+    src: url('./iconfont.eot?t=1504159274517#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./iconfont.woff?t=1504159274517') format('woff'), /* chrome, firefox */
+    url('./iconfont.ttf?t=1504159274517') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('./iconfont.svg?t=1504159274517#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.menuIcon {
+    font-family:"menuIcon";
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-003:before { content: "\e775"; }
+
+.icon-005:before { content: "\e776"; }
+
+.icon-006:before { content: "\e777"; }
+
+.icon-001:before { content: "\e778"; }
+
+.icon-002:before { content: "\e779"; }
+
+.icon-007:before { content: "\e77a"; }
+
+.icon-008:before { content: "\e77b"; }
+
+.icon-009:before { content: "\e77c"; }
+
+.icon-004:before { content: "\e77d"; }
+
+.icon-010:before { content: "\e77e"; }
+
+.icon-012:before { content: "\e77f"; }
+
+.icon-011:before { content: "\e780"; }
+
+.icon-014:before { content: "\e781"; }
+
+.icon-013:before { content: "\e782"; }
+
+.icon-016:before { content: "\e783"; }
+
+.icon-015:before { content: "\e784"; }
+
+.icon-017:before { content: "\e785"; }
+
+.icon-018:before { content: "\e786"; }
+
+.icon-019:before { content: "\e787"; }
+
+.icon-020:before { content: "\e788"; }
+
+.icon-023:before { content: "\e789"; }
+
+.icon-022:before { content: "\e78a"; }
+
+.icon-021:before { content: "\e78b"; }
+
+.icon-025:before { content: "\e78c"; }
+
+.icon-024:before { content: "\e78d"; }
+
+.icon-026:before { content: "\e78e"; }
+
+.icon-028:before { content: "\e78f"; }
+
+.icon-027:before { content: "\e790"; }
+
+.icon-029:before { content: "\e791"; }
+
+.icon-031:before { content: "\e792"; }
+
+.icon-030:before { content: "\e793"; }
+
+.icon-032:before { content: "\e794"; }
+
+.icon-033:before { content: "\e795"; }
+
+.icon-034:before { content: "\e796"; }
+
+.icon-035:before { content: "\e797"; }
+
+.icon-036:before { content: "\e798"; }
+
+.icon-037:before { content: "\e799"; }
+
+.icon-039:before { content: "\e79a"; }
+
+.icon-038:before { content: "\e79b"; }
+
+.icon-040:before { content: "\e79c"; }
+
+.icon-042:before { content: "\e79d"; }
+
+.icon-041:before { content: "\e79e"; }
+
+.icon-043:before { content: "\e79f"; }
+
+.icon-045:before { content: "\e7a0"; }
+
+.icon-046:before { content: "\e7a1"; }
+
+.icon-044:before { content: "\e7a2"; }
+
+.icon-048:before { content: "\e7a3"; }
+
+.icon-047:before { content: "\e7a4"; }
+
+.icon-051:before { content: "\e7a5"; }
+
+.icon-049:before { content: "\e7a6"; }
+
+.icon-050:before { content: "\e7a7"; }
+
+.icon-052:before { content: "\e7a8"; }
+
+.icon-054:before { content: "\e7a9"; }
+
+.icon-053:before { content: "\e7aa"; }
+
+.icon-055:before { content: "\e7ab"; }
+
+.icon-057:before { content: "\e7ac"; }
+
+.icon-056:before { content: "\e7ad"; }
+
+.icon-058:before { content: "\e7ae"; }
+
+.icon-060:before { content: "\e7af"; }
+
+.icon-059:before { content: "\e7b0"; }
+
+.icon-063:before { content: "\e7b1"; }
+
+.icon-062:before { content: "\e7b2"; }
+
+.icon-061:before { content: "\e7b3"; }
+
+.icon-064:before { content: "\e7b4"; }
+
+.icon-065:before { content: "\e7b5"; }
+
+.icon-066:before { content: "\e7b6"; }
+
+.icon-069:before { content: "\e7b7"; }
+
+.icon-068:before { content: "\e7b8"; }
+
+.icon-071:before { content: "\e7b9"; }
+
+.icon-067:before { content: "\e7ba"; }
+
+.icon-070:before { content: "\e7bb"; }
+
+.icon-072:before { content: "\e7bc"; }
+
+.icon-073:before { content: "\e7bd"; }
+
+.icon-074:before { content: "\e7be"; }
+

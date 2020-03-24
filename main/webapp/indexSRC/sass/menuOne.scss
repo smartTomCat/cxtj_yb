@@ -1,0 +1,119 @@
+//  顶部水平一级菜单 start
+.horizon-menu {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .item-more{
+    display: none;
+  }
+  > div {
+    height: 100%;
+    line-height: 70px;
+    display: inline-block;
+    padding: 0 15px 0 15px;
+    cursor: pointer;
+    position: relative;
+    color: $menu-one-h-ftcolor;
+
+    &:before {
+      display: inline-block;
+      width: 18px;
+      font-family: "menuIcon";
+      margin-right: 6px;
+    }
+    &:hover{
+      @include gradient-vertical($start-color: nth($menu-one-h-bgcolor-hover,2), $end-color: nth($menu-one-h-bgcolor-hover,3))
+    }
+    &.active{
+      background-color: $menu-one-h-bgcolor-active;
+      color:$menu-one-h-ftcolor;
+      &:hover{
+        background-image:none;
+      }
+    }
+    &.item-more {
+      &:before {
+        font-family: "faceIcon";
+      }
+    }
+  }
+}
+
+.more-menu-con {
+  position: absolute;
+  right: 0px;
+  width: 258px;
+  padding: 5px 0px 10px 0px;
+  box-sizing: border-box;
+  z-index:9999;
+  background-color: $moremenu-one-h-bgcolor;
+  @include box-shadow(0px,1px,2px,3px);
+  > div {
+    overflow: auto;
+    max-height: 600px;
+
+    > div {
+      height: 46px;
+      line-height: 46px;
+      box-sizing: border-box;
+      border-left: 2px solid transparent;
+      color:$moremenu-one-h-ftcolor;
+
+      &.active{
+        border-left: 2px solid $moremenu-one-h-barcolor;
+        background-color:$moremenu-one-h-bgcolor-active;
+      }
+      &:hover{
+        border-left: 2px solid $moremenu-one-h-barcolor;
+        background-color:$moremenu-one-h-bgcolor-active;
+      }
+      &:before {
+        font-family: "menuIcon";
+        margin: 0px 8px 0px 20px;
+        color: $moremenu-one-h-iconcolor;
+      }
+      &:after{
+        content: "";
+        display: inline-block;
+        height: 1px;
+        background-color: $moremenu-one-h-linecolor;
+        width: 83%;
+        position: absolute;
+        left: 20px;
+        margin-top: 46px;
+      }
+    }
+  }
+}
+
+//  顶部水平一级菜单 end
+
+//左侧下拉 一级菜单 start
+
+.menu-one-dropdown-con{
+  background-color: $menu-one-d-bgcolr;
+  color: $menu-one-d-ftcolr;
+  display: none;
+
+  >div{
+    display: inline-block;
+    width: 100%;
+    @include text-overflow();
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    &:hover{
+       background-color: $menu-one-d-bgcolr-hover;
+    }
+    &.active{
+      background-color: $menu-one-d-bgcolr-active;
+    }
+    &:before{
+      font-family: menuIcon;
+      margin: 0px 10px 0px 15px;
+    }
+  }
+}
+
+
+//左侧下拉 一级菜单 end

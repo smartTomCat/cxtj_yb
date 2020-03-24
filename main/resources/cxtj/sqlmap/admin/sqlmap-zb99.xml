@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 表zb99  -->
+<sqlMap namespace="zb99">
+    <typeAlias alias="zb99Domain" type="com.yinhai.cxtj.admin.domain.Zb99Domain"/>
+
+    <select id="getList" parameterClass="map" resultClass="zb99Domain">
+        SELECT
+        a.yzb990 AS yzb990,	<!--	查询统计方案统计指标流水号:number(20)	-->
+        a.yzb612 AS yzb612,	<!--	查询统计主题名称:varchar2(200)	-->
+        a.yzb711 AS yzb711,	<!--	查询统计方案名称:varchar2(200)	-->
+        a.yzb991 AS yzb991,	<!--	执行开始时间:date	-->
+        a.yzb992 AS yzb992,	<!--	执行结束时间:date	-->
+        a.yzb993 AS yzb993,	<!--	执行总耗时（秒）:number(6)	-->
+        a.yzb994 AS yzb994,	<!--	是否出错:varchar2(1)	-->
+        a.yzb995 AS yzb995,	<!--	错误消息:clob	-->
+        a.yzb996 AS yzb996,	<!--	执行sql:varchar2(4000)	-->
+        a.aae011 AS aae011,	<!--	经办人:varchar2(100)	-->
+        a.yae116 AS yae116,	<!--	经办人编号:number(15)	-->
+        a.aae017 AS aae017,	<!--	经办机构:number(15)	-->
+        a.aae036 AS aae036    	<!--	经办日期:date	-->
+        FROM zb99 a
+        WHERE 1 = 1
+        AND a.yzb612 is not null
+        <isNotEmpty prepend="AND" property="yzb990">   <!-- 查询统计方案统计指标流水号:number(20) -->
+            a.yzb990 = #yzb990#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb612">   <!-- 查询统计主题名称:varchar2(200) -->
+            a.yzb612 = #yzb612#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb711">   <!-- 查询统计方案名称:varchar2(200) -->
+            a.yzb711 = #yzb711#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb991">   <!-- 执行开始时间:date -->
+            a.yzb991 &gt;= #yzb991#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb992">   <!-- 执行结束时间:date -->
+            a.yzb992 &lt;= #yzb992#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb993">   <!-- 执行总耗时（秒）:number(6) -->
+            a.yzb993 = #yzb993#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb994">   <!-- 是否出错:varchar2(1) -->
+            a.yzb994 = #yzb994#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb995">   <!-- 错误消息:clob -->
+            a.yzb995 = #yzb995#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb996">   <!-- 执行sql:varchar2(4000) -->
+            a.yzb996 = #yzb996#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae011">   <!-- 经办人:varchar2(100) -->
+            a.aae011 = #aae011#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yae116">   <!-- 经办人编号:number(15) -->
+            a.yae116 = #yae116#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae017">   <!-- 经办机构:number(15) -->
+            a.aae017 = #aae017#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期:date -->
+            a.aae036 = #aae036#
+        </isNotEmpty>
+        ORDER BY yzb991 desc
+    </select>
+
+    <select id="get" parameterClass="map" resultClass="java.util.HashMap">
+        SELECT
+        a.yzb990 AS yzb990,	<!--	查询统计方案统计指标流水号:number(20)	-->
+        a.yzb612 AS yzb612,	<!--	查询统计主题名称:varchar2(200)	-->
+        a.yzb711 AS yzb711,	<!--	查询统计方案名称:varchar2(200)	-->
+        a.yzb991 AS yzb991,	<!--	执行开始时间:date	-->
+        a.yzb992 AS yzb992,	<!--	执行结束时间:date	-->
+        a.yzb993 AS yzb993,	<!--	执行总耗时（秒）:number(6)	-->
+        a.yzb994 AS yzb994,	<!--	是否出错:varchar2(1)	-->
+        a.yzb995 AS yzb995,	<!--	错误消息:clob	-->
+        a.yzb996 AS yzb996,	<!--	执行sql:varchar2(4000)	-->
+        fun_getcodedesc('AAE011',a.aae011) AS aae011,	<!--	经办人:varchar2(100)	-->
+        a.yae116 AS yae116,	<!--	经办人编号:number(15)	-->
+        fun_getcodedesc('AAE017',a.aae017) AS aae017,	<!--	经办机构:number(15)	-->
+        a.aae036 AS aae036,	<!--	经办日期:date	-->
+        FROM zb99 a
+        WHERE 1 = 1
+    </select>
+
+    <insert id="insert" parameterClass="zb99Domain">
+        INSERT INTO zb99 (
+          yzb990,    	<!--	查询统计方案统计指标流水号:number(20)	-->
+          yzb612,    	<!--	查询统计主题名称:varchar2(200)	-->
+          yzb711,    	<!--	查询统计方案名称:varchar2(200)	-->
+          yzb991,    	<!--	执行开始时间:date	-->
+          yzb992,    	<!--	执行结束时间:date	-->
+          yzb993,    	<!--	执行总耗时（秒）:number(6)	-->
+          yzb994,    	<!--	是否出错:varchar2(1)	-->
+          yzb995,    	<!--	错误消息:clob	-->
+          yzb996,    	<!--	执行sql:varchar2(4000)	-->
+          aae011,    	<!--	经办人:varchar2(100)	-->
+          yae116,    	<!--	经办人编号:number(15)	-->
+          aae017,    	<!--	经办机构:number(15)	-->
+          aae036    	<!--	经办日期:date	-->
+        )VALUES(
+          #yzb990#,	<!--	查询统计方案统计指标流水号:number(20)	-->
+          #yzb612#,	<!--	查询统计主题名称:varchar2(200)	-->
+          #yzb711#,	<!--	查询统计方案名称:varchar2(200)	-->
+          #yzb991#,	<!--	执行开始时间:date	-->
+          #yzb992#,	<!--	执行结束时间:date	-->
+          #yzb993#,	<!--	执行总耗时（秒）:number(6)	-->
+          #yzb994#,	<!--	是否出错:varchar2(1)	-->
+          #yzb995#,	<!--	错误消息:clob	-->
+          #yzb996#,	<!--	执行sql:varchar2(4000)	-->
+          #aae011#,	<!--	经办人:varchar2(100)	-->
+          #yae116#,	<!--	经办人编号:number(15)	-->
+          #aae017#,	<!--	经办机构:number(15)	-->
+          #aae036#    	<!--	经办日期:date	-->
+        )
+    </insert>
+
+</sqlMap>
