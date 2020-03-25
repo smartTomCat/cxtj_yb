@@ -6,7 +6,7 @@
     <title>日志查询</title>
     <%@ include file="/ta/inc.jsp" %>
 </head>
-<body class="no-scrollbar" style="padding:10px;">
+<body class="no-scrollbar" style="padding-top: 10px!important;background-color: white!important;">
 <ta:pageloading/>
 <ta:box >
     <ta:form id="form1" cols="4">

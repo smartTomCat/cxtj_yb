@@ -12,28 +12,33 @@
     <ta:box cols="3">
         <ta:selectInput id="yzb670" key="数据源"/>
         <ta:text id="yzb681" key="视图名称"/>
-        <ta:buttonLayout cssStyle="margin-left:50px;">
-            <ta:button id="btnQuery" key="查询" onClick="fnQuery()"/>
-            <ta:button id="btnCreate" key="新增" onClick="fnCreate()"/>
-            <ta:button id="btnModify" key="编辑" onClick="fnModify()"/>
-            <ta:button id="btnRemove" key="删除" onClick="fnRemove()"/>
+        <ta:buttonLayout cssClass="btnlayout">
+            <ta:button id="btnQuery" key="查询" onClick="fnQuery()" cssClass="btnmodify"/>
         </ta:buttonLayout>
     </ta:box>
 
-    <ta:panel key="视图列表" fit="true">
-        <ta:datagrid id="grid1" haveSn="true" snWidth="40" forceFitColumns="true" fit="true" selectType="checkbox"
-                     onSelectChange="fnShowBtn">
-            <ta:datagridItem id="yzb680" key="视图配置管理流水号" hiddenColumn="true"/>
-            <ta:datagridItem id="yzb670" key="数据源配置流水号" hiddenColumn="true"/>
-            <ta:datagridItem id="yzb672" key="数据源名称" dataAlign="center" formatter="setDefaultName"/>
-            <ta:datagridItem id="yzb681" key="视图名称" icon="icon-add2" dataAlign="center"/>
-            <ta:datagridItem id="yzb682" key="视图sql" showDetailed="true" align="center" dataAlign="center" />
-            <ta:datagridItem id="aae011" key="经办人" showDetailed="true" align="center" dataAlign="center" />
-            <ta:datagridItem id="aae036" key="经办日期" dataAlign="center"/>
-            <ta:dataGridToolPaging url="" submitIds="form1" pageSize="10"/>
-        </ta:datagrid>
-    </ta:panel>
-
+    <%--    <ta:panel key="视图列表" fit="true">--%>
+    <div class="tafieldset-header">
+        <div class="fieldset-header-bg"></div>
+        <h2>视图列表</h2>
+        <ta:buttonLayout cssClass="btnlayout">
+            <ta:button id="btnCreate" key="新增" onClick="fnCreate()" cssClass="btnadd"/>
+            <ta:button id="btnModify" key="编辑" onClick="fnModify()" cssClass="btnmodify"/>
+            <ta:button id="btnRemove" key="删除" onClick="fnRemove()" cssClass="btndelete"/>
+        </ta:buttonLayout>
+    </div>
+    <ta:datagrid id="grid1" haveSn="true" snWidth="40" forceFitColumns="true" fit="true" selectType="checkbox"
+                 onSelectChange="fnShowBtn">
+        <ta:datagridItem id="yzb680" key="视图配置管理流水号" hiddenColumn="true"/>
+        <ta:datagridItem id="yzb670" key="数据源配置流水号" hiddenColumn="true"/>
+        <ta:datagridItem id="yzb672" key="数据源名称" dataAlign="center" formatter="setDefaultName"/>
+        <ta:datagridItem id="yzb681" key="视图名称" icon="icon-add2" dataAlign="center"/>
+        <ta:datagridItem id="yzb682" key="视图sql" showDetailed="true" align="center" dataAlign="center"/>
+        <ta:datagridItem id="aae011" key="经办人" showDetailed="true" align="center" dataAlign="center"/>
+        <ta:datagridItem id="aae036" key="经办日期" dataAlign="center"/>
+        <ta:dataGridToolPaging url="" submitIds="form1" pageSize="10"/>
+    </ta:datagrid>
+    <%--    </ta:panel>--%>
 
 
 </ta:form>
@@ -48,20 +53,20 @@
 
 
     function init() {
-        $('#btnCreate').css('margin-top', '6px');
-        $('#btnModify').css('margin-top', '6px');
-        $('#btnRemove').css('margin-top', '6px');
-        $('#btnRemove').css('margin-right', '-20px');
-
-        $('#btnCreateSearchItems').css('margin-top', '6px');
-        $('#btnCreateSearchItem').css('margin-top', '6px');
-        $('#btnModifySearchItem').css('margin-top', '6px');
-        $('#btnRemoveSearchItem').css('margin-top', '6px');
-        $('#btnRemoveSearchItem').css('margin-right', '-20px');
-
-        $('#btnSelSearchOrder').css('margin-top', '6px');
-        $('#btnRemoveSearchOrder').css('margin-top', '6px');
-        $('#btnRemoveSearchOrder').css('margin-right', '-20px');
+        // $('#btnCreate').css('margin-top', '6px');
+        // $('#btnModify').css('margin-top', '6px');
+        // $('#btnRemove').css('margin-top', '6px');
+        // $('#btnRemove').css('margin-right', '-20px');
+        //
+        // $('#btnCreateSearchItems').css('margin-top', '6px');
+        // $('#btnCreateSearchItem').css('margin-top', '6px');
+        // $('#btnModifySearchItem').css('margin-top', '6px');
+        // $('#btnRemoveSearchItem').css('margin-top', '6px');
+        // $('#btnRemoveSearchItem').css('margin-right', '-20px');
+        //
+        // $('#btnSelSearchOrder').css('margin-top', '6px');
+        // $('#btnRemoveSearchOrder').css('margin-top', '6px');
+        // $('#btnRemoveSearchOrder').css('margin-right', '-20px');
         fnQuery();
     }
 
@@ -112,10 +117,10 @@
             var _title = '编辑视图';
             var _url = 'viewManageController!toEdit.do';
             var _param = {
-                "dto.yzb680" : data[0].yzb680,
-                "dto.yzb670" : data[0].yzb670,
-                "dto.yzb681" : data[0].yzb681,
-                "dto.yzb682" : data[0].yzb682
+                "dto.yzb680": data[0].yzb680,
+                "dto.yzb670": data[0].yzb670,
+                "dto.yzb681": data[0].yzb681,
+                "dto.yzb682": data[0].yzb682
             };
             var _w = 700;
             var _h = 450;
@@ -128,8 +133,8 @@
 
     //删除
     function fnRemove() {
-        Base.confirm("确定要删除吗？",function(yes){
-            if(yes){
+        Base.confirm("确定要删除吗？", function (yes) {
+            if (yes) {
                 var data = Base.getGridSelectedRows('grid1');
                 if (data.length > 0) {
                     var _id = 'grid1';
@@ -144,7 +149,6 @@
             }
         });
     }
-
 
 
     //数据源名称为null补为框架数据源

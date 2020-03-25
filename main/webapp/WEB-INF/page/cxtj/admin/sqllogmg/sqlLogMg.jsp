@@ -16,7 +16,7 @@
         <ta:date id="yzb992" key="结束时间" showSelectPanel="true" />
         <ta:selectInput id="yzb994" key="是否出错" collection="YZB994"/>
         <ta:buttonLayout align="right" cssStyle="float:right">
-            <ta:button id="btnQuery" key="查询" onClick="queryLog()" />
+            <ta:button id="btnQuery" key="查询" onClick="queryLog()" cssClass="btnmodify"/>
         </ta:buttonLayout>
     </ta:box>
     <ta:panel id="pnl1" key="日志列表" fit="true" cols="2">

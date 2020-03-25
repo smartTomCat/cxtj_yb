@@ -23,40 +23,49 @@
         <ta:text id="sellabel" display="false"/>
         <ta:text id="yzb611" key="菜单代码"/>
         <ta:text id="yzb612" key="功能菜单名称"/>
-        <ta:buttonLayout cssStyle="margin-left:50px;">
-            <ta:button id="btnQuery" key="查询" onClick="fnQuery()"/>
-            <ta:button id="btnCreate" key="新增" onClick="fnCreate()"/>
-            <ta:button id="btnModify" key="编辑" onClick="fnModify()"/>
-            <ta:button id="btnRemove" key="删除" onClick="fnRemove()"/>
+        <ta:buttonLayout cssClass="btnlayout">
+            <ta:button id="btnQuery" key="查询" onClick="fnQuery()" cssClass="btnmodify"/>
         </ta:buttonLayout>
     </ta:box>
 
-    <ta:panel key="查询统计主题定义列表">
-        <ta:datagrid id="grid1" haveSn="true" snWidth="40" forceFitColumns="true" height="365px" selectType="checkbox"
-                     onSelectChange="fnShowBtn">
-            <ta:datagridItem id="yzb610" hiddenColumn="true"/>
-            <ta:datagridItem id="searchItem" key="配制项目" icon="icon-add2" click="fnSearchItem"/>
-            <ta:datagridItem id="searchOrder" key="配制项目排序" icon="icon-edit" click="fnSearchOrder"/>
-            <ta:datagridItem id="yzb611" key="主题代码" showDetailed="true" align="center" dataAlign="center" width="100"/>
-            <ta:datagridItem id="yzb612" key="主题名称" showDetailed="true" align="center" dataAlign="center" width="200"/>
-            <ta:datagridItem id="yzb670" key="主题流水号" hiddenColumn="true"/>
-            <ta:datagridItem id="yzb672" key="数据源名称" width="100" dataAlign="center" formatter="setDefaultName"/>
-            <ta:datagridItem id="yzb613" key="主题库表" collection="YZ0505" showDetailed="true" align="center"
-                             dataAlign="center" width="100"/>
-            <ta:datagridItem id="yzb617" key="查询统计类型（1查询2统计）" hiddenColumn="true"/>
-            <ta:datagridItem id="yzb618" key="对应的菜单id" hiddenColumn="true"/>
-            <ta:dataGridToolPaging url="setSearchAction!querySearchs.do" submitIds="form1" pageSize="10"/>
-        </ta:datagrid>
-    </ta:panel>
-
-
-    <ta:panel id="palSearchItem" key="<label id='labelSearchItem' class='labelfont'></label>&nbsp;配制项目">
-        <ta:buttonLayout align="right">
-            <ta:button key="批量添加" onClick="fnCreateSearchItems()"/>
-            <ta:button key="添加" onClick="fnCreateSearchItem()"/>
-            <ta:button id="btnModifySearchItem" key="编辑" onClick="fnModifySearchItem()"/>
-            <ta:button id="btnRemoveSearchItem" key="删除" onClick="fnRemoveSearchItem()"/>
+    <div class="tafieldset-header ">
+        <div class="fieldset-header-bg"></div>
+        <h2>查询统计主题定义列表</h2>
+        <ta:buttonLayout cssClass="btnlayout">
+            <ta:button id="btnCreate" key="新增" onClick="fnCreate()" cssClass="btnadd"/>
+            <ta:button id="btnModify" key="编辑" onClick="fnModify()" cssClass="btnmodify"/>
+            <ta:button id="btnRemove" key="删除" onClick="fnRemove()" cssClass="btndelete"/>
         </ta:buttonLayout>
+    </div>
+    <ta:datagrid id="grid1" haveSn="true" snWidth="40" forceFitColumns="true" height="365px" selectType="checkbox"
+                 onSelectChange="fnShowBtn">
+        <ta:datagridItem id="yzb610" hiddenColumn="true"/>
+        <ta:datagridItem id="searchItem" key="配制项目" icon="icon-add2" click="fnSearchItem"/>
+        <ta:datagridItem id="searchOrder" key="配制项目排序" icon="icon-edit" click="fnSearchOrder"/>
+        <ta:datagridItem id="yzb611" key="主题代码" showDetailed="true" align="center" dataAlign="center" width="100"/>
+        <ta:datagridItem id="yzb612" key="主题名称" showDetailed="true" align="center" dataAlign="center" width="200"/>
+        <ta:datagridItem id="yzb670" key="主题流水号" hiddenColumn="true"/>
+        <ta:datagridItem id="yzb672" key="数据源名称" width="100" dataAlign="center" formatter="setDefaultName"/>
+        <ta:datagridItem id="yzb613" key="主题库表" collection="YZ0505" showDetailed="true" align="center"
+                         dataAlign="center" width="100"/>
+        <ta:datagridItem id="yzb617" key="查询统计类型（1查询2统计）" hiddenColumn="true"/>
+        <ta:datagridItem id="yzb618" key="对应的菜单id" hiddenColumn="true"/>
+        <ta:dataGridToolPaging url="setSearchAction!querySearchs.do" submitIds="form1" pageSize="10"/>
+    </ta:datagrid>
+
+
+    <%--    <ta:panel id="palSearchItem" key="<label id='labelSearchItem' class='labelfont'></label>&nbsp;配制项目">--%>
+    <div id="palSearchItem" style="margin-top: 10px">
+        <div class="tafieldset-header">
+            <div class="fieldset-header-bg"></div>
+            <h2><label id='labelSearchItem' class='labelfont'></label>&nbsp;配制项目</h2>
+            <ta:buttonLayout cssClass="btnlayout">
+                <ta:button key="批量添加" onClick="fnCreateSearchItems()" cssClass="btnadd"/>
+                <ta:button key="添加" onClick="fnCreateSearchItem()" cssClass="btnadd"/>
+                <ta:button id="btnModifySearchItem" key="编辑" onClick="fnModifySearchItem()" cssClass="btnmodify"/>
+                <ta:button id="btnRemoveSearchItem" key="删除" onClick="fnRemoveSearchItem()" cssClass="btndelete"/>
+            </ta:buttonLayout>
+        </div>
         <ta:datagrid id="grid2" forceFitColumns="true" height="365px" selectType="checkbox"
                      onSelectChange="fnShowSearchItemBtn">
             <ta:datagridItem id="yzb620" hiddenColumn="true"/>
@@ -87,13 +96,19 @@
                              dataAlign="center" width="100"/>
             <ta:dataGridToolPaging showPagingBar="false"/>
         </ta:datagrid>
-    </ta:panel>
+    </div>
+    <%--    </ta:panel>--%>
 
-    <ta:panel id="palSearchOrder" key="<label id='labelSearchOrder' class='labelfont'></label>&nbsp;配制项目排序">
-        <ta:buttonLayout align="right">
-            <ta:button key="添加" onClick="fnSelSearchOrder()"/>
-            <ta:button key="删除" onClick="fnRemoveSearchOrder()"/>
-        </ta:buttonLayout>
+    <%--    <ta:panel id="palSearchOrder" key="<label id='labelSearchOrder' class='labelfont'></label>&nbsp;配制项目排序">--%>
+    <div id="palSearchOrder" style="margin-top: 10px">
+        <div class="tafieldset-header">
+            <div class="fieldset-header-bg"></div>
+            <h2><label id='labelSearchOrder' class='labelfont'></label>&nbsp;配制项目</h2>
+            <ta:buttonLayout cssClass="btnlayout">
+                <ta:button key="添加" onClick="fnSelSearchOrder()" cssClass="btnadd"/>
+                <ta:button key="删除" onClick="fnRemoveSearchOrder()" cssClass="btndelete"/>
+            </ta:buttonLayout>
+        </div>
         <ta:datagrid id="grid3" forceFitColumns="true" height="365px" selectType="checkbox"
                      onSelectChange="fnShowSearchOrderBtn">
             <ta:datagridItem id="yzb650" hiddenColumn="true"/>
@@ -110,7 +125,8 @@
             <ta:datagridItem id="yzb626" key="数据类型" collection="YZB626" showDetailed="true" align="center"
                              dataAlign="center" width="100"/>
         </ta:datagrid>
-    </ta:panel>
+    </div>
+    <%--    </ta:panel>--%>
 
 </ta:form>
 </body>
@@ -129,6 +145,7 @@
         }
         return w;
     }
+
     function fnGetH(h) {
         var all = document.body.scrollHeight * 0.8;
         if (all < h) {
@@ -138,20 +155,20 @@
     }
 
     function init() {
-        $('#btnCreate').css('margin-top', '6px');
-        $('#btnModify').css('margin-top', '6px');
-        $('#btnRemove').css('margin-top', '6px');
-        $('#btnRemove').css('margin-right', '-20px');
-
-        $('#btnCreateSearchItems').css('margin-top', '6px');
-        $('#btnCreateSearchItem').css('margin-top', '6px');
-        $('#btnModifySearchItem').css('margin-top', '6px');
-        $('#btnRemoveSearchItem').css('margin-top', '6px');
-        $('#btnRemoveSearchItem').css('margin-right', '-20px');
-
-        $('#btnSelSearchOrder').css('margin-top', '6px');
-        $('#btnRemoveSearchOrder').css('margin-top', '6px');
-        $('#btnRemoveSearchOrder').css('margin-right', '-20px');
+        // $('#btnCreate').css('margin-top', '6px');
+        // $('#btnModify').css('margin-top', '6px');
+        // $('#btnRemove').css('margin-top', '6px');
+        // $('#btnRemove').css('margin-right', '-20px');
+        //
+        // $('#btnCreateSearchItems').css('margin-top', '6px');
+        // $('#btnCreateSearchItem').css('margin-top', '6px');
+        // $('#btnModifySearchItem').css('margin-top', '6px');
+        // $('#btnRemoveSearchItem').css('margin-top', '6px');
+        // $('#btnRemoveSearchItem').css('margin-right', '-20px');
+        //
+        // $('#btnSelSearchOrder').css('margin-top', '6px');
+        // $('#btnRemoveSearchOrder').css('margin-top', '6px');
+        // $('#btnRemoveSearchOrder').css('margin-right', '-20px');
         fnQuery();
     }
 
@@ -238,6 +255,7 @@
         var _falback = getLabelback;
         Base.submit(_id, _url, _param, _onsub, _autoval, _sucback, _falback);
     }
+
     function getLabelback() {
         document.getElementById('labelSearchItem').innerHTML = Base.getValue('sellabel');
         document.getElementById('labelSearchOrder').innerHTML = Base.getValue('sellabel');
@@ -247,6 +265,7 @@
     function setYzb617(data) {
         Base.setValue("yzb617", data.yzb617);
     }
+
     //配制项目
     function fnSearchItem(data, e) {
         setYzb617(data);
@@ -277,6 +296,7 @@
             Base.submit(_id, _url, _param, _onsub, _autoval, _sucback, _falback);
         }
     }
+
     function fnShowSearchItemBtn() {
         if (Base.getGridSelectedRows('grid2').length == 1) {
             Base.setEnable('btnModifySearchItem,btnRemoveSearchItem');
@@ -411,6 +431,7 @@
             Base.submit(_id, _url, _param, _onsub, _autoval, _sucback, _falback);
         }
     }
+
     function fnShowSearchOrderBtn() {
         if (Base.getGridSelectedRows('grid3').length > 0) {
             Base.setEnable('btnRemoveSearchOrder');

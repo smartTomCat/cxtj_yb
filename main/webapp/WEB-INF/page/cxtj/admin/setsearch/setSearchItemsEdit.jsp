@@ -6,7 +6,7 @@
 	    <title>批量配制项目</title>
 	    <%@ include file="/ta/inc.jsp" %>
 	</head>
-	<body style="overflow-x:hidden;">
+	<body style="overflow-x:hidden;padding-top: 0px!important;background-color: white!important;">
 		<ta:pageloading/>
 	    
 	    <ta:form id="form1" fit="true" cssStyle="margin-top:10px;">
@@ -23,8 +23,8 @@
 	   		</ta:datagrid>
 	   		
 	   		<ta:buttonGroup align="center" cssStyle="margin-top:10px;">
-	    		<ta:button id="btnSelect" key="确定" onClick="fnSelect()" space="true"/>
-	    		<ta:button key="取消" onClick="fnClose()"/>
+	    		<ta:button id="btnSelect" key="确定" onClick="fnSelect()" space="true" cssClass="btnmodify"/>
+	    		<ta:button key="取消" onClick="fnClose()" cssClass="btnmodify"/>
 	    	</ta:buttonGroup>
 	    </ta:form>
 	</body>

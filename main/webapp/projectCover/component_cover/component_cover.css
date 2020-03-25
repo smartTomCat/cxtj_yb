@@ -26,3 +26,29 @@ body {
 .slick-cell.selected {
     color: black!important;
 }
+.btndelete {
+    background-color: #F56C6C!important;
+}
+.btnmodify {
+    background-color: #1B65B9!important;
+}
+.btnadd {
+    background-color: #67C23A!important;
+}
+.btnsave {
+    background-color: #67C23A!important;
+}
+.btnclose {
+    background-color: #1B65B9!important;
+}
+form {
+    background-color: white!important;
+    padding-left: 10px!important;
+}
+.window form {
+    padding-left: 0px!important;
+}
+.window body {
+    padding:0px!important;
+    background-color: white!important;
+}

@@ -8,7 +8,7 @@
 </head>
 <body class="" style="padding: 0px; margin: 0px">
 <ta:pageloading/>
-<ta:form id="form2" fit="true" heightDiff="60">
+<ta:form id="form2" fit="true">
     <ta:text id="yzb670" key="数据源Id" display="false"/>
     <ta:fieldset id="baseInfo" cols="2" key="基本参数">
         <ta:selectInput id="yzb671" key="数据源类型" required="true" value="0" collection="YZB671"  onSelect="fnSelect" labelWidth="160" />
@@ -55,13 +55,14 @@
                    placeholder="最大获取数据时间，单位秒"
                    key="最大获取数据秒数"/>
     </ta:fieldset>
+    <ta:buttonGroup align="center" cssStyle="margin-top:15px">
+        <ta:button id="connent" key="测试连接" isok="true"  space="true" onClick="testConnect()" cssClass="btnclose"/>
+        <ta:button id="save" key="保存" isok="true" onClick="fnSave()" space="true" disabled="true" cssClass="btnsave"/>
+        <ta:button id="close" key="关闭" onClick="parent.Base.closeWindow('popWin')" cssClass="btnclose"/>
+    </ta:buttonGroup>
 </ta:form>
 
-<ta:buttonGroup align="center" cssStyle="margin-top:15px">
-    <ta:button id="connent" key="测试连接" isok="true"  space="true" onClick="testConnect()"/>
-    <ta:button id="save" key="保存" isok="true" onClick="fnSave()" space="true" disabled="true"/>
-    <ta:button id="close" key="关闭" onClick="parent.Base.closeWindow('popWin')"/>
-</ta:buttonGroup>
+
 
 </body>
 </html>

@@ -36,7 +36,7 @@
 	    	}
 		</style>
 	</head>
-	<body style="overflow-x:hidden;">
+	<body style="overflow-x:hidden;padding-top: 0px!important;background-color: white!important;">
 		<ta:pageloading/>
 	    <ta:form id="form1">
 	    	<ta:box>
@@ -132,9 +132,9 @@
 			</ta:box>
 			
 	    	<ta:buttonGroup cssStyle="margin-top:20px;">
-	    		<ta:button id="btnNew" key="新增保存" onClick="fnSave()" space="true"/>
-	    		<ta:button id="btnOld" key="修改保存" onClick="fnSave()" space="true"/>
-	    		<ta:button key="关闭" onClick="fnClose()"/>
+	    		<ta:button id="btnNew" key="新增保存" onClick="fnSave()" space="true" cssClass="btnmodify"/>
+	    		<ta:button id="btnOld" key="修改保存" onClick="fnSave()" space="true" cssClass="btnmodify"/>
+	    		<ta:button key="关闭" onClick="fnClose()" cssClass="btnmodify"/>
 	    	</ta:buttonGroup>
 
 	    </ta:form>

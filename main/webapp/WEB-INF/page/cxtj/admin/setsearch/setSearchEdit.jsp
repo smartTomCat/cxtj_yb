@@ -6,7 +6,7 @@
     <title>主题定义</title>
     <%@ include file="/ta/inc.jsp" %>
 </head>
-<body style="overflow-x:hidden;">
+<body style="overflow-x:hidden;padding-top: 0px!important;background-color: white!important;">
 <ta:pageloading/>
 <ta:form id="form1">
     <ta:box cols="2">
@@ -25,9 +25,9 @@
     <ta:textarea id="yzb616" key="基础WHERE<br />条件变量说明" height="80px"
                  validType="[{type:'maxLength',param:[1000],msg:'最大长度为1000'}]"/>
     <ta:buttonGroup align="center" cssStyle="margin-top:20px">
-        <ta:button id="btnNew" key="新增保存" space="true" onClick="fnSave()"/>
-        <ta:button id="btnOld" key="修改保存" space="true" onClick="fnSave()"/>
-        <ta:button key="关闭" onClick="fnClose()"/>
+        <ta:button id="btnNew" key="新增保存" space="true" onClick="fnSave()" cssClass="btnmodify"/>
+        <ta:button id="btnOld" key="修改保存" space="true" onClick="fnSave()" cssClass="btnmodify"/>
+        <ta:button key="关闭" onClick="fnClose()" cssClass="btnmodify"/>
     </ta:buttonGroup>
 </ta:form>
 </body>

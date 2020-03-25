@@ -13,9 +13,9 @@
         <div class="fieldset-header-bg"></div>
         <h2>数据源列表</h2>
         <ta:buttonLayout cssClass="btnlayout">
-            <ta:button  key="新增" isok="true" onClick="fnToAdd()"/>
-            <ta:button  key="查看/修改" isok="true"  onClick="fnToEdit()"/>
-            <ta:button  key="删除" isok="true" onClick="fnDelete()"/>
+            <ta:button  key="新增" isok="true" onClick="fnToAdd()" cssClass="btnadd"/>
+            <ta:button  key="查看/修改" isok="true"  onClick="fnToEdit()" cssClass="btnmodify"/>
+            <ta:button  key="删除" isok="true" onClick="fnDelete()" cssClass="btndelete"/>
         </ta:buttonLayout>
     </div>
     <ta:datagrid id="dataSourceGrid" fit="true" selectType="checkbox" forceFitColumns="true" haveSn="true">
