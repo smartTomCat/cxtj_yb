@@ -88,8 +88,8 @@
                                                                        onclick="addConditionGroup()">追加"或者"条件组</a>】
             <span class="to_right" style="line-height:35px;">
 	    <ta:buttonLayout align="right">
-            <ta:button key="保存统计方案" onClick="fnToSaveTjfa()"/>
-            <ta:button key="调出统计方案" onClick="fnToCalloutTjfa()"/>
+            <ta:button key="保存统计方案" onClick="fnToSaveTjfa()" cssClass="btnmodify"/>
+            <ta:button key="调出统计方案" onClick="fnToCalloutTjfa()" cssClass="btnmodify"/>
         </ta:buttonLayout>
 	</span>
         </div>
@@ -261,8 +261,8 @@
 
                         <tr>
                             <td style="width:30px;text-align: left;" colspan="4">
-                                <ta:button key="增加条件" onClick="addCondition(this)"/>
-                                <ta:button key="删除该条件组" onClick="deleteCondition(this)"/>
+                                <ta:button key="增加条件" onClick="addCondition(this)" cssClass="btnadd"/>
+                                <ta:button key="删除该条件组" onClick="deleteCondition(this)" cssClass="btndelete"/>
                             </td>
                         </tr>
 
@@ -319,8 +319,8 @@
                     </tr>
                     <tr>
                         <td style="width:30px;text-align: left;" colspan="4">
-                            <ta:button key="增加条件" onClick="addCondition(this)"/>
-                            <ta:button key="删除该条件组" onClick="deleteCondition(this)"/>
+                            <ta:button key="增加条件" onClick="addCondition(this)" cssClass="btnadd"/>
+                            <ta:button key="删除该条件组" onClick="deleteCondition(this)" cssClass="btnmdelete"/>
                         </td>
                     </tr>
                     </tbody>
@@ -416,7 +416,7 @@
 
                         <tr>
                             <td style="width:30px;text-align: left;" colspan="3">
-                                <ta:button key="增加统计指标" onClick="addTjzbhsTr(this)"/>
+                                <ta:button key="增加统计指标" onClick="addTjzbhsTr(this)" cssClass="btnadd"/>
                             </td>
                         </tr>
 
@@ -438,8 +438,8 @@
         </ta:box>
         <ta:box span="2" cssStyle="margin-left:-20px;">
             <ta:button key="&nbsp;&nbsp;&nbsp;&nbsp;统&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计&nbsp;&nbsp;&nbsp;&nbsp;"
-                       onClick="fnQuery()"/>
-            <ta:button key="导出统计结果"  onClick="fnExportTj()"/>
+                       onClick="fnQuery()" cssClass="btnmodify"/>
+            <ta:button key="导出统计结果"  onClick="fnExportTj()" cssClass="btnmodify"/>
             <div id="count" class="slick-export-content exports">
                 <div  class="slick-export-item faceIcon icon-excel exports_dangqian_" title="导出当前页">导出当前页</div>
                 <%--<div  class="slick-export-item faceIcon icon-excel exports_xuanze_" title="导出选择数据">导出选择数据</div>--%>
@@ -502,9 +502,9 @@
         <h2 style="font-size: 16px;float: left;margin-left: 10px;">详细信息</h2>
         <span class="to_right" style="line-height:28px;">
 	    <ta:buttonLayout align="right">
-            <ta:button key="选择显示项目" onClick="fnOpenSetDetailShowFiledWindows()"/>
-            <ta:button key="定义排序方式" onClick="fnOpenSetDetailOrderFiledWindows()"/>
-            <ta:button key="导出查询结果" onClick="fnExportDetail()"/>
+            <ta:button key="选择显示项目" onClick="fnOpenSetDetailShowFiledWindows()" cssClass="btnmodify"/>
+            <ta:button key="定义排序方式" onClick="fnOpenSetDetailOrderFiledWindows()" cssClass="btnmodify"/>
+            <ta:button key="导出查询结果" onClick="fnExportDetail()" cssClass="btnmodify"/>
         </ta:buttonLayout>
         <div id="query" class="slick-export-content exports2">
             <div  class="slick-export-item faceIcon icon-excel exports_dangqian_" title="导出当前页">导出当前页</div>

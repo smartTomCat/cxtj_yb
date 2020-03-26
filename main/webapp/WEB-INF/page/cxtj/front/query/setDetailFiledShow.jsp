@@ -6,7 +6,7 @@
 <title>自定义查询</title>
 <%@ include file="/ta/inc.jsp" %>
 </head>
-<body style="overflow: hidden">
+<body style="overflow: hidden;padding-top: 0px!important;background-color: white!important;">
    <ta:box id="mainBox" fit="true" cols="4">
      <ta:box id="leftBox" span="3" height="300px" cssStyle="border: #9CB1EA 1px solid;margin-top:10px;" >
        <ta:datagrid id="dgsort" selectType="radio" forceFitColumns="true" haveSn="true" fit="true">
@@ -17,25 +17,25 @@
      </ta:box>
      <ta:box id="rightBox" cssStyle="margin-left:30px;">
            <ta:buttonLayout id="btnLyt1" cssStyle="padding-top:20px">
-               <ta:button id="btn1" key="已选项目前置" onClick="fnSelTop()" />
+               <ta:button id="btn1" key="已选项目前置" onClick="fnSelTop()" cssClass="btnmodify"/>
            </ta:buttonLayout>
            <ta:buttonLayout id="btnLyt2" cssStyle="padding-top:5px">
-               <ta:button id="btn2" key="&nbsp;&nbsp;置&nbsp;&nbsp;顶&nbsp;&nbsp; " onClick="fnTop()"/>
+               <ta:button id="btn2" key="&nbsp;&nbsp;置&nbsp;&nbsp;顶&nbsp;&nbsp; " onClick="fnTop()" cssClass="btnmodify"/>
            </ta:buttonLayout>
            <ta:buttonLayout id="btnLyt3" cssStyle="padding-top:5px">
-           	   <ta:button id="btn3" key="&nbsp;&nbsp;上&nbsp;&nbsp;移&nbsp;&nbsp;"  onClick="fnUp()" />
+           	   <ta:button id="btn3" key="&nbsp;&nbsp;上&nbsp;&nbsp;移&nbsp;&nbsp;"  onClick="fnUp()" cssClass="btnmodify"/>
            </ta:buttonLayout>
            <ta:buttonLayout id="btnLyt4" cssStyle="padding-top:5px">
-               <ta:button id="btn4" key="&nbsp;&nbsp;下&nbsp;&nbsp;移&nbsp;&nbsp;"  onClick="fnDown()"/>
+               <ta:button id="btn4" key="&nbsp;&nbsp;下&nbsp;&nbsp;移&nbsp;&nbsp;"  onClick="fnDown()" cssClass="btnmodify"/>
            </ta:buttonLayout>    
            <ta:buttonLayout id="btnLyt5" cssStyle="padding-top:5px">
-               <ta:button id="btn5" key="&nbsp;&nbsp;置&nbsp;&nbsp;尾&nbsp;&nbsp;"  onClick="fnEnd()"/>
+               <ta:button id="btn5" key="&nbsp;&nbsp;置&nbsp;&nbsp;尾&nbsp;&nbsp;"  onClick="fnEnd()" cssClass="btnmodify"/>
            </ta:buttonLayout>
      </ta:box>
      <ta:box span="4">
        <ta:buttonGroup id="btnLyt6" align="center" cssStyle="margin-top:10px;">
-               <ta:button id="btn6" key="确定" onClick="fnOkSetShowFields()" space="true"/>
-               <ta:button id="btn7" key="关闭" onClick="fnClose()"/>
+               <ta:button id="btn6" key="确定" onClick="fnOkSetShowFields()" space="true" cssClass="btnmodify"/>
+               <ta:button id="btn7" key="关闭" onClick="fnClose()" cssClass="btnmodify"/>
        </ta:buttonGroup>
      </ta:box>
    </ta:box>

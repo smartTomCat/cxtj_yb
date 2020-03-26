@@ -79,8 +79,8 @@
                                                                        onclick="addConditionGroup()">追加"或者"条件组</a>】
             <span class="to_right" style="line-height:35px;">
 	    <ta:buttonLayout align="right">
-            <ta:button key="保存统计方案" onClick="fnToSaveTjfa()"/>
-            <ta:button key="调出统计方案" onClick="fnToCalloutTjfa()"/>
+            <ta:button key="保存统计方案" onClick="fnToSaveTjfa()" cssClass="btnmodify"/>
+            <ta:button key="调出统计方案" onClick="fnToCalloutTjfa()" cssClass="btnmodify"/>
         </ta:buttonLayout>
 	</span>
         </div>
@@ -135,8 +135,8 @@
                 </tr>
                 <tr>
                     <td style="width:30px;text-align: left;" colspan="4">
-                        <ta:button key="增加条件" onClick="addCondition(this)"/>
-                        <ta:button key="删除该条件组" onClick="deleteCondition(this)"/>
+                        <ta:button key="增加条件" onClick="addCondition(this)" cssClass="btnadd"/>
+                        <ta:button key="删除该条件组" onClick="deleteCondition(this)" cssClass="btndelete"/>
                     </td>
                 </tr>
                 </tbody>
@@ -271,8 +271,8 @@
 </ta:form>
 
 <div style="text-align: center">
-    <ta:button id="myquery" key="查询" onClick="fnQueryDetailInfo()"/>
-    <ta:button id="reset" key="重置" type="resetPage"/>
+    <ta:button id="myquery" key="查询" onClick="fnQueryDetailInfo()" cssClass="btnmodify"/>
+    <ta:button id="reset" key="重置" type="resetPage" cssClass="btnmodify"/>
 </div>
 
 <!-- 统计信息结果datagrid -->
@@ -313,9 +313,9 @@
         <h2 style="font-size: 16px;float: left;margin-left: 10px;">详细信息</h2>
         <span class="to_right" style="line-height:28px;">
 	    <ta:buttonLayout align="right">
-            <ta:button key="选择显示项目" onClick="fnOpenSetDetailShowFiledWindows()"/>
-            <ta:button key="定义排序方式" onClick="fnOpenSetDetailOrderFiledWindows()"/>
-            <ta:button key="导出查询结果" onClick="fnExportDetail()"/>
+            <ta:button key="选择显示项目" onClick="fnOpenSetDetailShowFiledWindows()" cssClass="btnmodify"/>
+            <ta:button key="定义排序方式" onClick="fnOpenSetDetailOrderFiledWindows()" cssClass="btnmodify"/>
+            <ta:button key="导出查询结果" onClick="fnExportDetail()" cssClass="btnmodify"/>
         </ta:buttonLayout>
         <div id="query" class="slick-export-content exports2">
             <div  class="slick-export-item faceIcon icon-excel exports_dangqian_" title="导出当前页">导出当前页</div>

@@ -6,7 +6,7 @@
 <title>自定义查询</title>
 <%@ include file="/ta/inc.jsp" %>
 </head>
-<body>
+<body style="padding-top: 5px!important;background-color: white!important;">
     <ta:form id="frm" fit="true" >
         <ta:text id="yzb617" display="false"/>
         <ta:text id="yzb610" display="false"/>
@@ -17,9 +17,9 @@
 --%>
        </ta:box>
        <ta:box cols="5">
-	          <ta:radio id="newfa" value="1" name="radioGroup" key="新建统计方案" span="5" checked="true"/>
+	          <ta:radio id="newfa" value="1" name="radioGroup" key="新建统计方案" span="5" checked="true" />
 	          <ta:text id="n_yzb711" validType="[{type:'maxLength',param:[200],msg:'最大长度为200'}]" onClick="setRadionChecked()" key="统计方案名称" span="4"/>
-      		  <ta:button id="btnOK1" key="保存" onClick="fnSaveTjfa()"/>
+      		  <ta:button id="btnOK1" key="保存" onClick="fnSaveTjfa()" cssClass="btnmodify"/>
 	          </p>
 	          </br>
 	          <ta:radio id="selfa" value="2" name="radioGroup" key="保存到已有统计方案" span="5"/>
@@ -40,8 +40,8 @@
        </ta:box>
        <ta:box cssStyle="padding-top:15px">
         <ta:buttonGroup align="center">
-    		<ta:button id="btnOK" key="保存" onClick="fnSaveTjfa()" space="true"/>
-    		<ta:button id="btnClose" key="关闭" onClick="fnClose()"/>
+    		<ta:button id="btnOK" key="保存" onClick="fnSaveTjfa()" space="true" cssClass="btnmodify"/>
+    		<ta:button id="btnClose" key="关闭" onClick="fnClose()" cssClass="btnmodify"/>
         </ta:buttonGroup>
        </ta:box>
     </ta:form>

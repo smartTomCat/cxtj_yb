@@ -8,8 +8,8 @@
 <%@ include file="/ta/inc.jsp" %>
 <link rel="stylesheet" type="text/css" href="${basePath}cxtj/css/customizeQuery.css" />
 </head>
-<body>
-  <div style="height:200px;width:100%;overflow:auto;">
+<body style="padding-top: 10px!important;background-color: white!important;">
+  <div style="height:235px;width:100%;overflow:auto;">
 	   	  <table id="datagrid_query_id" width="100%" align="center" cellpadding="2" cellspacing="0" border="0">
 			 <tbody>
 			   <tr id="datagrid_title_id">
@@ -91,14 +91,14 @@
 					</tr>
 			    </s:if>
 				<td style="width:30px;text-align:left;" colspan="3">
-				     <ta:button key="增加" onClick="addTjzbhsTr(this)"  />
+				     <ta:button key="增加" onClick="addTjzbhsTr(this)" cssClass="btnadd"/>
 				</td>
 				</tbody>
 			</table>
 	</div>
    <ta:buttonGroup id="btnGroup5" cssStyle="padding-top:5px">
-        <ta:button id="btn6" key="确定" onClick="fnOkSetOrderFields()" />
-        <ta:button id="btn7" key="关闭" onClick="fnClose()" cssStyle="margin-left:8px;" />
+        <ta:button id="btn6" key="确定" onClick="fnOkSetOrderFields()" cssClass="btnmodify"/>
+        <ta:button id="btn7" key="关闭" onClick="fnClose()" cssStyle="margin-left:8px;" cssClass="btnmodify"/>
    </ta:buttonGroup>
 </body>
 </html>
