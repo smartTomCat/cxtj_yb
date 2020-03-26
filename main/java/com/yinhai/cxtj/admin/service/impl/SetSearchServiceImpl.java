@@ -97,6 +97,12 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
             //插入Tamenu
             String menuid = insertTaMenu(dto.getAsString("yzb611"),dto.getAsString("yzb612"),dto.getUser().getUserid());
             zb61Domain.setYzb618(menuid);
+            //检查yzb615
+            String yzb615 = zb61Domain.getYzb615();
+            if(ValidateUtil.isNotEmpty(yzb615) && yzb615.contains("\"")){
+                yzb615 = yzb615.replaceAll("\"","'");
+            }
+            zb61Domain.setYzb615(yzb615);
             //插入zb61
             dao.insert("zb61.insert", zb61Domain);
             dto.append("b", true);
@@ -104,6 +110,12 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
         } else {
             //更新
             dto.put("yzb670", dto.getAsLong("yzb670"));
+            //检查yzb615
+            String yzb615 = dto.getAsString("yzb615");
+            if(ValidateUtil.isNotEmpty(yzb615) && yzb615.contains("\"")){
+                yzb615 = yzb615.replaceAll("\"","'");
+            }
+            dto.put("yzb615",yzb615);
             int i = dao.update("zb61.updateAvailable", dto);
             if (i != 1) {
                 throw new AppException("保存主题错误，请联系管理人员！");

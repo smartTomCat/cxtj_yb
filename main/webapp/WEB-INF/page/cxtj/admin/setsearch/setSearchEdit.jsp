@@ -55,7 +55,7 @@
     }
     function fnSaveBack() {
         var yzb610 = Base.getValue('yzb610');
-        if (yzb610) {
+        if (!yzb610) {
             Base.showObj('btnNew');
             Base.hideObj('btnOld');
         } else {

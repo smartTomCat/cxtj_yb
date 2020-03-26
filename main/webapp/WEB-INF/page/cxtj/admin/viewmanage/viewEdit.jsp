@@ -56,7 +56,7 @@
         var _autoval = true;
         var _sucback = fnSaveBack;
         var _falback = null;
-//        Base.submit(_id, _url, _param, _onsub, _autoval, _sucback, _falback);
+       Base.submit(_id, _url, _param, _onsub, _autoval, _sucback, _falback);
     }
 
 

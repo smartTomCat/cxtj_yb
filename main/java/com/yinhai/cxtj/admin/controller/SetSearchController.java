@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * 查询统计主题定义
  * 
- * @author 
+ * @author
  */
 @Controller
 @RequestMapping("/admin/setSearch")
@@ -75,6 +75,16 @@ public class SetSearchController extends CxtjBaseController {
 		setSelectInputList("yzb670",list);
 		Zb61Domain zb61Domain = (Zb61Domain) setSearchService.getDomainObjectById(dto.getAsBigDecimal("yzb610"));
 		if (!ValidateUtil.isEmpty(zb61Domain)) {
+			//ta 前端组件textarea 的文本显示内容不能带'' \n 符号， 在此将sql中的'' 批量替换为 ""
+			String yzb615 = zb61Domain.getYzb615();
+			if (ValidateUtil.isNotEmpty(yzb615) && yzb615.contains("'")) {
+				yzb615 = yzb615.replaceAll("'", "\"");
+
+			}
+			if (yzb615.contains("\n")) {
+				yzb615 = yzb615.replaceAll("\n","  ");
+			}
+			zb61Domain.setYzb615(yzb615);
 			setData(zb61Domain.toMap(), false);
 		}
 		return "cxtj/admin/setsearch/setSearchEdit";

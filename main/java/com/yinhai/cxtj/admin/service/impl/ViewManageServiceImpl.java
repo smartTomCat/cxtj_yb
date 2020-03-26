@@ -67,6 +67,12 @@ public class ViewManageServiceImpl extends CxtjBaseServiceImpl implements ViewMa
         if (sql.endsWith(";")) {
             sql = sql.substring(0, sql.length() - 1);
         }
+        //ta 前端组件textarea 的文本显示内容不能带'' 符号， 在此将sql中的"" 批量替换为 ''
+        if (sql.contains("\"")) {
+            sql = sql.replaceAll("\"", "'");
+
+        }
+        // ;处理
         if (sql.contains(";")) {
             String[] sqls = sql.split(";");
             for (String sqlItem : sqls) {
