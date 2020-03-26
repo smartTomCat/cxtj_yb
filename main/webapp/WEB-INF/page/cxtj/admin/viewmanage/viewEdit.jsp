@@ -6,7 +6,7 @@
     <title>视图新增|编辑页面</title>
     <%@ include file="/ta/inc.jsp" %>
 </head>
-<body style="overflow-x:hidden;padding-top: 0px!important;background-color: white!important;">
+<body style="overflow-x:hidden;padding-top: 0!important;background-color: white!important;">
 <ta:pageloading/>
 <ta:form id="form1">
     <ta:box cols="2">
@@ -34,7 +34,7 @@
 
     function init() {
         var yzb680 = Base.getValue('yzb680');
-        if (yzb680 == '') {
+        if (!yzb680) {
             //新增
             Base.showObj('btnNew');
             Base.hideObj('btnOld');
@@ -48,15 +48,17 @@
 
     //保存
     function fnSave() {
-        beforeSave();
-        var _id = 'form1';
-        var _url = 'viewManageController!toSave.do';
-        var _param = null;
-        var _onsub = null;
-        var _autoval = true;
-        var _sucback = fnSaveBack;
-        var _falback = null;
-       Base.submit(_id, _url, _param, _onsub, _autoval, _sucback, _falback);
+        var b = beforeSave();
+        if(b){
+            var _id = 'form1';
+            var _url = 'viewManageController!toSave.do';
+            var _param = null;
+            var _onsub = null;
+            var _autoval = true;
+            var _sucback = fnSaveBack;
+            var _falback = null;
+            Base.submit(_id, _url, _param, _onsub, _autoval, _sucback, _falback);
+        }
     }
 
 
@@ -93,13 +95,13 @@
         var reg1 = /^create or replace view */;
         if (!reg1.test(sql)) {
             Base.alert("请以 create or replace view 开头", "warn");
-            return;
+            return false;
         }
         //不包含非法操作字符
         var reg2 = /(update|delete|drop|truncate|alter)/;
         if (reg2.test(sql)) {
             Base.alert("请勿包含以下关键字 update|delete|drop|truncate|alter 等", "warn");
-            return;
+            return false;
         }
         //sql中的视图名称 必须和 输入框中的保持一致
         var index1 = sql.indexOf("view") + 4;
@@ -107,8 +109,9 @@
         var viewName = sql.substring(index1, index2).trim();
         if (viewName != Base.getValue("yzb681")) {
             Base.alert("sql中的视图名称请与输入框保持一致", "warn");
-            return;
+            return false;
         }
+        return true;
     }
 
 
