@@ -484,7 +484,7 @@
 
 <!-- 详细信息datagrid -->
 <div id="deailInfoId" layout="column">
-    <div class="tafieldset_header" style="position:relative;">
+    <div class="tafieldset_header" style="position:relative;background-color: white;margin-top: 6px;">
         <div class="header-bg"></div>
         <h2 style="font-size: 16px;float: left;margin-left:10px;">详细信息</h2>
         <span class="to_right" style="line-height:28px;">
