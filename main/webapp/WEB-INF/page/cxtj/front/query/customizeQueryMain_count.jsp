@@ -296,7 +296,7 @@
 
 <!-- 统计信息结果datagrid -->
 <ta:fieldset id="statisticalInfoId" key="<h2 style=padding:0px;font-size:16px;margin-right:8px;font-weight:bold;>统计结果</h2><span style=color:red;>(鼠标点击统计值，可反查明细)</span>" >
-    <ta:datagrid id="queryResultDgd" forceFitColumns="true" height="250px" haveSn="true" selectType="checkbox">
+    <ta:datagrid id="queryResultDgd" forceFitColumns="true" height="365px" haveSn="true" selectType="checkbox">
         <ta:datagridItem id="tjsjts" sortable="true"
                          key="<span style=color:red;float:left>请先输入统计条件，选择统计项，统计指标，然后再点击“统计”按钮进行统计。</span>"/>
         <ta:dataGridToolPaging url="customizeQueryAction!query.do" pageSize="10" showExcel="false" submitIds="queryId"/>

@@ -375,7 +375,7 @@
 	<select id="queryAa10a1" parameterClass="java.lang.String" resultClass="java.util.HashMap">
 		SELECT
 			aaa102 as id,
-			aaa101 as name
+			aaa103 as name
 		FROM
 			aa10a1
 		WHERE

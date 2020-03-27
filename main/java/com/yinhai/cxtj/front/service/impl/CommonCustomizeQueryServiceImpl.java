@@ -901,6 +901,7 @@ public class CommonCustomizeQueryServiceImpl extends CxtjBaseServiceImpl impleme
         String result = "";
         if (Constants.DEFAULT_DS_NO.equals(yzb670)) {
             result = CodeTableUtil.getCodeListJson(aaa100,null);
+            return result;
         }
         IDao iDao = super.getDynamicDao(yzb670);
         List list= iDao.queryForList("zb62.queryAa10a1",aaa100);
