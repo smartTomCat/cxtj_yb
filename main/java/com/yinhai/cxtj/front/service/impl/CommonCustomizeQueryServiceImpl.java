@@ -1,10 +1,12 @@
 package com.yinhai.cxtj.front.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.yinhai.core.app.api.util.JSonFactory;
 import com.yinhai.core.app.api.util.ServiceLocator;
 import com.yinhai.core.common.api.exception.AppException;
 import com.yinhai.core.common.api.util.ValidateUtil;
 import com.yinhai.core.common.ta3.dto.TaParamDto;
+import com.yinhai.cxtj.admin.Constants;
 import com.yinhai.cxtj.admin.base.service.impl.CxtjBaseServiceImpl;
 import com.yinhai.cxtj.admin.domain.*;
 import com.yinhai.cxtj.admin.service.SearchParamService;
@@ -18,6 +20,7 @@ import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.json.JSONObject;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -886,4 +889,24 @@ public class CommonCustomizeQueryServiceImpl extends CxtjBaseServiceImpl impleme
     }
 
 
+    /**
+     * 根据数据源查找码表中对应的码值集合
+     * @param yzb670 数据源id
+     * @param aaa100 码值代号
+     * @return 码值集合JSON 字串
+     * @throws Exception
+     */
+    @Override
+    public String queryCollectionData(String yzb670, String aaa100) throws Exception {
+        String result = "";
+        if (Constants.DEFAULT_DS_NO.equals(yzb670)) {
+            result = CodeTableUtil.getCodeListJson(aaa100,null);
+        }
+        IDao iDao = super.getDynamicDao(yzb670);
+        List list= iDao.queryForList("zb62.queryAa10a1",aaa100);
+        if (ValidateUtil.isNotEmpty(list)) {
+            result = JSON.toJSONString(list);
+        }
+        return result;
+    }
 }

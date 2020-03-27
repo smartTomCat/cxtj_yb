@@ -30,7 +30,7 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
         Map  outputDomain = new HashMap();
         String xml  = (String)para.get("xml");
         Map map = new HashMap();
-        Map outmap = getGenerateSql(xml);
+        Map outmap = getGenerateSql(xml,para.getAsString("yzb670"));
 
         if(ValidateUtil.isNotEmpty((String)outmap.get("msg"))){//有错误消息
             outputDomain.put("appCode", "-1");
@@ -106,12 +106,12 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
      * 获取生成的统计SQL(统计查询SQL)
      * @return
      */
-    private  Map getGenerateSql(String xml) throws Exception{
+    private  Map getGenerateSql(String xml,String yzb670) throws Exception{
         Map outMap = new HashMap();//返回SQL和字段title信息
         StringBuilder sql = new StringBuilder();//sql 串
         if(xml!=null){
             Map map = super.xml2Obj(xml);//xml2obj 对象
-            Map outFiledMap = this.generateStatisticalFiledSql(map);//生成filed 字段SQL
+            Map outFiledMap = this.generateStatisticalFiledSql(map,yzb670);//生成filed 字段SQL
             String ztdm = (String)map.get("ztdm");
             if(ValidateUtil.isNotEmpty(ztdm)){
                 sql.append("SELECT ");
@@ -166,7 +166,7 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
         Map  outputDomain = new HashMap();
         String xml  = (String)para.get("xml");
         Map map = new HashMap();
-        Map outmap = getGenerateSql(xml);
+        Map outmap = getGenerateSql(xml,para.getAsString("yzb670"));
 
         if(ValidateUtil.isNotEmpty((String)outmap.get("msg"))){//有错误消息
             outputDomain.put("appCode", "-1");
@@ -201,7 +201,7 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
         String xml  = (String)para.get("xml");
         Map map = new HashMap();
 
-        Map outmap = getGenerateDetailInfoSql(xml);
+        Map outmap = getGenerateDetailInfoSql(xml,para.getAsString("yzb670"));
 
         if(ValidateUtil.isNotEmpty((String)outmap.get("msg"))){//有错误消息
             outputDomain.put("appCode", "-1");
@@ -305,14 +305,14 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
      * @return
      * @throws Exception
      */
-    private  Map getGenerateDetailInfoSql(String xml)throws Exception{
+    private  Map getGenerateDetailInfoSql(String xml, String yzb670)throws Exception{
         Map outMap = new HashMap();//返回SQL和字段title信息
         StringBuilder sql = new StringBuilder();//详细信息sql 串
         StringBuilder _sql = new StringBuilder();//详细信息sql 串
 
         if(xml!=null){
             Map map = xml2Obj(xml);//xml2obj 对象
-            Map outFiledMap = this.generateDetailInfoFiledSql(map);//生成filed 字段SQL
+            Map outFiledMap = this.generateDetailInfoFiledSql(map, yzb670);//生成filed 字段SQL
             String ztdm = (String)map.get("ztdm");
             if(ValidateUtil.isNotEmpty(ztdm)){
 
@@ -387,7 +387,7 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
      * @return
      * @throws Exception
      */
-    private Map generateStatisticalFiledSql(Map data) throws Exception{
+    private Map generateStatisticalFiledSql(Map data,String yzb670) throws Exception{
         Map outMap = new HashMap();
         if(null!=data){
             //存放界面展示信息
@@ -414,7 +414,9 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
 
                         String dataType = (String)field.get("datatype");
                         if(ValidateUtil.isNotEmpty(dataType) && ("21".equals(dataType)|| "22".equals(dataType) || "23".equals(dataType))){//代码平铺、树、datagrid
-                            field.put("collectionData", CodeTableUtil.getCodeListJson((String)field.get("id"), null));
+//                            field.put("collectionData", CodeTableUtil.getCodeListJson((String)field.get("id"), null));
+                            String collectionData = super.queryCollectionData(yzb670,(String)field.get("id"));
+                            field.put("collectionData", collectionData);
                         }
                         filedInfoList.add(field);//生成datagrid信息（分组）
                     }
@@ -740,7 +742,7 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
      * @return
      * @throws Exception
      */
-    private  Map generateDetailInfoFiledSql(Map data) throws Exception{
+    private  Map generateDetailInfoFiledSql(Map data,String yzb670) throws Exception{
         Map outMap = new HashMap();
         if(null!=data){
             List filedInfoList = new ArrayList();   //存放界面展示信息
@@ -762,7 +764,9 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
                             sql.append(field.get("id")).append(" AS ").append(field.get("id"));
                             String dataType = (String)field.get("datatype");
                             if(ValidateUtil.isNotEmpty(dataType) && ("21".equals(dataType)|| "22".equals(dataType) || "23".equals(dataType))){//代码平铺、树、datagrid
-                                field.put("collectionData", CodeTableUtil.getCodeListJson((String)field.get("id"), null));
+//                                field.put("collectionData", CodeTableUtil.getCodeListJson((String)field.get("id"), null));
+                                String collectionData = super.queryCollectionData(yzb670,(String)field.get("id"));
+                                field.put("collectionData", collectionData);
                             }
                             count ++;
                         }
@@ -811,7 +815,9 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
                                     }
                                     String dataType = zb62Domain.getYzb62a();
                                     if(ValidateUtil.isNotEmpty(dataType) && ("21".equals(dataType)|| "22".equals(dataType) || "23".equals(dataType))){//代码平铺、树、datagrid
-                                        field.put("collectionData", CodeTableUtil.getCodeListJson((String)zb62Domain.getYzb628(), null));
+//                                        field.put("collectionData", CodeTableUtil.getCodeListJson((String)zb62Domain.getYzb628(), null));
+                                        String collectionData = super.queryCollectionData(yzb670,(String)zb62Domain.getYzb628());
+                                        field.put("collectionData", collectionData);
                                     }
                                     filedInfoList.add(field);//生成datagrid信息（分组）
                                 }
@@ -835,7 +841,9 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
 
                                     String dataType = (String)field.get("yzb62a");
                                     if(ValidateUtil.isNotEmpty(dataType) && ("21".equals(dataType)|| "22".equals(dataType) || "23".equals(dataType))){//代码平铺、树、datagrid
-                                        field.put("collectionData", CodeTableUtil.getCodeListJson((String)field.get("yzb628"), null));
+//                                        field.put("collectionData", CodeTableUtil.getCodeListJson((String)field.get("yzb628"), null));
+                                        String collectionData = super.queryCollectionData(yzb670,(String)field.get("yzb628"));
+                                        field.put("collectionData", collectionData);
                                     }
                                     count ++;
                                 }
@@ -884,7 +892,9 @@ public class PgCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceImpl
 
                                         String dataType = zb62Domain.getYzb62a();
                                         if(ValidateUtil.isNotEmpty(dataType) && ("21".equals(dataType)|| "22".equals(dataType) || "23".equals(dataType))){//代码平铺、树、datagrid
-                                            field.put("collectionData", CodeTableUtil.getCodeListJson((String)zb62Domain.getYzb628(), null));
+//                                            field.put("collectionData", CodeTableUtil.getCodeListJson((String)zb62Domain.getYzb628(), null));
+                                            String collectionData = super.queryCollectionData(yzb670,(String)zb62Domain.getYzb628());
+                                            field.put("collectionData", collectionData);
                                         }
                                         filedInfoList.add(field);//生成datagrid信息（分组）
                                     }

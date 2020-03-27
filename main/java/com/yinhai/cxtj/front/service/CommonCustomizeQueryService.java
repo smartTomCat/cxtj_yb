@@ -130,4 +130,13 @@ public interface CommonCustomizeQueryService extends CxtjBaseService {
 
     public Zb61Domain getDomainObjectByYzb610(String yzb610) throws Exception;
 
+    /**
+     * 根据数据源查找码表中对应的码值集合
+     * @param yzb670 数据源id
+     * @param aaa100 码值代号
+     * @return 码值集合JSON 字串
+     * @throws Exception
+     */
+    public String queryCollectionData(String yzb670, String aaa100) throws Exception;
+
 }

@@ -345,7 +345,7 @@ public class CustomizeQueryController extends CxtjBaseController {
     }
 
     /**
-     * 点击统计查询按钮 (非分页，图表用)
+     * 点击统计查询按钮 (非分页，图表用) 未用
      *
      * @return
      * @throws Exception
@@ -737,7 +737,7 @@ public class CustomizeQueryController extends CxtjBaseController {
     }
 
     /**
-     * 根据数据库类型 返回查询结果
+     * 根据数据库类型 返回查询结果 未用
      * @param yzb670
      * @return
      */
