@@ -9,7 +9,7 @@ import java.util.List;
 public interface TreeCodeService extends CxtjBaseService {
 	public static final String SERVICEKEY="treeCodeService";
 	
-	public List getTreeDataByType(String type) throws Exception;
+	public List getTreeDataByType(String type,String yzb670) throws Exception;
 	public List getxzTreeByType() throws Exception;
 	
 	public List getSxTreeData() throws Exception ;

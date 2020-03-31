@@ -26,6 +26,10 @@ public class Zb68Domain extends InputDomain {
      */
     private String yzb682;
     /**
+     * 视图备注
+     */
+    private String yzb683;
+    /**
      * 数据源配置流水号
      */
     private BigDecimal yzb670;
@@ -62,5 +66,11 @@ public class Zb68Domain extends InputDomain {
         this.yzb670 = yzb670;
     }
 
+    public String getYzb683() {
+        return yzb683;
+    }
 
+    public void setYzb683(String yzb683) {
+        this.yzb683 = yzb683;
+    }
 }

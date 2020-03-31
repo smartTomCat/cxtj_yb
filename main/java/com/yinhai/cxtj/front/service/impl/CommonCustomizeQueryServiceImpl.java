@@ -13,6 +13,7 @@ import com.yinhai.cxtj.admin.service.SearchParamService;
 import com.yinhai.cxtj.admin.service.TreeCodeService;
 import com.yinhai.cxtj.front.domain.*;
 import com.yinhai.cxtj.front.service.CommonCustomizeQueryService;
+import com.yinhai.modules.codetable.api.domain.vo.AppCodeVo;
 import com.yinhai.modules.codetable.api.util.CodeTableUtil;
 import com.yinhai.sysframework.persistence.PageBean;
 import com.yinhai.sysframework.persistence.ibatis.IDao;
@@ -29,6 +30,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.yinhai.modules.codetable.api.util.CodeTableUtil.getCodeList;
 import static com.yinhai.modules.codetable.api.util.CodeTableUtil.getDesc;
 
 /**
@@ -775,24 +777,8 @@ public class CommonCustomizeQueryServiceImpl extends CxtjBaseServiceImpl impleme
                     zb73.put("codes",list);//存放码值列表信息
                 }else if("22".equals(yzb62a)){//树数据
                     yzb628 = (String)zb73.get("yzb628");
-                    if(ValidateUtil.isNotEmpty(yzb62a)&& "22".equals(yzb62a) && "AAA020".equals(yzb628)){//陕西行政区划树(特殊处理)
-                        List<ApptreecodeDomain> list = treeCodeService.getSxTreeData();
-                        List l  = new ArrayList();Map m = null;
-                        for(ApptreecodeDomain apptreecodeDomain:list){
-                            m = new HashMap();
-                            m.put("id", apptreecodeDomain.getId());
-                            if(ValidateUtil.isEmpty(apptreecodeDomain.getPId())){
-                                m.put("pId", "");
-                            }else{
-                                m.put("pId", apptreecodeDomain.getPId());
-                            }
-                            m.put("name", apptreecodeDomain.getName());
-                            m.put("isParent", apptreecodeDomain.getIsParent());
-                            l.add(m);
-                        }
-                        zb73.put("treeData",JSonFactory.bean2json(l));//完整树数据
-                    }else if(ValidateUtil.isNotEmpty(yzb62a)&& "22".equals(yzb62a) && ValidateUtil.isNotEmpty(yzb628)){//其它的树
-                        zb73.put("treeData",JSonFactory.bean2json(treeCodeService.getTreeDataByType(yzb628)));//存放完整树数据
+                    if(ValidateUtil.isNotEmpty(yzb62a)&& "22".equals(yzb62a) && ValidateUtil.isNotEmpty(yzb628)){//其它的树
+                        zb73.put("treeData",JSonFactory.bean2json(treeCodeService.getTreeDataByType(yzb628,para.getAsString("yzb670"))));//存放完整树数据
                     }
                     //获取选择的树数据
                     BigDecimal yzb730 = (BigDecimal)zb73.get("yzb730");
@@ -910,4 +896,17 @@ public class CommonCustomizeQueryServiceImpl extends CxtjBaseServiceImpl impleme
         }
         return result;
     }
+
+    @Override
+    public List queryCodeList(String yzb670, String aaa100) throws Exception {
+        List<AppCodeVo> codeList;
+        if (Constants.DEFAULT_DS_NO.equals(yzb670)) {
+            codeList = getCodeList(aaa100,null);
+            return codeList;
+        }
+        IDao iDao = super.getDynamicDao(yzb670);
+        codeList= iDao.queryForList("zb62.queryCodeList",aaa100);
+        return codeList;
+    }
+
 }

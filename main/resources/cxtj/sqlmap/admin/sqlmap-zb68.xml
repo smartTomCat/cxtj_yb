@@ -11,6 +11,7 @@
         yzb680,  <!-- 视图配置管理流水号-->
         yzb681,  <!-- 视图名称 -->
         yzb682,  <!-- 视图sql -->
+        yzb683,  <!-- 视图备注 -->
         yzb670,  <!-- 数据源配置流水号 -->
         aae011,  <!-- 经办人       -->
         yae116,  <!-- 经办人编号   -->
@@ -20,6 +21,7 @@
         #yzb680#,  <!-- 视图配置管理流水号-->
         #yzb681#,  <!-- 视图名称-->
         #yzb682#,  <!-- 视图sql-->
+        #yzb683#,  <!-- 视图sql-->
         #yzb670#,  <!-- 数据源配置流水号-->
         #aae011#,  <!-- 经办人       -->
         #yae116#,  <!-- 经办人编号   -->
@@ -31,6 +33,7 @@
     <update id="update" parameterClass="zb68Domain">
         UPDATE zb68 SET
         yzb682 = #yzb682#,
+        yzb683 = #yzb683#,
         aae011 = #aae011#,
         yae116 = #yae116#,
         aae017 = #aae017#,
@@ -44,12 +47,13 @@
         DELETE FROM zb68 WHERE yzb680 = #yzb680#
     </delete>
 
-    <!--通过主键删除单条数据-->
+    <!--查询-->
     <select id="queryViews" parameterClass="map" resultClass="java.util.HashMap">
         SELECT
         a.yzb680 as yzb680,  <!-- 视图配置管理流水号-->
         a.yzb681 as yzb681,  <!-- 视图名称 -->
         a.yzb682 as yzb682,  <!-- 视图sql -->
+        a.yzb683 as yzb683,  <!-- 视图sql -->
         a.yzb670 as yzb670,  <!-- 数据源配置流水号 -->
         a.aae011 as aae011,  <!-- 经办人       -->
         a.yae116 as yae116,  <!-- 经办人编号   -->

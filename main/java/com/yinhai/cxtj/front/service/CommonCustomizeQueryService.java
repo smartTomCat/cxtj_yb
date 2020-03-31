@@ -139,4 +139,13 @@ public interface CommonCustomizeQueryService extends CxtjBaseService {
      */
     public String queryCollectionData(String yzb670, String aaa100) throws Exception;
 
+    /**
+     * 根据数据源查找码表中对应的码值集合
+     * @param yzb670
+     * @param aaa100
+     * @return
+     * @throws Exception
+     */
+    public List queryCodeList(String yzb670, String aaa100) throws Exception;
+
 }

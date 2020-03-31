@@ -11,6 +11,7 @@
        <ta:panel id="pnl1" fit="true" cols="2" >
            <ta:text id="yzb617" display="false" />
            <ta:text id="yzb610" display="false" />
+           <ta:text id="yzb670" display="false" />
           <ta:text id="yzb711" key="统计方案名称" validType="[{type:'maxLength',param:[200],msg:'最大长度为200'}]" />
           <ta:buttonLayout align="right" cssStyle="float:right;">
             <ta:button id="btnQue" key="查询" onClick="fnQuery()" cssClass="btnmodify"/>

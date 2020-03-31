@@ -17,7 +17,9 @@
                  onChange="fnCheckName(this)" readOnly="true"/>
     </ta:box>
     <ta:textarea id="yzb682" key="视图sql" height="300" placeholder="只允许使用 '' "
-                 validType="[{type:'maxLength',param:[1000],msg:'最大长度为600'}]" required="true"/>
+                 validType="[{type:'maxLength',param:[2000],msg:'最大长度为2000'}]" required="true"/>
+    <ta:textarea id="yzb683" key="视图备注"
+                 validType="[{type:'maxLength',param:[500],msg:'最大长度为500'}]"/>
     <ta:buttonGroup align="center" cssStyle="margin-top:20px">
         <ta:button id="btnNew" key="新增保存" space="true" onClick="fnSave()" cssClass="btnmodify"/>
         <ta:button id="btnOld" key="修改保存" space="true" onClick="fnSave()" cssClass="btnmodify"/>

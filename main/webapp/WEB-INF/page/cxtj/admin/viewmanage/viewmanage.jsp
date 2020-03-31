@@ -34,6 +34,7 @@
         <ta:datagridItem id="yzb672" key="数据源名称" dataAlign="center" formatter="setDefaultName"/>
         <ta:datagridItem id="yzb681" key="视图名称" icon="icon-add2" dataAlign="center"/>
         <ta:datagridItem id="yzb682" key="视图sql" showDetailed="true" align="center" dataAlign="center"/>
+        <ta:datagridItem id="yzb683" key="视图备注" showDetailed="true" align="center" dataAlign="center"/>
         <ta:datagridItem id="aae011" key="经办人" showDetailed="true" align="center" dataAlign="center"/>
         <ta:datagridItem id="aae036" key="经办日期" dataAlign="center"/>
         <ta:dataGridToolPaging url="" submitIds="form1" pageSize="10"/>
@@ -53,20 +54,6 @@
 
 
     function init() {
-        // $('#btnCreate').css('margin-top', '6px');
-        // $('#btnModify').css('margin-top', '6px');
-        // $('#btnRemove').css('margin-top', '6px');
-        // $('#btnRemove').css('margin-right', '-20px');
-        //
-        // $('#btnCreateSearchItems').css('margin-top', '6px');
-        // $('#btnCreateSearchItem').css('margin-top', '6px');
-        // $('#btnModifySearchItem').css('margin-top', '6px');
-        // $('#btnRemoveSearchItem').css('margin-top', '6px');
-        // $('#btnRemoveSearchItem').css('margin-right', '-20px');
-        //
-        // $('#btnSelSearchOrder').css('margin-top', '6px');
-        // $('#btnRemoveSearchOrder').css('margin-top', '6px');
-        // $('#btnRemoveSearchOrder').css('margin-right', '-20px');
         fnQuery();
     }
 
@@ -101,8 +88,8 @@
         var _title = '新增视图';
         var _url = 'viewManageController!toEdit.do';
         var _param = null;
-        var _w = 700;
-        var _h = 450;
+        var _w = 750;
+        var _h = 530;
         var _load = null;
         var _close = fnQuery;
         var _iframe = true;
@@ -120,10 +107,11 @@
                 "dto.yzb680": data[0].yzb680,
                 "dto.yzb670": data[0].yzb670,
                 "dto.yzb681": data[0].yzb681,
-                "dto.yzb682": data[0].yzb682
+                "dto.yzb682": data[0].yzb682,
+                "dto.yzb683": data[0].yzb683
             };
-            var _w = 700;
-            var _h = 450;
+            var _w = 750;
+            var _h = 530;
             var _load = null;
             var _close = fnQuery;
             var _iframe = true;

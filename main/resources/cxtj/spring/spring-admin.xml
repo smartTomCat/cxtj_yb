@@ -103,7 +103,7 @@
     </bean>
 
     <!-- 自定义查询统计业务公共service-->
-    <bean id="commonCustomizeQueryServiceImpl" parent="transactionProxy">
+    <bean id="commonCustomizeQueryService" parent="transactionProxy">
         <property name="target">
             <bean class="com.yinhai.cxtj.front.service.impl.CommonCustomizeQueryServiceImpl" >
             </bean>

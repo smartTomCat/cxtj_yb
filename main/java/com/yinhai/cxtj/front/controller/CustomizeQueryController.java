@@ -56,6 +56,8 @@ public class CustomizeQueryController extends CxtjBaseController {
     PgCustomizeQueryService pgCustomizeQueryService;
     @Resource
     Gbase8aCustomizeQueryService gbase8aCustomizeQueryService;
+    @Resource
+    CommonCustomizeQueryService commonCustomizeQueryService;
 
     @RequestMapping("customizeQueryAction.do")
     public String execute() throws Exception {
@@ -258,30 +260,11 @@ public class CustomizeQueryController extends CxtjBaseController {
             String yzb62a = (String) map.get("yzb62a");
             String yzb628 = (String) map.get("yzb628");
             if (ValidateUtil.isNotEmpty(yzb62a) && "21".equals(yzb62a) && ValidateUtil.isNotEmpty(yzb628)) {
-
-                setData("codeList", getCodeList(yzb628, null));
+                List codeList = commonCustomizeQueryService.queryCodeList(dto.getAsString("yzb670"),yzb628);
+                setData("codeList", codeList);
             }
-            if (ValidateUtil.isNotEmpty(yzb62a) && "22".equals(yzb62a) && "AAA020".equals(yzb628)) {//陕西行政区划树(特殊处理)
-                List list = treeCodeService.getSxTreeData();
-                if (ValidateUtil.isNotEmpty(list)) {
-                    List l = new ArrayList();
-                    Map m;
-                    for (ApptreecodeDomain apptreecodeDomain : (List<ApptreecodeDomain>) list) {
-                        m = new HashMap();
-                        m.put("id", apptreecodeDomain.getId());
-                        if (ValidateUtil.isEmpty(apptreecodeDomain.getPId())) {
-                            m.put("pId", "");
-                        } else {
-                            m.put("pId", apptreecodeDomain.getPId());
-                        }
-                        m.put("name", apptreecodeDomain.getName());
-                        m.put("isParent", apptreecodeDomain.getIsParent());
-                        l.add(m);
-                    }
-                    setData("codeList", JSonFactory.bean2json(l));
-                }
-            } else if (ValidateUtil.isNotEmpty(yzb62a) && "22".equals(yzb62a) && ValidateUtil.isNotEmpty(yzb628)) {//其它的树
-                setData("codeList", treeCodeService.getTreeDataByType(yzb628));
+            if (ValidateUtil.isNotEmpty(yzb62a) && "22".equals(yzb62a) && ValidateUtil.isNotEmpty(yzb628)) {//其它的树
+                setData("codeList", treeCodeService.getTreeDataByType(yzb628,dto.getAsString("yzb670")));
             }
 
         }
@@ -542,6 +525,7 @@ public class CustomizeQueryController extends CxtjBaseController {
         //查询统计方式 1查询 2统计
         setData("yzb617",getTaDto().getAsString("yzb617"));
         setData("yzb610",getTaDto().getAsString("yzb610"));
+        setData("yzb670",getTaDto().getAsString("yzb670"));
         return "cxtj/front/query/calloutTjfaPage";
     }
 

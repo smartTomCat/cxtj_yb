@@ -3,153 +3,175 @@
 
 <!-- 表zb74 (查询统计方案WHERE条件的代码值) 的所有SQL语句映射配置表  生成时间：2016-06-15 17:19:13 -->
 <sqlMap namespace="zb74">
-	<typeAlias alias="zb74Domain" type="com.yinhai.cxtj.front.domain.Zb74Domain"/>
+    <typeAlias alias="zb74Domain" type="com.yinhai.cxtj.front.domain.Zb74Domain"/>
 
-<!--TA+BEGIN--> 
-	<!-- 查询一批数据的查询 -->
-	<select id="getList" parameterClass="map" resultClass="zb74Domain">
-		SELECT 
-		       a.yzb740 as yzb740,   <!-- 查询统计方案WHERE条件代码值流水号 -->
-		       a.yzb730 as yzb730,   <!-- 查询统计方案的WHERE条件流水号 -->
-		       a.yzb741 as yzb741,   <!-- 代码值       -->
-		       a.aae036 as aae036    <!-- 经办日期     -->
-		  FROM zb74 a
-		 WHERE 1=1 
-		<isNotEmpty prepend="AND" property="yzb740">   <!-- 查询统计方案WHERE条件代码值流水号 -->
-		       a.yzb740 = #yzb740:DOUBLE#               
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb730">   <!-- 查询统计方案的WHERE条件流水号 -->
-		       a.yzb730 = #yzb730:DOUBLE#               
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb741">   <!-- 代码值       -->
-		       a.yzb741 = #yzb741:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
-		       a.aae036 = #aae036:TIMESTAMP#            
-		</isNotEmpty>
+    <!--TA+BEGIN-->
+    <!-- 查询一批数据的查询 -->
+    <select id="getList" parameterClass="map" resultClass="zb74Domain">
+        SELECT
+        a.yzb740 as yzb740,   <!-- 查询统计方案WHERE条件代码值流水号 -->
+        a.yzb730 as yzb730,   <!-- 查询统计方案的WHERE条件流水号 -->
+        a.yzb741 as yzb741,   <!-- 代码值       -->
+        a.aae036 as aae036    <!-- 经办日期     -->
+        FROM zb74 a
+        WHERE 1=1
+        <isNotEmpty prepend="AND" property="yzb740">   <!-- 查询统计方案WHERE条件代码值流水号 -->
+            a.yzb740 = #yzb740:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb730">   <!-- 查询统计方案的WHERE条件流水号 -->
+            a.yzb730 = #yzb730:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb741">   <!-- 代码值       -->
+            a.yzb741 = #yzb741:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
+            a.aae036 = #aae036:TIMESTAMP#
+        </isNotEmpty>
 
+    </select>
+
+    <!-- 通过主键进行查询 -->
+    <select id="get" parameterClass="map" resultClass="zb74Domain">
+        SELECT
+        a.yzb740 as yzb740,   <!-- 查询统计方案WHERE条件代码值流水号 -->
+        a.yzb730 as yzb730,   <!-- 查询统计方案的WHERE条件流水号 -->
+        a.yzb741 as yzb741,   <!-- 代码值       -->
+        a.aae036 as aae036    <!-- 经办日期     -->
+        FROM zb74 a
+        WHERE 1 = 1
+        <![CDATA[	   AND a.yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
+        <![CDATA[	   AND a.yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
+    </select>
+
+    <!-- 插入单条数据 -->
+    <insert id="insert" parameterClass="zb74Domain">
+        INSERT INTO zb74 (
+        yzb740,  <!-- 查询统计方案WHERE条件代码值流水号 -->
+        yzb730,  <!-- 查询统计方案的WHERE条件流水号 -->
+        yzb741,  <!-- 代码值       -->
+        aae036)  <!-- 经办日期     -->
+        VALUES (
+        #yzb740:DOUBLE#,  <!-- 查询统计方案WHERE条件代码值流水号 -->
+        #yzb730:DOUBLE#,  <!-- 查询统计方案的WHERE条件流水号 -->
+        #yzb741:VARCHAR#,  <!-- 代码值       -->
+        #aae036:TIMESTAMP#)  <!-- 经办日期     -->
+    </insert>
+
+    <!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+    <update id="update" parameterClass="map">
+        UPDATE zb74 SET
+        yzb741 = #yzb741:VARCHAR#,  <!-- 代码值       -->
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
+        <![CDATA[	   AND yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
+    </update>
+
+    <!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+    <update id="updateNotEmpty" parameterClass="map">
+        UPDATE zb74
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="yzb741">   <!-- 代码值       -->
+                yzb741 = #yzb741:VARCHAR#
+            </isNotEmpty>
+        </dynamic>
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
+        <![CDATA[	   AND yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
+    </update>
+
+    <!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+    <update id="updateAvailable" parameterClass="map">
+        UPDATE zb74
+        <dynamic prepend="SET">
+            <isPropertyAvailable prepend="," property="yzb741">   <!-- 代码值       -->
+                yzb741 = #yzb741:VARCHAR#
+            </isPropertyAvailable>
+        </dynamic>
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
+        <![CDATA[	   AND yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
+    </update>
+
+    <!--通过主键删除单条数据-->
+    <delete id="delete" parameterClass="map">
+        DELETE FROM zb74
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
+        <![CDATA[	   AND yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
+    </delete>
+    <delete id="deleteZb74ByYzb710" parameterClass="map">
+        DELETE FROM zb74 a
+        WHERE 1 = 1 and
+        a.yzb730 in (select b.yzb730 from zb73 b where yzb710 = #yzb710#)
+    </delete>
+
+    <select id="getMapList" parameterClass="map" resultClass="java.util.HashMap">
+        SELECT
+        a.yzb740 as yzb740,   <!-- 查询统计方案WHERE条件代码值流水号 -->
+        a.yzb730 as yzb730,   <!-- 查询统计方案的WHERE条件流水号 -->
+        a.yzb741 as yzb741,   <!-- 代码值       -->
+        c.yzb628 as yzb628,   <!-- 代码类别       -->
+        (select aaa103 from aa10a1 z where z.aaa100 = c.YZB628 and z.aaa102 = a.yzb741) as yzb741_name,
+        a.aae036 as aae036    <!-- 经办日期     -->
+        FROM zb74 a,zb73 b,zb62 c where a.yzb730 = b.yzb730 and b.yzb620 = c.yzb620
+        <isNotEmpty prepend="AND" property="yzb740">   <!-- 查询统计方案WHERE条件代码值流水号 -->
+            a.yzb740 = #yzb740:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb730">   <!-- 查询统计方案的WHERE条件流水号 -->
+            a.yzb730 = #yzb730:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb741">   <!-- 代码值       -->
+            a.yzb741 = #yzb741:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
+            a.aae036 = #aae036:TIMESTAMP#
+        </isNotEmpty>
+
+    </select>
+    <!-- 根据条件流水号获取码值列表(包含已选择数据) -->
+    <select id="getCodeMapList" parameterClass="map" resultClass="java.util.HashMap">
+        select aaa102,
+        aaa103,
+		aaa100,
+        (case
+        when f.aaa102 in (SELECT a.yzb741 as yzb741
+        FROM zb74 a, zb73 b, zb62 c
+        WHERE 1 = 1
+        and a.yzb730 = b.yzb730
+        and b.yzb620 = c.YZB620
+        and a.yzb730 = #yzb730:DOUBLE#
+        ) then
+        1
+        else
+        null
+        end) as checked
+        from aa10a1 f
+        where aaa100 = (select distinct c.yzb623
+        from zb74 a, zb73 b, zb62 c
+        where a.yzb730 = b.yzb730
+        and b.yzb620 = c.YZB620
+        and a.yzb730 = #yzb730:DOUBLE#
+        )
+    </select>
+
+	<select id="querycode1" parameterClass="map" resultClass="java.lang.String">
+		select distinct c.yzb623
+		from zb74 a, zb73 b, zb62 c
+		where a.yzb730 = b.yzb730
+		and b.yzb620 = c.YZB620
+		and a.yzb730 = #yzb730:DOUBLE#
+	</select>
+	<select id="querycode2" parameterClass="java.lang.String" resultClass="java.util.HashMap">
+		select aaa102,aaa103 from aa10a1 where aaa100 = #aaa100#
+	</select>
+	<select id="querycode3" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+		select count(1) from zb74 where yzb730 = #yzb730# and yzb741 = #aaa102#
 	</select>
 
-	<!-- 通过主键进行查询 -->
-	<select id="get" parameterClass="map" resultClass="zb74Domain">
-		SELECT 
-		       a.yzb740 as yzb740,   <!-- 查询统计方案WHERE条件代码值流水号 -->
-		       a.yzb730 as yzb730,   <!-- 查询统计方案的WHERE条件流水号 -->
-		       a.yzb741 as yzb741,   <!-- 代码值       -->
-		       a.aae036 as aae036    <!-- 经办日期     -->
-		  FROM zb74 a
-		 WHERE 1 = 1 
-<![CDATA[	   AND a.yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
-<![CDATA[	   AND a.yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
-	</select>
+    <select id="queryTreecode" parameterClass="map" resultClass="java.lang.String">
+		select name as yzb741_name from apptreecode where type = #yzb628# and id = #yzb741#
+    </select>
 
-	<!-- 插入单条数据 -->
-	<insert id="insert" parameterClass="zb74Domain">
-		INSERT INTO zb74 (
-		       yzb740,  <!-- 查询统计方案WHERE条件代码值流水号 -->
-		       yzb730,  <!-- 查询统计方案的WHERE条件流水号 -->
-		       yzb741,  <!-- 代码值       -->
-		       aae036)  <!-- 经办日期     -->
-		VALUES (
-		       #yzb740:DOUBLE#,  <!-- 查询统计方案WHERE条件代码值流水号 -->
-		       #yzb730:DOUBLE#,  <!-- 查询统计方案的WHERE条件流水号 -->
-		       #yzb741:VARCHAR#,  <!-- 代码值       -->
-		       #aae036:TIMESTAMP#)  <!-- 经办日期     -->
-	</insert>
 
-	<!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
-	<update id="update" parameterClass="map">
-		UPDATE zb74 SET 
-		       yzb741 = #yzb741:VARCHAR#,  <!-- 代码值       -->
-		 WHERE 1 = 1 
-<![CDATA[	   AND yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
-<![CDATA[	   AND yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
-	</update>
 
-	<!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
-	<update id="updateNotEmpty" parameterClass="map">
-		UPDATE zb74
-		 <dynamic prepend="SET"> 
-			<isNotEmpty prepend="," property="yzb741">   <!-- 代码值       -->
-		       yzb741 = #yzb741:VARCHAR#              
-			</isNotEmpty>
-		 </dynamic> 
-		 WHERE 1 = 1 
-<![CDATA[	   AND yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
-<![CDATA[	   AND yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
-	</update>
-
-	<!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
-	<update id="updateAvailable" parameterClass="map">
-		UPDATE zb74
-		 <dynamic prepend="SET"> 
-			<isPropertyAvailable prepend="," property="yzb741">   <!-- 代码值       -->
-		       yzb741 = #yzb741:VARCHAR#              
-			</isPropertyAvailable>
-		 </dynamic> 
-		 WHERE 1 = 1 
-<![CDATA[	   AND yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
-<![CDATA[	   AND yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
-	</update>
-
-	<!--通过主键删除单条数据-->
-	<delete id="delete" parameterClass="map">
-		DELETE  FROM  zb74 
-		 WHERE 1 = 1 
-<![CDATA[	   AND yzb740 = #yzb740#    ]]>    <!-- 查询统计方案WHERE条件代码值流水号 -->
-<![CDATA[	   AND yzb730 = #yzb730#    ]]>    <!-- 查询统计方案的WHERE条件流水号 -->
-	</delete>
-<delete id="deleteZb74ByYzb710" parameterClass="map">
-		DELETE  FROM  zb74 a
-		 WHERE 1 = 1 and
-          a.yzb730 in (select b.yzb730 from zb73 b where yzb710 = #yzb710#)
-	</delete>
-	
-	<select id="getMapList" parameterClass="map" resultClass="java.util.HashMap">
-		SELECT 
-		       a.yzb740 as yzb740,   <!-- 查询统计方案WHERE条件代码值流水号 -->
-		       a.yzb730 as yzb730,   <!-- 查询统计方案的WHERE条件流水号 -->
-		       a.yzb741 as yzb741,   <!-- 代码值       -->
-		      (select aaa103 from aa10a1 z where z.aaa100 = c.YZB628 and z.aaa102 = a.yzb741) as yzb741_name,
-		       a.aae036 as aae036    <!-- 经办日期     -->
-		  FROM zb74 a,zb73 b,zb62 c where a.yzb730 = b.yzb730 and b.yzb620 = c.yzb620
-		<isNotEmpty prepend="AND" property="yzb740">   <!-- 查询统计方案WHERE条件代码值流水号 -->
-		       a.yzb740 = #yzb740:DOUBLE#               
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb730">   <!-- 查询统计方案的WHERE条件流水号 -->
-		       a.yzb730 = #yzb730:DOUBLE#               
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb741">   <!-- 代码值       -->
-		       a.yzb741 = #yzb741:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
-		       a.aae036 = #aae036:TIMESTAMP#            
-		</isNotEmpty>
-
-	</select>
-<!-- 根据条件流水号获取码值列表(包含已选择数据) -->
-<select id="getCodeMapList" parameterClass="map" resultClass="java.util.HashMap">
-	   select  aaa102,
-		       aaa103,
-		       (case
-		         when f.aaa102 in (SELECT a.yzb741 as yzb741
-		                             FROM zb74 a, zb73 b, zb62 c
-		                            WHERE 1 = 1
-		                              and a.yzb730 = b.yzb730
-		                              and b.yzb620 = c.YZB620
-		                                and a.yzb730 = #yzb730:DOUBLE#
-		                              ) then
-		          1
-		         else
-		          null
-		         end) as checked
-		     from aa10a1 f
-		          where aaa100 = (select distinct c.yzb623
-		                   from zb74 a, zb73 b, zb62 c
-		                  where a.yzb730 = b.yzb730
-		                    and b.yzb620 = c.YZB620
-		                    and a.yzb730 = #yzb730:DOUBLE#
-		                    )
-</select>
-<!--TA+END--> 
 </sqlMap>

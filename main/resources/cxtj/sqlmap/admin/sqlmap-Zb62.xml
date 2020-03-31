@@ -4,8 +4,9 @@
 <!-- 表zb62 (查询统计项目) 的所有SQL语句映射配置表  生成时间：2016-07-28 16:44:32 -->
 <sqlMap namespace="zb62">
 	<typeAlias alias="zb62Domain" type="com.yinhai.cxtj.admin.domain.Zb62Domain"/>
+	<typeAlias alias="appCodeVo" type="com.yinhai.modules.codetable.api.domain.vo.AppCodeVo"/>
 
-<!--TA+BEGIN--> 
+	<!--TA+BEGIN-->
 	<!-- 查询一批数据的查询 -->
 	<select id="getList" parameterClass="map" resultClass="zb62Domain">
 		SELECT 
@@ -382,5 +383,15 @@
 			aaa100 = #aaa100#
 	</select>
 
+	<!-- 查询码值 -->
+	<select id="queryCodeList" parameterClass="java.lang.String" resultClass="appCodeVo">
+		SELECT
+		aaa102 as codeValue,
+		aaa103 as codeDESC
+		FROM
+		aa10a1
+		WHERE
+		aaa100 = #aaa100#
+	</select>
 
 </sqlMap>

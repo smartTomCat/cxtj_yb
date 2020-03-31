@@ -125,8 +125,7 @@ public class SetSearchItemServiceImpl extends CxtjBaseServiceImpl implements Set
 	 * 保存配制项目
 	 * 
 	 * @author 
-	 * @param yzb610
-	 *            主题流水号
+	 * @param yzb610 主题流水号
 	 * @param key
 	 * @param user
 	 * @throws Exception

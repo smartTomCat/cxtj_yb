@@ -45,7 +45,7 @@ public class ViewManageController extends CxtjBaseController {
      * @author
      */
     @RequestMapping("viewManageController!toEdit.do")
-    public String toEditSearch() throws Exception {
+    public String toEdit() throws Exception {
         TaParamDto dto = getTaDto();
         setYzb670selectInput(dto);
         //ta 前端组件textarea 的文本显示内容不能带'' \n 符号， 在此将sql中的'' 批量替换为 ""
