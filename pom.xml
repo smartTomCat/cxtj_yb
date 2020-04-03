@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.yinhai</groupId>
+        <artifactId>ta3-project</artifactId>
+        <version>4.1.0-RELEASE</version>
+    </parent>
+
+    <artifactId>cxtj</artifactId>
+
+    <groupId>com.yinhai</groupId>
+    <packaging>war</packaging>
+    <dependencies>
+        <!-- 三方连接池（必选）-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+        <!-- 核心 必选不显示 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-core-common-ta3</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 前端 必选0 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-core-app-ta3</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 基础后端 必选0 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-core-domain-ta3</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 基础数据源 必选0 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-datasource-base</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- Spring Security安全模块 必选 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-security-spring-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!--xss、host等安全模块 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-security-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!--Mysql驱动 可选-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- 权限模块 必选 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-authority-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 前端组件模块 必选0-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-websource</artifactId>
+            <version>4.1.0-1.0.1-RELEASE</version>
+            <type>war</type>
+        </dependency>
+        <!-- 组织机构模块 必选 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-org-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 缓存基础模块 必选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-cache-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 码表模块 必选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-codetable-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 系统管理模块 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-sysapp-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 数据源管理模块 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-datasource-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 组件Demo 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-demo-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!--Poi模块 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-poi-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 控制器限流模块 可选 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-limiter-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 缓存配置 必须 可选方案 ehcache、redis、coherence -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-cache-ehcache</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.yinhai</groupId>-->
+            <!--<artifactId>ta3-modules-cache-redis</artifactId>-->
+            <!--<version>4.1.0-RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.yinhai</groupId>-->
+            <!--<artifactId>ta3-modules-cache-coherence</artifactId>-->
+            <!--<version>4.1.0-RELEASE</version>-->
+        <!--</dependency>-->
+        <!-- 定时服务模块 可选 -->
+        <!--<dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-schedule-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>-->
+        <!-- 集群通信模块 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-cluster-ta3-domain</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 分布式注册中心 zk 实现 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-registry-zookeeper</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 配置中心 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-configcenter-distribute</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 消息通知模块 可选 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-message-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 工作台模块 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-portal-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 国际化模块 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-i18n-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 润乾报表模块 可选-->
+       <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-runqian-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 模板模块 可选 -->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-template-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!--自定义查询 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-xquery-ta3-app</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- 日志模块 可选-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-appender-kafka-domain</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!--验证码模块 (可选)-->
+        <dependency>
+            <groupId>com.yinhai</groupId>
+            <artifactId>ta3-modules-captcha-ta3-domain</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
+        <!-- zk模块 可选-->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--0-->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+        <!--可选-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--可选-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--必选  0-->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jstl-impl</artifactId>
+        </dependency>
+        <!-- cxf 必选 0-->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-databinding-aegis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+
+        <!-- 后续加入 服务于TreeCodeServiceImpl -->
+        <dependency>
+            <groupId>com.googlecode.ehcache-spring-annotations</groupId>
+            <artifactId>ehcache-spring-annotations</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+        <!-- 后续加入 服务于jsp的struts2标签 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.3.33</version>
+        </dependency>
+
+    </dependencies>
+    <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+           <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>make-zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/resources/make-zip.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <!--<dockerHost>http://192.168.17.156:2375</dockerHost>-->
+                    <dockerHost>http://192.168.17.156:2375</dockerHost>
+                    <imageName>192.168.17.156:5000/${project.artifactId}</imageName>
+                    <!--<baseImage>192.168.17.156:5000/tomcat8</baseImage>-->
+                    <!--<dockerDirectory>src/main/docker</dockerDirectory>-->
+                    <baseImage>tomcat</baseImage>
+
+                    <resources>
+                        <resource>
+                            <targetPath>/usr/local/tomcat/webapps/</targetPath>
+                            <!--<targetPath>/app/apache-tomcat-8.5.23/webapps/</targetPath>-->
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.war</include>
+                        </resource>
+                    </resources>
+                    <imageTags>
+                        <imageTag>latest</imageTag>
+                        <imageTag>4.1.0-4.20-SNAPSHOT</imageTag>
+                    </imageTags>
+                    <forceTags>true</forceTags>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
