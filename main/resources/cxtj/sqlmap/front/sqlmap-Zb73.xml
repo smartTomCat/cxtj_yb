@@ -234,7 +234,8 @@
 		SELECT a.yzb630 as yzb630,   <!-- 关系符流水号 -->
 		       a.yzb620 as yzb620,   <!-- 查询统计主题的项目流水号 -->
 		       a.yzb631 as yzb631,   <!-- 支持的关系（11等于12不等于21大于22大于等于31小于32小于等于41包含42不包含） -->
-		       fun_getcodedesc('YZB631', a.yzb631) AS yzb631_desc
+<!--		       fun_getcodedesc('YZB631', a.yzb631) AS yzb631_desc-->
+		(SELECT aaa103 FROM aa10a1 WHERE aaa100='YZB631' AND aaa102 =a.yzb631 ) AS yzb631_desc
 		  FROM zb63 a
 		 WHERE a.yzb620 = #yzb620:DOUBLE#
 	</select>

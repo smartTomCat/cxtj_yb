@@ -12,6 +12,7 @@
 	    <ta:form id="form1" fit="true" cssStyle="margin-top:10px;">
 	    	<ta:number id="yzb610" display="false"/>
 			<ta:text id="yzb670" display="false"/>
+			<ta:text id="yzb690" display="false"/>
 			<ta:text id="yzb613" display="false"/>
 			<ta:text id="yzb617" display="false"/>
 	    	<ta:text id="msg" display="false"/>

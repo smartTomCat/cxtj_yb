@@ -1403,7 +1403,7 @@
     }
     //获取关系和内容
     function getItemGxOrNr(_this) {
-        Base.submit("", "${basePath}/query/customizeQueryAction!getItemGxf.do", {'dto.yzb611': _this.value}, null, null, function (data) {
+        Base.submit("", "${basePath}/query/customizeQueryAction!getItemGxf.do", {'dto.yzb611': _this.value, 'dto.yzb670': Base.getValue("yzb670")}, null, null, function (data) {
             var _tds = $(_this).parent().parent().find("td");
             //内容
             var nr_td_o = _tds.eq(3);

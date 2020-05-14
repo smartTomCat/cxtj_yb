@@ -11,6 +11,7 @@
 <ta:form id="form1" fit="true" cssStyle="margin-top:10px;">
     <ta:number id="yzb610" display="false"/>
     <ta:text id="yzb670" display="false"/>
+    <ta:text id="yzb690" display="false"/>
     <ta:text id="yzb613" display="false"/>
     <ta:datagrid id="grid1" haveSn="true" snWidth="40" forceFitColumns="true" fit="true" heightDiff="50"
                  selectType="radio" onSelectChange="fnQueryBack" columnFilter="true">

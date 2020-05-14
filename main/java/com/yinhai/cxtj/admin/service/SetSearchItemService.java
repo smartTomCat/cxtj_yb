@@ -60,6 +60,15 @@ public interface SetSearchItemService extends CxtjBaseService {
 	public List querySearchItemSelect(String yzb613,String yzb672) throws Exception;
 
 	/**
+	 * 查询配置的数据集的项目或表达式选择
+	 * @param yzb670
+	 * @param yzb690
+	 * @return
+	 * @throws Exception
+	 */
+	public List querySearchItemInResultSet (String yzb670,String yzb690) throws Exception;
+
+	/**
 	 * 查询配制项目
 	 * 
 	 * @author 

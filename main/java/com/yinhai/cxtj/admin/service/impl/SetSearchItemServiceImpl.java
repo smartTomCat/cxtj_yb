@@ -13,6 +13,7 @@ import com.yinhai.core.service.ta3.domain.service.TaBaseService;
 import com.yinhai.cxtj.admin.Constants;
 import com.yinhai.cxtj.admin.base.service.impl.CxtjBaseServiceImpl;
 import com.yinhai.cxtj.admin.domain.Zb62Domain;
+import com.yinhai.cxtj.admin.domain.Zb89Domain;
 import com.yinhai.cxtj.admin.service.SetSearchItemService;
 import com.yinhai.cxtj.admin.service.SetSearchModeService;
 import com.yinhai.cxtj.admin.service.SetSearchOrderService;
@@ -258,6 +259,19 @@ public class SetSearchItemServiceImpl extends CxtjBaseServiceImpl implements Set
 					return dynamicDao.queryForList("zb62.getOracleSearchItemSelect", d);
 				}
 			}
+		}
+		return null;
+	}
+
+
+	@Override
+	public List querySearchItemInResultSet(String yzb670,String yzb690) throws Exception {
+		if (ValidateUtil.isNotEmpty(yzb670)) {
+			//确定为mysql专用  不用判断类型
+			IDao iDao = super.getDynamicDao(yzb670);
+            List<Zb89Domain> list = dao.queryForList("zb89.queryTableColByYzb690",yzb690);
+			List list2 = iDao.queryForList("zb62.querySearchItemInResultSet",list);
+			return list2;
 		}
 		return null;
 	}

@@ -76,9 +76,11 @@
         a.yzb994 AS yzb994,	<!--	是否出错:varchar2(1)	-->
         a.yzb995 AS yzb995,	<!--	错误消息:clob	-->
         a.yzb996 AS yzb996,	<!--	执行sql:varchar2(4000)	-->
-        fun_getcodedesc('AAE011',a.aae011) AS aae011,	<!--	经办人:varchar2(100)	-->
+<!--        fun_getcodedesc('AAE011',a.aae011) AS aae011,	&lt;!&ndash;	经办人:varchar2(100)	&ndash;&gt;-->
+        (SELECT aaa103 FROM aa10a1 WHERE aaa100='AAE011' AND aaa102 =a.aae011 ) AS aae011,
         a.yae116 AS yae116,	<!--	经办人编号:number(15)	-->
-        fun_getcodedesc('AAE017',a.aae017) AS aae017,	<!--	经办机构:number(15)	-->
+<!--        fun_getcodedesc('AAE017',a.aae017) AS aae017,	&lt;!&ndash;	经办机构:number(15)	&ndash;&gt;-->
+        (SELECT aaa103 FROM aa10a1 WHERE aaa100='AAE017' AND aaa102 =a.aae017 ) AS aae017,
         a.aae036 AS aae036,	<!--	经办日期:date	-->
         FROM zb99 a
         WHERE 1 = 1

@@ -29,4 +29,7 @@
     <!--视图管理-->
     <sqlMap resource="cxtj/sqlmap/admin/sqlmap-zb68.xml"/>
 
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-zb69.xml"/>
+    <sqlMap resource="cxtj/sqlmap/admin/sqlmap-zb89.xml"/>
+
 </sqlMapConfig>

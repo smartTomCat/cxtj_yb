@@ -10,44 +10,44 @@
 </head>
 <body style="padding-top: 5px!important;background-color: white!important;">
 <ta:form>
-<ta:box id="mainBox" fit="true" cols="4" heightDiff="40">
-    <ta:box id="leftBox" span="3" height="200px" cssStyle="border: #9CB1EA 0px solid;overflow:auto;">
-        <table id="datagrid_query_id" width="100%" align="center" cellpadding="2" cellspacing="0" border="0">
-            <tbody>
-            <tr id="datagrid_title_id">
-                <td style="width:35px;">
-                </td>
-                <!--
-                <td style="width:20px;">
-                    排序
-                </td> -->
-                <td style="width:65%;">
-                    项目名称
-                </td>
-                <!--
-                <td style="width:30%">
-                    是否进行分组
-                </td>
-                 -->
-            </tr>
-            <s:iterator value="#request.fzxms" id="item" status="st">
-                <tr onclick="fnXzTr(this)">
+    <ta:box id="mainBox" fit="true" cols="4" heightDiff="40">
+        <ta:box id="leftBox" span="3" height="200px" cssStyle="border: #9CB1EA 0px solid;overflow:auto;">
+            <table id="datagrid_query_id" width="100%" align="center" cellpadding="2" cellspacing="0" border="0">
+                <tbody>
+                <tr id="datagrid_title_id">
                     <td style="width:35px;">
-                        <input type="radio" name="tjxmRadio" onclick="fnSetBackgroudColor(this)"
-                               datatype="<s:property value="#item.datatype"/>"
-                               fname="<s:property value="#item.filedname" />"
-                               ztxmlsh="<s:property value="#item.ztxmlsh" />"
-                               value="<s:property value="#item.id" />"/>
                     </td>
                     <!--
                     <td style="width:20px;">
-                       <div class="arrow_up" title="点击可上移一行"  onclick="fnUpRow(this);"></div>
-                    </td>
-                    -->
-                    <td style="width:80%;">
-                        <s:property value="#item.filedname"/>
+                        排序
+                    </td> -->
+                    <td style="width:65%;">
+                        项目名称
                     </td>
                     <!--
+                    <td style="width:30%">
+                        是否进行分组
+                    </td>
+                     -->
+                </tr>
+                <s:iterator value="#request.fzxms" id="item" status="st">
+                    <tr onclick="fnXzTr(this)">
+                        <td style="width:35px;">
+                            <input type="radio" name="tjxmRadio" onclick="fnSetBackgroudColor(this)"
+                                   datatype="<s:property value="#item.datatype"/>"
+                                   fname="<s:property value="#item.filedname" />"
+                                   ztxmlsh="<s:property value="#item.ztxmlsh" />"
+                                   value="<s:property value="#item.id" />"/>
+                        </td>
+                        <!--
+                        <td style="width:20px;">
+                           <div class="arrow_up" title="点击可上移一行"  onclick="fnUpRow(this);"></div>
+                        </td>
+                        -->
+                        <td style="width:80%;">
+                            <s:property value="#item.filedname"/>
+                        </td>
+                        <!--
 					<td style="width:30%">
 					     <input type="checkbox" name="tjxm"
 					           datatype="<s:property value="#item.datatype"/>"  
@@ -57,30 +57,34 @@
 						       <s:if test="#item.checked == true"> checked="checked" </s:if>/>
 					</td>
 					 -->
-                </tr>
-            </s:iterator>
-            </tbody>
-        </table>
+                    </tr>
+                </s:iterator>
+                </tbody>
+            </table>
+        </ta:box>
+        <ta:box id="rightBox">
+            <ta:buttonLayout id="btnLyt2" cssStyle="padding-top:5px">
+                <ta:button id="btn2" key="&nbsp;&nbsp;置&nbsp;&nbsp;顶&nbsp;&nbsp; " onClick="fnTop()"
+                           cssClass="btnmodify"/>
+            </ta:buttonLayout>
+            <ta:buttonLayout id="btnLyt3" cssStyle="padding-top:5px">
+                <ta:button id="btn3" key="&nbsp;&nbsp;上&nbsp;&nbsp;移&nbsp;&nbsp;" onClick="fnUp()"
+                           cssClass="btnmodify"/>
+            </ta:buttonLayout>
+            <ta:buttonLayout id="btnLyt4" cssStyle="padding-top:5px">
+                <ta:button id="btn4" key="&nbsp;&nbsp;下&nbsp;&nbsp;移&nbsp;&nbsp;" onClick="fnDown()"
+                           cssClass="btnmodify"/>
+            </ta:buttonLayout>
+            <ta:buttonLayout id="btnLyt5" cssStyle="padding-top:5px">
+                <ta:button id="btn5" key="&nbsp;&nbsp;置&nbsp;&nbsp;尾&nbsp;&nbsp;" onClick="fnEnd()"
+                           cssClass="btnmodify"/>
+            </ta:buttonLayout>
+        </ta:box>
     </ta:box>
-    <ta:box id="rightBox">
-        <ta:buttonLayout id="btnLyt2" cssStyle="padding-top:5px">
-            <ta:button id="btn2" key="&nbsp;&nbsp;置&nbsp;&nbsp;顶&nbsp;&nbsp; " onClick="fnTop()" cssClass="btnmodify"/>
-        </ta:buttonLayout>
-        <ta:buttonLayout id="btnLyt3" cssStyle="padding-top:5px">
-            <ta:button id="btn3" key="&nbsp;&nbsp;上&nbsp;&nbsp;移&nbsp;&nbsp;" onClick="fnUp()" cssClass="btnmodify"/>
-        </ta:buttonLayout>
-        <ta:buttonLayout id="btnLyt4" cssStyle="padding-top:5px">
-            <ta:button id="btn4" key="&nbsp;&nbsp;下&nbsp;&nbsp;移&nbsp;&nbsp;" onClick="fnDown()" cssClass="btnmodify"/>
-        </ta:buttonLayout>
-        <ta:buttonLayout id="btnLyt5" cssStyle="padding-top:5px">
-            <ta:button id="btn5" key="&nbsp;&nbsp;置&nbsp;&nbsp;尾&nbsp;&nbsp;" onClick="fnEnd()" cssClass="btnmodify"/>
-        </ta:buttonLayout>
-    </ta:box>
-</ta:box>
-<ta:buttonGroup id="btnLyt6" align="center" span="2">
-	<ta:button id="btn6" key="确定" onClick="fnOkSetGroupByFiledsOrder()" cssClass="btnmodify" space="true"/>
-	<ta:button id="btn7" key="关闭" onClick="fnClose()" cssClass="btnmodify"/>
-</ta:buttonGroup>
+    <ta:buttonGroup id="btnLyt6" align="center" span="2">
+        <ta:button id="btn6" key="确定" onClick="fnOkSetGroupByFiledsOrder()" cssClass="btnmodify" space="true"/>
+        <ta:button id="btn7" key="关闭" onClick="fnClose()" cssClass="btnmodify"/>
+    </ta:buttonGroup>
 </ta:form>
 </body>
 </html>

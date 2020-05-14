@@ -1,5 +1,6 @@
 package com.yinhai.cxtj.admin.controller;
 
+import com.yinhai.core.app.api.util.JSonFactory;
 import com.yinhai.core.app.ta3.web.controller.BaseController;
 import com.yinhai.core.common.api.util.ValidateUtil;
 import com.yinhai.core.common.ta3.dto.TaParamDto;
@@ -81,7 +82,7 @@ public class SetSearchController extends CxtjBaseController {
 				yzb615 = yzb615.replaceAll("'", "\"");
 
 			}
-			if (yzb615.contains("\n")) {
+			if (ValidateUtil.isNotEmpty(yzb615) && yzb615.contains("\n")) {
 				yzb615 = yzb615.replaceAll("\n","  ");
 			}
 			zb61Domain.setYzb615(yzb615);
@@ -252,11 +253,18 @@ public class SetSearchController extends CxtjBaseController {
 	 */
 	@RequestMapping("setSearchAction!getEditSearchItemSelect.do")
 	public String getEditSearchItemSelect() throws Exception {
-		List lst = setSearchItemService.querySearchItemSelect(getTaDto().getAsString("yzb613"),getTaDto().getAsString("yzb670"));
-		if (ValidateUtil.isEmpty(lst)) {
+		String yzb690 = getTaDto().getAsString("yzb690");
+		List list;
+		//数据集
+		if (ValidateUtil.isNotEmpty(yzb690)) {
+			list = setSearchItemService.querySearchItemInResultSet(getTaDto().getAsString("yzb670"),yzb690);
+		}else{
+			list = setSearchItemService.querySearchItemSelect(getTaDto().getAsString("yzb613"),getTaDto().getAsString("yzb670"));
+		}
+		if (ValidateUtil.isEmpty(list)) {
 			setMessage("表或视图不存在","warn");
 		}
-		setList("grid1", lst);
+		setList("grid1", list);
 		return JSON;
 	}
 
@@ -470,4 +478,15 @@ public class SetSearchController extends CxtjBaseController {
 		return JSON;
 	}
 
+	/**
+	 * 查询相应数据源下的数据集
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("setSearchAction!queryResultSetsByYzb670.do")
+	public String queryResultSetsByYzb670() throws Exception {
+		List<Map> resultSets= setSearchService.queryResultSetsByYzb670(getTaDto().getAsString("yzb670"));
+		setSelectInputList("yzb690",resultSets);
+		return JSON;
+	}
 }

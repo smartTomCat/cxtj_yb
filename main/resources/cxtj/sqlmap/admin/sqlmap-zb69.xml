@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="zb69">
+    <typeAlias alias="Zb69Domain" type="com.yinhai.cxtj.admin.domain.Zb69Domain"/>
+    <resultMap id="tableTree" class="java.util.HashMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="pId" column="pid"/>
+    </resultMap>
+    <!--TA+BEGIN-->
+    <!-- 查询一批数据的查询 -->
+    <select id="getList" parameterClass="map" resultClass="Zb69Domain">
+        SELECT
+        yzb690, yzb691, yzb692, yzb693, yzb670, aae011, yae116, aae017, aae036, yzb694 FROM ZB69
+        WHERE 1=1
+        <isNotEmpty prepend="AND" property="yzb690">   <!-- 甲栏名称流水号 -->
+            yzb690 = #yzb690:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb691">
+            yzb691 = #yzb691:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb692">
+            yzb692 = #yzb692:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb693">
+            yzb693 = #yzb693:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb670">
+            yzb670 = #yzb670:INTEGER#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae011">
+            aae011 = #aae011:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yae116">
+            yae116 = #yae116:INTEGER#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae017">
+            aae017 = #aae017:INTEGER#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae036">
+            aae036 = #aae036:TIMESTAMP#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb694">
+            yzb694 = #yzb694:VARCHAR#
+        </isNotEmpty>
+    </select>
+
+    <!-- 通过主键进行查询 -->
+    <select id="get" parameterClass="map" resultClass="Zb69Domain">
+        SELECT
+        yzb690, yzb691, yzb692, yzb693, yzb670, aae011, yae116, aae017, aae036, yzb694 FROM ZB69
+        WHERE 1=1
+        <isNotEmpty prepend="AND" property="yzb690">   <!-- 甲栏名称流水号 -->
+            yzb690 = #yzb690:VARCHAR#
+        </isNotEmpty>
+    </select>
+
+    <!-- 插入单条数据 -->
+    <insert id="insert" parameterClass="Zb69Domain">
+        insert into zb69
+        (yzb690, yzb691, yzb692, yzb693, yzb670, aae011, yae116, aae017, aae036, yzb694,yzb695)
+        values (#yzb690# , #yzb691# , #yzb692# , #yzb693# , #yzb670# , #aae011# , #yae116# , #aae017# , #aae036# ,
+        #yzb694#,#yzb695#)
+    </insert>
+
+    <!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+    <update id="update" parameterClass="map">
+        update zb69
+        set
+        yzb691 = #yzb691:VARCHAR#,
+        yzb692 = #yzb692:VARCHAR#,
+        yzb693 = #yzb693:VARCHAR#,
+        yzb670 = #yzb670:INTEGER#,
+        aae011 = #aae011:VARCHAR#,
+        yae116 = #yae116:INTEGER#,
+        aae017 = #aae017:INTEGER#,
+        aae036 = #aae036:TIMESTAMP#,
+        yzb694 = #yzb694:VARCHAR#,
+        where yzb690 = #yzb690:VARCHAR#
+    </update>
+
+    <!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+    <update id="updateNotEmpty" parameterClass="map">
+        update zb69
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="yzb691">
+                yzb691 = #yzb691:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb692">
+                yzb692 = #yzb692:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb693">
+                yzb693 = #yzb693:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb670">
+                yzb670 = #yzb670:INTEGER#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="aae011">
+                aae011 = #aae011:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yae116">
+                yae116 = #yae116:INTEGER#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="aae017">
+                aae017 = #aae017:INTEGER#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="aae036">
+                aae036 = #aae036:TIMESTAMP#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb694">
+                yzb694 = #yzb694:VARCHAR#
+            </isNotEmpty>
+        </dynamic>
+        where yzb690 = #yzb690:VARCHAR#
+    </update>
+    <!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+    <update id="updateAvailable" parameterClass="map">
+        update zb69
+        <dynamic prepend="SET">
+            <isPropertyAvailable prepend="," property="yzb691">
+                yzb691 = #yzb691:VARCHAR #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb692">
+                yzb692 = #yzb692:VARCHAR #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb693">
+                yzb693 = #yzb693:VARCHAR #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb670">
+                yzb670 = #yzb670:INTEGER #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="aae011">
+                aae011 = #aae011:VARCHAR #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yae116">
+                yae116 = #yae116:INTEGER #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="aae017">
+                aae017 = #aae017:INTEGER #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="aae036">
+                aae036 = #aae036:TIMESTAMP #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb694">
+                yzb694 = #yzb694:VARCHAR #
+            </isPropertyAvailable>
+        </dynamic>
+        where yzb690 = #yzb690:VARCHAR#
+    </update>
+
+    <!--通过主键删除单条数据-->
+    <delete id="deleteById" parameterClass="map">
+        delete from zb69 where yzb690 = #yzb690#
+    </delete>
+    <!--TA+END-->
+
+    <!-- 查询对应数据源的实体表-->
+    <select id="queryAllTableByOracle" resultMap="tableTree">
+        select table_name as id, table_name as name, '1' as pid from user_tab_comments where table_type = 'TABLE'
+    </select>
+
+    <!-- 查询对应数据源的实体表-->
+    <select id="queryAllTableByMysql" resultMap="tableTree">
+        select table_name as id, table_name as name, '1' as pid from information_schema.TABLES
+    </select>
+
+    <!-- 查询对应数据源的实体表及列信息-->
+    <select id="queryTableColumnsByOracle" resultClass="java.util.HashMap">
+        select table_name as yzb891, column_name as yzb892, comments from user_col_comments where table_name in
+        <iterate close=")" open="(" conjunction=",">
+            <![CDATA[
+                 #[]#
+            ]]>
+        </iterate>
+    </select>
+    <!-- 查询对应数据源的实体表及列信息-->
+    <select id="queryTableColumnsByMysql" resultClass="java.util.HashMap">
+        select table_name as yzb891, column_name as yzb892, column_comment from information_schema.COLUMNS  where table_name in
+        <iterate close=")" open="(" conjunction=",">
+            <![CDATA[
+                 #[]#
+            ]]>
+        </iterate>
+    </select>
+
+    <select id="queryResultSets" parameterClass="map" resultClass="java.util.HashMap">
+        SELECT
+        zb69.yzb690 as yzb690, zb69.yzb691 as yzb691, zb69.yzb692 as yzb692, zb69.yzb693 as yzb693, zb69.yzb670 as yzb670, zb67.yzb672 as yzb672,
+        zb69.yzb694 as yzb694, zb69.yzb695 as yzb695
+        FROM
+        ZB69 zb69
+        left join              <!-- 默认数据源不存在与zb67中，前台页面展示处理 -->
+        ZB67 zb67
+        on
+        zb69.yzb670 = zb67.yzb670
+        WHERE 1 = 1
+        <isNotEmpty prepend="AND" property="yzb670">   <!-- 甲栏名称流水号 -->
+            zb69.yzb670 = #yzb670#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb691">
+            zb69.yzb691 like #yzb691# ||'%'
+        </isNotEmpty>
+    </select>
+
+    <select id="queryZb69ByYzb690" parameterClass="java.lang.String" resultClass="java.util.HashMap">
+        select * from zb69 where yzb690 = #yzb690#
+    </select>
+
+    <select id="queryResultSetsByYzb670" parameterClass="java.lang.String" resultClass="java.util.HashMap">
+        select yzb690 as id,yzb691 as name,yzb694 as py from zb69 where yzb670 = #yzb670#
+    </select>
+
+</sqlMap>

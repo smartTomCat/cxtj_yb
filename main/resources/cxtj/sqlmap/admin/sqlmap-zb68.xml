@@ -82,7 +82,7 @@
         SELECT COUNT(1)
         FROM user_tab_comments
         WHERE TABLE_TYPE = 'VIEW'
-        AND TABLE_NAME = #yzb681#
+        AND TABLE_NAME = upper(#yzb681#)
     </select>
 
     <select id="checkViewNameByMysql" parameterClass="map" resultClass="java.lang.Integer">

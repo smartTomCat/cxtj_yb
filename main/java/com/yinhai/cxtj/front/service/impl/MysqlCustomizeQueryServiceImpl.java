@@ -520,7 +520,12 @@ public class MysqlCustomizeQueryServiceImpl extends CommonCustomizeQueryServiceI
             //from
             Zb61Domain zb61Domain  = searchParamService.getSearchByYZB611(ztdm);
             if(null!=zb61Domain){
-                sql.append(" FROM ").append(zb61Domain.getYzb613());
+                if (ValidateUtil.isNotEmpty(zb61Domain.getYzb694())) {
+                    // 若是数据集 则from 子查询，否则为单表，直接from 表名或视图名
+                    sql.append(" FROM ").append("(").append(zb61Domain.getYzb694()).append(") rs ");
+                } else {
+                    sql.append(" FROM ").append(zb61Domain.getYzb613());
+                }
                 //where
                 sql.append(" WHERE 1=1");
 

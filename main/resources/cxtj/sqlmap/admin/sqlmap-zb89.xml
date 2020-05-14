@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="zb89">
+    <typeAlias alias="Zb89Domain" type="com.yinhai.cxtj.admin.domain.Zb89Domain"/>
+
+    <!--TA+BEGIN-->
+    <!-- 查询一批数据的查询 -->
+    <select id="getList" parameterClass="map" resultClass="Zb89Domain">
+        SELECT
+        YZB890, YZB690, YZB891, YZB892 FROM ZB89
+        WHERE 1=1
+        <isNotEmpty prepend="AND" property="yzb890">   <!-- 甲栏名称流水号 -->
+            yzb890 = #yzb890:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb690">
+            yzb690 = #yzb690:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb891">
+            yzb891 = #yzb891:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb892">
+            yzb892 = #yzb892:VARCHAR#
+        </isNotEmpty>
+    </select>
+
+    <!-- 通过主键进行查询 -->
+    <select id="get" parameterClass="map" resultClass="Zb89Domain">
+        SELECT
+        YZB890, YZB690, YZB891, YZB892 FROM ZB89
+        WHERE 1=1
+        <isNotEmpty prepend="AND" property="yzb890">   <!-- 甲栏名称流水号 -->
+            yzb890 = #yzb890:VARCHAR#
+        </isNotEmpty>
+    </select>
+
+    <!-- 插入单条数据 -->
+    <insert id="insert" parameterClass="map">
+        insert into zb89
+        (yzb890, yzb690, yzb891, yzb892)
+        values (#yzb890:VARCHAR# , #yzb690:VARCHAR# , #yzb891:VARCHAR# , #yzb892:VARCHAR# )
+    </insert>
+
+    <!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+    <update id="update" parameterClass="map">
+        update zb89
+        set
+        yzb690 = #yzb690:VARCHAR#,
+        yzb891 = #yzb891:VARCHAR#,
+        yzb892 = #yzb892:VARCHAR#,
+        where yzb890 = #yzb890:VARCHAR#
+    </update>
+
+    <!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+    <update id="updateNotEmpty" parameterClass="map">
+        update zb89
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="yzb690">
+                yzb690 = #yzb690:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb891">
+                yzb891 = #yzb891:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb892">
+                yzb892 = #yzb892:VARCHAR#
+            </isNotEmpty>
+        </dynamic>
+        where yzb890 = #yzb890:VARCHAR#
+    </update>
+    <!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+    <update id="updateAvailable" parameterClass="map">
+        update zb89
+        <dynamic prepend="SET">
+            <isPropertyAvailable prepend="," property="yzb690">
+                yzb690 = #yzb690:VARCHAR #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb891">
+                yzb891 = #yzb891:VARCHAR #
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb892">
+                yzb892 = #yzb892:VARCHAR #
+            </isPropertyAvailable>
+        </dynamic>
+        where yzb890 = #yzb890:VARCHAR#
+    </update>
+
+    <!--通过主键删除单条数据-->
+    <delete id="deleteById" parameterClass="map">
+        delete from zb89 where yzb890 = #yzb890:VARCHAR#
+    </delete>
+    <!--TA+END-->
+
+    <!--通过主键删除单条数据-->
+    <delete id="deleteByYzb690" parameterClass="map">
+        delete from zb89 where yzb690 = #yzb690:VARCHAR#
+    </delete>
+
+    <select id="queryZb89ByYzb690" parameterClass="java.lang.String" resultClass="java.util.HashMap">
+        select z.*,u.comments as comments from zb89 z,user_col_comments u
+        where yzb690 = #yzb690# and z.yzb891 = u.table_name
+    </select>
+
+    <select id="queryTableColByYzb690" parameterClass="java.lang.String" resultClass="Zb89Domain">
+        select YZB890, YZB690, YZB891, YZB892 FROM ZB89
+        where yzb690 = #yzb690#
+    </select>
+</sqlMap>

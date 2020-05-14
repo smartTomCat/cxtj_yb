@@ -150,4 +150,12 @@
         </property>
     </bean>
 
+    <!-- 多表配置管理service-->
+    <bean id="ResultSetManageService" parent="transactionProxy">
+        <property name="target">
+            <bean class="com.yinhai.cxtj.admin.service.impl.ResultSetManageServiceImpl" >
+            </bean>
+        </property>
+    </bean>
+
 </beans>

@@ -16,8 +16,10 @@
         <ta:selectInput id="yzb617" key="查询统计类型" collection="YZB617" required="true"/>
         <ta:text id="yzb611" key="菜单代码" required="true" validType="[{type:'maxLength',param:[200],msg:'最大长度为200'}]"
                  placeholder="菜单的唯一标识 英文数字下划线组成"/>
-        <ta:selectInput id="yzb670" key="数据源" required="true" value="001" />
+        <ta:selectInput id="yzb670" key="数据源" required="true"  onSelect="fnSelect"/>
+        <ta:selectInput id="userrsesultset" key="使用数据集" required="true" value="2" data="[{'id':'1','name':'是'},{'id':'2','name':'否'}]" onSelect="fnSelectRs"/>
         <ta:text id="yzb613" key="主题库表" required="true" validType="[{type:'maxLength',param:[200],msg:'最大长度为200'}]"/>
+        <ta:selectInput id="yzb690" key="数据集" disabled="true"/>
         <ta:text id="yzb618" key="对应菜单id" display="false"/>
     </ta:box>
     <ta:textarea id="yzb615" key="基础WHERE<br />条件" height="80px"
@@ -67,6 +69,34 @@
     //关闭
     function fnClose() {
         parent.Base.closeWindow('w_edit')
+    }
+
+    /**
+     * 是否使用数据集
+     */
+    function fnSelectRs (key,value) {
+        if ('2' == value) {
+            //否
+            Base.setDisabled("yzb690");
+            Base.setDisRequired("yzb690");
+            Base.setEnable("yzb613");
+            Base.setRequired("yzb613");
+        }
+        if ('1' == value) {
+            Base.setDisabled("yzb613");
+            Base.setDisRequired("yzb613");
+            Base.setEnable("yzb690");
+            Base.setRequired("yzb690");
+        }
+    }
+
+    /**
+     * 数据源选择后加载对应的数据集
+     */
+    function fnSelect(key,value) {
+        if (value) {
+           Base.submit(null,"setSearchAction!queryResultSetsByYzb670.do",{"dto.yzb670":value});
+        }
     }
 </script>
 <%@ include file="/ta/incfooter.jsp" %>

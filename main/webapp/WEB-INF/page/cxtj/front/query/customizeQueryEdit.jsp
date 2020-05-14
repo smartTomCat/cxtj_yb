@@ -42,6 +42,7 @@
 
             }
         }
+
         var setting = {
             view: {
                 showIcon: true,
@@ -83,8 +84,8 @@
         <div class="tafieldset_header">
             <div class="header-bg"></div>
             <h2 style="font-size: 16px;float: left;margin-left:10px;">统计条件</h2>&nbsp;【<a href="javascript:void(0);"
-                                   title='条件组内是并且关系。条件组之间是或者关系。比如：查询男年满60周岁或女年满55周岁，则2个条件组。1个为：性别=男、年龄>=60;另一个为：性别=女、年龄>=55'
-                                   onclick="addConditionGroup()">追加"或者"条件组</a>】
+                                                                                         title='条件组内是并且关系。条件组之间是或者关系。比如：查询男年满60周岁或女年满55周岁，则2个条件组。1个为：性别=男、年龄>=60;另一个为：性别=女、年龄>=55'
+                                                                                         onclick="addConditionGroup()">追加"或者"条件组</a>】
             <span class="to_right" style="line-height:35px;">
 	    <ta:buttonLayout align="right">
             <ta:button key="保存统计方案" onClick="fnToSaveTjfa()" cssClass="btnmodify"/>
@@ -214,12 +215,12 @@
 //                            (function (fn) {
 //                                (require(["jquery", "ztree.excheck.min", "ztree.exedit", "ztree.exhide.min"], fn));
 //                            }(function ($) {
-                                $.fn.zTree.init($('#<s:property value="treeId"/>'), setting, <s:property escapeHtml="false" value="#_and['treeData']"/>);
-                                var treeObj = $.fn.zTree.getZTreeObj('<s:property value="treeId"/>');
-                                $.each(chekedTreeData, function (sn, __o) {
-                                    var node = treeObj.getNodesByParam("id", __o.yzb741, null);
-                                    treeObj.checkNode(node[0], true, true);
-                                });
+                            $.fn.zTree.init($('#<s:property value="treeId"/>'), setting, <s:property escapeHtml="false" value="#_and['treeData']"/>);
+                            var treeObj = $.fn.zTree.getZTreeObj('<s:property value="treeId"/>');
+                            $.each(chekedTreeData, function (sn, __o) {
+                                var node = treeObj.getNodesByParam("id", __o.yzb741, null);
+                                treeObj.checkNode(node[0], true, true);
+                            });
 //                            }));
                         });
                         //另提解决文本框延迟问题
@@ -435,7 +436,8 @@
     </ta:box>
 </ta:form>
 
-<div style="text-align: center"><ta:button id="myquery" key="查询" onClick="fnQueryDetailInfo()" cssClass="btnmodify"/></div>
+<div style="text-align: center"><ta:button id="myquery" key="查询" onClick="fnQueryDetailInfo()"
+                                           cssClass="btnmodify"/></div>
 
 <!-- 统计信息结果datagrid -->
 <ta:fieldset id="statisticalInfoId" key="统计结果<span style=color:red;>(鼠标点击统计值，可反查明细)</span>" cssStyle="display:none">
@@ -494,9 +496,9 @@
             <ta:button key="导出查询结果" onClick="fnExportDetail()" cssClass="btnmodify"/>
         </ta:buttonLayout>
         <div id="query" class="slick-export-content exports2">
-            <div  class="slick-export-item faceIcon icon-excel exports_dangqian_" title="导出当前页">导出当前页</div>
+            <div class="slick-export-item faceIcon icon-excel exports_dangqian_" title="导出当前页">导出当前页</div>
             <%--<div  class="slick-export-item faceIcon icon-excel exports_xuanze_" title="导出选择数据">导出选择数据</div>--%>
-            <div  class="slick-export-item faceIcon icon-excel exports_quanbu_" title="导出全部数据">导出全部数据</div>
+            <div class="slick-export-item faceIcon icon-excel exports_quanbu_" title="导出全部数据">导出全部数据</div>
         </div>
 	</span>
     </div>
@@ -531,6 +533,7 @@
         json += "]";
         return json.replaceAll("\"", "'");
     }
+
     //生成分组字段平铺复选框
     function fnGenerateGroupByFiledsHtml(_o_) {
         if (_o_) {
@@ -552,6 +555,7 @@
             $("#groupByItemsId").html(str);
         }
     }
+
     //分组项排序弹框
     function fnGroupItemsOrder() {
         var json = fnGetGroupByFiledJson();
@@ -567,6 +571,7 @@
             //fnCommonQueryDetailInfo();//执行明细查询
         }, _iframe);
     }
+
     //获取保存数据的xml
     function getSaveDataXml() {
         var ztdm = Base.getValue('ztdm') || '';//主题代码
@@ -595,6 +600,7 @@
         xml += "</scheme>";
         return xml;
     }
+
     //保存统计方案
     function fnSaveTjfa(_o) {
         if (_o) {
@@ -610,6 +616,7 @@
             }, null);
         }
     }
+
     //到保存统计方案页面
     function fnToSaveTjfa() {
         var _id = 'saveTjfaWindows';
@@ -619,9 +626,13 @@
         var _h = "450";
         var _load = null;
         var _iframe = true;
-        Base.openWindow(_id, _title, _url, {"dto.yzb617":Base.getValue("yzb617"),"dto.yzb610":Base.getValue("yzb610")}, _w, _h, _load, function (data) {
+        Base.openWindow(_id, _title, _url, {
+            "dto.yzb617": Base.getValue("yzb617"),
+            "dto.yzb610": Base.getValue("yzb610")
+        }, _w, _h, _load, function (data) {
         }, _iframe);
     }
+
     //调出统计方案
     function fnCalloutTjfa(_o) {
         var jctj = Base.getValue('jctj');
@@ -634,6 +645,7 @@
             }
         }
     }
+
     //到调出统计方案页面
     function fnToCalloutTjfa() {
         var _id = 'calloutTjfaWindows';
@@ -643,9 +655,13 @@
         var _h = "350";
         var _load = null;
         var _iframe = true;
-        Base.openWindow(_id, _title, _url, {"dto.yzb617":Base.getValue("yzb617"),"dto.yzb610":Base.getValue("yzb610")}, _w, _h, _load, function (data) {
+        Base.openWindow(_id, _title, _url, {
+            "dto.yzb617": Base.getValue("yzb617"),
+            "dto.yzb610": Base.getValue("yzb610")
+        }, _w, _h, _load, function (data) {
         }, _iframe);
     }
+
     //生成统计信息datagrid title
     function fnGenerateStatisticalDataGridTitle(datagirdId, data) {
         var grid = Ta.core.TaUIManager.getCmp(datagirdId), columns = [];
@@ -715,6 +731,7 @@
         });
         grid.setColumns(columns);
     }
+
     //生成详细信息datagrid title
     function fnGenerateDetailDataGridTitle(datagirdId, data) {
         var grid = Ta.core.TaUIManager.getCmp(datagirdId), columns = [];
@@ -768,6 +785,7 @@
         });
         grid.setColumns(columns);
     }
+
     //根据码值获取码中文
     function fnGetCodeDesc(c, v) {
         if (c && c.length > 0) {
@@ -779,6 +797,7 @@
         }
         return (v == null ? "其它" : v);
     }
+
     //验证选择项目(针对图表统计)
     function fnValidXm() {
         //分组字段
@@ -814,6 +833,7 @@
         }
         return true;
     }
+
     //点击统计查询（统计）
     function fnQuery() {
         var ztdm = Base.getValue('ztdm');
@@ -984,7 +1004,11 @@
             $("#queryResultDgd").show();
 
             var _url = "${basePath}/query/customizeQueryAction!queryPage.do";
-            Base.submit("queryResultDgd", _url, {'dto.xml': xml,'dto.yzb612': yzb612,'dto.yzb711': tjfaname}, null, null, function (data) {
+            Base.submit("queryResultDgd", _url, {
+                'dto.xml': xml,
+                'dto.yzb612': yzb612,
+                'dto.yzb711': tjfaname
+            }, null, null, function (data) {
                 fnGenerateStatisticalDataGridTitle("queryResultDgd", data);      //生成title
                 var grid = Ta.core.TaUIManager.getCmp("queryResultDgd");
 
@@ -1041,6 +1065,7 @@
         xml += "</scheme>";
         return xml;
     }
+
     //生成详细信息,弹框设置的字段(包括选择的统计方式)xml
     function fnQueryShowFileds() {
         //分组字段
@@ -1060,6 +1085,7 @@
         xml += "</show_field>";
         return xml;
     }
+
     //点击数字查看详细信息
     function fnQueryDetailInfo() {
         var xml = getDetailInfoXml();
@@ -1067,7 +1093,12 @@
         var yzb670 = Base.getValue('yzb670');
         var tjfaname = Base.getValue('tjfaname') || '';//方案名称
         var _url = "${basePath}/query/customizeQueryAction!queryDetail.do";
-        Base.submit("deailInfoDgd", _url, {'dto.xml': xml,'dto.yzb612': yzb612,'dto.yzb711': tjfaname,'dto.yzb670': yzb670}, null, null, function (data) {
+        Base.submit("deailInfoDgd", _url, {
+            'dto.xml': xml,
+            'dto.yzb612': yzb612,
+            'dto.yzb711': tjfaname,
+            'dto.yzb670': yzb670
+        }, null, null, function (data) {
             this.fnGenerateDetailDataGridTitle("deailInfoDgd", data);      //生成title
             var grid = Ta.core.TaUIManager.getCmp("deailInfoDgd");
 
@@ -1099,7 +1130,7 @@
         var xml = getDetailInfoXml();
         var yzb670 = Base.getValue('yzb670');
         var _url = "${basePath}/query/customizeQueryAction!queryDetail.do";
-        Base.submit("deailInfoDgd", _url, {'dto.xml': xml,'dto.yzb670': yzb670}, null, null, function (data) {
+        Base.submit("deailInfoDgd", _url, {'dto.xml': xml, 'dto.yzb670': yzb670}, null, null, function (data) {
             this.fnGenerateDetailDataGridTitle("deailInfoDgd", data);               //生成title
             var grid = Ta.core.TaUIManager.getCmp("deailInfoDgd");
 
@@ -1124,6 +1155,7 @@
 
     //将表头字段作为全局变量 供子窗口使用 openwindow 传参大小限制
     var dgHeadJson;
+
     //打开设置显示字段窗口
     function fnOpenSetDetailShowFiledWindows() {
         dgHeadJson = fnGetDetailShowFiledJson();
@@ -1138,6 +1170,7 @@
             fnCommonQueryDetailInfo();//执行明细查询
         }, _iframe);
     }
+
     //获取明细统计行数据
     function fnGetStatisticalRow(_id, _o) {
         _o = _o.fieldData;
@@ -1150,6 +1183,7 @@
         }
         return _o_;
     }
+
     //打开设置显示字段窗口前 获取设置字段json串
     function fnGetDetailShowFiledJson() {
         var json = "[", _o_ = null;
@@ -1168,6 +1202,7 @@
         json += "]";
         return json.replaceAll("\"", "'");
     }
+
     //打开设置排序字段窗口前 获取排序字段json串
     function fnGetDetailOrderFiledJson() {
         var json = "[", _o_ = null;
@@ -1185,6 +1220,7 @@
         json += "]";
         return json.replaceAll("\"", "'");
     }
+
     //生成明细显示项目表单
     function fnGenerateDetailShowFiledsHtml(_o) {
         var detailShowFiledsHtml = $('#detailInfoFiledTitleId');
@@ -1216,6 +1252,7 @@
             detailShowFiledsHtml.html(detailShowFiledsHtml.html() + str);
         });
     }
+
     //生成明细排序项目表单
     function fnGenerateDetailOrdersFiledsHtml(_o) {
         var detailOrderFiledsHtml = $('#detailInfoFiledOrderId');
@@ -1246,6 +1283,7 @@
             detailOrderFiledsHtml.html(detailOrderFiledsHtml.html() + str);
         });
     }
+
     //获取详细信息查询排序字段xml
     function fnQueryOrders() {
         //排序字段
@@ -1264,6 +1302,7 @@
         xml += "</orders>";
         return xml;
     }
+
     //打开设置详细排序字段窗口
     function fnOpenSetDetailOrderFiledWindows() {
         var json = fnGetDetailOrderFiledJson();
@@ -1278,6 +1317,7 @@
             fnCommonQueryDetailInfo();//执行明细查询
         }, _iframe);
     }
+
     //生成详细信息带的参数表单数据(点击数字查询用)
     function fnGenerateDetailInfoParasHtml(_o) {
         var parasHtml = $('#detailInfoParasId');
@@ -1289,6 +1329,7 @@
         }
         fnQueryDetailInfo();//执行详细信息查询
     }
+
     //获取点击数字带的参数xml(点击数字查询用)
     function fnQueryAnds() {
         var xml = "";
@@ -1300,6 +1341,7 @@
         });
         return xml;
     }
+
     //查询字段（统计）
     function fnQueryFileds() {
         //分组字段
@@ -1345,6 +1387,7 @@
         xml += "</function_field>";
         return xml;
     }
+
     //条件组 or（统计）
     function fnQueryOrs() {
         var xml = "";
@@ -1421,6 +1464,7 @@
         });
         return xml;
     }
+
     //绑定分组项收缩事件
     function fnBindingGroupEvent() {
         $("#tjzb_id_img").unbind('click').click(function () {
@@ -1435,12 +1479,14 @@
             }
         });
     }
+
     $(document).ready(function () {
         $("body").taLayout();
         $("#deailInfoId").hide();//解决页面卡死问题
         fnBindingGroupEvent();   //绑定分组项收缩事件   change by zhaohs
         fnQueryDetailInfo();
     });
+
     //获取项目支持运算
     function getXmzcys(_this) {
         if (_this.value == '') {
@@ -1461,6 +1507,7 @@
             }
         }, null);
     }
+
     //删除统计指标行
     function deleteTjzbhsTr(_this) {
         var tr_length = $(_this).parent().parent().parent().find("tr").length;
@@ -1470,6 +1517,7 @@
         }
         $(_this).parent().parent().remove();
     }
+
     //增加统计指标行
     function addTjzbhsTr(_this) {
         var trs = $(_this).parent().parent().parent().find("tr");
@@ -1479,6 +1527,7 @@
         //tds.eq(3).html("<input type='text' style='width: 200px;'/>");
         $(trs.eq(trs.length - 1)).before(cloneTr);
     }
+
     //统计行上移
     function fnUpRow(_this) {
         var currTr = $(_this).parent().parent();
@@ -1490,6 +1539,7 @@
             Base.alert("第一行数据不能上移！");
         }
     }
+
     //删除或者条件组
     function deleteCondition(_this) {
         var gruops_length = $("#gruops_id").find("table").length;
@@ -1499,6 +1549,7 @@
         }
         $(_this).parent().parent().parent().parent().remove();
     }
+
     //增加或者条件组
     function addConditionGroup() {
         var tabales = $("#gruops_id").find("table");
@@ -1525,6 +1576,7 @@
         });
         tabales.eq(tabales.length - 1).after(first_table);
     }
+
     //删除tr条件
     function deleteTr(_this) {
         var tr_length = $(_this).parent().parent().parent().find("tr").length;
@@ -1534,6 +1586,7 @@
         }
         $(_this).parent().parent().remove();
     }
+
     //增加条件查询
     function addCondition(_this) {
         var trs = $(_this).parent().parent().parent().find("tr");
@@ -1552,9 +1605,13 @@
 
         $(trs.eq(trs.length - 1)).before(cloneTr);
     }
+
     //获取关系和内容
     function getItemGxOrNr(_this) {
-        Base.submit("", "${basePath}/query/customizeQueryAction!getItemGxf.do", {'dto.yzb611': _this.value}, null, null, function (data) {
+        Base.submit("", "${basePath}/query/customizeQueryAction!getItemGxf.do", {
+            'dto.yzb611': _this.value,
+            'dto.yzb670': Base.getValue("yzb670")
+        }, null, null, function (data) {
             var _tds = $(_this).parent().parent().find("td");
             //内容
             var nr_td_o = _tds.eq(3);
@@ -1623,6 +1680,7 @@
             }
         }, null);
     }
+
     //切换值类型
     function fnSwichValueType(_this) {
         var itemSelectSpan = $(_this).prev();//选择项目span
@@ -1647,6 +1705,7 @@
             vtype_o.val('1');//设置值类型
         }
     }
+
     function fnClear(obj, treeId) {
         $(obj).next().val("");
         $(obj).prev().prev().val("");
@@ -1658,6 +1717,7 @@
             }
         }
     }
+
     function showMenu(obj) {
         var obj1 = $(obj).next().next();
         var objOffset = obj1.offset();
@@ -1668,15 +1728,18 @@
         }).slideDown("fast");
         $("body").bind("mousedown", onBodyDown);
     }
+
     function hideMenu() {
         $("[name='menuContent']").fadeOut("fast");
         $("body").unbind("mousedown", onBodyDown);
     }
+
     function onBodyDown(event) {
         if (!(event.target.name == "menuContent" || $(event.target).parents("[name='menuContent']").length > 0)) {
             hideMenu();
         }
     }
+
     function fnQueryData(_this, treeId) {
         var queyName = $(_this).parent().prev().val() || '';
         var treeObj = $.fn.zTree.getZTreeObj(treeId);
@@ -1687,6 +1750,7 @@
             i = 0;
         }
     }
+
     function fnQueryPre(treeId) {
         var treeObj = $.fn.zTree.getZTreeObj(treeId);
         if (queryResu && i >= 0 && i < queryResu.length) {
@@ -1697,6 +1761,7 @@
             treeObj.selectNode(queryResu[i]);
         }
     }
+
     function fnQueryNext(treeId) {
         var treeObj = $.fn.zTree.getZTreeObj(treeId);
         if (queryResu && i >= 0 && i < queryResu.length) {
@@ -1707,27 +1772,28 @@
             treeObj.selectNode(queryResu[i]);
         }
     }
+
     //导出查询详细结果
-    function fnExportDetail(e){
+    function fnExportDetail(e) {
         $("#query").show();
-        var e = e||window.event;
+        var e = e || window.event;
         e.stopPropagation();
     }
 
-    $("body").click(function(){
+    $("body").click(function () {
         $("#query").hide();
     })
     //导出当前页数据
-    $(".exports_dangqian_").click(function(){
+    $(".exports_dangqian_").click(function () {
         var parentId = $(this).parent().attr("id");
         var gridId;
-        if("count" == parentId){
+        if ("count" == parentId) {
             //统计
             gridId = "queryResultDgd";
-        }else if("query" == parentId){
+        } else if ("query" == parentId) {
             //查询
             gridId = "deailInfoDgd";
-        }else{
+        } else {
             return;
         }
         //参数处理
@@ -1737,7 +1803,7 @@
         var headName_ary = [];
         var columns_ary = Ta.core.TaUIManager.getCmp(gridId).getColumns();
         console.log(columns_ary);
-        for(var i = 1;i<columns_ary.length;i++){
+        for (var i = 1; i < columns_ary.length; i++) {
             headName_ary.push(columns_ary[i].name.replace(/<[^>]+>/g, ''));
         }
         headName_obj.t = "old";
@@ -1749,8 +1815,8 @@
         //表格数据处理
         var rowData = Base.getGridData(gridId); //获得表格选中行的JSON数组
         console.log(rowData);
-        for(var i =0;i<rowData.length;i++){
-            if(rowData.length>500){
+        for (var i = 0; i < rowData.length; i++) {
+            if (rowData.length > 500) {
                 Base.alert("数据过大，请选择导出全部数据！");
                 return;
             }
@@ -1758,9 +1824,9 @@
             var rowData_ary = [];
             var rowData_parm = {};
             //取出的表格数据 默认按id字母排序  需调整至于表头顺序一致
-            for(var j = 1;j<columns_ary.length;j++){
-                for(var key in rowData_obj){
-                    if(key==columns_ary[j].id){
+            for (var j = 1; j < columns_ary.length; j++) {
+                for (var key in rowData_obj) {
+                    if (key == columns_ary[j].id) {
                         rowData_ary.push(rowData_obj[key]);
                         break;
                     }
@@ -1774,40 +1840,40 @@
             parm_ary.push(rowData_parm);
         }
         var dataStr = JSON.stringify(parm_ary); //如果要把得到的数据传到后台，必须把json数组转换成字符串。
-        Base.setValue("parm",dataStr);
-        Base.submitForm("queryId",null,false,"customizeQueryAction!exportExcel.do");
+        Base.setValue("parm", dataStr);
+        Base.submitForm("queryId", null, false, "customizeQueryAction!exportExcel.do");
         Base.hideMask();
     })
 
     //导出选择数据
-    $(".exports_xuanze_").click(function(){
+    $(".exports_xuanze_").click(function () {
         var parentId = $(this).parent().attr("id");
         var gridId;
         var selectData;
-        if("count" == parentId){
+        if ("count" == parentId) {
             //统计
             gridId = "queryResultDgd";
             selectData = Base.getGridSelectedRows("queryResultDgd");
-            if(selectData.length<1){
+            if (selectData.length < 1) {
                 Base.alert("请选中数据后导出");
                 return;
             }
-        }else if("query" == parentId){
+        } else if ("query" == parentId) {
             //查询
             gridId = "deailInfoDgd";
             selectData = Base.getGridSelectedRows("deailInfoDgd");
-            if(selectData.length<1){
+            if (selectData.length < 1) {
                 Base.alert("请选中数据后导出");
                 return;
             }
-        }else{
+        } else {
             return;
         }
 
     })
 
     //导出全部数据
-    $(".exports_quanbu_").click(function(){
+    $(".exports_quanbu_").click(function () {
         var parentId = $(this).parent().attr("id");
         var gridId;
         var url;
@@ -1820,7 +1886,7 @@
         var tjfaname = Base.getValue('tjfaname') || '';//方案名称
         var jctj = Base.getValue('jctj') || '';//基础条件值
         jctj = jctj.replaceAll('"', "'");//change by zhaohs
-        if("count" == parentId){
+        if ("count" == parentId) {
             //统计
             gridId = "queryResultDgd";
             url = "customizeQueryAction!exportExcelAll.do";
@@ -1838,12 +1904,12 @@
             xml += "</where>";
             xml += "</statistics_query>";
             xml += "</scheme>";
-        }else if("query" == parentId){
+        } else if ("query" == parentId) {
             //查询
             gridId = "deailInfoDgd";
             url = "customizeQueryAction!exportDetailExcelAll.do";
             xml = getDetailInfoXml();
-        }else{
+        } else {
             return;
         }
         //将表头数据组合传入后台
@@ -1854,7 +1920,7 @@
         var headName_ary = [];
         var columns_ary = Ta.core.TaUIManager.getCmp(gridId).getColumns();
         console.log(columns_ary);
-        for(var i = 1;i<columns_ary.length;i++){
+        for (var i = 1; i < columns_ary.length; i++) {
             headName_ary.push(columns_ary[i].name.replace(/<[^>]+>/g, ''));
         }
         headName_obj.t = "old";
@@ -1864,9 +1930,13 @@
         parm_ary.push(headName_obj);
         var dataStr = JSON.stringify(parm_ary); //如果要把得到的数据传到后台，必须把json数组转换成字符串。
         //submitForm参数是拼在url后 将超长字符参数 放在文本框 post参数带走
-        Base.setValue("parm",dataStr);
+        Base.setValue("parm", dataStr);
         Base.setValue("xml", xml);
-        Base.submitForm("queryId",null,false,url,{'dto.yzb612': yzb612,'dto.yzb670': yzb670,'dto.yzb711': tjfaname});
+        Base.submitForm("queryId", null, false, url, {
+            'dto.yzb612': yzb612,
+            'dto.yzb670': yzb670,
+            'dto.yzb711': tjfaname
+        });
         Base.hideMask();
     })
 </script>

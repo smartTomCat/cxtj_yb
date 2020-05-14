@@ -48,6 +48,15 @@ public class Zb61Domain extends InputDomain {
 	/** 挂靠菜单id */
 	private String yzb618;
 
+	/** 数据集id */
+	private String yzb690;
+	/** 数据集名称 */
+	private String yzb691;
+	/** 数据集sql */
+	private String yzb694;
+	/** 数据集多表名称 */
+	private String yzb695;
+
 	public Zb61Domain() {
 	}
 
@@ -316,6 +325,38 @@ public class Zb61Domain extends InputDomain {
 		this.yzb618 = yzb618;
 	}
 
+	public String getYzb690() {
+		return yzb690;
+	}
+
+	public void setYzb690(String yzb690) {
+		this.yzb690 = yzb690;
+	}
+
+	public String getYzb691() {
+		return yzb691;
+	}
+
+	public void setYzb691(String yzb691) {
+		this.yzb691 = yzb691;
+	}
+
+	public String getYzb694() {
+		return yzb694;
+	}
+
+	public void setYzb694(String yzb694) {
+		this.yzb694 = yzb694;
+	}
+
+	public String getYzb695() {
+		return yzb695;
+	}
+
+	public void setYzb695(String yzb695) {
+		this.yzb695 = yzb695;
+	}
+
 	/**
 	 * 转换为map对象
 	 * 
@@ -336,7 +377,10 @@ public class Zb61Domain extends InputDomain {
 		map.put("aae036", getAae036()); // 经办日期
 		map.put("yzb670", getYzb670()); // 经办日期
 		map.put("yzb618", getYzb618()); // 经办日期
-
+		map.put("yzb690", getYzb690()); // 经办日期
+		map.put("yzb691", getYzb691()); // 经办日期
+		map.put("yzb694", getYzb694()); // 经办日期
+		map.put("yzb695", getYzb695()); // 经办日期
 		return map;
 	}
 

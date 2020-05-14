@@ -3,304 +3,314 @@
 
 <!-- 表zb61 (查询统计主题) 的所有SQL语句映射配置表  生成时间：2016-07-28 16:12:58 -->
 <sqlMap namespace="zb61">
-	<typeAlias alias="zb61Domain" type="com.yinhai.cxtj.admin.domain.Zb61Domain"/>
+    <typeAlias alias="zb61Domain" type="com.yinhai.cxtj.admin.domain.Zb61Domain"/>
 
-<!--TA+BEGIN--> 
-	<!-- 查询一批数据的查询 -->
-	<select id="getList" parameterClass="map" resultClass="zb61Domain">
-		SELECT 
-		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
-		       a.yzb617 as yzb617,   <!-- 查询统计类型（1查询2统计） -->
-		       a.yzb611 as yzb611,   <!-- 查询统计主题代码 -->
-		       a.yzb612 as yzb612,   <!-- 查询统计主题名称 -->
-		       a.yzb613 as yzb613,   <!-- 查询统计主题库表 -->
-		       a.yzb615 as yzb615,   <!-- 基础WHERE条件 -->
-		       a.yzb616 as yzb616,   <!-- 基础WHERE条件描述 -->
-		       a.aae011 as aae011,   <!-- 经办人       -->
-		       a.yae116 as yae116,   <!-- 经办人编号   -->
-		       a.aae017 as aae017,   <!-- 经办机构     -->
-		       a.aae036 as aae036,    <!-- 经办日期     -->
-		       a.yzb670 as yzb670,    <!-- 数据源流水号  -->
-		       a.yzb618 as yzb618    <!-- 对应的菜单id  -->
-		  FROM zb61 a
-		 WHERE 1=1 
-		<isNotEmpty prepend="AND" property="yzb610">   <!-- 查询统计主题流水号 -->
-		       a.yzb610 = #yzb610:DOUBLE#               
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
-		       a.yzb617 = #yzb617:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb611">   <!-- 查询统计主题代码 -->
-		       a.yzb611 = #yzb611:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb612">   <!-- 查询统计主题名称 -->
-		       a.yzb612 = #yzb612:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb613">   <!-- 查询统计主题库表 -->
-		       a.yzb613 = #yzb613:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb615">   <!-- 基础WHERE条件 -->
-		       a.yzb615 = #yzb615:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb616">   <!-- 基础WHERE条件描述 -->
-		       a.yzb616 = #yzb616:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="aae011">   <!-- 经办人       -->
-		       a.aae011 = #aae011:VARCHAR#              
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yae116">   <!-- 经办人编号   -->
-		       a.yae116 = #yae116:DOUBLE#               
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="aae017">   <!-- 经办机构     -->
-		       a.aae017 = #aae017:DOUBLE#               
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
-		       a.aae036 = #aae036:TIMESTAMP#            
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb670">   <!-- 数据源流水号     -->
-			   a.yzb670 = #yzb670#
-		</isNotEmpty>
-	</select>
+    <!--TA+BEGIN-->
+    <!-- 查询一批数据的查询 -->
+    <select id="getList" parameterClass="map" resultClass="zb61Domain">
+        SELECT
+        a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+        a.yzb617 as yzb617,   <!-- 查询统计类型（1查询2统计） -->
+        a.yzb611 as yzb611,   <!-- 查询统计主题代码 -->
+        a.yzb612 as yzb612,   <!-- 查询统计主题名称 -->
+        a.yzb613 as yzb613,   <!-- 查询统计主题库表 -->
+        a.yzb615 as yzb615,   <!-- 基础WHERE条件 -->
+        a.yzb616 as yzb616,   <!-- 基础WHERE条件描述 -->
+        a.aae011 as aae011,   <!-- 经办人       -->
+        a.yae116 as yae116,   <!-- 经办人编号   -->
+        a.aae017 as aae017,   <!-- 经办机构     -->
+        a.aae036 as aae036,    <!-- 经办日期     -->
+        a.yzb670 as yzb670,    <!-- 数据源流水号  -->
+        a.yzb618 as yzb618    <!-- 对应的菜单id  -->
+        FROM zb61 a
+        WHERE 1=1
+        <isNotEmpty prepend="AND" property="yzb610">   <!-- 查询统计主题流水号 -->
+            a.yzb610 = #yzb610:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
+            a.yzb617 = #yzb617:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb611">   <!-- 查询统计主题代码 -->
+            a.yzb611 = #yzb611:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb612">   <!-- 查询统计主题名称 -->
+            a.yzb612 = #yzb612:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb613">   <!-- 查询统计主题库表 -->
+            a.yzb613 = #yzb613:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb615">   <!-- 基础WHERE条件 -->
+            a.yzb615 = #yzb615:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb616">   <!-- 基础WHERE条件描述 -->
+            a.yzb616 = #yzb616:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae011">   <!-- 经办人       -->
+            a.aae011 = #aae011:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yae116">   <!-- 经办人编号   -->
+            a.yae116 = #yae116:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae017">   <!-- 经办机构     -->
+            a.aae017 = #aae017:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
+            a.aae036 = #aae036:TIMESTAMP#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb670">   <!-- 数据源流水号     -->
+            a.yzb670 = #yzb670#
+        </isNotEmpty>
+    </select>
 
-	<!-- 通过主键进行查询 -->
-	<select id="get" parameterClass="map" resultClass="zb61Domain">
-		SELECT 
-		       a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
-		       a.yzb617 as yzb617,   <!-- 查询统计类型（1查询2统计） -->
-		       a.yzb611 as yzb611,   <!-- 查询统计主题代码 -->
-		       a.yzb612 as yzb612,   <!-- 查询统计主题名称 -->
-		       a.yzb613 as yzb613,   <!-- 查询统计主题库表 -->
-		       a.yzb615 as yzb615,   <!-- 基础WHERE条件 -->
-		       a.yzb616 as yzb616,   <!-- 基础WHERE条件描述 -->
-		       a.aae011 as aae011,   <!-- 经办人       -->
-		       a.yae116 as yae116,   <!-- 经办人编号   -->
-		       a.aae017 as aae017,   <!-- 经办机构     -->
-		       a.aae036 as aae036,    <!-- 经办日期     -->
-			   a.yzb670 as yzb670,    <!-- 数据源流水号 -->
-			   a.yzb618 as yzb618    <!-- 对应的菜单id-->
-		  FROM zb61 a
-		 WHERE 1 = 1 
-<![CDATA[	   AND a.yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
-	</select>
+    <!-- 通过主键进行查询 -->
+    <select id="get" parameterClass="map" resultClass="zb61Domain">
+        SELECT
+        a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+        a.yzb617 as yzb617,   <!-- 查询统计类型（1查询2统计） -->
+        a.yzb611 as yzb611,   <!-- 查询统计主题代码 -->
+        a.yzb612 as yzb612,   <!-- 查询统计主题名称 -->
+        a.yzb613 as yzb613,   <!-- 查询统计主题库表 -->
+        a.yzb615 as yzb615,   <!-- 基础WHERE条件 -->
+        a.yzb616 as yzb616,   <!-- 基础WHERE条件描述 -->
+        a.aae011 as aae011,   <!-- 经办人       -->
+        a.yae116 as yae116,   <!-- 经办人编号   -->
+        a.aae017 as aae017,   <!-- 经办机构     -->
+        a.aae036 as aae036,    <!-- 经办日期     -->
+        a.yzb670 as yzb670,    <!-- 数据源流水号 -->
+        a.yzb618 as yzb618    <!-- 对应的菜单id-->
+        FROM zb61 a
+        WHERE 1 = 1
+        <![CDATA[	   AND a.yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
+    </select>
 
-	<!-- 插入单条数据 -->
-	<insert id="insert" parameterClass="zb61Domain">
-		INSERT INTO zb61 (
-		       yzb610,  <!-- 查询统计主题流水号 -->
-		       yzb617,  <!-- 查询统计类型（1查询2统计） -->
-		       yzb611,  <!-- 查询统计主题代码 -->
-		       yzb612,  <!-- 查询统计主题名称 -->
-		       yzb613,  <!-- 查询统计主题库表 -->
-		       yzb615,  <!-- 基础WHERE条件 -->
-		       yzb616,  <!-- 基础WHERE条件描述 -->
-		       aae011,  <!-- 经办人       -->
-		       yae116,  <!-- 经办人编号   -->
-		       aae017,  <!-- 经办机构     -->
-		       aae036,  <!-- 经办日期     -->
-		       yzb670,  <!-- 数据源流水号     -->
-		       yzb618)  <!-- 对应的菜单id-->
-		VALUES (
-		       #yzb610:DOUBLE#,  <!-- 查询统计主题流水号 -->
-		       #yzb617:VARCHAR#,  <!-- 查询统计类型（1查询2统计） -->
-		       #yzb611:VARCHAR#,  <!-- 查询统计主题代码 -->
-		       #yzb612:VARCHAR#,  <!-- 查询统计主题名称 -->
-		       #yzb613:VARCHAR#,  <!-- 查询统计主题库表 -->
-		       #yzb615:VARCHAR#,  <!-- 基础WHERE条件 -->
-		       #yzb616:VARCHAR#,  <!-- 基础WHERE条件描述 -->
-		       #aae011:VARCHAR#,  <!-- 经办人       -->
-		       #yae116:DOUBLE#,  <!-- 经办人编号   -->
-		       #aae017:DOUBLE#,  <!-- 经办机构     -->
-		       #aae036:TIMESTAMP#,  <!-- 经办日期     -->
-		       #yzb670#,            <!--数据源流水号-->
-		       #yzb618#)  <!-- 对应的菜单id-->
-	</insert>
+    <!-- 插入单条数据 -->
+    <insert id="insert" parameterClass="zb61Domain">
+        INSERT INTO zb61 (
+        yzb610,  <!-- 查询统计主题流水号 -->
+        yzb617,  <!-- 查询统计类型（1查询2统计） -->
+        yzb611,  <!-- 查询统计主题代码 -->
+        yzb612,  <!-- 查询统计主题名称 -->
+        yzb613,  <!-- 查询统计主题库表 -->
+        yzb615,  <!-- 基础WHERE条件 -->
+        yzb616,  <!-- 基础WHERE条件描述 -->
+        aae011,  <!-- 经办人       -->
+        yae116,  <!-- 经办人编号   -->
+        aae017,  <!-- 经办机构     -->
+        aae036,  <!-- 经办日期     -->
+        yzb670,  <!-- 数据源流水号     -->
+        yzb618,
+        yzb690,
+        yzb691,
+        yzb694,
+        yzb695)  <!-- 对应的菜单id-->
+        VALUES (
+        #yzb610:DOUBLE#,  <!-- 查询统计主题流水号 -->
+        #yzb617:VARCHAR#,  <!-- 查询统计类型（1查询2统计） -->
+        #yzb611:VARCHAR#,  <!-- 查询统计主题代码 -->
+        #yzb612:VARCHAR#,  <!-- 查询统计主题名称 -->
+        #yzb613:VARCHAR#,  <!-- 查询统计主题库表 -->
+        #yzb615:VARCHAR#,  <!-- 基础WHERE条件 -->
+        #yzb616:VARCHAR#,  <!-- 基础WHERE条件描述 -->
+        #aae011:VARCHAR#,  <!-- 经办人       -->
+        #yae116:DOUBLE#,  <!-- 经办人编号   -->
+        #aae017:DOUBLE#,  <!-- 经办机构     -->
+        #aae036:TIMESTAMP#,  <!-- 经办日期     -->
+        #yzb670#,            <!--数据源流水号-->
+        #yzb618#,
+        #yzb690#,
+        #yzb691#,
+        #yzb694#,
+        #yzb695#
+        )  <!-- 对应的菜单id-->
+    </insert>
 
-	<!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
-	<update id="update" parameterClass="map">
-		UPDATE zb61 SET 
-		       yzb617 = #yzb617:VARCHAR#,  <!-- 查询统计类型（1查询2统计） -->
-		       yzb611 = #yzb611:VARCHAR#,  <!-- 查询统计主题代码 -->
-		       yzb612 = #yzb612:VARCHAR#,  <!-- 查询统计主题名称 -->
-		       yzb613 = #yzb613:VARCHAR#,  <!-- 查询统计主题库表 -->
-		       yzb615 = #yzb615:VARCHAR#,  <!-- 基础WHERE条件 -->
-		       yzb616 = #yzb616:VARCHAR#,  <!-- 基础WHERE条件描述 -->
-			   yzb670 = #yzb670#
-		 WHERE 1 = 1 
-<![CDATA[	   AND yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
-	</update>
+    <!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
+    <update id="update" parameterClass="map">
+        UPDATE zb61 SET
+        yzb617 = #yzb617:VARCHAR#,  <!-- 查询统计类型（1查询2统计） -->
+        yzb611 = #yzb611:VARCHAR#,  <!-- 查询统计主题代码 -->
+        yzb612 = #yzb612:VARCHAR#,  <!-- 查询统计主题名称 -->
+        yzb613 = #yzb613:VARCHAR#,  <!-- 查询统计主题库表 -->
+        yzb615 = #yzb615:VARCHAR#,  <!-- 基础WHERE条件 -->
+        yzb616 = #yzb616:VARCHAR#,  <!-- 基础WHERE条件描述 -->
+        yzb670 = #yzb670#
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
+    </update>
 
-	<!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
-	<update id="updateNotEmpty" parameterClass="map">
-		UPDATE zb61
-		 <dynamic prepend="SET"> 
-			<isNotEmpty prepend="," property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
-		       yzb617 = #yzb617:VARCHAR#              
-			</isNotEmpty>
-			<isNotEmpty prepend="," property="yzb611">   <!-- 查询统计主题代码 -->
-		       yzb611 = #yzb611:VARCHAR#              
-			</isNotEmpty>
-			<isNotEmpty prepend="," property="yzb612">   <!-- 查询统计主题名称 -->
-		       yzb612 = #yzb612:VARCHAR#              
-			</isNotEmpty>
-			<isNotEmpty prepend="," property="yzb613">   <!-- 查询统计主题库表 -->
-		       yzb613 = #yzb613:VARCHAR#              
-			</isNotEmpty>
-			<isNotEmpty prepend="," property="yzb615">   <!-- 基础WHERE条件 -->
-		       yzb615 = #yzb615:VARCHAR#              
-			</isNotEmpty>
-			<isNotEmpty prepend="," property="yzb616">   <!-- 基础WHERE条件描述 -->
-		       yzb616 = #yzb616:VARCHAR#
-			</isNotEmpty>
-			 <isNotEmpty prepend="," property="yzb670">   <!-- 数据源流水号 -->
-				 yzb670 = #yzb670#
-			 </isNotEmpty>
-		 </dynamic> 
-		 WHERE 1 = 1 
-<![CDATA[	   AND yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
-	</update>
+    <!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
+    <update id="updateNotEmpty" parameterClass="map">
+        UPDATE zb61
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
+                yzb617 = #yzb617:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb611">   <!-- 查询统计主题代码 -->
+                yzb611 = #yzb611:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb612">   <!-- 查询统计主题名称 -->
+                yzb612 = #yzb612:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb613">   <!-- 查询统计主题库表 -->
+                yzb613 = #yzb613:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb615">   <!-- 基础WHERE条件 -->
+                yzb615 = #yzb615:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb616">   <!-- 基础WHERE条件描述 -->
+                yzb616 = #yzb616:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb670">   <!-- 数据源流水号 -->
+                yzb670 = #yzb670#
+            </isNotEmpty>
+        </dynamic>
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
+    </update>
 
-	<!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
-	<update id="updateAvailable" parameterClass="map">
-		UPDATE zb61
-		 <dynamic prepend="SET"> 
-			<isPropertyAvailable prepend="," property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
-		       yzb617 = #yzb617:VARCHAR#              
-			</isPropertyAvailable>
-			<isPropertyAvailable prepend="," property="yzb611">   <!-- 查询统计主题代码 -->
-		       yzb611 = #yzb611:VARCHAR#              
-			</isPropertyAvailable>
-			<isPropertyAvailable prepend="," property="yzb612">   <!-- 查询统计主题名称 -->
-		       yzb612 = #yzb612:VARCHAR#              
-			</isPropertyAvailable>
-			<isPropertyAvailable prepend="," property="yzb613">   <!-- 查询统计主题库表 -->
-		       yzb613 = #yzb613:VARCHAR#              
-			</isPropertyAvailable>
-			<isPropertyAvailable prepend="," property="yzb615">   <!-- 基础WHERE条件 -->
-		       yzb615 = #yzb615:VARCHAR#              
-			</isPropertyAvailable>
-			<isPropertyAvailable prepend="," property="yzb616">   <!-- 基础WHERE条件描述 -->
-		       yzb616 = #yzb616:VARCHAR#              
-			</isPropertyAvailable>
-			 <isPropertyAvailable prepend="," property="yzb670">   <!-- 数据源流水号 -->
-				 yzb670 = #yzb670#
-			 </isPropertyAvailable>
-		 </dynamic> 
-		 WHERE 1 = 1 
-<![CDATA[	   AND yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
-	</update>
+    <!-- 通过DTO更新单条数据，主键不能为空，只修改你设定值得字段，值可以为null或"" -->
+    <update id="updateAvailable" parameterClass="map">
+        UPDATE zb61
+        <dynamic prepend="SET">
+            <isPropertyAvailable prepend="," property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
+                yzb617 = #yzb617:VARCHAR#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb611">   <!-- 查询统计主题代码 -->
+                yzb611 = #yzb611:VARCHAR#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb612">   <!-- 查询统计主题名称 -->
+                yzb612 = #yzb612:VARCHAR#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb613">   <!-- 查询统计主题库表 -->
+                yzb613 = #yzb613:VARCHAR#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb615">   <!-- 基础WHERE条件 -->
+                yzb615 = #yzb615:VARCHAR#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb616">   <!-- 基础WHERE条件描述 -->
+                yzb616 = #yzb616:VARCHAR#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="," property="yzb670">   <!-- 数据源流水号 -->
+                yzb670 = #yzb670#
+            </isPropertyAvailable>
+        </dynamic>
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
+    </update>
 
-	<!--通过主键删除单条数据-->
-	<delete id="delete" parameterClass="map">
-		DELETE  FROM  zb61 
-		 WHERE 1 = 1 
-<![CDATA[	   AND yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
-	</delete>
+    <!--通过主键删除单条数据-->
+    <delete id="delete" parameterClass="map">
+        DELETE FROM zb61
+        WHERE 1 = 1
+        <![CDATA[	   AND yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->
+    </delete>
 
-<!--TA+END--> 
+    <!--TA+END-->
 
-	<!-- 验证代码  -->
-	<select id="valYzb611" parameterClass="map" resultClass="java.lang.Integer">
-		SELECT COUNT(1)
-		  FROM zb61
-		 WHERE yzb611 = #yzb611:VARCHAR#
-		<isNotEmpty prepend="AND" property="yzb610">
-			<![CDATA[ yzb610 <> #yzb610# ]]>
-		</isNotEmpty>
-	</select>
-	
-	<!-- 验证名称  -->
-	<select id="valYzb612" parameterClass="map" resultClass="java.lang.Integer">
-		SELECT COUNT(1)
-		  FROM zb61
-		 WHERE yzb612 = #yzb612:VARCHAR#
-		<isNotEmpty prepend="AND" property="yzb610">
-			<![CDATA[ yzb610 <> #yzb610# ]]>
-		</isNotEmpty>
-	</select>
+    <!-- 验证代码  -->
+    <select id="valYzb611" parameterClass="map" resultClass="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM zb61
+        WHERE yzb611 = #yzb611:VARCHAR#
+        <isNotEmpty prepend="AND" property="yzb610">
+            <![CDATA[ yzb610 <> #yzb610# ]]>
+        </isNotEmpty>
+    </select>
 
-	<!--查询主题配置下拉选-->
-	<select id="queryZt" parameterClass="map" resultClass="java.util.HashMap">
-		SELECT
-			a.yzb610 as id,   <!-- 查询统计主题流水号 -->
-			a.yzb612 as name   <!-- 查询统计主题名称 -->
-		FROM
-			zb61 a
-		WHERE
-			1 = 1
-		<isNotEmpty prepend="AND" property="yzb610">   <!-- 查询统计主题流水号 -->
-			a.yzb610 = #yzb610:DOUBLE#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
-			a.yzb617 = #yzb617:VARCHAR#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb611">   <!-- 查询统计主题代码 -->
-			a.yzb611 = #yzb611:VARCHAR#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb612">   <!-- 查询统计主题名称 -->
-			a.yzb612 = #yzb612:VARCHAR#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb613">   <!-- 查询统计主题库表 -->
-			a.yzb613 = #yzb613:VARCHAR#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb615">   <!-- 基础WHERE条件 -->
-			a.yzb615 = #yzb615:VARCHAR#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb616">   <!-- 基础WHERE条件描述 -->
-			a.yzb616 = #yzb616:VARCHAR#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="aae011">   <!-- 经办人       -->
-			a.aae011 = #aae011:VARCHAR#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yae116">   <!-- 经办人编号   -->
-			a.yae116 = #yae116:DOUBLE#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="aae017">   <!-- 经办机构     -->
-			a.aae017 = #aae017:DOUBLE#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
-			a.aae036 = #aae036:TIMESTAMP#
-		</isNotEmpty>
-	</select>
+    <!-- 验证名称  -->
+    <select id="valYzb612" parameterClass="map" resultClass="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM zb61
+        WHERE yzb612 = #yzb612:VARCHAR#
+        <isNotEmpty prepend="AND" property="yzb610">
+            <![CDATA[ yzb610 <> #yzb610# ]]>
+        </isNotEmpty>
+    </select>
 
-	<select id="queryList" parameterClass="map" resultClass="java.util.HashMap">
-		SELECT
-			a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
-			a.yzb617 as yzb617,   <!-- 查询统计类型（1查询2统计） -->
-			a.yzb611 as yzb611,   <!-- 查询统计主题代码 -->
-			a.yzb612 as yzb612,   <!-- 查询统计主题名称 -->
-			a.yzb613 as yzb613,   <!-- 查询统计主题库表 -->
-			a.yzb615 as yzb615,   <!-- 基础WHERE条件 -->
-			a.yzb616 as yzb616,   <!-- 基础WHERE条件描述 -->
-			a.aae011 as aae011,   <!-- 经办人       -->
-			a.yae116 as yae116,   <!-- 经办人编号   -->
-			a.aae017 as aae017,   <!-- 经办机构     -->
-			a.aae036 as aae036,    <!-- 经办日期     -->
-			a.yzb670 as yzb670,    <!-- 数据源流水号  -->
-			b.yzb672 as yzb672,     <!-- 数据源名称 -->
-			a.yzb618 as yzb618     <!-- 数据源名称 -->
-		FROM
-			zb61 a
-			left join
-			zb67 b
-		    on
-		    a.yzb670 = b.yzb670
-		WHERE
-			1=1
-		<!--AND-->
-			<!--a.yzb670 = b.yzb670(+)-->
-		<isNotEmpty prepend="AND" property="yzb610">   <!-- 查询统计主题流水号 -->
-			a.yzb610 = #yzb610:DOUBLE#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
-			a.yzb617 = #yzb617:VARCHAR#
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb611">   <!-- 查询统计主题代码 -->
-			a.yzb611 like #yzb611# ||'%'
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="yzb612">   <!-- 查询统计主题名称 -->
-			a.yzb612 = #yzb612# ||'%'
-		</isNotEmpty>
+    <!--查询主题配置下拉选-->
+    <select id="queryZt" parameterClass="map" resultClass="java.util.HashMap">
+        SELECT
+        a.yzb610 as id,   <!-- 查询统计主题流水号 -->
+        a.yzb612 as name   <!-- 查询统计主题名称 -->
+        FROM
+        zb61 a
+        WHERE
+        1 = 1
+        <isNotEmpty prepend="AND" property="yzb610">   <!-- 查询统计主题流水号 -->
+            a.yzb610 = #yzb610:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
+            a.yzb617 = #yzb617:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb611">   <!-- 查询统计主题代码 -->
+            a.yzb611 = #yzb611:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb612">   <!-- 查询统计主题名称 -->
+            a.yzb612 = #yzb612:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb613">   <!-- 查询统计主题库表 -->
+            a.yzb613 = #yzb613:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb615">   <!-- 基础WHERE条件 -->
+            a.yzb615 = #yzb615:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb616">   <!-- 基础WHERE条件描述 -->
+            a.yzb616 = #yzb616:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae011">   <!-- 经办人       -->
+            a.aae011 = #aae011:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yae116">   <!-- 经办人编号   -->
+            a.yae116 = #yae116:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae017">   <!-- 经办机构     -->
+            a.aae017 = #aae017:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="aae036">   <!-- 经办日期     -->
+            a.aae036 = #aae036:TIMESTAMP#
+        </isNotEmpty>
+    </select>
 
-	</select>
+    <select id="queryList" parameterClass="map" resultClass="java.util.HashMap">
+        SELECT
+        a.yzb610 as yzb610,   <!-- 查询统计主题流水号 -->
+        a.yzb617 as yzb617,   <!-- 查询统计类型（1查询2统计） -->
+        a.yzb611 as yzb611,   <!-- 查询统计主题代码 -->
+        a.yzb612 as yzb612,   <!-- 查询统计主题名称 -->
+        a.yzb613 as yzb613,   <!-- 查询统计主题库表 -->
+        a.yzb615 as yzb615,   <!-- 基础WHERE条件 -->
+        a.yzb616 as yzb616,   <!-- 基础WHERE条件描述 -->
+        a.aae011 as aae011,   <!-- 经办人       -->
+        a.yae116 as yae116,   <!-- 经办人编号   -->
+        a.aae017 as aae017,   <!-- 经办机构     -->
+        a.aae036 as aae036,    <!-- 经办日期     -->
+        a.yzb670 as yzb670,    <!-- 数据源流水号  -->
+        b.yzb672 as yzb672,     <!-- 数据源名称 -->
+        a.yzb618 as yzb618,     <!-- 数据源名称 -->
+        a.yzb690 as yzb690    <!-- 数据集流水号  -->
+        FROM
+        zb61 a
+        left join
+        zb67 b
+        on
+        a.yzb670 = b.yzb670
+        WHERE
+        1=1
+        <!--AND-->
+        <!--a.yzb670 = b.yzb670(+)-->
+        <isNotEmpty prepend="AND" property="yzb610">   <!-- 查询统计主题流水号 -->
+            a.yzb610 = #yzb610:DOUBLE#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb617">   <!-- 查询统计类型（1查询2统计） -->
+            a.yzb617 = #yzb617:VARCHAR#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb611">   <!-- 查询统计主题代码 -->
+            a.yzb611 like #yzb611# ||'%'
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="yzb612">   <!-- 查询统计主题名称 -->
+            a.yzb612 = #yzb612# ||'%'
+        </isNotEmpty>
+
+    </select>
 
 </sqlMap>

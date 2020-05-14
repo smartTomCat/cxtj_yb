@@ -16,6 +16,7 @@
 <ta:pageloading/>
 <ta:text id="yzb617" display="false"/>
 <ta:text id="yzb670" key="数据源流水号" display="false"/>
+<ta:text id="yzb690" key="数据集流水号" display="false"/>
 <ta:text id="yzb613" key="库表名称" display="false"/>
 <ta:form id="form1">
     <ta:box cols="3">
@@ -44,7 +45,8 @@
         <ta:datagridItem id="searchOrder" key="配制项目排序" icon="icon-edit" click="fnSearchOrder"/>
         <ta:datagridItem id="yzb611" key="主题代码" showDetailed="true" align="center" dataAlign="center" width="100"/>
         <ta:datagridItem id="yzb612" key="主题名称" showDetailed="true" align="center" dataAlign="center" width="200"/>
-        <ta:datagridItem id="yzb670" key="主题流水号" hiddenColumn="true"/>
+        <ta:datagridItem id="yzb670" key="数据源流水号" hiddenColumn="true"/>
+        <ta:datagridItem id="yzb690" key="数据集流水号" hiddenColumn="true"/>
         <ta:datagridItem id="yzb672" key="数据源名称" width="100" dataAlign="center" formatter="setDefaultName"/>
         <ta:datagridItem id="yzb613" key="主题库表" collection="YZ0505" showDetailed="true" align="center"
                          dataAlign="center" width="100"/>
@@ -271,6 +273,7 @@
         setYzb617(data);
         Base.setValue("yzb670", data.yzb670);
         Base.setValue("yzb613", data.yzb613);
+        Base.setValue("yzb690", data.yzb690);
         var selyzb610 = data.yzb610;
         if (selyzb610 != '') {
             Base.setValue('selyzb610', selyzb610);
@@ -319,11 +322,13 @@
         var yzb613 = Base.getValue("yzb613");
         //查询统计方式
         var yzb617 = Base.getValue("yzb617");
+        //数据集流水号
+        var yzb690 = Base.getValue("yzb690");
         if (selyzb610 != '') {
             var _id = 'w_edit';
             var _title = '配制项目';
             var _url = 'setSearchAction!toEditSearchItems.do';
-            var _param = {'dto.yzb610': selyzb610, 'dto.yzb670': yzb670, 'dto.yzb613': yzb613, 'dto.yzb617': yzb617};
+            var _param = {'dto.yzb610': selyzb610, 'dto.yzb670': yzb670, 'dto.yzb613': yzb613, 'dto.yzb617': yzb617, 'dto.yzb690': yzb690};
             var _w = fnGetW(800);
             var _h = fnGetW(500);
             var _load = null;

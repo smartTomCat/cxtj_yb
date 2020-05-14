@@ -83,6 +83,20 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
             dto.append("msg", msg);
             return dto;
         }
+        //查询数据集信息
+        String yzb690 = dto.getAsString("yzb690");
+        if (ValidateUtil.isNotEmpty(yzb690)) {
+            List<Map> resultSetList = dao.queryForList("zb69.queryZb69ByYzb690", yzb690);
+            if (ValidateUtil.isNotEmpty(resultSetList)) {
+                for (Map m : resultSetList) {
+                    dto.put("yzb691", m.get("yzb691"));
+                    dto.put("yzb694", m.get("yzb694"));
+                    dto.put("yzb695", m.get("yzb695"));
+                    dto.put("yzb613", m.get("yzb695"));
+                }
+            }
+        }
+
         BigDecimal yzb610 = dto.getAsBigDecimal("yzb610");
         if (ValidateUtil.isEmpty(yzb610)) {
             //新增
@@ -95,12 +109,12 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
             String _yzb610 = super.getSequence("SEQ_YZB610");
             zb61Domain.setYzb610(new BigDecimal(_yzb610));
             //插入Tamenu
-            String menuid = insertTaMenu(dto.getAsString("yzb611"),dto.getAsString("yzb612"),dto.getUser().getUserid());
+            String menuid = insertTaMenu(dto.getAsString("yzb611"), dto.getAsString("yzb612"), dto.getUser().getUserid());
             zb61Domain.setYzb618(menuid);
             //检查yzb615
             String yzb615 = zb61Domain.getYzb615();
-            if(ValidateUtil.isNotEmpty(yzb615) && yzb615.contains("\"")){
-                yzb615 = yzb615.replaceAll("\"","'");
+            if (ValidateUtil.isNotEmpty(yzb615) && yzb615.contains("\"")) {
+                yzb615 = yzb615.replaceAll("\"", "'");
             }
             zb61Domain.setYzb615(yzb615);
             //插入zb61
@@ -112,16 +126,16 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
             dto.put("yzb670", dto.getAsLong("yzb670"));
             //检查yzb615
             String yzb615 = dto.getAsString("yzb615");
-            if(ValidateUtil.isNotEmpty(yzb615) && yzb615.contains("\"")){
-                yzb615 = yzb615.replaceAll("\"","'");
+            if (ValidateUtil.isNotEmpty(yzb615) && yzb615.contains("\"")) {
+                yzb615 = yzb615.replaceAll("\"", "'");
             }
-            dto.put("yzb615",yzb615);
+            dto.put("yzb615", yzb615);
             int i = dao.update("zb61.updateAvailable", dto);
             if (i != 1) {
                 throw new AppException("保存主题错误，请联系管理人员！");
             }
             //更改对应的菜单信息
-            updateTamenu(dto.getAsString("yzb611"),dto.getAsString("yzb612"),dto.getUser().getUserid(),dto.getAsString("yzb618"));
+            updateTamenu(dto.getAsString("yzb611"), dto.getAsString("yzb612"), dto.getUser().getUserid(), dto.getAsString("yzb618"));
             dto.append("b", true);
             dto.append("msg", "修改成功！");
         }
@@ -130,12 +144,13 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
 
     /**
      * 插入框架菜单表
+     *
      * @param yzb611 功能标识
      * @param yzb612 菜单名称
      * @param userId
      * @return menuid
      */
-    private String insertTaMenu(String yzb611, String yzb612,Long userId) throws Exception{
+    private String insertTaMenu(String yzb611, String yzb612, Long userId) throws Exception {
         //从配置文件中获取挂靠的父菜单id
         String pmenuid = SysConfig.getSysConfig("menuid");
         if (ValidateUtil.isEmpty(pmenuid)) {
@@ -147,7 +162,7 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
         menuVo.setMenuid(0L);
         menuVo.setPmenuid(Long.valueOf(pmenuid));
         menuVo.setMenuname(yzb612);
-        menuVo.setUrl("query/customizeQueryAction.do?dto.ztdm="+yzb611);
+        menuVo.setUrl("query/customizeQueryAction.do?dto.ztdm=" + yzb611);
         //挂靠的父集菜单信息
         MenuVo pmenu = this.menuMgBlo.getMenu(Long.valueOf(pmenuid));
         menuVo.setMenuidpath(pmenu.getMenuidpath());
@@ -167,20 +182,21 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
 
     /**
      * 更改主题时 更改对应的菜单（只涉及到菜单名称 url）
+     *
      * @param yzb611
      * @param yzb612
      * @param userId
      * @param menuid
      * @throws Exception
      */
-    private void updateTamenu(String yzb611, String yzb612,Long userId,String menuid) throws Exception {
+    private void updateTamenu(String yzb611, String yzb612, Long userId, String menuid) throws Exception {
         //兼容之前老数据 无菜单字段
-        if(ValidateUtil.isNotEmpty(menuid)) {
+        if (ValidateUtil.isNotEmpty(menuid)) {
             //菜单信息
             MenuVo menuVo = this.menuMgBlo.getMenu(Long.valueOf(menuid));
             menuVo.setMenuname(yzb612);
-            menuVo.setUrl("query/customizeQueryAction.do?dto.ztdm="+yzb611);
-            this.menuMgBlo.updateMenu(menuVo,"",userId);
+            menuVo.setUrl("query/customizeQueryAction.do?dto.ztdm=" + yzb611);
+            this.menuMgBlo.updateMenu(menuVo, "", userId);
         }
     }
 
@@ -219,12 +235,12 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
      * @author
      */
     @Override
-    public TaParamDto removeSearch(List lst,TaParamDto dto) throws Exception {
+    public TaParamDto removeSearch(List lst, TaParamDto dto) throws Exception {
         if (ValidateUtil.isNotEmpty(lst)) {
             Map key = null;
             for (int i = 0; i < lst.size(); i++) {
                 key = (Map) lst.get(i);
-                removeSearch(key,dto);
+                removeSearch(key, dto);
             }
         }
         TaParamDto d = new TaParamDto();
@@ -240,7 +256,7 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
      * @throws Exception
      * @author
      */
-    private void removeSearch(Map key ,TaParamDto dto) throws Exception {
+    private void removeSearch(Map key, TaParamDto dto) throws Exception {
         int i = 0;
         key.put("yzb610", Integer.valueOf(String.valueOf(key.get("yzb610"))));
         List zb62lst = getDao().queryForList("zb62.getList", key);
@@ -257,12 +273,12 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
             throw new AppException("删除主题错误，请联系管理人员！");
         }
         //删除主题对应的菜单 兼容之前的老数据 无菜单id yzb618字段
-        if(!ValidateUtil.isEmpty(key.get("yzb618"))){
+        if (!ValidateUtil.isEmpty(key.get("yzb618"))) {
             UserVo userVo = new UserVo();
             userVo.setLoginid(dto.getUser().getLoginid());
             UserAccountInfo userAccountInfo = new UserAccountInfo();
             userAccountInfo.setUser(userVo);
-            menuMgBlo.removeMenu(Long.valueOf(key.get("yzb618")+""),userAccountInfo);
+            menuMgBlo.removeMenu(Long.valueOf(key.get("yzb618") + ""), userAccountInfo);
         }
     }
 
@@ -275,5 +291,10 @@ public class SetSearchServiceImpl extends CxtjBaseServiceImpl implements SetSear
     @Override
     public List queryDataSource(TaParamDto dto) throws Exception {
         return dao.queryForList("zb67.queryDataSource", dto);
+    }
+
+    @Override
+    public List<Map> queryResultSetsByYzb670(String yzb670) throws Exception {
+        return dao.queryForList("zb69.queryResultSetsByYzb670", yzb670);
     }
 }

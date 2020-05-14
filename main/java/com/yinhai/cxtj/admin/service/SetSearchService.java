@@ -2,6 +2,7 @@ package com.yinhai.cxtj.admin.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 import com.yinhai.core.common.ta3.dto.TaParamDto;
 import com.yinhai.cxtj.admin.base.service.CxtjBaseService;
@@ -64,5 +65,13 @@ public interface SetSearchService extends CxtjBaseService {
 	 * @throws Exception
 	 */
 	public List queryDataSource(TaParamDto dto) throws Exception;
+
+	/**
+	 * 查询相应数据源下的数据集
+	 * @param yzb670
+	 * @return
+	 * @throws Exception
+	 */
+	List<Map> queryResultSetsByYzb670(String yzb670) throws Exception;
 
 }
