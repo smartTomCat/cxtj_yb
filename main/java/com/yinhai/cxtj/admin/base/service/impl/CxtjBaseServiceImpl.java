@@ -1,6 +1,7 @@
 package com.yinhai.cxtj.admin.base.service.impl;
 
 import com.yinhai.core.app.api.util.ServiceLocator;
+import com.yinhai.core.common.api.config.impl.SysConfig;
 import com.yinhai.core.common.api.exception.AppException;
 import com.yinhai.core.common.api.util.ValidateUtil;
 import com.yinhai.core.common.ta3.dto.TaParamDto;
@@ -73,4 +74,11 @@ public class CxtjBaseServiceImpl extends TaBaseService  implements CxtjBaseServi
     }
 
 
+    @Override
+    public String getSequence(String seqName) {
+        if ("rds".equals(SysConfig.getSysConfig("idGenerator"))) {
+            return String.valueOf(dao.queryForObject("zb62.genIdByRds",seqName));
+        }
+        return super.getSequence(seqName);
+    }
 }

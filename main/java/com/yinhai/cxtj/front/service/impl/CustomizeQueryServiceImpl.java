@@ -1634,7 +1634,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
             Timestamp aae036 = super.getSysTimestamp();
             if (para.get("yzb710") == null) {//如果为空新方案信息
                 Zb71Domain zb71Domain = new Zb71Domain();
-                yzb710 = new BigDecimal(getSequence("SEQ_YZB710"));//查询统计方案流水号
+                yzb710 = new BigDecimal(super.getSequence("SEQ_YZB710"));//查询统计方案流水号
                 String ztdm = (String) map.get("ztdm");
                 Zb61Domain zb61Domain = searchParamService.getSearchByYZB611(ztdm);
                 if (null == zb61Domain) {
@@ -1661,7 +1661,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
                     outMap = (Map) orList.get(i);
                     /********************************保存where条件组（or条件组）***********************************/
                     zb72Domain = new Zb72Domain();
-                    BigDecimal yzb720 = new BigDecimal(getSequence("SEQ_YZB720"));
+                    BigDecimal yzb720 = new BigDecimal(super.getSequence("SEQ_YZB720"));
                     zb72Domain.setYzb720(yzb720);
                     zb72Domain.setYzb710(yzb710);
                     zb72Domain.setAae036(aae036);
@@ -1675,7 +1675,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
                             andMap = (Map) andList.get(j);
                             /********************************保存统计方案WHERE条件（每个and）***********************************/
                             Zb73Domain zb73Domain = new Zb73Domain();
-                            BigDecimal yzb730 = new BigDecimal(getSequence("SEQ_YZB730"));
+                            BigDecimal yzb730 = new BigDecimal(super.getSequence("SEQ_YZB730"));
                             zb73Domain.setYzb730(yzb730);
                             zb73Domain.setYzb710(yzb710);
                             zb73Domain.setYzb720(yzb720);
@@ -1699,7 +1699,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
                                             List listDomain1 = new ArrayList();
                                             for (int k = 0; k < values.length; k++) {
                                                 zb74Domain = new Zb74Domain();
-                                                zb74Domain.setYzb740(new BigDecimal(getSequence("SEQ_YZB740")));
+                                                zb74Domain.setYzb740(new BigDecimal(super.getSequence("SEQ_YZB740")));
                                                 zb74Domain.setYzb730(yzb730);
                                                 zb74Domain.setYzb741(values[k].replace("'", ""));//代码值
                                                 zb74Domain.setAae036(aae036);
@@ -1739,7 +1739,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
                 for (int x = 0; x < groupFieldList.size(); x++) {
                     groupFieldMap = (Map) groupFieldList.get(x);
                     zb78Domain = new Zb78Domain();
-                    BigDecimal yzb780 = new BigDecimal(getSequence("SEQ_YZB780"));
+                    BigDecimal yzb780 = new BigDecimal(super.getSequence("SEQ_YZB780"));
                     zb78Domain.setYzb780(yzb780);
                     zb78Domain.setYzb710(yzb710);
                     yzb731 = (String) groupFieldMap.get("sn");//排序号
@@ -1768,7 +1768,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
                 for (int z = 0; z < functionFieldList.size(); z++) {
                     functionFieldMap = (Map) functionFieldList.get(z);
                     zb79Domain = new Zb79Domain();
-                    BigDecimal yzb790 = new BigDecimal(getSequence("SEQ_YZB790"));
+                    BigDecimal yzb790 = new BigDecimal(super.getSequence("SEQ_YZB790"));
                     zb79Domain.setYzb790(yzb790);
                     zb79Domain.setYzb710(yzb710);
                     yzb791 = (String) functionFieldMap.get("sn");//排序号
@@ -1798,7 +1798,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
                     isChecked = (String) showFieldMap.get("ischecked");//是否显示
                     if ("true".equals(isChecked)) {//页面上勾选了显示的则保存
                         zb76Domain = new Zb76Domain();
-                        zb76Domain.setYzb760(new BigDecimal(getSequence("SEQ_YZB760")));
+                        zb76Domain.setYzb760(new BigDecimal(super.getSequence("SEQ_YZB760")));
                         zb76Domain.setYzb710(yzb710);//统计方案流水号
                         yzb761 = (String) showFieldMap.get("sn");//排序号
                         if (ValidateUtil.isNotEmpty(yzb761)) {
@@ -1826,7 +1826,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
                     for (int i = 0; i < zb62lst.size(); i++) {
                         zb62Map = (Map) zb62lst.get(i);
                         zb76Domain = new Zb76Domain();
-                        zb76Domain.setYzb760(new BigDecimal(getSequence("SEQ_YZB760")));
+                        zb76Domain.setYzb760(new BigDecimal(super.getSequence("SEQ_YZB760")));
                         zb76Domain.setYzb710(yzb710);//统计方案流水号
                         if (zb62Map.get("yzb621") != null) {
                             zb76Domain.setYzb761(((BigDecimal) zb62Map.get("yzb621")).intValue());  //排序号
@@ -1853,7 +1853,7 @@ public class CustomizeQueryServiceImpl extends CxtjBaseServiceImpl implements Cu
                 for (int i = 0; i < orderList.size(); i++) {
                     orderMap = (Map) orderList.get(i);
                     zb77Domain = new Zb77Domain();
-                    zb77Domain.setYzb770(new BigDecimal(getSequence("SEQ_YZB770")));
+                    zb77Domain.setYzb770(new BigDecimal(super.getSequence("SEQ_YZB770")));
                     zb77Domain.setYzb710(yzb710);
 
                     yzb771 = (String) orderMap.get("sn");//排序号

@@ -5,7 +5,7 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
     
     <bean id="zkClient" class="com.yinhai.idgenerator.ext.MyZkClientFactoryBean">
-		<property name="connectString" value="192.168.10.237:2181" />
+		<property name="connectString" value="192.168.17.138:2181" />
 	</bean>
 	<bean class="org.mohrss.leaf.idgenerator.IdGenUtil">
 		<property name="zkClient" ref="zkClient"/>
