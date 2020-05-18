@@ -41,6 +41,12 @@
     });
 
     function init() {
+        //组件控制
+        var yzb610 = Base.getValue("yzb610");
+        if (yzb610) {
+            //编辑
+            Base.setReadOnly("yzb611,yzb670,yzb613,yzb619,yzb690,userrsesultset");
+        }
         fnSaveBack();
     }
 
@@ -79,11 +85,11 @@
             //否
             Base.setDisabled("yzb690");
             Base.setDisRequired("yzb690");
-            Base.setEnable("yzb613");
+            Base.setEnable("yzb613,yzb615,yzb616");
             Base.setRequired("yzb613");
         }
         if ('1' == value) {
-            Base.setDisabled("yzb613");
+            Base.setDisabled("yzb613,yzb615,yzb616");
             Base.setDisRequired("yzb613");
             Base.setEnable("yzb690");
             Base.setRequired("yzb690");

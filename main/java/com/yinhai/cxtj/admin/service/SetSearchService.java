@@ -74,4 +74,5 @@ public interface SetSearchService extends CxtjBaseService {
 	 */
 	List<Map> queryResultSetsByYzb670(String yzb670) throws Exception;
 
+
 }

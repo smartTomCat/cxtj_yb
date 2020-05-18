@@ -1,7 +1,9 @@
 package com.yinhai.cxtj.admin.controller;
 
 import com.yinhai.core.app.api.util.JSonFactory;
+import com.yinhai.core.common.api.dto.IDto;
 import com.yinhai.core.common.api.util.ValidateUtil;
+import com.yinhai.core.common.ta3.dto.TaBaseDto;
 import com.yinhai.core.common.ta3.dto.TaParamDto;
 import com.yinhai.cxtj.admin.Constants;
 import com.yinhai.cxtj.admin.base.controller.CxtjBaseController;
@@ -121,8 +123,18 @@ public class ResultSetManageController extends CxtjBaseController {
     @RequestMapping("resultSetManageController!saveResultSet.do")
     public String saveResultSet() throws Exception {
         TaParamDto dto = getTaDto();
-        List columnList = getGridSelected("grid1");
-        resultSetManageService.saveResultSet(dto,columnList);
+        List<IDto> columnList = (List<IDto>) getGridSelected("grid1");
+        if (ValidateUtil.isNotEmpty(columnList)) {
+            for (int i = 0; i < columnList.size(); i++) {
+                for (int j = 0; j <columnList.size() ; j++) {
+                    if ( i!=j && columnList.get(i).getAsString("yzb892").equals(columnList.get(j).getAsString("yzb892"))) {
+                        setMessage("存在重复字段："+columnList.get(j).getAsString("yzb892"),"warn");
+                        return JSON;
+                    }
+                }
+            }
+            resultSetManageService.saveResultSet(dto, (List)getGridSelected("grid1"));
+        }
         setMessage("保存成功", "success");
         return JSON;
     }
@@ -151,6 +163,23 @@ public class ResultSetManageController extends CxtjBaseController {
         resultSetManageService.deleteResultSets(list);
         setMessage("删除成功", "success");
         return JSON;
+    }
+
+    /**
+     * 数据集名称查重
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("resultSetManageController!checkNameExist.do")
+    public String checkNameExist() throws Exception {
+        if (ValidateUtil.isNotEmpty(getTaDto().getAsString("yzb691"))) {
+            boolean b = resultSetManageService.checkNameExist(getTaDto().getAsString("yzb691"));
+            if (b) {
+                setMessage("该数据集名称已存在", "error");
+                setData("yzb681", "");
+            }
+        }
+         return JSON;
     }
 
 }

@@ -68,5 +68,12 @@ public interface ResultSetManageService extends CxtjBaseService {
     List<Map> queryZb89ByYzb690(String yzb690) throws Exception;
 
 
+    /**
+     *
+     * @param yzb691
+     * @return
+     * @throws Exception
+     */
+    Boolean checkNameExist(String yzb691) throws Exception;
 
 }

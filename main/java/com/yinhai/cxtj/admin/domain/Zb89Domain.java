@@ -16,6 +16,10 @@ public class Zb89Domain extends BaseVo {
     private String yzb891;
     //表字段
     private String yzb892;
+    //字段注释
+    private String yzb893;
+    //字段类型
+    private String yzb894;
 
     public String getYzb890() {
         return yzb890;
@@ -49,6 +53,22 @@ public class Zb89Domain extends BaseVo {
         this.yzb892 = yzb892;
     }
 
+    public String getYzb893() {
+        return yzb893;
+    }
+
+    public void setYzb893(String yzb893) {
+        this.yzb893 = yzb893;
+    }
+
+    public String getYzb894() {
+        return yzb894;
+    }
+
+    public void setYzb894(String yzb894) {
+        this.yzb894 = yzb894;
+    }
+
     @Override
     public Map toMap() {
         Map map = new HashMap();
@@ -56,6 +76,8 @@ public class Zb89Domain extends BaseVo {
         map.put("yzb690", yzb690);
         map.put("yzb891", yzb891);
         map.put("yzb892", yzb892);
+        map.put("yzb893", yzb893);
+        map.put("yzb894", yzb894);
         return map;
     }
 
@@ -66,6 +88,8 @@ public class Zb89Domain extends BaseVo {
                 ",yzb690 ='" + yzb690 + '\'' +
                 ",yzb891 ='" + yzb891 + '\'' +
                 ",yzb892 ='" + yzb892 + '\'' +
+                ",yzb893 ='" + yzb893 + '\'' +
+                ",yzb894 ='" + yzb894 + '\'' +
                 '}';
     }
 

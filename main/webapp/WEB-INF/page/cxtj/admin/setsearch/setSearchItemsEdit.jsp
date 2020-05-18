@@ -69,14 +69,14 @@ function fnSelect(){
 		var _autoval = false;
 		var _sucback = fnSelectbacksue;
 		var _falback = fnSelectbackfal;
-		Base.submit(_id, _url, _param, _onsub, _autoval, _sucback, _falback);
+		Base.submit(_id, _url, _param, _onsub, _autoval, fnSelectbacksue, fnSelectbackfal);
 	}
 }
 function fnSelectbacksue(){
-	Base.alert(Base.getValue('msg'), 'success', fnClose);
+	Base.setDisabled("btnSelect");
 }
 function fnSelectbackfal(){
-	Base.alert(Base.getValue('msg'), 'error');
+	Base.setDisabled("btnSelect");
 }
 
 //关闭

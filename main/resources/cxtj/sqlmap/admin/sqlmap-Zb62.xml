@@ -328,33 +328,21 @@
 	</select>
 
 	<!-- 查询数据集中的项目或表达式选择  -->
-	<select id="querySearchItemInResultSet" parameterClass="java.util.List" resultClass="java.util.HashMap">
+	<select id="querySearchItemInResultSet" parameterClass="java.lang.String" resultClass="java.util.HashMap">
 		SELECT
-		a.COLUMN_NAME AS yzb623,
-		CASE WHEN a.DATA_TYPE IN ('VARCHAR','CHAR','BLOB') THEN '1'
-		WHEN  a.DATA_TYPE IN ('INT','INTEGER','FLOAT','DOUBLE','DECIMAL') THEN '2'
-		WHEN  a.DATA_TYPE IN ('DATE','TIME','DATETIME','TIMESTAMP') THEN '3'
+		a.yzb892 AS yzb623,
+		CASE WHEN a.yzb894 IN ('VARCHAR','CHAR','BLOB') THEN '1'
+		WHEN  a.yzb894 IN ('INT','INTEGER','FLOAT','DOUBLE','DECIMAL') THEN '2'
+		WHEN  a.yzb894 IN ('DATE','TIME','DATETIME','TIMESTAMP') THEN '3'
 		ELSE '1'
 		END AS yzb626,
-		a.COLUMN_COMMENT AS yzb625,
-		if((SELECT COUNT(1) FROM aa10a1 WHERE aaa100 = a.column_name)=0, '', a.column_name) as yzb628
+		a.yzb893 AS yzb625,
+		if((SELECT COUNT(1) FROM aa10a1 WHERE aaa100 = a.yzb892)=0, '', a.yzb892) as yzb628
 		FROM
-		information_schema.COLUMNS a
+		zb89 a
 		WHERE
-		a.table_name in
-		<iterate close=")" open="(" conjunction=",">
-			<![CDATA[
-                 #list[].yzb891#
-            ]]>
-		</iterate>
-		and a.COLUMN_NAME in
-		<iterate close=")" open="(" conjunction=",">
-			<![CDATA[
-                 #list[].yzb892#
-            ]]>
-		</iterate>
+		a.yzb690 = #yzb690#
 	</select>
-
 
 	<!-- 查询获取项目或表达式选择  -->
 	<select id="getPGSearchItemSelect" parameterClass="map" resultClass="java.util.HashMap">
@@ -422,6 +410,11 @@
 		aa10a1
 		WHERE
 		aaa100 = #aaa100#
+	</select>
+
+
+	<select id="queryExistCols" parameterClass="map" resultClass="java.util.HashMap">
+		select yzb610,yzb623 from zb62 where yzb610 = #yzb610#
 	</select>
 
 </sqlMap>

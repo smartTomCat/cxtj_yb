@@ -32,7 +32,7 @@
         <ta:datagridItem id="yzb690" key="数据集流水号" hiddenColumn="true"/>
         <ta:datagridItem id="yzb670" key="数据源配置流水号" hiddenColumn="true"/>
         <ta:datagridItem id="yzb672" key="数据源名称" dataAlign="center" formatter="setDefaultName"/>
-        <ta:datagridItem id="yzb691" key="数据库字段" icon="icon-add2" dataAlign="center"/>
+        <ta:datagridItem id="yzb691" key="数据集名称" icon="icon-add2" dataAlign="center"/>
         <ta:datagridItem id="yzb692" key="数据集备注" showDetailed="true" align="center" dataAlign="center"/>
         <ta:datagridItem id="yzb695" key="表名集合" showDetailed="true" align="center" dataAlign="center"/>
         <ta:datagridItem id="yzb693" key="关联条件" dataAlign="center" showDetailed="true"/>
@@ -79,7 +79,7 @@
 
     //新增
     function fnCreate() {
-        var _id = 'resultset_add';
+        var _id = 'resultset_edit';
         var _title = '新增数据集';
         var _url = 'resultSetManageController!toEdit.do';
         var _param = null;
@@ -88,7 +88,7 @@
         var _load = null;
         var _close = fnQuery;
         var _iframe = true;
-        Base.openWindow(_id, _title, _url, _param, _w, _h, _load, null, _iframe);
+        Base.openWindow(_id, _title, _url, _param, _w, _h, _load, _close, _iframe);
     }
 
     //编辑l

@@ -45,6 +45,7 @@
 	    		<ta:number id="yzb620" display="false"/>
 				<ta:number id="yzb610" display="false"/>
 				<ta:text id="yzb617" display="false"/>
+				<ta:text id="yzb690" display="false"/>
 				<ta:radiogroup id="aae100" key="有效标志" collection="AAE100" cols="8" labelStyle="font-size:15px; font-weight:bold; text-align:center; letter-spacing:5px; color:red;"/>
 	    	</ta:box>
 	    	<ta:box cols="3">
@@ -207,11 +208,12 @@ function fnToEditSearchItemSelect(){
 	var yzb610 = Base.getValue('yzb610');
 	var yzb670 = Base.getValue('yzb670');
 	var yzb613 = Base.getValue('yzb613');
+	var yzb690 = Base.getValue('yzb690');
 	if(yzb610 != ''){
 		var _id = 'w_select';
 		var _title = '项目选择';
 		var _url = 'setSearchAction!toEditSearchItemSelect.do';
-		var _param = {'dto.yzb610':yzb610,'dto.yzb670':yzb670,'dto.yzb613':yzb613};
+		var _param = {'dto.yzb610':yzb610,'dto.yzb670':yzb670,'dto.yzb613':yzb613,'dto.yzb690':yzb690};
 		var _w = parent.fnGetW(1000);
 		var _h = parent.fnGetW(600);
 		var _load = null;

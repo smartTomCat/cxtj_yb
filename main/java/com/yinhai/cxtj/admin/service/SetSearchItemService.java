@@ -52,21 +52,19 @@ public interface SetSearchItemService extends CxtjBaseService {
 	 * 查询获取项目或表达式选择
 	 * 
 	 * @author 
-	 * @param yzb613 库表名称
-	 * @param yzb672 数据源名称
+	 * @param dto 库表名称
 	 * @return
 	 * @throws Exception
 	 */
-	public List querySearchItemSelect(String yzb613,String yzb672) throws Exception;
+	public List querySearchItemSelect(TaParamDto dto) throws Exception;
 
 	/**
 	 * 查询配置的数据集的项目或表达式选择
-	 * @param yzb670
-	 * @param yzb690
+	 * @param dto
 	 * @return
 	 * @throws Exception
 	 */
-	public List querySearchItemInResultSet (String yzb670,String yzb690) throws Exception;
+	public List querySearchItemInResultSet (TaParamDto dto) throws Exception;
 
 	/**
 	 * 查询配制项目
@@ -106,5 +104,13 @@ public interface SetSearchItemService extends CxtjBaseService {
 	 * @throws Exception
 	 */
 	public void removeSearchItem(Map key) throws Exception;
+
+	/**
+	 *
+	 * @param dto
+	 * @return
+	 * @throws Exception
+	 */
+	List<Map> queryExistCols(TaParamDto dto) throws Exception;
 
 }

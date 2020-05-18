@@ -234,19 +234,16 @@ public class SetSearchItemServiceImpl extends CxtjBaseServiceImpl implements Set
 	 * 查询获取项目或表达式选择
 	 * 
 	 * @author 
-	 * @param yzb613
-	 *            查询统计主题流水号
+	 * @param d
 	 * @return
 	 * @throws Exception
 	 */
 	@Override
-	public List querySearchItemSelect(String yzb613,String yzb670) throws Exception {
-		if(ValidateUtil.isNotEmpty(yzb670)){
-			IDao dynamicDao= super.getDynamicDao(yzb670);
-			if (!ValidateUtil.isEmpty(yzb613)) {
-				TaParamDto d = new TaParamDto();
-				d.append("yzb613", yzb613);
-				String dsType= super.getDsType(yzb670);
+	public List querySearchItemSelect(TaParamDto d) throws Exception {
+		if(ValidateUtil.isNotEmpty(d.getAsString("yzb670"))){
+			IDao dynamicDao= super.getDynamicDao(d.getAsString("yzb670"));
+			if (!ValidateUtil.isEmpty(d.getAsString("yzb613"))) {
+				String dsType= super.getDsType(d.getAsString("yzb670"));
 				if(com.yinhai.cxtj.front.Constants.DSTYPE_ORACLE.equals(dsType)){
 					return dynamicDao.queryForList("zb62.getOracleSearchItemSelect", d);
 				}else if(com.yinhai.cxtj.front.Constants.DSTYPE_MYSQL.equals(dsType)){
@@ -265,13 +262,10 @@ public class SetSearchItemServiceImpl extends CxtjBaseServiceImpl implements Set
 
 
 	@Override
-	public List querySearchItemInResultSet(String yzb670,String yzb690) throws Exception {
-		if (ValidateUtil.isNotEmpty(yzb670)) {
-			//确定为mysql专用  不用判断类型
-			IDao iDao = super.getDynamicDao(yzb670);
-            List<Zb89Domain> list = dao.queryForList("zb89.queryTableColByYzb690",yzb690);
-			List list2 = iDao.queryForList("zb62.querySearchItemInResultSet",list);
-			return list2;
+	public List querySearchItemInResultSet(TaParamDto dto) throws Exception {
+		if (ValidateUtil.isNotEmpty(dto.getAsString("yzb690"))) {
+            List<Zb89Domain> list = dao.queryForList("zb89.querySearchItemInResultSet",dto);
+			return list;
 		}
 		return null;
 	}
@@ -478,4 +472,8 @@ public class SetSearchItemServiceImpl extends CxtjBaseServiceImpl implements Set
 		}
 	}
 
+	@Override
+	public List<Map> queryExistCols(TaParamDto dto) throws Exception {
+		return dao.queryForList("zb62.queryExistCols",dto);
+	}
 }

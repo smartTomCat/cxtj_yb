@@ -77,7 +77,9 @@
         a.aae017 as aae017,   <!-- 经办机构     -->
         a.aae036 as aae036,    <!-- 经办日期     -->
         a.yzb670 as yzb670,    <!-- 数据源流水号 -->
-        a.yzb618 as yzb618    <!-- 对应的菜单id-->
+        a.yzb618 as yzb618,    <!-- 对应的菜单id-->
+        a.yzb690 as yzb690,    <!-- 数据集名称-->
+        a.yzb691 as yzb691    <!-- 数据集名称-->
         FROM zb61 a
         WHERE 1 = 1
         <![CDATA[	   AND a.yzb610 = #yzb610#    ]]>    <!-- 查询统计主题流水号 -->

@@ -1,0 +1,413 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>德卡科技</title> 
+	<script src="./DCgpyhs.js" type="text/javascript" charset="utf-8"></script>
+
+	
+ 	
+ 	<style> 		
+ 	select{ 		
+ 		width: 100px; 		
+ 	}
+ 	input{ 		
+ 		width: 80px;
+ 		text-align: center;
+ 	}	
+ 	</style> 	
+</head>
+<SCRIPT language="javascript">  
+		var str;
+		var iCamNo = -1;//摄像头编号
+		var iCamNoSide = -1;  //副摄像头编号
+		var image = '';
+		var count = 0;
+		var isvideo = 0;
+        var isOpen = 1;//是否打开设备  0表示打开，1表示没打开打开
+        var isSign = 1;//是否处于签字状态  0 表示处于签字状态，1 表示不在签字状态
+		//$(window).resize(function()
+		//{
+		//	alert("Stop it!");
+		//});
+		function selectImage(file)
+		{
+			if (!file.files || !file.files[0])
+			{
+				return;
+			}
+			var reader = new FileReader();
+			reader.onload = function (evt)
+			{
+			//alert(evt);
+           		 document.getElementById('mypic').src = evt.target.result;
+            		image = evt.target.result;
+			}
+        		reader.readAsDataURL(file.files[0]);
+		}
+		 function getCurDate()
+		 {
+			 var today,intYears,intMonths,intDays,intHours, intMinutes, intSeconds;
+			 var curdate;
+     		 	today = new Date(); //系统当前时间
+			 intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+			 intMonths = today.getMonth() + 1; //得到月份，要加1
+			 intDays = today.getDate(); //得到日期
+			 intHours = today.getHours(); //得到小时 
+			 intMinutes = today.getMinutes(); //得到分钟
+			 intSeconds = today.getSeconds(); //得到秒钟
+			 curdate = intYears+"-"+intMonths+"-"+intDays+"-"+intHours+"-"+intMinutes+"-"+intSeconds; 
+			 return curdate;
+		 }
+
+         function ICamInit()
+		 { 
+				ICamInitAB();
+          }
+		  function iCamDeinit()
+		  { 
+				iCamDeinitAB();
+          }
+		  function iCamOpen()
+		  {
+				iCamNo=document.getElementById("CamNo").value;		  
+				iCamOpenAB(iCamNo);
+          }
+		  
+         function iCamClose()
+		 {
+				iCamCloseAB();
+				iCamNo = -1;      
+          }
+	
+		 function iCamGetCameralmage()
+		 {
+				if (iCamNo < 0)
+				{
+					alert("请先打开主摄像头");
+					return;
+				}
+				iCamGetCameralmageAB();
+		  }
+
+		  function iCamGetResolutionList()
+		  {	
+				if (iCamNo < 0)
+				{
+					alert("请先打开主摄像头");
+					return;
+				}
+				iCamGetResolutionListAB();
+		  }
+		  
+          function iCamSetResolution()
+		  {
+				var ResolutionID = document.getElementById("ResolutionID").value;
+				iCamSetResolutionAB(ResolutionID);
+          }
+		  function iCamGetCurrentResolution(){
+                   iCamGetCurrentResolutionAB();
+          }
+		  function iCamSetColor(){
+		        var colorID = document.getElementById("color").value;
+                iCamSetColorAB(colorID);
+          }
+		  function iCamSetCutType(){
+				   var Type = document.getElementById("CutMode").value;
+                   iCamSetCutTypeAB(Type);
+          }
+		  function iCamPhotoBase64(){
+		        var phAddr;
+				phAddr=document.getElementById("photoStyle").value;
+                iCamPhotoBase64AB(phAddr);
+          }
+		  function iCamFileToBase64(){
+			       var phAddr;
+				   var phstyle;
+				   var phName;
+				   var fileAddr;
+				   
+				  
+				   phAddr=document.getElementById("filepath").value;
+				   if(phAddr == "")
+			       {
+					   alert("请输入保存路径");
+					   return;
+				   }
+				   iCamFileToBase64AB(phAddr);
+         }
+		  function iCamPhoto(){
+			       var fileAddr;
+				   fileAddr=document.getElementById("AllpAth").value;
+                   iCamPhotoAB(fileAddr);
+          }
+		  function show_photo(mode)
+		  {     
+              if (mode == 1)
+			  {
+				//定时拍照				
+				if (document.getElementById("timeText").value=="")
+				{
+					alert("请输入间隔时间");
+					var all_options = document.getElementById("PhotoMode").options;
+					all_options[0].selected = true;
+					return;
+				}
+				else
+				{
+				   var phAddr;
+				   
+				   phAddr=document.getElementById("saveText").value;
+				   if(phAddr == "")
+			       	   {
+					   alert("请输入保存路径");
+					var all_options = document.getElementById("PhotoMode").options;
+					all_options[0].selected = true;
+					   return;
+				   }
+				   alert(phAddr);
+				   iCamStartTimerCapAB(document.getElementById("timeText").value, phAddr);
+				}
+			  }
+			  else if (mode == 2)
+			  {
+				//停止定时抓拍
+				iCamStopTimerCapAB();
+				var all_options = document.getElementById("PhotoMode").options;
+				all_options[0].selected = true;
+			  }     
+          }
+		  function iCamStartAutoCap()
+		  {
+			 alert("暂不支持");
+		  }
+		  function iCamStopAutoCap()
+		  {
+			 alert("暂不支持");
+		  }
+		  function iCamSetRotateLeft()
+          {
+		       iCamSetRotateLeftAB();
+		  }	
+		  function iCamSetRotateRight()
+          {
+		       iCamSetRotateRightAB();
+		  }		
+          function iCamZoomIn()
+          {
+		       alert("暂不支持");
+		  }	
+		  function iCamZoomOut()
+          {
+		       alert("暂不支持");
+		  }		
+          function iCamReadBarCode()
+		  {
+               var CodePath	= document.getElementById("CodePath").value;
+			   iCamReadBarCodeAB(CodePath);
+           }
+          function iCamReadQRCode()
+		  {
+               var CodePath	= document.getElementById("CodePath").value;
+			   iCamReadQRCodeAB(CodePath);
+           }	
+          function iCamImageSet()
+		  {
+			   iCamImageSetAB();
+           }
+          function iCamVidoSet()
+		  {
+			   iCamVidoSetAB();
+           }
+          function iCamVidoStart()
+		  {
+		       var vidoPath = document.getElementById("saveText").value ;
+			   var vidoName = document.getElementById("fileName").value ; 
+			   var vidoFormat = document.getElementById("videoStyle").value ; 
+			   iCamVidoStartAB(vidoPath,vidoName,vidoFormat);
+           }
+		function iCamVidoStop()
+		{
+		   iCamVidoStopAB();
+		}		   
+	   function iCamGetCameralmage()
+	   {
+    		 iCamGetCameralmageAB();
+	   }
+       function ClearText()
+	   {
+	       document.getElementById("recardtext").value = "";
+	   }
+            
+//showmessage(msg)函数显示函数输出，格式如下：
+//    msg[0]      函数名    例：“iReadSIEF05”
+//    msg[1]      函数出参，数据项之间用“|”分割      例：“123456|3|2.00|987654321|20170101|20171230|123456789|”
+//    msg[2]      函数返回值，0或非0     例：“0”
+function showmessage(msg){
+	document.getElementById("recardtext").value = msg;
+	
+}
+
+
+</SCRIPT>
+<body onload="load()">
+		
+	<div id="mainUI">
+		<!--canvas id="myCanvas" width='320' height='240' style="background-color: black; float: left;"></canvas--> 
+		<img id="myCanvas" width='640' height='480' style="background-color: black; float: left;"/>
+		<!img id="myCanvas" width='460' height='340' style="background-color: black; float: left;"/>
+		<!img id="sidecam" width='160' height='140' style="margin-left: 1%; background-color: black; float: left;"/>
+
+
+
+		<div>
+		<fieldset style="float: left; margin-left: 1%;width:40%;border:2px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+			<fieldset style="width:96%;margin-top: 0%; border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;"> 
+			<legend>业务输出:</legend> 
+			<textarea style="width:100%;" rows="9" cols="28" name= "recardtext" id="recardtext"></textarea>
+			</fieldset> 
+			<div style="padding-top: 2px;">	
+			<span style="margin-left: 10px;">照片地址:</span>
+			<input type="text" id="filepath" style="width: 240px; text-align: left;">
+			<button onclick="iCamFileToBase64()" style="margin-left: 10px;">照片转Base64</button>
+			<button onclick="ClearText()" style="margin-left: 10px;">清 空</button>
+
+			</div>
+		</div>
+		<div>
+		</fieldset>	
+			<fieldset style="float: left; margin-left: 1%;width:40%;border:2px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+			<fieldset style="width:96%;margin-top: 0%; border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;"> 
+			<legend>存储:</legend> 
+			<span>路径+名称:</span>		
+			<input type="text"  id="AllpAth" value="D:\\GPR_photo\\2020040213.jpg" style="width: 300px;text-align: left;"/>
+			<br><br><span>存储路径:</span>		
+			<input type="text"  id="saveText" value="D:\\GPR_photo\\" style="width: 300px;text-align: left;"/>
+			<br><br><span>文件名称:</span>		
+			<input type="text"  id="fileName" value="2020040213" style="width: 300px;text-align: left;"/>
+			<br><div style="margin-top: 10px; display: inline-block;">
+				<span >照片格式:</span>
+				<select id="photoStyle" >
+				<option value=".jpg" selected>jpg格式</option>
+      			        <option value=".bmp">bmp格式</option>
+				<option value=".png">png格式</option>
+				<option value=".jpeg">jpeg格式</option>
+				<option value=".tif">tif格式</option>
+				<option value=".gif">gif格式</option>
+				</select>
+			</div>
+			<div style="margin-left: 20px; display: inline-block;">
+				<span >视频格式:</span>
+				<select id="videoStyle" >
+				<option value="mp4" selected>mp4格式</option>
+      			        <option value="wmv">wmv格式</option>
+				<option value="avi">AVI格式</option>
+				</select>
+			</div>
+			
+			</fieldset>
+		</fieldset>
+		</div>
+	
+			
+	</div>
+
+		<div style="clear:both;">
+		
+		<fieldset style="float:left; width:530px;margin-top: 0%;border:2px solid #000000;padding:5px;margin-bottom:5px;display:block;">
+		
+			<fieldset style="width:500px;margin-top: 0%;border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+			<legend>摄像头:</legend>
+			<div style="margin-top: 0px;">
+				
+	                <span >摄像头:</span>
+					<select id="CamNo" >
+					<option value="0" selected>0号摄像头</option>
+      				<option value="1">1号摄像头</option>
+					</select>
+					<span>分辨率ID:</span>
+			        <input type="text"  id="ResolutionID" value="0" style="width: 40px;text-align: left;"/>
+				<button onclick="ICamInit()" style="margin-left: 30px;">初始化</button>
+				<button onclick="iCamDeinit()" style="margin-left: 30px;">反初始化</button>
+                <button onclick="iCamOpen()" style="margin-left: 0px;">开启摄像头</button>
+				<button onclick="iCamClose()" style="margin-left: 10px;">关闭摄像头</button> 
+				<button onclick="iCamGetResolutionList()" style="margin-left: 10px;">获取摄像头分辨率列表</button>
+				<button onclick="iCamSetResolution()" style="margin-left: 10px;">设置当前摄像头分辨率</button>  
+				<button onclick="iCamGetCurrentResolution()" style="margin-left: 10px;">获取当前摄像头分辨率</button>
+				</fieldset>
+			<fieldset style="width:500px;margin-top: 0%;border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;"> 
+			<legend>操作:</legend>
+			<div style="margin-top: 0px;;">
+				<button onclick="iCamSetRotateLeft()" style="margin-left: 0px;">左旋</button> 
+				<button onclick="iCamSetRotateRight()" style="margin-left: 30px;">右旋</button>
+	
+				<button onclick="iCamZoomOut()" style="margin-left: 30px;">缩小</button> 
+				<button onclick="iCamZoomIn()" style="margin-left: 30px;">放大</button>
+					
+
+			</div>	
+			<div style="margin-top: 5px;">
+				<button onclick="iCamPhoto()" style="margin-left:  0px;">拍照</button> 
+				<button onclick="iCamVidoStart()" style="margin-left: 30px;">开始录像</button> 
+				<button onclick="iCamVidoStop()" style="margin-left: 30px;">停止录像</button>	
+				<button onclick="iCamPhotoBase64()" style="margin-left: 30px;">拍照base64</button>
+				<br><br>
+				<span style="margin-left: 10px;">条码地址:</span>
+			    <input type="text" id="CodePath" style="width: 240px; text-align: left;">
+				<br>
+				<button onclick="iCamReadBarCode()" style="margin-left: 100px;">识别条码</button>	
+				<button onclick="iCamReadQRCode()" style="margin-left: 30px;">识别二维码</button>
+
+
+			</div>	
+			</fieldset>	
+			<fieldset style="width:500px;margin-top: 0%;border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+			<legend>设置:</legend>
+			<span >裁剪方式:</span>
+					<select id="CutMode" onchange="show_cut(this.value)">
+					<option value="0" selected>不裁剪</option>
+      				<option value="2">手动裁剪</option>
+					<option value="1">自动裁剪</option>
+					</select>
+			<span >拍照模式:</span>
+					<select id="PhotoMode" onchange="show_photo(this.value)">
+					<option value="0" selected>正常拍照</option>
+      				<option value="1">定时抓拍</option>
+					<option value="2">停止拍照</option>
+					</select>
+			<span>间隔时间(s):</span>
+			<input type="text"  id="timeText" value="" style="width: 40px;text-align: left;"/>
+				
+			<span >设置图像色彩:</span>
+	                <select id="color" >
+			<option value="1" selected>1-黑白</option>
+      		       <option value="2">2-彩色</option>
+				   <option value="3">3-灰度</option>
+			</select>
+			&nbsp&nbsp&nbsp&nbsp
+
+			<div style="margin-top: 5px;">
+			<button onclick="iCamImageSet()" >相机属性设置</button> 
+			<button onclick="iCamVidoSet()" style="margin-left:  20px;">视频属性设置</button> 
+			<button onclick="iCamSetCutType()" style="margin-left:  20px;">设置剪裁</button>
+			<button onclick="iCamSetColor()" style="margin-left:  20px;">设置照片颜色</button>
+			<br>
+			<button onclick="iCamStartAutoCap()" style="margin-left:  20px;">开始自动抓拍</button>
+			<button onclick="iCamStopAutoCap()" style="margin-left:  20px;">结束自动抓拍</button>
+			
+			</div>
+
+							
+		</div>
+	
+		</fieldset>		
+		</div>
+
+		
+</fieldset> 
+<!/fieldset>
+</body>
+
+
+
+</html>

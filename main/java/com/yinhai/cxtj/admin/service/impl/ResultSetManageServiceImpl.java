@@ -9,8 +9,6 @@ import com.yinhai.cxtj.admin.service.ResultSetManageService;
 import com.yinhai.cxtj.front.Constants;
 import com.yinhai.sysframework.persistence.PageBean;
 import com.yinhai.sysframework.persistence.ibatis.IDao;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,37 +43,47 @@ public class ResultSetManageServiceImpl extends CxtjBaseServiceImpl implements R
         IDao iDao = getDynamicDao(yzb670);
         List<Map> columnList;
         if(Constants.DSTYPE_ORACLE.equals(datasourceType)) {
-            columnList = iDao.queryForList("zb69.queryTableColumnsByOracle", tableNames);
+            columnList = iDao.queryForList("zb69.queryTableColumnsByOracleget", tableNames);
             return columnList;
         }
         if(Constants.DSTYPE_MYSQL.equals(datasourceType)) {
             columnList = iDao.queryForList("zb69.queryTableColumnsByMysql", tableNames);
             return columnList;
         }
-        columnList = iDao.queryForList("zb69.queryTableColumnsByOracle", tableNames);
+        columnList = iDao.queryForList("zb69.queryTableColumnsByMysql", tableNames);
         return columnList;
     }
 
     @Override
     public void saveResultSet(TaParamDto dto, List<Map> columnsList) throws Exception {
-        String yzb690 = super.getSequence("SEQ_YZB690");
         Zb69Domain zb69Domain = new Zb69Domain();
-        ReflectUtil.copyMapToObject(dto, zb69Domain, true);
         String yzb694 = genSql(columnsList, dto.getAsString("yzb695"), dto.getAsString("yzb693"));
-        zb69Domain.setYzb690(yzb690);
         zb69Domain.setYzb694(yzb694);
         zb69Domain.setAae011(dto.getUser().getName());
         zb69Domain.setYae116(dto.getUser().getUserid());
         zb69Domain.setAae017(Long.valueOf(dto.getUser().getOrgId()));
         zb69Domain.setAae036(super.getSysTimestamp());
-        IDao iDao = getDynamicDao(dto.getAsString("yzb670"));
-        iDao.insert("zb69.insert", zb69Domain);
+        ReflectUtil.copyMapToObject(dto, zb69Domain, true);
+        String yzb690 = dto.getAsString("yzb690");
+        if (ValidateUtil.isEmpty(yzb690)) {
+            //新增 zb69
+            yzb690 = super.getSequence("SEQ_YZB690");
+            zb69Domain.setYzb690(yzb690);
+            dao.insert("zb69.insert", zb69Domain);
+        } else {
+            //编辑zb69
+            dao.update("zb69.updateNotEmpty",zb69Domain);
+            //清zb89
+            dao.delete("zb89.deleteByYzb690", dto);
+        }
+        //新增 zb89
         for (Map m : columnsList) {
             String yzb890 = super.getSequence("SEQ_YZB890");
             m.put("yzb890", yzb890);
             m.put("yzb690", yzb690);
         }
-        iDao.insertBatch("zb89.insert", columnsList);
+        dao.insertBatch("zb89.insert", columnsList);
+
     }
 
     /**
@@ -119,5 +127,11 @@ public class ResultSetManageServiceImpl extends CxtjBaseServiceImpl implements R
     @Override
     public List<Map> queryZb89ByYzb690(String yzb690) throws Exception {
         return dao.queryForList("zb89.queryZb89ByYzb690",yzb690);
+    }
+
+    @Override
+    public Boolean checkNameExist(String yzb691) throws Exception {
+        List list = dao.queryForList("zb69.checkNameExist",yzb691);
+        return list.size() != 0 ? true : false;
     }
 }

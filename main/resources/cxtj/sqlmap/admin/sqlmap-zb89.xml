@@ -8,7 +8,7 @@
     <!-- 查询一批数据的查询 -->
     <select id="getList" parameterClass="map" resultClass="Zb89Domain">
         SELECT
-        YZB890, YZB690, YZB891, YZB892 FROM ZB89
+        YZB890, YZB690, YZB891, YZB892, YZB893, YZB894 FROM ZB89
         WHERE 1=1
         <isNotEmpty prepend="AND" property="yzb890">   <!-- 甲栏名称流水号 -->
             yzb890 = #yzb890:VARCHAR#
@@ -27,7 +27,7 @@
     <!-- 通过主键进行查询 -->
     <select id="get" parameterClass="map" resultClass="Zb89Domain">
         SELECT
-        YZB890, YZB690, YZB891, YZB892 FROM ZB89
+        YZB890, YZB690, YZB891, YZB892, YZB893, YZB894 FROM ZB89
         WHERE 1=1
         <isNotEmpty prepend="AND" property="yzb890">   <!-- 甲栏名称流水号 -->
             yzb890 = #yzb890:VARCHAR#
@@ -37,8 +37,8 @@
     <!-- 插入单条数据 -->
     <insert id="insert" parameterClass="map">
         insert into zb89
-        (yzb890, yzb690, yzb891, yzb892)
-        values (#yzb890:VARCHAR# , #yzb690:VARCHAR# , #yzb891:VARCHAR# , #yzb892:VARCHAR# )
+        (yzb890, yzb690, yzb891, yzb892, yzb893, yzb894)
+        values (#yzb890:VARCHAR# , #yzb690:VARCHAR# , #yzb891:VARCHAR# , #yzb892:VARCHAR# , #yzb893:VARCHAR#, #yzb894:VARCHAR# )
     </insert>
 
     <!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
@@ -48,6 +48,8 @@
         yzb690 = #yzb690:VARCHAR#,
         yzb891 = #yzb891:VARCHAR#,
         yzb892 = #yzb892:VARCHAR#,
+        yzb893 = #yzb893:VARCHAR#,
+        yzb894 = #yzb894:VARCHAR#,
         where yzb890 = #yzb890:VARCHAR#
     </update>
 
@@ -96,12 +98,28 @@
     </delete>
 
     <select id="queryZb89ByYzb690" parameterClass="java.lang.String" resultClass="java.util.HashMap">
-        select z.*,u.comments as comments from zb89 z,user_col_comments u
-        where yzb690 = #yzb690# and z.yzb891 = u.table_name
+        select z.* from zb89 z
+        where yzb690 = #yzb690#
     </select>
 
     <select id="queryTableColByYzb690" parameterClass="java.lang.String" resultClass="Zb89Domain">
-        select YZB890, YZB690, YZB891, YZB892 FROM ZB89
+        select YZB890, YZB690, YZB891, YZB892,YZB893 ,YZB894 FROM ZB89
         where yzb690 = #yzb690#
+    </select>
+    <!-- 查询数据集中的项目或表达式选择  -->
+    <select id="querySearchItemInResultSet" parameterClass="map" resultClass="java.util.HashMap">
+        SELECT
+        a.yzb892 AS yzb623,
+        CASE WHEN a.yzb894 IN ('VARCHAR','CHAR','BLOB') THEN '1'
+        WHEN  a.yzb894 IN ('INT','INTEGER','FLOAT','DOUBLE','DECIMAL') THEN '2'
+        WHEN  a.yzb894 IN ('DATE','TIME','DATETIME','TIMESTAMP') THEN '3'
+        ELSE '1'
+        END AS yzb626,
+        a.yzb893 AS yzb625,
+        if((SELECT COUNT(1) FROM aa10a1 WHERE aaa100 = a.yzb892)=0, '', a.yzb892) as yzb628
+        FROM
+        zb89 a
+        WHERE
+        a.yzb690 = #yzb690#
     </select>
 </sqlMap>

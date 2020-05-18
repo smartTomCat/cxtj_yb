@@ -65,7 +65,7 @@
     </insert>
 
     <!-- 通过主键修改数据库记录，domain的每一个字段都要设值，如果是null，则数据库中也是null -->
-    <update id="update" parameterClass="map">
+    <update id="update" parameterClass="Zb69Domain">
         update zb69
         set
         yzb691 = #yzb691:VARCHAR#,
@@ -77,11 +77,12 @@
         aae017 = #aae017:INTEGER#,
         aae036 = #aae036:TIMESTAMP#,
         yzb694 = #yzb694:VARCHAR#,
+        yzb695 = #yzb695:VARCHAR#
         where yzb690 = #yzb690:VARCHAR#
     </update>
 
     <!-- 通过DTO更新单条数据,主键不能为空，只修改你设定值得字段，并且值不为null或"" -->
-    <update id="updateNotEmpty" parameterClass="map">
+    <update id="updateNotEmpty" parameterClass="Zb69Domain">
         update zb69
         <dynamic prepend="SET">
             <isNotEmpty prepend="," property="yzb691">
@@ -110,6 +111,9 @@
             </isNotEmpty>
             <isNotEmpty prepend="," property="yzb694">
                 yzb694 = #yzb694:VARCHAR#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="yzb695">
+                yzb695 = #yzb695:VARCHAR#
             </isNotEmpty>
         </dynamic>
         where yzb690 = #yzb690:VARCHAR#
@@ -162,12 +166,15 @@
 
     <!-- 查询对应数据源的实体表-->
     <select id="queryAllTableByMysql" resultMap="tableTree">
-        select table_name as id, table_name as name, '1' as pid from information_schema.TABLES
+        select table_name as id, table_name as name, '1' as pid from information_schema.TABLES order by table_name
     </select>
 
     <!-- 查询对应数据源的实体表及列信息-->
     <select id="queryTableColumnsByOracle" resultClass="java.util.HashMap">
-        select table_name as yzb891, column_name as yzb892, comments from user_col_comments where table_name in
+        select a.table_name as yzb891, a.column_name as yzb892, a.comments as yzb893, b.data_type as yzb894  from
+        user_col_comments a,user_tab_columns b
+        where a.table_name = b.table_name and a.column_name = b.column_name
+        and a.table_name in
         <iterate close=")" open="(" conjunction=",">
             <![CDATA[
                  #[]#
@@ -176,7 +183,7 @@
     </select>
     <!-- 查询对应数据源的实体表及列信息-->
     <select id="queryTableColumnsByMysql" resultClass="java.util.HashMap">
-        select table_name as yzb891, column_name as yzb892, column_comment from information_schema.COLUMNS  where table_name in
+        select table_name as yzb891, column_name as yzb892, column_comment as yzb893 , data_type as yzb894 from information_schema.COLUMNS  where table_name in
         <iterate close=")" open="(" conjunction=",">
             <![CDATA[
                  #[]#
@@ -199,7 +206,7 @@
             zb69.yzb670 = #yzb670#
         </isNotEmpty>
         <isNotEmpty prepend="AND" property="yzb691">
-            zb69.yzb691 like #yzb691# ||'%'
+            zb69.yzb691 like CONCAT(#yzb691#,'%')
         </isNotEmpty>
     </select>
 
@@ -209,6 +216,10 @@
 
     <select id="queryResultSetsByYzb670" parameterClass="java.lang.String" resultClass="java.util.HashMap">
         select yzb690 as id,yzb691 as name,yzb694 as py from zb69 where yzb670 = #yzb670#
+    </select>
+
+    <select id="checkNameExist" parameterClass="java.lang.String" resultClass="java.util.HashMap">
+        select yzb691  from zb69 where yzb691 = #yzb691#
     </select>
 
 </sqlMap>

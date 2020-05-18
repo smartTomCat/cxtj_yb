@@ -51,6 +51,7 @@
     <se:http security="none" pattern="/SlideParamImgServlet"/>
     <se:http security="none" pattern="/SlideVerifyServlet"/>
     <se:http security="none" pattern="/SlideDragImgServlet"/>
+    <se:http security="none" pattern="/datasource/dataSourceManageController!queryList.do" />
     <!--SSO -->
     <se:http auto-config="false" entry-point-ref="casEntryPoint" servlet-api-provision="true" use-expressions="true">
         <!-- 4.0后关闭页面Frame嵌套验证，框架都是Frame嵌套页面 maxp add-->

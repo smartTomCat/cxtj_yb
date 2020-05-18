@@ -44,7 +44,7 @@
         <ta:datagridItem id="searchItem" key="配制项目" icon="icon-add2" click="fnSearchItem"/>
         <ta:datagridItem id="searchOrder" key="配制项目排序" icon="icon-edit" click="fnSearchOrder"/>
         <ta:datagridItem id="yzb611" key="主题代码" showDetailed="true" align="center" dataAlign="center" width="100"/>
-        <ta:datagridItem id="yzb612" key="主题名称" showDetailed="true" align="center" dataAlign="center" width="200"/>
+        <ta:datagridItem id="yzb612" key="主题名称" showDetailed="true" align="center" dataAlign="center" />
         <ta:datagridItem id="yzb670" key="数据源流水号" hiddenColumn="true"/>
         <ta:datagridItem id="yzb690" key="数据集流水号" hiddenColumn="true"/>
         <ta:datagridItem id="yzb672" key="数据源名称" width="100" dataAlign="center" formatter="setDefaultName"/>
@@ -52,6 +52,7 @@
                          dataAlign="center" width="100"/>
         <ta:datagridItem id="yzb617" key="查询统计类型（1查询2统计）" hiddenColumn="true"/>
         <ta:datagridItem id="yzb618" key="对应的菜单id" hiddenColumn="true"/>
+        <ta:datagridItem id="url" key="功能菜单url" showDetailed="true" formatter="genUrl"/>
         <ta:dataGridToolPaging url="setSearchAction!querySearchs.do" submitIds="form1" pageSize="10"/>
     </ta:datagrid>
 
@@ -207,7 +208,7 @@
         var _url = 'setSearchAction!toEditSearch.do';
         var _param = null;
         var _w = fnGetW(765);
-        var _h = fnGetW(350);
+        var _h = fnGetW(400);
         var _load = null;
         var _close = fnQuery;
         var _iframe = true;
@@ -223,7 +224,7 @@
             var _url = 'setSearchAction!toEditSearch.do';
             var _param = {'dto.yzb610': data[0].yzb610};
             var _w = fnGetW(765);
-            var _h = fnGetW(350);
+            var _h = fnGetW(400);
             var _load = null;
             var _close = fnQuery;
             var _iframe = true;
@@ -349,6 +350,8 @@
         var yzb613 = Base.getValue("yzb613");
         //查询统计方式
         var yzb617 = Base.getValue("yzb617");
+        //数据集流水号
+        var yzb690 = Base.getValue("yzb690");
         if (selyzb610 != '') {
             var _id = 'w_edit';
             var _title = '配制项目';
@@ -357,6 +360,7 @@
                 'dto.yzb610': selyzb610,
                 'dto.yzb617': yzb617,
                 'dto.yzb670': yzb670,
+                'dto.yzb690': yzb690,
                 'dto.yzb613': yzb613,
                 'dto.yzb617': yzb617
             };
@@ -486,5 +490,11 @@
             return "框架数据源";
         }
     }
+
+    //生成功能菜单url
+    function genUrl (row, cell, value, columnDef, dataContext) {
+        return "query/customizeQueryAction.do?dto.ztdm=" + dataContext.yzb611;
+    }
+
 </script>
 <%@ include file="/ta/incfooter.jsp" %>

@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+    <title>测试</title>
+    <meta http-equiv="content-type" content="txt/html; charset=utf-8"/>
+    <script type="text/javascript" src="./sign.js"></script>
+    <script type="text/javascript">
+        function produceMessage(jsonObj) {
+            console.log(jsonObj);
+            var b = jsonObj.functionName == "ZCOutputImageBase64AB" && jsonObj.success == "1";
+            if (b) {
+                document.getElementById("imageId").src = "data:image/png;base64," + jsonObj.Base64;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+取身份证
+<button onclick="iReadIdentityCardAB();">iReadIdentityCardAB</button>
+<br/>
+================================================================================<br/>
+启动签字板
+<button onclick="ZCStartDeviceAB();">ZCStartDeviceAB</button>
+进入签名
+<button onclick="ZCBeginSignAB(10,10,500,500);">ZCBeginSignAB</button>
+退出签名
+<button onclick="ZCEndSignAB();">ZCEndSignAB</button>
+停止设备
+<button onclick="ZCStopDeviceAB();">ZCStopDeviceAB</button>
+<br/>
+获取笔迹
+<button onclick="ZCOutputImageBase64AB();">ZCOutputImageBase64AB</button>
+网页推送
+<button onclick="ZCShowHtmlAB('http://www.baidu.com');">ZCShowHtmlAB</button>
+获取序列号
+<button onclick="ZCGetSerialNumAB();">ZCGetSerialNumAB</button>
+设置笔的模式
+<button onclick="ZCSetModeAB(1);">ZCSetModeAB</button>
+<br/>
+================================================================================<br/>
+
+本地程序发送：<br/>
+<textarea style="width:1000px;height:20px;" id="senddata"></textarea><br/>
+================================================================================<br/>
+本地程序返回：<br/>
+<textarea style="width:1000px;height:200px;" id="receiveddata"></textarea><br/><br/>
+================================================================================<br/>
+
+<img id="imageId" src="" alt="签名显示"/>
+</body>
+
+</html>

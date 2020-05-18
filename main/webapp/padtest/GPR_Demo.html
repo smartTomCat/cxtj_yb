@@ -1,0 +1,207 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>德卡科技</title>
+    <script src="./camera.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+		var timOut = 0;
+        function produceMessage(jsonObj) {
+        	console.log(jsonObj);
+            document.getElementById("recardtext").value = JSON.stringify(jsonObj);
+            //成功开启了摄像头
+            var b = jsonObj.functionName == "iCamGetCameraImage" && jsonObj.success == "0";
+            if (b) {
+                var myimg = document.getElementById("myCanvas");
+                myimg.src = "data:image/png;base64," + jsonObj.imgBase64Str;
+            }
+        }
+    </script>
+
+
+    <style>
+        select {
+            width: 100px;
+        }
+
+        input {
+            width: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mainUI">
+    <!--canvas id="myCanvas" width='320' height='240' style="background-color: black; float: left;"></canvas-->
+    <img id="myCanvas" width='640' height='480' style="background-color: black; float: left;"/>
+    <!img id="myCanvas" width='460' height='340' style="background-color: black; float: left;"/>
+    <!img id="sidecam" width='160' height='140' style="margin-left: 1%; background-color: black; float: left;"/>
+
+
+    <div>
+        <fieldset
+                style="float: left; margin-left: 1%;width:40%;border:2px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+            <fieldset
+                    style="width:96%;margin-top: 0%; border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+                <legend>业务输出:</legend>
+                <textarea style="width:100%;" rows="9" cols="28" name="recardtext" id="recardtext"></textarea>
+            </fieldset>
+            <div style="padding-top: 2px;">
+                <span style="margin-left: 10px;">照片地址:</span>
+                <input type="text" id="filepath" style="width: 240px; text-align: left;">
+                <button onclick="iCamFileToBase64()" style="margin-left: 10px;">照片转Base64</button>
+                <button onclick="ClearText()" style="margin-left: 10px;">清 空</button>
+
+            </div>
+    </div>
+    <div>
+        </fieldset>
+        <fieldset
+                style="float: left; margin-left: 1%;width:40%;border:2px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+            <fieldset
+                    style="width:96%;margin-top: 0%; border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+                <legend>存储:</legend>
+                <span>路径+名称:</span>
+                <input type="text" id="AllpAth" value="D:\\GPR_photo\\2020040213.jpg"
+                       style="width: 300px;text-align: left;"/>
+                <br><br><span>存储路径:</span>
+                <input type="text" id="saveText" value="D:\\GPR_photo\\" style="width: 300px;text-align: left;"/>
+                <br><br><span>文件名称:</span>
+                <input type="text" id="fileName" value="2020040213" style="width: 300px;text-align: left;"/>
+                <br>
+                <div style="margin-top: 10px; display: inline-block;">
+                    <span>照片格式:</span>
+                    <select id="photoStyle">
+                        <option value=".jpg" selected>jpg格式</option>
+                        <option value=".bmp">bmp格式</option>
+                        <option value=".png">png格式</option>
+                        <option value=".jpeg">jpeg格式</option>
+                        <option value=".tif">tif格式</option>
+                        <option value=".gif">gif格式</option>
+                    </select>
+                </div>
+                <div style="margin-left: 20px; display: inline-block;">
+                    <span>视频格式:</span>
+                    <select id="videoStyle">
+                        <option value="mp4" selected>mp4格式</option>
+                        <option value="wmv">wmv格式</option>
+                        <option value="avi">AVI格式</option>
+                    </select>
+                </div>
+
+            </fieldset>
+        </fieldset>
+    </div>
+
+
+</div>
+
+<div style="clear:both;">
+
+    <fieldset
+            style="float:left; width:530px;margin-top: 0%;border:2px solid #000000;padding:5px;margin-bottom:5px;display:block;">
+
+        <fieldset
+                style="width:500px;margin-top: 0%;border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+            <legend>摄像头:</legend>
+            <div style="margin-top: 0px;">
+
+                <span>摄像头:</span>
+                <select id="CamNo">
+                    <option value="0" selected>0号摄像头</option>
+                    <option value="1">1号摄像头</option>
+                </select>
+                <span>分辨率ID:</span>
+                <input type="text" id="ResolutionID" value="0" style="width: 40px;text-align: left;"/>
+                <button onclick="iCamInit()" style="margin-left: 30px;">初始化</button>
+                <button onclick="iCamDeinit()" style="margin-left: 30px;">反初始化</button>
+                <button onclick="iCamOpen(0)" style="margin-left: 0px;">开启摄像头0</button>
+                <button onclick="iCamOpen('1')" style="margin-left: 0px;">开启摄像头1</button>
+                <button onclick="iCamGetCameraImage()" style="margin-left: 0px;">获取摄像头返回</button>
+                <button onclick="iCamClose()" style="margin-left: 10px;">关闭摄像头</button>
+                <button onclick="iCamGetResolutionList()" style="margin-left: 10px;">获取摄像头分辨率列表</button>
+                <button onclick="iCamSetResolution('1')" style="margin-left: 10px;">设置当前摄像头分辨率</button>
+                <button onclick="iCamGetCurrentResolution()" style="margin-left: 10px;">获取当前摄像头分辨率</button>
+                <button onclick="iCamPhotoBase64('.jpg')" style="margin-left: 10px;">拍摄成base64</button>
+                <button onclick="iCamPhoto('D:\\demo.jpg')" style="margin-left: 10px;">拍摄图片到指定路径</button>
+                <button onclick="iCamStartTimerCap('3', 'D:\\20200417\\')" style="margin-left: 10px;">开始定时抓拍</button>
+                <button onclick="iCamStopTimerCap()" style="margin-left: 10px;">结束定时抓拍</button>
+        </fieldset>
+        <fieldset
+                style="width:500px;margin-top: 0%;border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+            <legend>操作:</legend>
+            <div style="margin-top: 0px;;">
+                <button onclick="iCamSetRotateLeft()" style="margin-left: 0px;">左旋</button>
+                <button onclick="iCamSetRotateRight()" style="margin-left: 30px;">右旋</button>
+
+                <button onclick="iCamZoomOut()" style="margin-left: 30px;">缩小</button>
+                <button onclick="iCamZoomIn()" style="margin-left: 30px;">放大</button>
+
+
+            </div>
+            <div style="margin-top: 5px;">
+                <button onclick="iCamPhoto()" style="margin-left:  0px;">拍照</button>
+                <button onclick="iCamVidoStart()" style="margin-left: 30px;">开始录像</button>
+                <button onclick="iCamVidoStop()" style="margin-left: 30px;">停止录像</button>
+                <button onclick="iCamPhotoBase64()" style="margin-left: 30px;">拍照base64</button>
+                <br><br>
+                <span style="margin-left: 10px;">条码地址:</span>
+                <input type="text" id="CodePath" style="width: 240px; text-align: left;">
+                <br>
+                <button onclick="iCamReadBarCode()" style="margin-left: 100px;">识别条码</button>
+                <button onclick="iCamReadQRCode()" style="margin-left: 30px;">识别二维码</button>
+
+
+            </div>
+        </fieldset>
+        <fieldset
+                style="width:500px;margin-top: 0%;border:1.5px solid #000000;padding:10px;margin-bottom:10px;display:block;">
+            <legend>设置:</legend>
+            <span>裁剪方式:</span>
+            <select id="CutMode" onchange="show_cut(this.value)">
+                <option value="0" selected>不裁剪</option>
+                <option value="2">手动裁剪</option>
+                <option value="1">自动裁剪</option>
+            </select>
+            <span>拍照模式:</span>
+            <select id="PhotoMode" onchange="show_photo(this.value)">
+                <option value="0" selected>正常拍照</option>
+                <option value="1">定时抓拍</option>
+                <option value="2">停止拍照</option>
+            </select>
+            <span>间隔时间(s):</span>
+            <input type="text" id="timeText" value="" style="width: 40px;text-align: left;"/>
+
+            <span>设置图像色彩:</span>
+            <select id="color">
+                <option value="1" selected>1-黑白</option>
+                <option value="2">2-彩色</option>
+                <option value="3">3-灰度</option>
+            </select>
+            &nbsp&nbsp&nbsp&nbsp
+
+            <div style="margin-top: 5px;">
+                <button onclick="iCamImageSet()">相机属性设置</button>
+                <button onclick="iCamVidoSet()" style="margin-left:  20px;">视频属性设置</button>
+                <button onclick="iCamSetCutType()" style="margin-left:  20px;">设置剪裁</button>
+                <button onclick="iCamSetColor()" style="margin-left:  20px;">设置照片颜色</button>
+                <br>
+                <button onclick="iCamStartAutoCap()" style="margin-left:  20px;">开始自动抓拍</button>
+                <button onclick="iCamStopAutoCap()" style="margin-left:  20px;">结束自动抓拍</button>
+
+            </div>
+
+
+</div>
+
+</fieldset>
+</div>
+
+
+</fieldset>
+<!/fieldset>
+</body>
+
+
+</html>
